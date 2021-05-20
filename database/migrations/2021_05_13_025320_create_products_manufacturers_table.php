@@ -14,9 +14,12 @@ class CreateProductsManufacturersTable extends Migration
     public function up()
     {
         Schema::create('products_manufacturers', function (Blueprint $table) {
+            //pendiente revision tabla creada por relacion  muchos a muchos
             $table->id();
-            $table->foreignId('lab_manufacturers_id')->references('id')->on('lab_manufacturers');
-            $table->foreignId('products_id')->references('id')->on('products');
+            $table->biginteger('lab_manufacturers_id')->unsigned();
+            $table->biginteger('products_id')->unsigned();
+            $table->foreign('lab_manufacturers_id')->references('id')->on('lab_manufacturers');
+            $table->foreign('products_id')->references('id')->on('products');
             $table->timestamps();
         });
     }

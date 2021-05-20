@@ -17,7 +17,8 @@ class CreateInventoriesTable extends Migration
             $table->id();
             $table->bigInteger('amount');
             $table->date('last_modified_date');
-            $table->foreignId('products_id')->references('id')->on('products');
+            $table->bigInteger('products_id')->unsigned();
+            $table->foreign('products_id')->references('id')->on('products');
             $table->timestamps();
         });
     }

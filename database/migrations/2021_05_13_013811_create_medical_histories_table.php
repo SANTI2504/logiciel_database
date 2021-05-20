@@ -20,7 +20,8 @@ class CreateMedicalHistoriesTable extends Migration
             $table->string('last_diagnosis', 500);
             $table->date('last_modified_date');
             $table->date('date_create');
-            $table->foreignId('patients_id')->references('id')->on('patients');
+            $table->bigInteger('patients_id')->unsigned();
+            $table->foreign('patients_id')->references('id')->on('patients');
             $table->timestamps();
         });
     }

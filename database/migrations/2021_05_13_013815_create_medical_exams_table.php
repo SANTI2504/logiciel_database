@@ -19,8 +19,10 @@ class CreateMedicalExamsTable extends Migration
             $table->date('exam_date');
             $table->string('symptom', 250);
             $table->string('diagnosis', 500);
-            $table->foreignId('appointments_id')->references('id')->on('appointments');
-            $table->foreignId('medical_histories_id')->references('id')->on('medical_histories');
+            $table->bigInteger('appointments_id')->unsigned();
+            $table->bigInteger('medical_histories_id')->unsigned();
+            $table->foreign('appointments_id')->references('id')->on('appointments');
+            $table->foreign('medical_histories_id')->references('id')->on('medical_histories');
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
 
             $table->string('name', 45);
             $table->string('description', 200);
-            $table->date('expirate_date');
+            $table->date('expiration_date');
             $table->timestamps();
         });
     }

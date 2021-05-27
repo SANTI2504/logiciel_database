@@ -11,7 +11,30 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.styles([
+    'resources/css/app/style.min.css',
+    'resources/css/app/style.min1.css',
+    'resources/css/app/font-awesome.min.css',
+    'resources/css/app/perfect-scrollbar.min.css',
+    'resources/css/app/prism.min.css',
+    'resources/css/app/switchery.min.css',
+    'resources/css/app/bootstrap.min.css',
+    'resources/css/app/bootstrap-extended.min.css',
+    'resources/css/app/colors.min.css',
+    'resources/css/app/components.min.css',
+    'resources/css/app/layout-dark.min.css',
+    'resources/css/app/switchery.min1.css',
+    'resources/css/app/style.css'
+], 'public/css/app/app.css');
+
+mix.scripts([
+    'resources/js/app/vendors.min.js',
+    'resources/js/app/switchery.min.js',
+    'resources/js/app/app-menu.min.js',
+    'resources/js/app/app.min.js',
+    'resources/js/app/notification-sidebar.min.js',
+    'resources/js/app/customizer.min.js',
+    'resources/js/app/scroll-top.min.js',
+    'resources/js/app/scripts.js'
+
+], 'public/js/app/app.js');

@@ -29,26 +29,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
-    <!-- font icons-->
-    <link rel="stylesheet" type="text/css" href="../app-assets/fonts/feather/style.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/fonts/simple-line-icons/style.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/fonts/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/perfect-scrollbar.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/prism.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/switchery.min.css">
-    <!-- END VENDOR CSS-->
-    <!-- BEGIN APEX CSS-->
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/bootstrap-extended.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/colors.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/components.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/themes/layout-dark.min.css">
-    <link rel="stylesheet" href="../app-assets/css/plugins/switchery.min.css">
-    <!-- END APEX CSS-->
-    <!-- BEGIN Page Level CSS-->
-    <!-- END Page Level CSS-->
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" href="{{url('css/app/app.css')}}">
     <!-- END: Custom CSS-->
 </head>
 <!-- END : Head-->
@@ -1708,22 +1689,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 <!-- BEGIN VENDOR JS-->
-<script src="../app-assets/vendors/js/vendors.min.js"></script>
-<script src="../app-assets/vendors/js/switchery.min.js"></script>
-<!-- BEGIN VENDOR JS-->
-<!-- BEGIN PAGE VENDOR JS-->
-<!-- END PAGE VENDOR JS-->
-<!-- BEGIN APEX JS-->
-<script src="../app-assets/js/core/app-menu.min.js"></script>
-<script src="../app-assets/js/core/app.min.js"></script>
-<script src="../app-assets/js/notification-sidebar.min.js"></script>
-<script src="../app-assets/js/customizer.min.js"></script>
-<script src="../app-assets/js/scroll-top.min.js"></script>
-<!-- END APEX JS-->
-<!-- BEGIN PAGE LEVEL JS-->
-<!-- END PAGE LEVEL JS-->
-<!-- BEGIN: Custom CSS-->
-<script src="../assets/js/scripts.js"></script>
+<script src="{{url('js/app/app.js')}}" ></script>
 <!-- END: Custom CSS-->
 </body>
 <!-- END : Body-->

@@ -38,3 +38,14 @@ mix.scripts([
     'resources/js/app/scripts.js'
 
 ], 'public/js/app/app.js');
+
+mix.styles([
+    'resources/css/all.css',
+    'resources/css/estilos.css'
+
+], 'public/css/app.css');
+
+mix.scripts([
+    'resources/js/scripts.js'
+
+], 'public/js/app.js');

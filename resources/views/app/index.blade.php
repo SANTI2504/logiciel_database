@@ -56,9 +56,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="navbar-container">
             <div class="collapse navbar-collapse d-block" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li class="i18n-dropdown dropdown nav-item mr-2"><a class="nav-link d-flex align-items-center dropdown-toggle dropdown-language" id="dropdown-flag" href="javascript:;" data-toggle="dropdown"><img class="langimg selected-flag" src="../app-assets/img/flags/us.png" alt="flag"><span class="selected-language d-md-flex d-none">English</span></a>
-                        <div class="dropdown-menu dropdown-menu-right text-left" aria-labelledby="dropdown-flag"><a class="dropdown-item" href="javascript:;" data-language="en"><img class="langimg mr-2" src="../app-assets/img/flags/us.png" alt="flag"><span class="font-small-3">English</span></a><a class="dropdown-item" href="javascript:;" data-language="es"><img class="langimg mr-2" src="../app-assets/img/flags/es.png" alt="flag"><span class="font-small-3">Spanish</span></a><a class="dropdown-item" href="javascript:;" data-language="pt"><img class="langimg mr-2" src="../app-assets/img/flags/pt.png" alt="flag"><span class="font-small-3">Portuguese</span></a><a class="dropdown-item" href="javascript:;" data-language="de"><img class="langimg mr-2" src="../app-assets/img/flags/de.png" alt="flag"><span class="font-small-3">German</span></a></div>
-                    </li>
+                    
                     <li class="dropdown nav-item"><a class="nav-link dropdown-toggle dropdown-notification p-0 mt-2" id="dropdownBasic1" href="javascript:;" data-toggle="dropdown"><i class="ft-bell font-medium-3"></i><span class="notification badge badge-pill badge-danger">4</span></a>
                         <ul class="notification-dropdown dropdown-menu dropdown-menu-media dropdown-menu-right m-0 overflow-hidden">
                             <li class="dropdown-menu-header">
@@ -176,8 +174,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="d-flex align-items-center"><i class="ft-message-square mr-2"></i><span>Chat</span></div></a><a class="dropdown-item" href="page-user-profile.html">
                                 <div class="d-flex align-items-center"><i class="ft-edit mr-2"></i><span>Edit Profile</span></div></a><a class="dropdown-item" href="app-email.html">
                                 <div class="d-flex align-items-center"><i class="ft-mail mr-2"></i><span>My Inbox</span></div></a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="auth-login.html">
-                                <div class="d-flex align-items-center"><i class="ft-power mr-2"></i><span>Logout</span></div></a>
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                            <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"
+                                                                   onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    <i class="ft-power mr-2"></i>{{ __('Log Out') }}
+
+                                </form>
+                                <div class="d-flex align-items-center"><span></span></div></a>
                         </div>
                     </li>
                     <li class="nav-item d-none d-lg-block mr-2 mt-1"><a class="nav-link notification-sidebar-toggle" href="javascript:;"><i class="ft-align-right font-medium-3"></i></a></li>

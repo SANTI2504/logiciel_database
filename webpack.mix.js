@@ -11,6 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+    ]);
+
+if (mix.inProduction()) {
+    mix.version();
+}
+
+
+
 mix.styles([
     'resources/css/app/style.min.css',
     'resources/css/app/style.min1.css',
@@ -43,9 +55,10 @@ mix.styles([
     'resources/css/all.css',
     'resources/css/estilos.css'
 
-], 'public/css/app.css');
+], 'public/css/landing.css');
 
 mix.scripts([
     'resources/js/scripts.js'
 
-], 'public/js/app.js');
+], 'public/js/landing.js');
+

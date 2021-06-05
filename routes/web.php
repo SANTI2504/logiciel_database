@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('inicio', function () {
-    return view('app/index');
-});
-Route::get('vision-medics', function () {
+
+Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('dashboard', function () {
+    return view('app/index');
+});
+
 Route::get('inicio-sesion', function () {
     return view('app/login/login');
 });
@@ -28,3 +31,15 @@ Route::get('registrarse', function () {
 
 
 
+
+
+/*
+//jetstream
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+*/
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/inicio', function () {
+    return view('app/index');
+})->name('inicio');

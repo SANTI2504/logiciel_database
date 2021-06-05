@@ -1,116 +1,113 @@
-/*fuentes*/
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-
 /*Estilo General */
 *{
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: 'Oswald', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
 }
 
 
 /*cuerpo*/
 html{
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 body{
-	background: #fff;
-	background-size: 100% 100%;
-	background-attachment: fixed;
+    background: #fff;
+    background-size: 100% 100%;
+    background-attachment: fixed;
 }
 
 /* Clases especiales */
 
 .borde {
-	border: 1px solid gray;
+    border: 1px solid gray;
 
 }
 
 .subtitulo{
-	width: 100%;
-	height: 250px;
-	padding-top: 100px;
-	text-align: center;
-	font-size: 2em;
+    width: 100%;
+    height: 250px;
+    padding-top: 100px;
+    text-align: center;
+    font-size: 2em;
 
 }
 .subtitulo h2{
-	font-size: 3.5rem;
+    font-size: 3.5rem;
 }
 
 .alinear_arr{
-	vertical-align: top;
+    vertical-align: top;
 }
 
 
 /*ventana modal*/
 
 .modal{
-	width: 100vw;
-	margin:auto;
-	height: 100vh;
-	padding-top: 200px;
-	background: rgba(0,0,0,0.5);
-	text-align: center;
-	position:fixed;
-	top:0;
-	left:0;
-	z-index: 10000;
-	transition: all 500ms ease;
-	opacity:0;
-	visibility: hidden;
+    width: 100vw;
+    margin:auto;
+    height: 100vh;
+    padding-top: 200px;
+    background: rgba(0,0,0,0.5);
+    text-align: center;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 10000;
+    transition: all 500ms ease;
+    opacity:0;
+    visibility: hidden;
 }
 
 .modal:target{
-	opacity:1;
-	visibility:visible;
+    opacity:1;
+    visibility:visible;
 }
 
 .modal-contenedor{
-	width: 450px;
+    width: 450px;
 
-	margin: auto;
-	background: #fff;
-	border-radius: 5px;
-	box-shadow: 2px 2px 5px rgba(255,255,255,1);
-	transition: all 1000ms ease;	
-	position:relative;
-	transform: translateX(100%);
+    margin: auto;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(255,255,255,1);
+    transition: all 1000ms ease;
+    position:relative;
+    transform: translateX(100%);
 
 }
 
 .modal:target .modal-contenedor{
-	transform: translateX(0%);
+    transform: translateX(0%);
 }
 
 .modal-contenedor .modal-header{
-	padding: 10px;
-	background: #f2f2f2;
-	border-radius: 5px;
+    padding: 10px;
+    background: #f2f2f2;
+    border-radius: 5px;
 }
 .modal-contenedor .modal-cerrar{
-	position: absolute;
-	text-decoration: none;
-	color: #000;
-	font-size: 1.5em;
-	top: 0.1px;
-	right: 10px;
+    position: absolute;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5em;
+    top: 0.1px;
+    right: 10px;
 }
 
 .modal form{
-	padding: 5px;
-	width: 80%;
-	margin: auto;
+    padding: 5px;
+    width: 80%;
+    margin: auto;
 }
 
 /*validacion*/
 
 .modal form .form_cuerpo  label  {
-	width: 30%;
+    width: 30%;
 }
 .modal form .form_cuerpo  input{
-	width: 68%;
+    width: 68%;
 }
 
 
@@ -118,143 +115,143 @@ body{
 
 /*contenedor*/
 .contenedor{
-	/*ancho*/
-	width: 100% ;
-	/*ajuste de pantalla maximo a ****px */
-	max-width: 1400px;
-	/*Centra el porcentaje faltante*/
-	margin: auto;
+    /*ancho*/
+    width: 100% ;
+    /*ajuste de pantalla maximo a ****px */
+    max-width: 1400px;
+    /*Centra el porcentaje faltante*/
+    margin: auto;
 
 }
 
 /*navegador*/
 nav {
-	width: 100%;
-	max-width: 1400px;
-	height: 78px;
-	float: left; 
-	position: fixed;
-	background-color: #2C3E50;
+    width: 100%;
+    max-width: 1400px;
+    height: 78px;
+    float: left;
+    position: fixed;
+    background-color: #2C3E50;
 }
 
 .titulo {
-	width: 20%;
-	height: 100%;
-	padding: 20px 20px;
-	float: left;
+    width: 20%;
+    height: 100%;
+    padding: 20px 20px;
+    float: left;
 }
 
 .titulo a{
-	font-size: 1.4em;
-	text-decoration: none;
-	color: #FFFFFF;
+    font-size: 1.4em;
+    text-decoration: none;
+    color: #FFFFFF;
 }
 .titulo a:hover{
-	color: #1ABC9C;
+    color: #1ABC9C;
 }
 
 
 .navega {
-	width: 70%;
-	height: 100%;
-	float: left;
+    width: 70%;
+    height: 100%;
+    float: left;
 }
 
 .menu, .checkbox{
-	display: none;
+    display: none;
 
 }
 
 /*NIVEL 0*/
 nav ul{
-	list-style: none;
-	text-align: right;
-	padding: 5px 20px;
+    list-style: none;
+    text-align: right;
+    padding: 5px 20px;
 }
 
 nav ul li{
-	width: 150px; 
+    width: 150px;
 
 }
 
 nav .navega>ul>li{
-	display: inline-block;
+    display: inline-block;
 }
 
 nav ul li a{
-	display: block;
-	text-decoration: none;
-	font-size: 1em;
-	color: #fff;
-	padding: 22px 5px;
-	text-align:  center;
+    display: block;
+    text-decoration: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 22px 5px;
+    text-align:  center;
 }
 
 nav ul li a:hover{
-	color: #1ABC9C;
+    color: #1ABC9C;
 }
 
 nav ul li a:active, nav ul li a:focus {
-	color: #fff;
+    color: #fff;
 }
 
 /*ingreso*/
 nav .ingreso{
-	position: absolute;
-	top: 0%;
-	right: 0%;
-	width: 150px;
-	height: 100%;
-	float: 	left;
-	text-align: center;
-	padding-top: 25px;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 150px;
+    height: 100%;
+    float: 	left;
+    text-align: center;
+    padding-top: 25px;
 }
 
 nav .ingreso a{
-	background: #48C9B0;
-	text-decoration: none;
-	color: black;
-	padding:10px; 
-	border-radius: 5px;
+    background: #48C9B0;
+    text-decoration: none;
+    color: black;
+    padding:10px;
+    border-radius: 5px;
 }
 
 nav .ingreso a:hover{
-	background: white;
-	color: solid black;
-	border: solid black;
+    background: white;
+    color:  black;
+    border: solid black;
 
 }
 
 /* Encabezado */
 header{
-	width: 100%;
-	height: 650px;
-	/*text-align: center;
-	padding: 10%;*/
+    width: 100%;
+    height: 650px;
+    /*text-align: center;
+    padding: 10%;*/
 
-	/*propiedades para las imagenes*/
-	/*ruta de la imagen*/
-	background-image: url('../img/fondo-gafas-1.jpg');
-	/*ajuste de la imagen con corde a la caja header*/
-	background-size:100% 100%;
-	/*efecto estatico de la imagen*/
+    /*propiedades para las imagenes*/
+    /*ruta de la imagen*/
+    background-image: url('../img/fondo-gafas-1.jpg');
+    /*ajuste de la imagen con corde a la caja header*/
+    background-size:100% 100%;
+    /*efecto estatico de la imagen*/
 
 }
 .head_opa{
-	width: 100%;
-	height: 100%;
-	padding-top: 20%;
-	padding-left: 50%;
-	color: #ddd;
-	text-align: center;
-	background: rgba(0,0,0,0.4	);
+    width: 100%;
+    height: 100%;
+    padding-top: 20%;
+    padding-left: 50%;
+    color: #ddd;
+    text-align: center;
+    background: rgba(0,0,0,0.4	);
 }
 
 .head_opa h1{
-	font-size: 5em;
+    font-size: 5em;
 }
 .head_opa h2{
-	font-size: 2.5em;
+    font-size: 2.5em;
 }
 
 
@@ -262,95 +259,95 @@ header{
 
 .nuestros_servicios{
 
-	width: 100%;
-	height: 1100px;
-	background: #fff;
+    width: 100%;
+    height: 1100px;
+    background: #fff;
 }
 
 .nuestros_servicios .subtitulo{
-	color: solid #2C3E50;
+    color: #2C3E50;
 }
 
 /*servicios*/
 .servicios{
-	width: 100%;
-	height: 600px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .ser_lat{
-	width: 470px;
-	height: 225px;
-	float: left;
-	margin:0 20px;
+    width: 470px;
+    height: 225px;
+    float: left;
+    margin:0 20px;
 }
 .ser_izq{
-	width: 50%;
-	height: 100%;
-	float: left;
-	padding: 23px 10px;
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 23px 10px;
 }
 .ser_der{
-	width: 50%;
-	height: 100%;
-	float: left;
-	padding: 23px 10px;
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 23px 10px;
 }
 .ser_lat img{
-	height: 100%;
-	width: 100%;
-	border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
 }
 
 .ser_lat h1{
-	text-align: center;
-	padding: 8px; 
-	font-size: 1.5em;
-	color: solid #2C3E50;
+    text-align: center;
+    padding: 8px;
+    font-size: 1.5em;
+    color: #2C3E50;
 
 }
 .ser_lat p{
-	padding: 8px;
-	text-align: justify;
-	color: black;
+    padding: 8px;
+    text-align: justify;
+    color: black;
 }
 
 /*marcas que manejamos*/
 .div_marc{
-	width: 100%;
-	height: 250px;
-	background: rgba(44, 62, 80);
-	padding: 10px 0;
+    width: 100%;
+    height: 250px;
+    background: rgb(44, 62, 80);
+    padding: 10px 0;
 }
 .ser_marc{
-	width: 85%;
-	margin: auto;
-	height: 200px;
-	color: #fff;
+    width: 85%;
+    margin: auto;
+    height: 200px;
+    color: #fff;
 
 
-}	
+}
 
 .ser_marc_tit{
-	width: 100%;
-	height: 40%;
-	text-align: center;
-	float: left;
-	font-size: 1em;
+    width: 100%;
+    height: 40%;
+    text-align: center;
+    float: left;
+    font-size: 1em;
 
 }
 .ser_marc_div{
-	width: 20%;
-	height: 60%;
-	float: left;
-	padding: 10px 20px;
+    width: 20%;
+    height: 60%;
+    float: left;
+    padding: 10px 20px;
 }
 .ser_marc_div img{
-	width: 100%;
-	height: auto;
-	border-radius: 10px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
 
@@ -358,50 +355,50 @@ header{
 /* Nosotros */
 
 .nosotros{
-	width: 100%;
-	height: 750px;
+    width: 100%;
+    height: 750px;
 }
 .text_nos{
-	width: 100%;
-	height: 500px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .mision, .vision{
-	width: 50%;
-	height: 100%;
-	float: left;
-	padding: 20px;
-	border-bottom: 2px solid black;
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 20px;
+    border-bottom: 2px solid black;
 
 }
 .nos_parr{
-	width: 100%
-	height: 50%;
-	padding: 10px 15%;
+    width: 100%;
+    height: 60%;
+    padding: 10px 15%;
 }
 .img_nos{
-	width: 100%;
-	height: 50%;
-	float: left;
-	padding: 20px;
-	text-align: center;
+    width: 100%;
+    height: 40%;
+    float: left;
+    padding: 20px;
+    text-align: center;
 }
 .text_nos i{
-	font-size: 8.5em;
-	padding: 10px;
-	color: #2C3E50;
+    font-size: 8.5em;
+    padding: 10px;
+    color: #2C3E50;
 
 
 }
 .nosotros h1{
-	text-align: center;
-	padding: 10px 0;
+    text-align: center;
+    padding: 10px 0;
 }
 .nosotros p{
-	padding: 10px;
-	text-align: justify;
+    padding: 10px;
+    text-align: justify;
 }
 
 
@@ -410,163 +407,163 @@ header{
 /*atributos de seletores(subclases)*/
 
 form{
-	width:100%;
-	height:100%;
-	/*arriba. derecha, abajo, izquierda*/
-	padding: 100px 30px 80px 40px;
+    width:100%;
+    height:100%;
+    /*arriba. derecha, abajo, izquierda*/
+    padding: 100px 30px 80px 40px;
 }
 form label, form input, form textarea{
-	display: inline-block;
-	font-size: 1em;
-	font-weight: bold;
-	margin-top: 10px;
-	color: solid #2C3E50;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #2C3E50;
 }
 form .form_enc{
-	color: #fff;
-	text-align: center;
-	font-size: 1.2em;
-	padding-bottom: 30px;
-	border-bottom: 1px solid black;
+    color: #fff;
+    text-align: center;
+    font-size: 1.2em;
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
 }
 form .form_cuerpo{
-	padding: 15px 0;	
-	border-bottom: 1px solid black;
+    padding: 15px 0;
+    border-bottom: 1px solid black;
 }
 form .form_cuerpo #nombre, form .form_cuerpo #apellido{
-	width: 29.4%;
+    width: 29.4%;
 
 }
 form .form_cuerpo label{
-	width: 15%;
-	padding-left: 20px;
+    width: 15%;
+    padding-left: 20px;
 }
 form .form_cuerpo input{
-	width: 75%;
-	height: 30px;
-	padding: 5px;
-	color: red;
+    width: 75%;
+    height: 30px;
+    padding: 5px;
+    color: red;
 }
 form .form_cuerpo textarea{
-	width: 75%;
-	padding: 5px;
-	height: 180px;
-	resize: none;
-	color: black;
+    width: 75%;
+    padding: 5px;
+    height: 180px;
+    resize: none;
+    color: black;
 }
 form .form_pie{
-	text-align: center;
-	padding:20px;
+    text-align: center;
+    padding:20px;
 
 
 }
 form .form_pie input{
-	color: rgba(171, 32, 22);	
-	font-size: 1em;
-	width: 100px;	
-	height: 30px;
+    color: rgb(171, 32, 22);
+    font-size: 1em;
+    width: 100px;
+    height: 30px;
 
 }
 
 form .form_pie [type="reset"]{
-	background: #0D0D0D;
-	color: rgba(171, 32, 22);
-	cursor: pointer;
+    background: #0D0D0D;
+    color: rgb(171, 32, 22);
+    cursor: pointer;
 }
 form .form_pie [type="submit"]{
-	background: #0D0D0D;
-	color: #fff;
-	cursor: pointer;
+    background: #0D0D0D;
+    color: #fff;
+    cursor: pointer;
 }
 
 form input:valid{
-	border: 1px solid green;
+    border: 1px solid green;
 }
 form input:invalid{
-	border: 1px solid red;
+    border: 1px solid red;
 }
 
 .contact{
-	width: 100%;
-	height: 1000px;
-	background: rgba(26, 188, 156, 0.8);
+    width: 100%;
+    height: 1000px;
+    background: rgba(26, 188, 156, 0.8);
 }
 
 .contact .subtitulo{
-	color: #2C3E50;
+    color: #2C3E50;
 }
 .conte_contact{
-	width: 100%;
-	height: 750px;
+    width: 100%;
+    height: 750px;
 
 }
 .col_cont{
 
-	width: 50%;
-	height:100%;
-	float: left;
-	
+    width: 50%;
+    height:100%;
+    float: left;
+
 }
 
 
 .col_arri_cont{
-	width: 100%;
-	height: 60%;
-	float: left;
-	padding: 30px;
+    width: 100%;
+    height: 60%;
+    float: left;
+    padding: 30px;
 }
 
 .col_arri_cont iframe{
-	width: 	100%;
-	height: 100%;
-	border: 0;
-	
+    width: 	100%;
+    height: 100%;
+    border: 0;
+
 }
 .col_abaj_cont{
-	width: 100%;
-	height: 40%;
-	float: left;
-	font-size: 4em;
+    width: 100%;
+    height: 40%;
+    float: left;
+    font-size: 4em;
 }
 .des_aba_cont{
-	width: 100%;
-	height: 60%;
-	color: black;
-	font-size: 0.3em;
-	text-align: center;
-	padding: 20px;
+    width: 100%;
+    height: 60%;
+    color: black;
+    font-size: 0.3em;
+    text-align: center;
+    padding: 20px;
 }
 
 .ico_aba_cont{
-	width: 100%;
-	height: 40%;
+    width: 100%;
+    height: 40%;
 
 }
 
 .div_ico_aba_cont{
-	width: 25%;
-	height: 100%;
-	float: left;
-	text-align: center;
-	font-size: 1em;
+    width: 25%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    font-size: 1em;
 }
 .div_ico_aba_cont a{
-	color: #2C3E50;
+    color: #2C3E50;
 }
 
 .div_ico_aba_cont a:hover{
-	color:  #fff;
+    color:  #fff;
 
 }
 
 /* Pie de pagina */
 footer{
-	width: 100%;
-	height: 70px;
-	background-color: #000; 
-	color: #fff;
-	text-align: center;
-	padding: 22px 0;
+    width: 100%;
+    height: 70px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 22px 0;
 }
 
 /*media query*/
@@ -575,214 +572,216 @@ footer{
 @media only screen and (max-width: 1050px) {
 
 
-	/*navegador*/
-	nav {
-		height: 60px;
+    /*navegador*/
+    nav {
+        height: 60px;
 
-	}
+    }
 
-	.titulo {
-		width: 80%;
-		height: 100%;
-		padding: 12px 25px;
-		float: left;
-	}
-	/*menu del navegador*/
+    .titulo {
+        width: 80%;
+        height: 100%;
+        padding: 12px 25px;
+        float: left;
+    }
+    /*menu del navegador*/
 
-	.menu{
-		display: inline-block;
-		position: absolute;	
-		top: 0%;
-		right: 2%;
-		color: #fff;
-		background: #1ABC9C;
-		border-radius: 5px;
-		cursor: pointer;
-		border: 1px solid #fff;
-		padding: 5px 10px;
-		top: 10px; 
-	}
+    .menu{
+        display: inline-block;
+        position: absolute;
+        top: 0%;
+        right: 2%;
+        color: #fff;
+        background: #1ABC9C;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid #fff;
+        padding: 5px 10px;
+        top: 10px;
+    }
 
-	.menu i{
-		padding-right: 5px;
-	}
+    .menu i{
+        padding-right: 5px;
+    }
 
-	.menu:hover {
-		color: #fff;
-		background: rgba(26, 188, 156, 0.8);
-	}
+    .menu:hover {
+        color: #fff;
+        background: rgba(26, 188, 156, 0.8);
+    }
 
-	.checkbox{
-		display: none;
-	}
+    .checkbox{
+        display: none;
+    }
 
-	.checkbox:checked ~ .navega {
-		visibility: visible;
-		opacity: 1;
-		transition: all 500ms ease;
-		height: 100%;
-	}
+    .checkbox:checked ~ .navega {
+        visibility: visible;
+        opacity: 1;
+        transition: all 500ms ease;
+        height: 100%;
+    }
 
-	/*nivel 0*/
-	.navega{
-		height: 0px;
-		width: 100%;
-		opacity: 0;
-		visibility: hidden;
-	}
+    /*nivel 0*/
+    .navega{
+        height: 0px;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+    }
 
-	nav ul{
-		padding: 0 20px;
+    nav ul{
+        padding: 0 20px;
 
-		background: #2C3E50;
-		text-align: left;
-	}
-	nav ul li{
-		width: 100%;
+        background: #2C3E50;
+        text-align: left;
+    }
+    nav ul li{
+        width: 100%;
 
-	}
+    }
 
-	nav ul li a{
-		text-align:  left;
-	}
+    nav ul li a{
+        text-align:  left;
+    }
 
-	nav ul li a:active, nav ul li a:focus {
-		color: #fff;
-		background: none;
-	}
+    nav ul li a:active, nav ul li a:focus {
+        color: #fff;
+        background: none;
+    }
 
-	/*ingreso*/
-	nav .ingreso{
-		position: absolute;
-		top: 0px;
-		right: 12%;
-		padding-top: 16px;
-	}
+    /*ingreso*/
+    nav .ingreso{
+        position: absolute;
+        top: 0px;
+        right: 12%;
+        padding-top: 16px;
+    }
 
-	nav .ingreso a{
-		padding:6px; 
-		border-radius: 5px;
-	}
+    nav .ingreso a{
+        padding:6px;
+        border-radius: 5px;
+    }
 
-	/* Encabezado */
-	header{
-		height: 450px;
-	}
+    /* Encabezado */
+    header{
+        height: 450px;
+    }
 
-	.head_opa{
-		padding-top: 150px;
-		padding-left: 50%;
-	}
+    .head_opa{
+        padding-top: 150px;
+        padding-left: 50%;
+    }
 
-	.head_opa h1{
-		font-size: 3em;
-	}
-	.head_opa h2{
-		font-size: 1.5em;
-	}
-
-
-	/* NUESTROS SERVICIOS */
-	.nuestros_servicios{
-		height: 1480px;
-	}
-
-	.ser_examen{
-		order: 1;
-	}
-
-	.ser_agenda{
-		order: 3;
-
-	}
-
-	.ser_venta{
-		order: 2;
-	}
-
-	.ser_medi{
-		order: 4;
-	}
+    .head_opa h1{
+        font-size: 3em;
+    }
+    .head_opa h2{
+        font-size: 1.5em;
+    }
 
 
-	/*servicios*/
-	.servicios{
-		height: 1050px;
-	}
+    /* NUESTROS SERVICIOS */
+    .nuestros_servicios{
+        height: 1480px;
+    }
 
-	.ser_lat{
-		width: 500px;
-		height: 250px;
-	}
+    .ser_examen{
+        order: 1;
+    }
 
-	/*marcas que manejamos*/
+    .ser_agenda{
+        order: 3;
 
-	.div_marc{
-		width: 100%;
-		height: 200px;
-		background: #2C3E50;
-		padding: 10px 0;
-	}
+    }
 
-	.ser_marc{
-		width: 100%;
-		height: 150px;
+    .ser_venta{
+        order: 2;
+    }
 
-	}	
+    .ser_medi{
+        order: 4;
+    }
 
 
+    /*servicios*/
+    .servicios{
+        height: 1050px;
+    }
+
+    .ser_lat{
+        width: 500px;
+        height: 250px;
+    }
+
+    /*marcas que manejamos*/
+
+    .div_marc{
+        width: 100%;
+        height: 200px;
+        background: #2C3E50;
+        padding: 10px 0;
+    }
+
+    .ser_marc{
+        width: 100%;
+        height: 150px;
+
+    }
 
 
-	/* Nosotros */
-
-	.nosotros{
-		height: 1300px;
-	}
-	.text_nos{
-		width: 100%;
-		height: 1050px;
-	}
-	.mision, .vision{
-		width: 100%;
-		height: 50%;
-	} 
-
-	.nos_parr{
-		width: 100%
-		height: 50%;
-		padding: 20px 15%;
-	}
-	.img_nos{
-		width: 100%;
-		height: 50%;
-		float: left;
-		padding: 20px;
-		text-align: center;
-	}
-	.text_nos i{
-		font-size: 7.5em;
-		padding: 5px;
-		color: #2C3E50;
-	}
 
 
-	/*contact*/
+    /* Nosotros */
 
-	.contact{
-		width: 100%;
-		height: 1700px;
-	}
+    .nosotros{
+        height: 1300px;
+    }
+    .text_nos{
+        width: 100%;
+        height: 1050px;
+    }
+    .mision, .vision{
+        width: 100%;
+        height: 50%;
 
-	.conte_contact{
-		width: 100%;
-		height: 1450px;
-	}
-	.col_cont{
+    }
 
-		width: 100%;
-		height:50%;
-		float: left;
-	}
+    .nos_parr{
+        width: 100%;
+        height: 50%;
+        padding: 20px 15%;
+
+    }
+    .img_nos{
+        width: 100%;
+        height: 50%;
+        float: left;
+        padding: 20px;
+        text-align: center;
+    }
+    .text_nos i{
+        font-size: 7.5em;
+        padding: 5px;
+        color: #2C3E50;
+    }
+
+
+    /*contact*/
+
+    .contact{
+        width: 100%;
+        height: 1700px;
+    }
+
+    .conte_contact{
+        width: 100%;
+        height: 1450px;
+    }
+    .col_cont{
+
+        width: 100%;
+        height:50%;
+        float: left;
+    }
 
 
 
@@ -791,211 +790,224 @@ footer{
 /*celular*/
 @media only screen and (max-width: 575.98px) {
 
-	/*especiales*/
-.subtitulo{
-	width: 100%;
-	height: 200px;
-	padding-top: 100px;
-	text-align: center;
-	font-size: 1em;
+    /*especiales*/
+    .subtitulo{
+        width: 100%;
+        height: 200px;
+        padding-top: 100px;
+        text-align: center;
+        font-size: 1em;
 
-}
-.subtitulo h2{
-	font-size: 2.5rem;
-}
+    }
+    .subtitulo h2{
+        font-size: 2.5rem;
+    }
 
-.titulo {
-		width: 60%;
-		height: 100%;
-		padding: 12px 9px;
-		float: left;
-		font-size: 0.9em;
-	}
+    .titulo {
+        width: 60%;
+        height: 100%;
+        padding: 12px 9px;
+        float: left;
+        font-size: 0.9em;
+    }
 
-	/*nav*/
-	/*ingreso*/
-	nav .ingreso{
-		position: absolute;
-		top: 0px;
-		right: 20%;
-		padding-top: 16px;
-	}
-
-
-	/* Encabezado */
-	header{
-		height: 300px;
-	}
-
-	.head_opa{
-		padding-top: 120px;
-		padding-left: 50%;
-	}
-
-	.head_opa h1{
-		font-size: 2.2em;
-	}
-	.head_opa h2{
-		font-size: 1.2em;
-	}
-
-	/* NUESTROS SERVICIOS */
-	.nuestros_servicios{
-		height: 1400px;
-	}
-
-	/*servicios*/
-	.servicios{
-		height: 1050px;
-	}
-
-	.ser_lat{
-		width: 400px;
-		height: 200px;
-	}
-
-	.ser_izq{
-		padding: 10px 5px;
-	}
-	.ser_der{
-		padding: 10px 5px;
-	}
-	.ser_lat img{
-		border-radius: 15px;
-	}
-
-	.ser_lat h1{
-		padding: 3px; 
-		font-size: 1.3em;
-
-	}
-	.ser_lat p{
-		padding: 0 5px;
-		font-size: 0.9em;
-	}
-
-	/*marcas que manejamos*/
-	.div_marc{
-		width: 100%;
-		height: 120px;
-		background: #2C3E50;
-		padding: 10px 0;
-	} 
-
-	.ser_marc{
-		width: 100%;
-		height: 100px;
-
-	}	
-
-	.ser_marc_div img{
-		width: 100%;
-		height: auto;
-		border-radius: 5px;
-	}
-	.ser_marc_tit{
-
-	font-size: 0.9em;
-
-}
-
-	/* Nosotros */
-
-	.nosotros{
-		height: 1450px;
-	}
-	.text_nos{
-		width: 100%;
-		height: 1250px;
-}
-
-	.text_nos i{
-		font-size: 5.5em;
-	}
-
-	/* contactenos */
-/*propiedades de los formularios*/
-/*atributos de seletores(subclases)*/
-
-form label, form input, form textarea{
-	display: inline-block;
-	font-size: 0.8em;
-	font-weight: bold;
-	margin-top: 10px;
-	color: solid #2C3E50;
-}
-form .form_enc{
-	color: #fff;
-	text-align: center;
-	font-size: 0.8em;
-	padding-bottom: 30px;
-	border-bottom: 1px solid black;
-}
-
-form .form_cuerpo #nombre, form .form_cuerpo #apellido{
-	width: 100%;
-
-}
-form .form_cuerpo label{
-	width: 100%;
-	padding-left:0;
-
-}
-form .form_cuerpo input{
-	width: 100%;
-}
-form .form_cuerpo textarea{
-	width: 100%;
-}
-form .form_pie{
-	text-align: center;
-	padding:20px;
+    /*nav*/
+    /*ingreso*/
+    nav .ingreso{
+        position: absolute;
+        top: 0px;
+        right: 20%;
+        padding-top: 16px;
+    }
 
 
-}
-form .form_pie input{
-	color: rgba(171, 32, 22);	
-	font-size: 1em;
-	width: 100px;	
-	height: 30px;
+    /* Encabezado */
+    header{
+        height: 300px;
+    }
 
-}
+    .head_opa{
+        padding-top: 120px;
+        padding-left: 50%;
+    }
 
-form .form_pie [type="reset"]{
-	background: #0D0D0D;
-	color: rgba(171, 32, 22);
-	cursor: pointer;
-}
-form .form_pie [type="submit"]{
-	background: #0D0D0D;
-	color: #fff;
-	cursor: pointer;
-}
+    .head_opa h1{
+        font-size: 2.2em;
+    }
+    .head_opa h2{
+        font-size: 1.2em;
+    }
 
-form input:valid{
-	border: 1px solid green;
-}
-form input:invalid{
-	border: 1px solid red;
-}
+    /* NUESTROS SERVICIOS */
+    .nuestros_servicios{
+        height: 1400px;
+    }
 
-	/*contact*/
+    /*servicios*/
+    .servicios{
+        height: 1050px;
+    }
 
-	.contact{
-		width: 100%;
-		height: 1900px;
-	}
+    .ser_lat{
+        width: 400px;
+        height: 200px;
+    }
 
-	.conte_contact{
-		width: 100%;
-		height: 1700px;
-	}
-	.col_cont{
+    .ser_izq{
+        padding: 10px 5px;
+    }
+    .ser_der{
+        padding: 10px 5px;
+    }
+    .ser_lat img{
+        border-radius: 15px;
+    }
 
-		width: 100%;
-		height:50%;
-		float: left;
-	}
+    .ser_lat h1{
+        padding: 3px;
+        font-size: 1.3em;
+
+    }
+    .ser_lat p{
+        padding: 0 5px;
+        font-size: 0.9em;
+    }
+
+    /*marcas que manejamos*/
+    .div_marc{
+        width: 100%;
+        height: 120px;
+        background: #2C3E50;
+        padding: 10px 0;
+    }
+
+    .ser_marc{
+        width: 100%;
+        height: 100px;
+
+    }
+
+    .ser_marc_div img{
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+    .ser_marc_tit{
+
+        font-size: 0.9em;
+
+    }
+
+    /* Nosotros */
+
+    .nosotros{
+        height: 1450px;
+    }
+    .text_nos{
+        width: 100%;
+        height: 1250px;
+    }
+
+    .nos_parr{
+        width: 100%;
+        height: 60%;
+        padding: 5px;
+    }
+    .img_nos{
+        width: 100%;
+        height: 40%;
+        padding-top: 50px;
+    }
+
+
+    .text_nos i{
+        font-size: 5.5em;
+    }
+
+
+    /* contactenos */
+    /*propiedades de los formularios*/
+    /*atributos de seletores(subclases)*/
+
+    form label, form input, form textarea{
+        display: inline-block;
+        font-size: 0.8em;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #2C3E50;
+    }
+    form .form_enc{
+        color: #fff;
+        text-align: center;
+        font-size: 0.8em;
+        padding-bottom: 30px;
+        border-bottom: 1px solid black;
+    }
+
+    form .form_cuerpo #nombre, form .form_cuerpo #apellido{
+        width: 100%;
+
+    }
+    form .form_cuerpo label{
+        width: 100%;
+        padding-left:0;
+
+    }
+    form .form_cuerpo input{
+        width: 100%;
+    }
+    form .form_cuerpo textarea{
+        width: 100%;
+    }
+    form .form_pie{
+        text-align: center;
+        padding:20px;
+
+
+    }
+    form .form_pie input{
+        color: rgb(171, 32, 22);
+        font-size: 1em;
+        width: 100px;
+        height: 30px;
+
+    }
+
+    form .form_pie [type="reset"]{
+        background: #0D0D0D;
+        color: rgb(171, 32, 22);
+        cursor: pointer;
+    }
+    form .form_pie [type="submit"]{
+        background: #0D0D0D;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    form input:valid{
+        border: 1px solid green;
+    }
+    form input:invalid{
+        border: 1px solid red;
+    }
+
+    /*contact*/
+
+    .contact{
+        width: 100%;
+        height: 1900px;
+    }
+
+    .conte_contact{
+        width: 100%;
+        height: 1700px;
+    }
+    .col_cont{
+
+        width: 100%;
+        height:50%;
+        float: left;
+    }
 
 
 
@@ -1005,32 +1017,32 @@ form input:invalid{
 
 
 @media only screen and (max-width: 340px) {
-	
 
-	/*nav*/
-	/*ingreso*/
-	nav .ingreso{
-		position: absolute;
-		top: 135px;
-		right: 0%;
-		padding-top: 16px;
-	}
 
-	nav .ingreso a{
-		padding:6px; 
-		border-radius: 5px;
-	}
-/* Encabezado */
+    /*nav*/
+    /*ingreso*/
+    nav .ingreso{
+        position: absolute;
+        top: 135px;
+        right: 0%;
+        padding-top: 16px;
+    }
 
-	.head_opa{
-		padding-top: 120px;
-		padding-left: 50%;
-	}
+    nav .ingreso a{
+        padding:6px;
+        border-radius: 5px;
+    }
+    /* Encabezado */
 
-	.head_opa h1{
-		font-size: 1.8em;
-	}
-	.head_opa h2{
-		font-size: 0.8em;
-	}
+    .head_opa{
+        padding-top: 120px;
+        padding-left: 50%;
+    }
+
+    .head_opa h1{
+        font-size: 1.8em;
+    }
+    .head_opa h2{
+        font-size: 0.8em;
+    }
 }

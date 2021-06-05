@@ -14,20 +14,27 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id(); // BIGINT(20) auto increment primary key
-            $table->string('names', 45);
-            $table->string('lastnames', 45);
+            $table->id();
+            $table->string('name');
+			/*
+			$table->string('lastnames', 45);
             $table->string('number_document', 45)->unique();
-            $table->string('email', 75)->unique();
-            $table->date('date_of_bird');
-            $table->string('number_cell', 20);
-            // unsigned()-> el campo no puede ser <0
-            $table-> bigInteger('type_document_id')->unsigned();
+			$table->date('date_of_bird');
+			$table->string('number_cell', 20);
+			//pendiente
+			$table-> bigInteger('type_document_id')->unsigned();
             $table-> bigInteger('roles_id')->unsigned();
-            $table->string('password', 1000);
             $table->enum ('state', ['active', 'inactive']);
-            $table->foreign('type_document_id')->references('id')->on('type_document');
+			$table->foreign('type_document_id')->references('id')->on('type_document');
             $table->foreign('roles_id')->references('id')->on('roles');
+			*/
+			//creado por jetstream
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
     }

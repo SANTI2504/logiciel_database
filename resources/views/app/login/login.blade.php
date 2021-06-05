@@ -54,8 +54,19 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="col-lg-6 col-12 px-4 py-3">
                                                 <h4 class="mb-2 card-title">INICIO DE SESION</h4>
                                                 <p>Bienvenido de vuelta, por favor ingresa a tu cuenta.</p>
-                                                <input type="text" class="form-control mb-3" placeholder="Correo electronico">
-                                                <input type="password" class="form-control mb-2" placeholder="Contraseña">
+
+                                                @if (session('status'))
+                                                    <div class="mb-4 font-medium text-sm text-green-600">
+                                                        {{ session('status') }}
+                                                    </div>
+                                                @endif
+
+                                                <form method="POST" action="{{ route('login') }}">
+                                                    @csrf
+
+                                                <input id="email"  type="email" name="email" :value="old('email')" required autofocus class="form-control mb-3" placeholder="Correo electronico">
+                                                <input id="password"  type="password" name="password" required autocomplete="current-password"  class="form-control mb-2" placeholder="Contraseña">
+
                                                 <div class="d-sm-flex justify-content-between mb-3 font-small-2">
                                                     <div class="remember-me mb-2 mb-sm-0">
                                                         <div class="checkbox auth-checkbox">
@@ -63,13 +74,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <label for="auth-ligin"><span> Recordar usuario</span></label>
                                                         </div>
                                                     </div>
-                                                    <a href="auth-forgot-password.html">Olvidaste tu contraseña?</a>
+                                                    <a href="#">Olvidaste tu contraseña?</a>
                                                 </div>
+
                                                 <hr>
                                                 <div class="d-flex justify-content-between flex-sm-row flex-column">
                                                     <a href="{{url('registrarse')}}" class="btn bg-light-primary mb-2 mb-sm-0">Registrarse</a>
-                                                    <a href="#" class="btn btn-primary">Ingresar</a>
+                                                    <button class="btn btn-primary">{{ __('Log in') }}</button>
                                                 </div>
+                                                </form>
 
                                             </div>
                                         </div>

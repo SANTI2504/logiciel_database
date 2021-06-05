@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Principal - LDB - LandingPage</title>
     <link rel="shortcut icon" href="img/isotipo-vision-medics.png">
-    <link rel="stylesheet" href="{{url('css/app.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap">
+    <link rel="stylesheet" href="{{url('css/landing.css')}}">
 
 
 </head>
 <body>
 <div class="contenedor ">
-
 
     <!-- navegador -->
     <nav>
@@ -29,7 +29,16 @@
                 <li><a href="#contact"> CONTACTENOS</a></li>
             </ul>
             <div class="ingreso  ">
-                <a href="#">INICIAR SESION</a>
+                @if (Route::has('login'))
+                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                        @auth
+                            <a href="{{ url('/inicio') }}" class="text-sm text-gray-700 underline">Home</a>
+                        @else
+                            <a href="{{ url('inicio-sesion') }}" class="text-sm text-gray-700 underline">Log In</a>
+                            <a href="{{ url('registrarse') }}" class="text-sm text-gray-700 underline">Sing UP</a>
+                        @endauth
+                    </div>
+                @endif
             </div>
 
         </div>
@@ -252,6 +261,6 @@
 
 </div>
 
-<script src="{{url('js/app.js')}}"></script>
+<script src="{{url('js/landing.js')}}"></script>
 </body>
 </html>

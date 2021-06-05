@@ -56,6 +56,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <img src="../app-assets/img/gallery/register.png" alt="" class="img-fluid" width="350" height="230">
                                             </div>
                                             <div class="col-lg-6 col-md-12 px-4 py-3">
+                                                <!--
                                                 <h4 class="card-title mb-2">CREAR CUENTA</h4>
                                                 <p>Ingresa todos los datos para crear tu cuenta.</p>
                                                 <input type="text" class="form-control mb-2" placeholder="Nombres">
@@ -66,14 +67,28 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <input type="date" class="form-control mb-2" placeholder="Fecha de nacimiento">
                                                 <input type="number" class="form-control mb-2" placeholder="Numero de celular">
                                                 <input type="password" class="form-control mb-2" placeholder="Contraseña">
+                                                -->
+                                                <form method="POST" action="{{ route('register') }}">
+                                                    @csrf
+
+                                                <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" class="form-control mb-2" placeholder="Name">
+                                                <input id="email" type="email" name="email" :value="old('email')" required class="form-control mb-2" placeholder="Email">
+                                                <input id="password" type="password" name="password" required autocomplete="new-password" class="form-control mb-2" placeholder="Password">
+                                                <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="form-control mb-2" placeholder="Confirm Password">
                                                 <div class="checkbox auth-checkbox font-small-2 mb-3">
                                                     <input type="checkbox" id="auth-ligin">
                                                     <label for="auth-ligin"><span>Acepto terminos y condiciones</span></label>
                                                 </div>
+
+                                                    <div class="flex items-center justify-end mt-4">
+
+                                                    </div>
+
                                                 <div class="d-flex justify-content-between flex-sm-row flex-column">
                                                     <a href="{{url('inicio-sesion')}}" class="btn bg-light-primary mb-2 mb-sm-0">Iniciar sesion</a>
-                                                    <a href="auth-login.html" class="btn btn-primary">Registrarse</a>
+                                                    <button class="btn btn-primary">{{ __('Register') }}</button>
                                                 </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

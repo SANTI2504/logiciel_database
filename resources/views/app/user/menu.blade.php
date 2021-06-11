@@ -177,13 +177,13 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"
-                                                                   onclick="event.preventDefault();
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"
+                                                                       onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                     <i class="ft-power mr-2"></i>{{ __('Log Out') }}
 
-                                </form>
-                                <div class="d-flex align-items-center"><span></span></div></a>
+                            </form>
+                            <div class="d-flex align-items-center"><span></span></div></a>
                         </div>
                     </li>
                     <li class="nav-item d-none d-lg-block mr-2 mt-1"><a class="nav-link notification-sidebar-toggle" href="javascript:;"><i class="ft-align-right font-medium-3"></i></a></li>
@@ -215,7 +215,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
 
-                        <li class=" nav-item"><a href="{{url('inicio')}}"><i class="ft-grid"></i><span class="menu-title" data-i18n="Chat">Modulos</span></a>
+                    <li class=" nav-item"><a href="{{url('inicio')}}"><i class="ft-grid"></i><span class="menu-title" data-i18n="Chat">Modulos</span></a>
                     </li>
 
 
@@ -235,66 +235,113 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- / main menu-->
     </div>
 
-
-
     <div class="main-panel">
         <!-- BEGIN : Main Content-->
         <div class="main-content">
             <div class="content-overlay"></div>
             <div class="content-wrapper">
-
                 <!-- start migas de pan-->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-                            <a href="#" itemprop="item">
+                            <a href="{{url('inicio')}}" itemprop="item">
                                 <span itemprop="name">Inicio</span>
                             </a>
                             <meta itemprop="position" content="1">
+                        </li>
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+
+                                <span itemprop="name">Menu usuarios</span>
+
+                            <meta itemprop="position" content="2">
                         </li>
 
                     </ol>
                 </nav>
                 <!-- end migas de pan-->
-
                 <!-- Minimal statistics section start -->
-
                 <section id="minimal-statistics">
                     <div class="row">
                         <div class="col-12">
-                            <div class="content-header">Logiciel Data Base</div>
-                            <p class="content-sub-header mb-1">Modulos del sistema.</p>
+                            <div class="content-header">Minimal Statistics Cards</div>
+                            <p class="content-sub-header mb-1">Statistics on minimal cards.</p>
                         </div>
                     </div>
-                </section>
-                <!-- // Minimal statistics section end -->
 
-                <!-- modulos del sistema -->
-                <section id="bg-variants">
-                    <div class="row match-height">
-                        <!-- start card user-->
-                        <div class="col-md-6 col-12">
-                            <div class="card card-inverse bg-info text-center" style="">
+                    <div class="row">
+
+                        <div  class="col-xl-4 col-lg-6 col-12">
+                            <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <div class="row d-flex">
-                                            <div class="col align-self-center mb-2 mb-sm-0">
-                                                <img src="../app-assets/img/user.png" alt="user" width="150" class="float-sm-left mt-sm-1">
+                                        <div class="media">
+                                            <div class="media-body text-center">
+                                                <h3 class="mb-1 danger">Crear usuario</h3>
+                                                <spam> Crear nueva cuenta de usuario</spam>
                                             </div>
-                                            <div class="col align-self-center mr-sm-4">
-                                                <h4 class="card-title mb-3">USUARIOS</h4>
-                                                <p class="card-text">Aca se pude registrar, actualizar y eliminar usuarios</p>
-                                                <a href="{{url('menu/usuarios')}}" class="btn btn-info btn-darken-3">Ingresar</a>
+                                            <div class="media-right align-self-center">
+                                                <a href="#"><i class="ft-briefcase danger font-large-2 float-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end card user-->
-
+                        <div  class="col-xl-4 col-lg-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-body text-center">
+                                                <h3 class="mb-1 danger">Ver usuarios</h3>
+                                                <spam>Ver usuarios registrados</spam>
+                                            </div>
+                                            <div class="media-right align-self-center">
+                                                <a href="#"><i class="ft-briefcase danger font-large-2 float-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-xl-4 col-lg-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-body text-center">
+                                                <h3 class="mb-1 danger">Roles  </h3>
+                                                <spam>Crear-Editar-Eliminar</spam>
+                                            </div>
+                                            <div class="media-right align-self-center">
+                                                <a href="#"><i class="ft-briefcase danger font-large-2 float-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-xl-4 col-lg-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-body text-center">
+                                                <h3 class="mb-1 danger">Tipo documento </h3>
+                                                <spam>Crear-Editar-Eliminar</spam>
+                                            </div>
+                                            <div class="media-right align-self-center">
+                                                <a href="#"><i class="ft-briefcase danger font-large-2 float-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
+                <!-- // Minimal statistics section end -->
+
             </div>
         </div>
         <!-- END : End Main Content-->

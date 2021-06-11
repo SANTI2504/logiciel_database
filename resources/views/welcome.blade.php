@@ -35,7 +35,7 @@
                             <a href="{{ url('/inicio') }}" class="text-sm text-gray-700 underline">Home</a>
                         @else
                             <a href="{{ url('inicio-sesion') }}" class="text-sm text-gray-700 underline">Log In</a>
-                            <a href="{{ url('registrarse') }}" class="text-sm text-gray-700 underline">Sing UP</a>
+                            <a href="{{ url('registrarse') }}" class="text-sm text-gray-700 underline">Sign UP</a>
                         @endauth
                     </div>
                 @endif

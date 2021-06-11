@@ -18,7 +18,7 @@ class CreateAuxiliariesTable extends Migration
             $table->biginteger('inventories_id')->unsigned();
             $table->biginteger('users_id')->unsigned();
             $table->foreign('inventories_id')->references('id')->on('inventories');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('user');
             $table->timestamps();
         });
     }

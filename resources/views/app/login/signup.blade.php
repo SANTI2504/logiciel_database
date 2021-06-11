@@ -71,8 +71,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <form method="POST" action="{{ route('register') }}">
                                                     @csrf
 
-                                                <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" class="form-control mb-2" placeholder="Name">
-                                                <input id="email" type="email" name="email" :value="old('email')" required class="form-control mb-2" placeholder="Email">
+                                                <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" class="form-control mb-2" placeholder="Name">
+                                                <input id="lastnames" type="text" name="lastnames" value="{{ old('lastnames') }}" required autocomplete="lastnames" class="form-control mb-2" placeholder="lastnames">
+                                                <input id="email" type="email" name="email" value="{{ old('email') }}" required class="form-control mb-2" placeholder="Email">
                                                 <input id="password" type="password" name="password" required autocomplete="new-password" class="form-control mb-2" placeholder="Password">
                                                 <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="form-control mb-2" placeholder="Confirm Password">
                                                 <div class="checkbox auth-checkbox font-small-2 mb-3">

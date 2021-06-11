@@ -18,9 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dashboard', function () {
-    return view('app/index');
-});
 
 Route::get('inicio-sesion', function () {
     return view('app/login/login');
@@ -28,8 +25,6 @@ Route::get('inicio-sesion', function () {
 Route::get('registrarse', function () {
     return view('app/login/signup');
 });
-
-
 
 
 
@@ -43,3 +38,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/inicio', function () {
     return view('app/index');
 })->name('inicio');
+
+
+//modulo usuarios
+Route::get('menu/usuarios', function () {
+    return view('app/user/menu');
+});

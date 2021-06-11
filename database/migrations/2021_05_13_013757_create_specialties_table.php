@@ -17,7 +17,7 @@ class CreateSpecialtiesTable extends Migration
             $table->id();
             $table->string('speciality', 45);
             $table->bigInteger('users_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('user');
             $table->timestamps();
         });
     }

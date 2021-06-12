@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Type_documentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/inicio', function () {
 Route::get('menu/usuarios', function () {
     return view('app/user/menu');
 });
+
+//rutas de type_document
+Route::get('usuarios/tipo-documento',[Type_documentController::class,'index']);
+Route::get('usuarios/tipo-documento/crear',[Type_documentController::class,'create']);

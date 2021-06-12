@@ -176,13 +176,13 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"
-                                                                   onclick="event.preventDefault();
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"
+                                                                       onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                     <i class="ft-power mr-2"></i>{{ __('Log Out') }}
 
-                                </form>
-                                <div class="d-flex align-items-center"><span></span></div></a>
+                            </form>
+                            <div class="d-flex align-items-center"><span></span></div></a>
                         </div>
                     </li>
 
@@ -207,14 +207,16 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="logo-img"><img src="../app-assets/img/logo.png" alt="Apex Logo"/></div><span class="text">LDB</span></a><a class="nav-toggle d-none d-lg-none d-xl-block" id="sidebarToggle" href="javascript:;"><i class="toggle-icon ft-toggle-right" data-toggle="expanded"></i></a><a class="nav-close d-block d-lg-block d-xl-none" id="sidebarClose" href="javascript:;"><i class="ft-x"></i></a></div>
         </div>
         <!-- Sidebar Header Ends-->
+
         <!-- / main menu header-->
         <!-- main menu content-->
         <div class="sidebar-content main-menu-content">
+
             <div class="nav-container">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
 
-                        <li class=" nav-item"><a href="{{url('inicio')}}"><i class="ft-grid"></i><span class="menu-title" data-i18n="Chat">Modulos</span></a>
+                    <li class=" nav-item"><a href="{{url('inicio')}}"><i class="ft-grid"></i><span class="menu-title" data-i18n="Chat">Modulos</span></a>
                     </li>
 
 
@@ -234,87 +236,93 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- / main menu-->
     </div>
 
-
-
     <div class="main-panel">
         <!-- BEGIN : Main Content-->
         <div class="main-content">
             <div class="content-overlay"></div>
-            <div class="content-wrapper">
+            <div class="content-wrapper"><section class="users-list-wrapper">
+                    <!-- start migas de pan-->
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                            <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a href="{{url('inicio')}}" itemprop="item">
+                                    <span itemprop="name">Inicio</span>
+                                </a>
+                                <meta itemprop="position" content="1">
+                            </li>
+                            <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a href="{{url('menu/usuarios')}}" itemprop="item">
+                                    <span itemprop="name">Menu usuarios</span>
+                                </a>
+                                <meta itemprop="position" content="1">
+                            </li>
+                            <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 
-                <!-- start migas de pan-->
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-                            <a href="#" itemprop="item">
-                                <span itemprop="name">Inicio</span>
-                            </a>
-                            <meta itemprop="position" content="1">
-                        </li>
+                                <span itemprop="name">Tipo documento</span>
 
-                    </ol>
-                </nav>
-                <!-- end migas de pan-->
+                                <meta itemprop="position" content="2">
+                            </li>
 
-                <!-- Minimal statistics section start -->
-
-                <section id="minimal-statistics">
+                        </ol>
+                    </nav>
+                    <!-- end migas de pan-->
                     <div class="row">
                         <div class="col-12">
-                            <div class="content-header">Logiciel Data Base</div>
-                            <p class="content-sub-header mb-1">Modulos del sistema.</p>
+                            <div class="content-header">Minimal Statistics Cards</div>
+                            <p class="content-sub-header mb-1">Statistics on minimal cards.</p>
                         </div>
                     </div>
-                </section>
-                <!-- // Minimal statistics section end -->
 
-                <!-- modulos del sistema -->
-                <section id="bg-variants">
-                    <div class="row match-height">
-                        <!-- start card user-->
-                        <div class="col-md-6 col-12">
-                            <div class="card card-inverse bg-info text-center" style="">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <div class="row d-flex">
-                                            <div class="col align-self-center mb-2 mb-sm-0">
-                                                <img src="../app-assets/img/user.png" alt="user" width="150" class="float-sm-left mt-sm-1">
+                    <!-- Table starts -->
+                    <div class="users-list-table">
+                        <div class="row justify-content-center">
+                            <div class="col-10 ">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <!-- Datatable starts -->
+                                            <div class="table-responsive">
+                                                <p><code>$().DataTable();</code></p>
+
+                                                <table id="users-list-datatable" class="table table-hover " >
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Tipo de documento</th>
+                                                        <th>Acciones</th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Cedula de ciudadania</td>
+                                                        <td class="text-truncate">
+                                                            <a href="javascript:;" class="info p-0">
+                                                                <i class="ft-user font-medium-3 mr-2"></i>
+                                                            </a>
+                                                            <a href="javascript:;" class="success p-0">
+                                                                <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                                                            </a>
+                                                            <a href="javascript:;" class="danger p-0">
+                                                                <i class="ft-x font-medium-3"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <div class="col align-self-center mr-sm-4">
-                                                <h4 class="card-title mb-3">USUARIOS</h4>
-                                                <p class="card-text">Aca se pude registrar, actualizar y eliminar usuarios</p>
-                                                <a href="{{url('menu/usuarios')}}" class="btn btn-info btn-darken-3">Ingresar</a>
-                                            </div>
+                                            <!-- Datatable ends -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-12">
-                            <div class="card card-inverse bg-info text-center" style="">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <div class="row d-flex">
-                                            <div class="col align-self-center mb-2 mb-sm-0">
-                                                <img src="../app-assets/img/user.png" alt="user" width="150" class="float-sm-left mt-sm-1">
-                                            </div>
-                                            <div class="col align-self-center mr-sm-4">
-                                                <h4 class="card-title mb-3">USUARIOS</h4>
-                                                <p class="card-text">Aca se pude registrar, actualizar y eliminar usuarios</p>
-                                                <a href="{{url('menu/usuarios')}}" class="btn btn-info btn-darken-3">Ingresar</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- end card user-->
-
                     </div>
+                    <!-- Table ends -->
                 </section>
+
             </div>
         </div>
         <!-- END : End Main Content-->
@@ -543,22 +551,14 @@ License: You must have a valid license purchased only from themeforest(the above
 </aside>
 <!-- END Notification Sidebar-->
 
-<!-- Theme customizer Starts-->
-        <!-- Layout Options Starts-->
-
-
-        <!-- Sidebar Options Starts-->
-
-        <!-- Sidebar BG Image Starts-->
-
         <!-- Sidebar Width Ends-->
     </div>
 </div>
-
+<!-- Theme customizer Ends-->
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 <!-- BEGIN VENDOR JS-->
-<script src="{{url('js/app/app.js')}}" ></script>
+<script src="{{url("js/app/app.js")}}"></script>
 <!-- END: Custom CSS-->
 </body>
 <!-- END : Body-->

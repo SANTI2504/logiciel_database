@@ -22,8 +22,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="keywords" content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>LDB Modulos</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../app-assets/img/ico/favicon.ico">
-    <link rel="shortcut icon" type="image/png" href="../app-assets/img/ico/favicon-32.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/img/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/app-assets/img/ico/favicon-32.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -67,7 +67,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li class="scrollable-container"><a class="d-flex justify-content-between" href="javascript:void(0)">
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left">
-                                            <div class="mr-3"><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-20.png" alt="avatar" height="45" width="45"></div>
+                                            <div class="mr-3"><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-20.png" alt="avatar" height="45" width="45"></div>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="m-0"><span>Kate Young</span><small class="grey lighten-1 font-italic float-right">5 mins ago</small></h6><small class="noti-text">Commented on your photo</small>
@@ -76,7 +76,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div></a><a class="d-flex justify-content-between" href="javascript:void(0)">
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left">
-                                            <div class="mr-3"><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-11.png" alt="avatar" height="45" width="45"></div>
+                                            <div class="mr-3"><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-11.png" alt="avatar" height="45" width="45"></div>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="m-0"><span>Andrew Watts</span><small class="grey lighten-1 font-italic float-right">49 mins ago</small></h6><small class="noti-text">Liked your album: UI/UX Inspo</small>
@@ -84,7 +84,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div></a><a class="d-flex justify-content-between read-notification" href="javascript:void(0)">
                                     <div class="media d-flex align-items-center py-0 pr-0">
                                         <div class="media-left">
-                                            <div class="mr-3"><img src="../app-assets/img/icons/sketch-mac-icon.png" alt="avatar" height="45" width="45"></div>
+                                            <div class="mr-3"><img src="/app-assets/img/icons/sketch-mac-icon.png" alt="avatar" height="45" width="45"></div>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="m-0">Update</h6><small class="noti-text">MyBook v2.0.7</small>
@@ -135,7 +135,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div><a class="d-flex justify-content-between read-notification" href="javascript:void(0)">
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left">
-                                            <div class="mr-3"><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-6.png" alt="avatar" height="45" width="45"></div>
+                                            <div class="mr-3"><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-6.png" alt="avatar" height="45" width="45"></div>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="m-0"><span>Anna Lee</span><small class="grey lighten-1 font-italic float-right">27 hrs ago</small></h6><small class="noti-text">Commented on your photo</small>
@@ -156,7 +156,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div><a class="d-flex justify-content-between read-notification" href="javascript:void(0)">
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left">
-                                            <div class="mr-3"><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-7.png" alt="avatar" height="45" width="45"></div>
+                                            <div class="mr-3"><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-7.png" alt="avatar" height="45" width="45"></div>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="m-0"><span>Oliver Wright</span><small class="grey lighten-1 font-italic float-right">2 days ago</small></h6><small class="noti-text">Liked your album: UI/UX Inspo</small>
@@ -169,7 +169,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </ul>
                     </li>
                     <li class="dropdown nav-item mr-1"><a class="nav-link dropdown-toggle user-dropdown d-flex align-items-end" id="dropdownBasic2" href="javascript:;" data-toggle="dropdown">
-                            <div class="user d-md-flex d-none mr-2"><span class="text-right">John Doe</span><span class="text-right text-muted font-small-3">Available</span></div><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-1.png" alt="avatar" height="35" width="35"></a>
+                            <div class="user d-md-flex d-none mr-2"><span class="text-right">John Doe</span><span class="text-right text-muted font-small-3">Available</span></div><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-1.png" alt="avatar" height="35" width="35"></a>
                         <div class="dropdown-menu text-left dropdown-menu-right m-0 pb-0" aria-labelledby="dropdownBasic2"> <a class="dropdown-item" href="page-user-profile.html">
                                 <div class="d-flex align-items-center"><i class="ft-edit mr-2"></i><span>Edit Profile</span></div></a><a class="dropdown-item" href="app-email.html">
                                 <div class="d-flex align-items-center"><i class="ft-mail mr-2"></i><span>My Inbox</span></div></a>
@@ -199,12 +199,12 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <!-- main menu-->
     <!--.main-menu(class="#{menuColor} #{menuOpenType}", class=(menuShadow == true ? 'menu-shadow' : ''))-->
-    <div class="app-sidebar menu-fixed" data-background-color="mint" data-image="../app-assets/img/sidebar-bg/01.jpg" data-scroll-to-active="true" >
+    <div class="app-sidebar menu-fixed" data-background-color="mint" data-image="/app-assets/img/sidebar-bg/01.jpg" data-scroll-to-active="true" >
         <!-- main menu header-->
         <!-- Sidebar Header starts-->
         <div class="sidebar-header ">
             <div class="logo clearfix"><a class="logo-text float-left" href="index.html">
-                    <div class="logo-img"><img src="../app-assets/img/logo.png" alt="Logo"/></div><span class="text">LDB</span></a><a class="nav-toggle d-none d-lg-none d-xl-block" id="sidebarToggle" href="javascript:;"><i class="toggle-icon ft-toggle-right" data-toggle="expanded"></i></a><a class="nav-close d-block d-lg-block d-xl-none" id="sidebarClose" href="javascript:;"><i class="ft-x"></i></a></div>
+                    <div class="logo-img"><img src="/app-assets/img/logo.png" alt="Logo"/></div><span class="text">LDB</span></a><a class="nav-toggle d-none d-lg-none d-xl-block" id="sidebarToggle" href="javascript:;"><i class="toggle-icon ft-toggle-right" data-toggle="expanded"></i></a><a class="nav-close d-block d-lg-block d-xl-none" id="sidebarClose" href="javascript:;"><i class="ft-x"></i></a></div>
         </div>
         <!-- Sidebar Header Ends-->
 
@@ -257,8 +257,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <meta itemprop="position" content="1">
                             </li>
                             <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a href="{{url('usuarios/roles')}}" itemprop="item">
+                                    <span itemprop="name">Roles</span>
+                                </a>
+                                <meta itemprop="position" content="1">
+                            </li>
+                            <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 
-                                <span itemprop="name">Tipo documento</span>
+                                <span itemprop="name">Crear Nuevo</span>
 
                                 <meta itemprop="position" content="2">
                             </li>
@@ -268,64 +274,40 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- end migas de pan-->
                     <div class="row">
                         <div class="col-12">
-                            <div class="content-header">Tipos de documento</div>
+                            <div class="content-header">Crear nuevo Rol de usuario</div>
+
                         </div>
                     </div>
 
                     <!-- Table starts -->
-                    <div class="users-list-table">
-                        <div class="row justify-content-center">
-                            <div class="col-10 ">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <!-- Datatable starts -->
-                                            <div class="table-responsive">
-                                                <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/tipo-documento/crear')}}">Crear nuevo</a>
-                                                <table id="users-list-datatable" class="table table-hover " >
-                                                    <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Tipo de documento</th>
-                                                        <th>Acciones</th>
+                    <!-- Basic Form starts -->
+                    <div class="col col-12">
+                        <div class="card">
+                            <div class="card-header">
 
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    @foreach($type_documents as $type_document)
-                                                    <tr>
-                                                        <td>{{$type_document-> id}}</td>
-                                                        <td>{{$type_document-> name}}</td>
-                                                        <td class="text-truncate">
-                                                            <form  action="{{url('usuarios/tipo-documento', $type_document -> id)}}" method="post">
-                                                                @csrf
-                                                                @method('delete')
-                                                            <!--
-                                                            <a href="javascript:;" class="btn info p-0">
-                                                                <i class="ft-user font-medium-3"></i>
-                                                            </a>
-                                                            -->
-                                                            <a href="{{url('usuarios/tipo-documento/editar', $type_document-> id)}}" class=" btn success p-0">
-                                                                <i class="ft-edit-2 font-medium-3 "></i>
-                                                            </a>
-                                                            <button  type="submit"  class="btn danger p-0" >
-                                                                <i class="ft-x font-medium-3"></i>
-                                                            </button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <p>Llena todos los datos para guardar.</p>
+                                    <form action="{{url('usuarios/roles')}}" method="POST">
+                                        @csrf
 
-                                                    </tbody>
-                                                </table>
+                                        <div class="form-row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group mb-2">
+                                                    <label for="basic-form-1">Nombre del rol</label>
+                                                    <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Administrador">
+                                                </div>
                                             </div>
-                                            <!-- Datatable ends -->
                                         </div>
-                                    </div>
+                                        <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Guardar</button>
+                                        <a href="{{url('usuarios/roles')}}"type="button" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancelar </a>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Basic Form ends -->
                     <!-- Table ends -->
                 </section>
 
@@ -373,7 +355,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </li>
                                     <li class="timeline-item">
-                                        <div class="timeline-badge"><span class="bg-primary bg-lighten-4" data-toggle="tooltip" data-placement="right" title="Portfolio project work"><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-15.png" alt="avatar" width="40"></span></div>
+                                        <div class="timeline-badge"><span class="bg-primary bg-lighten-4" data-toggle="tooltip" data-placement="right" title="Portfolio project work"><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-15.png" alt="avatar" width="40"></span></div>
                                         <div class="activity-list-text">
                                             <h6 class="mb-1"><span>Reminder!</span><span class="float-right grey font-italic font-small-2">52 min ago</span></h6>
                                             <p class="mt-0 mb-2 font-small-3">Your meeting is scheduled with Mr. Derrick Walters at 16:00.</p>
@@ -383,12 +365,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </li>
                                     <li class="timeline-item">
-                                        <div class="timeline-badge"><span class="bg-primary bg-lighten-4" data-toggle="tooltip" data-placement="right" title="Portfolio project work"><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-16.png" alt="avatar" width="40"></span></div>
+                                        <div class="timeline-badge"><span class="bg-primary bg-lighten-4" data-toggle="tooltip" data-placement="right" title="Portfolio project work"><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-16.png" alt="avatar" width="40"></span></div>
                                         <div class="activity-list-text">
                                             <h6 class="mb-1"><span>Recieved a File</span><span class="float-right grey font-italic font-small-2">4 hours ago</span></h6>
                                             <p class="mt-0 mb-2 font-small-3">Christina Rogers sent you a file for the next conference.</p>
                                             <div class="notification-note">
-                                                <div class="p-1 pl-2"><img src="../app-assets/img/icons/sketch-mac-icon.png" alt="icon" width="20"><span class="text-bold-500 ml-2">Diamond.sketch</span></div>
+                                                <div class="p-1 pl-2"><img src="/app-assets/img/icons/sketch-mac-icon.png" alt="icon" width="20"><span class="text-bold-500 ml-2">Diamond.sketch</span></div>
                                             </div>
                                         </div>
                                     </li>
@@ -416,12 +398,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <ul class="timeline">
                                     <li class="timeline-line mt-4"></li>
                                     <li class="timeline-item">
-                                        <div class="timeline-badge"><span class="bg-primary bg-lighten-4" data-toggle="tooltip" data-placement="right" title="Portfolio project work"><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-26.png" alt="avatar" width="40"></span></div>
+                                        <div class="timeline-badge"><span class="bg-primary bg-lighten-4" data-toggle="tooltip" data-placement="right" title="Portfolio project work"><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-26.png" alt="avatar" width="40"></span></div>
                                         <div class="activity-list-text">
                                             <h6 class="mb-1"><span>Gmail</span><span class="float-right grey font-italic font-small-2">Just now</span></h6>
                                             <p class="mt-0 mb-2 font-small-3">Victoria Hampton sent you a mail and has a file attachment with it.</p>
                                             <div class="notification-note">
-                                                <div class="p-1 pl-2"><img src="../app-assets/img/icons/pdf.png" alt="pdf icon" width="20"><span class="text-bold-500 ml-2">Register.pdf</span></div>
+                                                <div class="p-1 pl-2"><img src="/app-assets/img/icons/pdf.png" alt="pdf icon" width="20"><span class="text-bold-500 ml-2">Register.pdf</span></div>
                                             </div>
                                         </div>
                                     </li>
@@ -436,7 +418,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </li>
                                     <li class="timeline-item">
-                                        <div class="timeline-badge"><span class="bg-primary bg-lighten-4" data-toggle="tooltip" data-placement="right" title="Portfolio project work"><img class="avatar" src="../app-assets/img/portrait/small/avatar-s-23.png" alt="avatar" width="40"></span></div>
+                                        <div class="timeline-badge"><span class="bg-primary bg-lighten-4" data-toggle="tooltip" data-placement="right" title="Portfolio project work"><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-23.png" alt="avatar" width="40"></span></div>
                                         <div class="activity-list-text">
                                             <h6 class="mb-1"><span>CNN</span><span class="float-right grey font-italic font-small-2">16 hours ago</span></h6>
                                             <p class="mt-0 mb-2 font-small-3">U.S. investigating report says email account linked to CIA Director was hacked.</p>
@@ -557,8 +539,8 @@ License: You must have a valid license purchased only from themeforest(the above
 </aside>
 <!-- END Notification Sidebar-->
 
-        <!-- Sidebar Width Ends-->
-    </div>
+<!-- Sidebar Width Ends-->
+</div>
 </div>
 <!-- Theme customizer Ends-->
 <div class="sidenav-overlay"></div>

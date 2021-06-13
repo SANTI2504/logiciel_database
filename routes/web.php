@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Type_documentController;
+use App\Http\Controllers\RolController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,7 @@ Route::get('registrarse', function () {
 
 
 
+
 /*
 //jetstream
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -46,6 +49,29 @@ Route::get('menu/usuarios', function () {
     return view('app/user/menu');
 });
 
-//rutas de type_document
+//rutas de type_documents
 Route::get('usuarios/tipo-documento',[Type_documentController::class,'index']);
+
 Route::get('usuarios/tipo-documento/crear',[Type_documentController::class,'create']);
+
+Route::post('usuarios/tipo-documento',[Type_documentController::class, 'store']);
+
+Route::delete('usuarios/tipo-documento/{id}',[Type_documentController::class, 'destroy']);
+
+Route::get('usuarios/tipo-documento/editar/{id}', [Type_documentController::class, 'edit']);
+
+Route::put('usuarios/tipo-documento/{id}', [Type_documentController::class, 'update']);
+
+
+//rutas de roles
+Route::get('usuarios/roles',[RolController::class, 'index']);
+
+Route::get('usuarios/roles/crear',[RolController::class,'create']);
+
+Route::post('usuarios/roles',[RolController::class, 'store']);
+
+Route::delete('usuarios/roles/{id}',[RolController::class, 'destroy']);
+
+Route::get('usuarios/roles/editar/{id}', [RolController::class, 'edit']);
+
+Route::put('usuarios/roles/{id}', [RolController::class, 'update']);

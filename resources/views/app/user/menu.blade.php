@@ -313,7 +313,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <spam>Crear-Editar-Eliminar</spam>
                                             </div>
                                             <div class="media-right align-self-center">
-                                                <a href="#"><i class="ft-briefcase danger font-large-2 float-right"></i></a>
+                                                <a href="{{url('usuarios/roles')}}"><i class="ft-briefcase danger font-large-2 float-right"></i></a>
                                             </div>
                                         </div>
                                     </div>

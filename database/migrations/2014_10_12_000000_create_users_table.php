@@ -13,11 +13,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
 
-			$table->string('lastnames', 45);
+            $table->string('lastnames', 45);
             /*
             $table->string('number_document', 45)->unique();
             $table->date('date_of_bird');
@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->foreign('type_document_id')->references('id')->on('type_document');
             $table->foreign('roles_id')->references('id')->on('roles');
             */
-			//creado por jetstream
+            //creado por jetstream
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -37,6 +37,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
+
         });
     }
 
@@ -47,6 +48,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('users');
     }
 }

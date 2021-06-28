@@ -17,7 +17,7 @@ class CreatePatientsTable extends Migration
             $table->id();
             $table->bigInteger('users_id')->unsigned();
             $table->bigInteger('eps_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('user');
+            $table->foreign('users_id')->references('id')->on('users');
             $table->foreign('eps_id')->references('id')->on('eps');
             $table->timestamps();
         });

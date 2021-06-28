@@ -32,7 +32,7 @@
                 @if (Route::has('login'))
                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                         @auth
-                            <a href="{{ url('/inicio') }}" class="text-sm text-gray-700 underline">Home</a>
+                            <a href="{{ url('/inicio') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                         @else
                             <a href="{{ url('inicio-sesion') }}" class="text-sm text-gray-700 underline">Log In</a>
                             <a href="{{ url('registrarse') }}" class="text-sm text-gray-700 underline">Sign UP</a>

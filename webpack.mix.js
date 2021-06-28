@@ -10,7 +10,7 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
+// creado por jetstream
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
@@ -21,8 +21,7 @@ if (mix.inProduction()) {
     mix.version();
 }
 
-
-
+// creacion para pantillas
 mix.styles([
     'resources/css/app/style.min.css',
     'resources/css/app/style.min1.css',
@@ -51,6 +50,7 @@ mix.scripts([
 
 ], 'public/js/app/app.js');
 
+//creacion para la landing page
 mix.styles([
     'resources/css/all.css',
     'resources/css/estilos.css'
@@ -61,4 +61,3 @@ mix.scripts([
     'resources/js/scripts.js'
 
 ], 'public/js/landing.js');
-

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Rol;
+use Spatie\Permission\Models\Role;
 use Illuminate\Database\Seeder;
 
 class RolesTableSeeder extends Seeder
@@ -14,17 +14,17 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        Rol::create([
-           'name' => 'admin'
+        Role::create([
+           'name' => 'Administrador'
         ]);
-        Rol::create([
-            'name' => 'patient'
+        Role::create([
+            'name' => 'Paciente'
         ]);
-        Rol::create([
-            'name' => 'specialist'
+        Role::create([
+            'name' => 'Especialista'
         ]);
-        Rol::create([
-            'name' => 'auxiliary'
+        Role::create([
+            'name' => 'Auxiliar'
         ]);
     }
 }

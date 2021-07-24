@@ -1,52 +1,103 @@
 @extends('layouts.app')
 
 @section('title')
-    LDB-Usuarios
+    LDB-lista-usuarios
 @endsection
 
 @section('content')
-        <!-- BEGIN : Main Content-->
-        <div class="main-content">
-            <div class="content-overlay"></div>
-            <div class="content-wrapper"><!-- Minimal statistics section start -->
+    <!-- BEGIN : Main Content-->
+    <div class="main-content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper"><section class="users-list-wrapper">
+                <!-- start migas de pan-->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                            <a href="{{url('inicio')}}" itemprop="item">
+                                <span itemprop="name">Inicio</span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                            <a href="{{url('menu/usuarios')}}" itemprop="item">
+                                <span itemprop="name">Menu usuarios</span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 
-                <section id="minimal-statistics">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="content-header">Minimal Statistics Cards</div>
-                            <p class="content-sub-header mb-1">Statistics on minimal cards.</p>
-                        </div>
+                            <span itemprop="name">Tipo documento</span>
+
+                            <meta itemprop="position" content="2">
+                        </li>
+
+                    </ol>
+                </nav>
+                <!-- end migas de pan-->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="content-header">Tipos de documento</div>
                     </div>
-                </section>
-                <!-- // Minimal statistics section end -->
+                </div>
 
-                <!-- modulos del sistema -->
-                <section id="bg-variants">
-                    <div class="row match-height">
-                        <!-- start card user-->
-                        <div class="col-md-6 col-12">
-                            <div class="card card-inverse bg-info text-center" style="">
+                <!-- Table starts -->
+                <div class="users-list-table">
+                    <div class="row justify-content-center">
+                        <div class="col-10 ">
+                            <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <div class="row d-flex">
-                                            <div class="col align-self-center mb-2 mb-sm-0">
-                                                <img src="../app-assets/img/user.png" alt="user" width="150" class="float-sm-left mt-sm-1">
-                                            </div>
-                                            <div class="col align-self-center mr-sm-4">
-                                                <h4 class="card-title mb-3">USUARIOS</h4>
-                                                <p class="card-text">Aca se pude registrar, actualizar y eliminar usuarios</p>
-                                                <button class="btn btn-info btn-darken-3">Ingresar</button>
-                                            </div>
+                                        <!-- Datatable starts -->
+                                        <div class="table-responsive">
+                                            <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/tipo-documento/crear')}}">Crear nuevo</a>
+                                            <table id="users-list-datatable" class="table table-hover " >
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Tipo de documento</th>
+                                                    <th>Acciones</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($type_documents as $type_document)
+                                                    <tr>
+                                                        <td>{{$type_document-> id}}</td>
+                                                        <td>{{$type_document-> name}}</td>
+                                                        <td class="text-truncate">
+                                                            <form  action="{{url('usuarios/tipo-documento', $type_document -> id)}}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <!--
+                                                            <a href="javascript:;" class="btn info p-0">
+                                                                <i class="ft-user font-medium-3"></i>
+                                                            </a>
+                                                            -->
+                                                                <a href="{{url('usuarios/tipo-documento/editar', $type_document-> id)}}" class=" btn success p-0">
+                                                                    <i class="ft-edit-2 font-medium-3 "></i>
+                                                                </a>
+                                                                <button  type="submit"  class="btn danger p-0" >
+                                                                    <i class="ft-x font-medium-3"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        <!-- Datatable ends -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end card user-->
-
                     </div>
-                </section>
-            </div>
+                </div>
+                <!-- Table ends -->
+            </section>
+
         </div>
-        <!-- END : End Main Content-->
+    </div>
+    <!-- END : End Main Content-->
 @endsection

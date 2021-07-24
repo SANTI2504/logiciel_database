@@ -18,6 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    // ejecucion de trait
     use HasRoles;
 
     /**
@@ -28,10 +29,22 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'lastnames',
+        'number_document',
         'email',
         'password',
+        'date_of_bird',
+        'number_cell',
+        'type_document_id',
+        'roles_id',
     ];
 
+    //eloquent relacion uno a muchos
+    public function Type_document()
+    {
+        //belongsto('ruta del modelo a relacionar')
+        return $this->belongsTo('App\Models\Type_document');
+
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

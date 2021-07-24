@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Type_documentController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\SignupController;
 
 
 /*
@@ -17,21 +18,6 @@ use App\Http\Controllers\RolController;
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('inicio-sesion', function () {
-    return view('app/login/login');
-});
-Route::get('registrarse', function () {
-    return view('app/login/signup');
-});
-
-
-
-
 /*
 //jetstream
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -43,6 +29,20 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/inicio', function () {
     return view('app/index');
 })->name('inicio');
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+//rutas de inicio de sesion
+Route::get('inicio-sesion', function () {
+    return view('app/login/login');
+});
+
+//rutas de registro
+Route::get('registrarse',[SignupController::class, 'create']);
+
+
 
 // rol administrador
 Route::middleware('role:Administrador')->group(function (){
@@ -86,7 +86,10 @@ Route::middleware('role:Administrador')->group(function (){
 
 });
 
-//modulo usuarios
+
+
+
+// rutas de prueba
 Route::get('prueba', function () {
-    return view('layouts.app');
+    return view('app/user/index');
 });

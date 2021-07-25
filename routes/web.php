@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Type_documentController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -42,20 +43,27 @@ Route::get('inicio-sesion', function () {
 //rutas de registro
 Route::get('registrarse',[SignupController::class, 'create']);
 
-
+//inicio dashboard
+Route::get('inicio', function () {
+    return view('app/index');
+});
 
 // rol administrador
 Route::middleware('role:Administrador')->group(function (){
 
-    //inicio dashboard
-    Route::get('inicio', function () {
-        return view('app/index');
-    });
+
 
     //modulo usuarios
     Route::get('menu/usuarios', function () {
         return view('app/user/menu');
     });
+
+    //rutas de usuarios
+    Route::get('usuarios',[UserController::class, 'index']);
+
+    Route::get('usuarios/crear', [UserController::class, 'create']);
+
+    Route::post('usuarios',[UserController::class, 'store']);
 
     //rutas de type_documents
     Route::get('usuarios/tipo-documento',[Type_documentController::class,'index']);

@@ -128,11 +128,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </div>
                                                         <div class="form-group mb-2">
                                                             <label for="basic-form-6">Rol</label>
-                                                            <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
+                                                            <select class="select2 form-control mb-2" name="roles_id" id="roles_id"  >
                                                                 <!--usamos los datos de la tabla companies-->
-                                                                @foreach($roles as $role)
-                                                                    <option value="{{$role->id}}">{{$role->name}}</option>
-                                                                @endforeach
+                                                                    <option value="2">Paciente</option>
                                                             </select>
                                                         </div>
 

@@ -131,7 +131,7 @@
                         </ul>
                     </li>
                     <li class="dropdown nav-item mr-1"><a class="nav-link dropdown-toggle user-dropdown d-flex align-items-end" id="dropdownBasic2" href="javascript:;" data-toggle="dropdown">
-                            <div class="user d-md-flex d-none mr-2"><span class="text-right">{{Auth::user()->name}} {{Auth::user()->lastnames}}</span><span class="text-right text-muted font-small-3">Available</span></div><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-1.png" alt="avatar" height="35" width="35"></a>
+                            <div class="user d-md-flex d-none mr-2"><span class="text-right">{{Auth::user()->name}} {{Auth::user()->lastnames}}</span><span class="text-right text-muted font-small-3"> rol </span></div><img class="avatar" src="/app-assets/img/portrait/small/avatar-s-1.png" alt="avatar" height="35" width="35"></a>
                         <div class="dropdown-menu text-left dropdown-menu-right m-0 pb-0" aria-labelledby="dropdownBasic2"> <a class="dropdown-item" href="page-user-profile.html">
                                 <div class="d-flex align-items-center"><i class="ft-edit mr-2"></i><span>Edit Profile</span></div></a><a class="dropdown-item" href="app-email.html">
                                 <div class="d-flex align-items-center"><i class="ft-mail mr-2"></i><span>My Inbox</span></div></a>

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('type_document_id')->unsigned();
             $table->bigInteger('roles_id')->unsigned();
             $table->foreign('type_document_id')->references('id')->on('type_documents');
-
+            $table->foreign('roles_id')->references('id')->on('roles');
 
             /*
             //pendiente

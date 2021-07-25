@@ -26,7 +26,7 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 
-                            <span itemprop="name">Tipo documento</span>
+                            <span itemprop="name">Usuarios</span>
 
                             <meta itemprop="position" content="2">
                         </li>
@@ -36,7 +36,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Tipos de documento</div>
+                        <div class="content-header">Usuarios</div>
                     </div>
                 </div>
 
@@ -49,23 +49,34 @@
                                     <div class="card-body">
                                         <!-- Datatable starts -->
                                         <div class="table-responsive">
-                                            <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/tipo-documento/crear')}}">Crear nuevo</a>
+                                            <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/crear')}}">Crear nuevo</a>
                                             <table id="users-list-datatable" class="table table-hover " >
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>Nombres</th>
+                                                    <th>Apellidos</th>
+                                                    <th>Correo</th>
+                                                    <th>Celular</th>
                                                     <th>Tipo de documento</th>
+                                                    <th>Numero de documento</th>
+                                                    <th>Rol</th>
                                                     <th>Acciones</th>
-
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($type_documents as $type_document)
+                                                @foreach($users as $user)
                                                     <tr>
-                                                        <td>{{$type_document-> id}}</td>
-                                                        <td>{{$type_document-> name}}</td>
+                                                        <td>{{$user-> id}}</td>
+                                                        <td>{{$user-> name}}</td>
+                                                        <td>{{$user-> lastnames}}</td>
+                                                        <td>{{$user-> email}}</td>
+                                                        <td>{{$user-> number_cell}}</td>
+                                                        <td>{{$user-> Type_document ->name}}</td>
+                                                        <td>{{$user-> number_document}}</td>
+                                                        <td>{{$user-> role -> name}}</td>
                                                         <td class="text-truncate">
-                                                            <form  action="{{url('usuarios/tipo-documento', $type_document -> id)}}" method="post">
+                                                            <form  action="{{url('usuarios', $user -> id)}}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <!--
@@ -73,7 +84,7 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('usuarios/tipo-documento/editar', $type_document-> id)}}" class=" btn success p-0">
+                                                                <a href="{{url('usuarios/editar', $user-> id)}}" class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
                                                                 <button  type="submit"  class="btn danger p-0" >

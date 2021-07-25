@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -42,7 +43,14 @@ class User extends Authenticatable
     public function Type_document()
     {
         //belongsto('ruta del modelo a relacionar')
-        return $this->belongsTo('App\Models\Type_document');
+        return $this->belongsTo(Type_document::class, 'type_document_id');
+
+    }
+
+    public function Role()
+    {
+        //belongsto('ruta del modelo a relacionar')
+        return $this->belongsTo(\Spatie\Permission\Models\Role::class, 'roles_id');
 
     }
     /**

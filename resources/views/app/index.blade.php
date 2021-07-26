@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col align-self-center mr-sm-4">
                                         <h4 class="card-title mb-3">USUARIOS</h4>
-                                        <p class="card-text">Aca se pude registrar, actualizar y eliminar usuarios</p>
+                                        <p class="card-text">Gestiona y administra usuarios del sistema.</p>
                                         <a href="{{url('menu/usuarios')}}" class="btn btn-info btn-darken-3">Ingresar</a>
                                     </div>
                                 </div>
@@ -68,9 +68,9 @@
                                         <img src="../app-assets/img/user.png" alt="user" width="150" class="float-sm-left mt-sm-1">
                                     </div>
                                     <div class="col align-self-center mr-sm-4">
-                                        <h4 class="card-title mb-3">USUARIOS</h4>
-                                        <p class="card-text">Aca se pude registrar, actualizar y eliminar usuarios</p>
-                                        <a href="{{url('menu/usuarios')}}" class="btn btn-info btn-darken-3">Ingresar</a>
+                                        <h4 class="card-title mb-3">CITAS</h4>
+                                        <p class="card-text">Gestiona y administra citas medicas.</p>
+                                        <a href="{{url('menu/citas')}}" class="btn btn-info btn-darken-3">Ingresar</a>
                                     </div>
                                 </div>
                             </div>

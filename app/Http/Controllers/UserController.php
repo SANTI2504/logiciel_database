@@ -22,8 +22,10 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        $user = User::create($request -> all());
+        //incriptar la contraseña eviada por usuario
+        $request['password'] = Hash::make($request['password']);
 
+        $user = User::create($request -> all());
         $user->assignRole($request['roles_id']);
         return redirect('usuarios');
 

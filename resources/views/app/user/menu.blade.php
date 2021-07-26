@@ -41,7 +41,7 @@
                 <div class="row">
 
                     <div class="col-xl-4 col-lg-6 col-12">
-                        <a href="#">
+                        <a href="{{url('usuarios/crear')}}">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="col-xl-4 col-lg-6 col-12">
-                        <a href="{{url('usuarios/lista')}}">
+                        <a href="{{url('usuarios')}}">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">

@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title')
@@ -112,15 +113,24 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
-                                        <label for="basic-form-6">Rol</label>
-                                        <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
+                                        <label for="basic-form-6">EPS</label>
+                                        <select class="select2 form-control mb-2" name="eps_id" id="eps_id">
                                             <!--usamos los datos de la tabla type_documents-->
-                                            @foreach($roles_id as $role_id)
-                                                <option value="{{$role_id-> id}}">{{$role_id->name}}</option>
+                                            @foreach($eps_id as $epss_id)
+                                                <option value="{{$epss_id-> id}}">{{$epss_id->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="basic-form-6">Rol</label>
+                                <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
+                                    <!--usamos los datos de la tabla type_documents-->
+                                    @foreach($roles_id as $role_id)
+                                        <option value="{{$role_id-> id}}">{{$role_id->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-row">
@@ -140,6 +150,8 @@
 
                             <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Guardar</button>
                             <a href="{{url('usuarios')}}"type="button" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancelar </a>
+
+
                         </form>
                     </div>
 

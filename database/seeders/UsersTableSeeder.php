@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
             'number_cell' => '3111243456',
             'type_document_id' => '1',
             'roles_id' => '1',
+            'eps_id' => '1',
         ]);
         $user->assignRole('Administrador');
     }

@@ -37,6 +37,7 @@ class User extends Authenticatable
         'number_cell',
         'type_document_id',
         'roles_id',
+        'eps_id',
     ];
 
     //eloquent relacion uno a muchos

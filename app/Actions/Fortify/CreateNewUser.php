@@ -40,6 +40,7 @@ class CreateNewUser implements CreatesNewUsers
             'number_cell' => $input['number_cell'],
             'type_document_id' => $input['type_document_id'],
             'roles_id' => $input['roles_id'],
+            'eps_id' => $input['roles_id'],
 
         ]);
         $user->assignRole($input['roles_id']);

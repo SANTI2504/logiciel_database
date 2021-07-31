@@ -5,6 +5,7 @@ use App\Http\Controllers\Type_documentController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EpsController;
 
 
 /*
@@ -48,7 +49,7 @@ Route::get('inicio', function () {
     return view('app/index');
 });
 
-// rol administrador
+// permisos: rol administrador
 Route::middleware('role:Administrador')->group(function (){
 
 
@@ -91,6 +92,19 @@ Route::middleware('role:Administrador')->group(function (){
     Route::get('usuarios/roles/editar/{id}', [RolController::class, 'edit']);
 
     Route::put('usuarios/roles/{id}', [RolController::class, 'update']);
+
+    //ruras de eps
+    Route::get('usuarios/eps', [EpsController::class, 'index']);
+
+    Route::get('usuarios/eps/crear', [EpsController::class, 'create']);
+
+    Route::post('usuarios/eps', [EpsController::class, 'store']);
+
+    Route::get('usuarios/eps/editar/{id}', [EpsController::class, 'edit']);
+
+    Route::put('usuarios/eps/{id}', [EpsController::class, 'update']);
+
+    Route::delete('usuarios/eps/{id}', [EpsController::class, 'destroy']);
 
 });
 

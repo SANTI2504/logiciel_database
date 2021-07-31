@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eps;
 use App\Models\Type_document;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class UserController extends Controller
     public function create(){
         $type_documents = Type_document::all();
         $roles_id = Role::all();
-        return view('app.user.create', compact('type_documents', 'roles_id'));
+        $eps_id = Eps::all();
+        return view('app.user.create', compact('type_documents', 'roles_id','eps_id'));
     }
 
     public function store(Request $request){

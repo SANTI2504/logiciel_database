@@ -22,9 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('number_cell', 20);
             $table->bigInteger('type_document_id')->unsigned();
             $table->bigInteger('roles_id')->unsigned();
+            $table->bigInteger('eps_id')->unsigned();
             $table->foreign('type_document_id')->references('id')->on('type_documents');
             $table->foreign('roles_id')->references('id')->on('roles');
-
+            $table->foreign('eps_id')->references('id')->on('eps');
             /*
             //pendiente
             $table->foreign('roles_id')->references('id')->on('roles');

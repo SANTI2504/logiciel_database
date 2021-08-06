@@ -47,7 +47,7 @@ class EpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($ep)
     {
         //
     }
@@ -58,9 +58,9 @@ class EpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($ep)
     {
-        $eps = Eps::find($id);
+        $eps = Eps::find($ep);
 
         return view('app.user.eps.edit', compact('eps'));
     }
@@ -72,9 +72,9 @@ class EpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $ep)
     {
-        $eps = Eps::find($id)->update($request -> all());
+        $eps = Eps::find($ep)->update($request -> all());
         return redirect('usuarios/eps');
     }
 
@@ -84,9 +84,9 @@ class EpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ep)
     {
-        $eps = Eps::find($id)->delete();
+        $eps = Eps::find($ep)->delete();
         return redirect('usuarios/eps');
     }
 }

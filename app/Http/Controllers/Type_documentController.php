@@ -20,23 +20,23 @@ class Type_documentController extends Controller
         return redirect('usuarios/tipo-documento');
     }
 
-    public function destroy($id){
+    public function destroy($tipo_documento){
         // sql: DELETE FROM users WHERE id =?
         // consulta para eliminar todos los datos segun el parametro id
-        $type_document = Type_document::find($id)->delete();
+        $type_document = Type_document::find($tipo_documento)->delete();
 
         return redirect('usuarios/tipo-documento');
 
     }
 
-    public function edit($id){
-        $type_document=Type_document::find($id);
+    public function edit($tipo_documento){
+        $type_document=Type_document::find($tipo_documento);
 
         return view('app.user.type_document.edit', compact('type_document'));
     }
 
-    public function update(Request $request, $id){
-        $type_document=Type_document::find($id)->update($request->all());
+    public function update(Request $request, $tipo_documento){
+        $type_document=Type_document::find($tipo_documento)->update($request->all());
 
         return redirect('usuarios/tipo-documento');
 

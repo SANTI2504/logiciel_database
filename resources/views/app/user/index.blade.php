@@ -84,7 +84,7 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('usuarios/editar', $user-> id)}}" class=" btn success p-0">
+                                                                <a href="{{url('usuarios/editar/'. $user-> id)}}" class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
                                                                 <button  type="submit"  class="btn danger p-0" >

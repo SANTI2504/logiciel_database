@@ -129,7 +129,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <div class="form-group mb-2">
                                                             <label for="basic-form-6">Rol</label>
                                                             <select class="select2 form-control mb-2" name="roles_id" id="roles_id"  >
-                                                                <!--usamos los datos de la tabla companies-->
+                                                                <!--usamos los datos de la tabla roles-->
                                                                     <option value="2">Paciente</option>
                                                             </select>
                                                         </div>

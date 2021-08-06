@@ -49,7 +49,7 @@
                                         <div class="card-body">
                                             <!-- Datatable starts -->
                                             <div class="table-responsive">
-                                                <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/tipo-documento/crear')}}">Crear nuevo</a>
+                                                <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/tipo-documento/create')}}">Crear nuevo</a>
                                                 <table id="users-list-datatable" class="table table-hover " >
                                                     <thead>
                                                     <tr>
@@ -73,7 +73,7 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                            <a href="{{url('usuarios/tipo-documento/editar', $type_document-> id)}}" class=" btn success p-0">
+                                                            <a href="{{url('usuarios/tipo-documento/'. $type_document-> id. '/edit')}}" class=" btn success p-0">
                                                                 <i class="ft-edit-2 font-medium-3 "></i>
                                                             </a>
                                                             <button  type="submit"  class="btn danger p-0" >

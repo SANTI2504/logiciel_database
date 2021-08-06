@@ -21,23 +21,23 @@ class RolController extends Controller
         return redirect('usuarios/roles');
     }
 
-    public function destroy($id){
+    public function destroy($role){
         // sql: DELETE FROM users WHERE id =?
         // consulta para eliminar todos los datos segun el parametro id
-        $rol = Role::find($id)->delete();
+        $rol = Role::find($role)->delete();
 
         return redirect('usuarios/roles');
 
     }
 
-    public function edit($id){
-        $rol=Role::find($id);
+    public function edit($role){
+        $rol=Role::find($role);
 
         return view('app.user.rol.edit', compact('rol'));
     }
 
-    public function update(Request $request, $id){
-        $rol=Role::find($id)->update($request->all());
+    public function update(Request $request, $role){
+        $rol=Role::find($role)->update($request->all());
 
         return redirect('usuarios/roles');
 

@@ -32,4 +32,20 @@ class UserController extends Controller
         return redirect('usuarios');
 
     }
+    public function show($usuario){
+
+    }
+
+    public function edit($usuario){
+
+    }
+
+    public function update(Request $request , $usuario){
+
+    }
+    public function destroy($usuario){
+
+    }
+
 }
+

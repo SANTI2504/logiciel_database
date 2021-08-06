@@ -6,6 +6,7 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EpsController;
+use App\Http\Controllers\PatientController;
 
 
 /*
@@ -52,59 +53,35 @@ Route::get('inicio', function () {
 // permisos: rol administrador
 Route::middleware('role:Administrador')->group(function (){
 
-
-
     //modulo usuarios
     Route::get('menu/usuarios', function () {
         return view('app/user/menu');
     });
 
+    //tipos de usuario
+    Route::get('menu/tipos-de-usuarios', function () {
+        return view('app/user/type_users/menu');
+    });
+
     //rutas de usuarios
+
     Route::get('usuarios',[UserController::class, 'index']);
-
     Route::get('usuarios/crear', [UserController::class, 'create']);
-
     Route::post('usuarios',[UserController::class, 'store']);
 
+    //rutas patients
+    Route::resource('usuarios/pacientes', PatientController::class);
+
     //rutas de type_documents
-    Route::get('usuarios/tipo-documento',[Type_documentController::class,'index']);
-
-    Route::get('usuarios/tipo-documento/crear',[Type_documentController::class,'create']);
-
-    Route::post('usuarios/tipo-documento',[Type_documentController::class, 'store']);
-
-    Route::delete('usuarios/tipo-documento/{id}',[Type_documentController::class, 'destroy']);
-
-    Route::get('usuarios/tipo-documento/editar/{id}', [Type_documentController::class, 'edit']);
-
-    Route::put('usuarios/tipo-documento/{id}', [Type_documentController::class, 'update']);
+    Route::resource('usuarios/tipo-documento', Type_documentController::class);
 
 
     //rutas de roles
-    Route::get('usuarios/roles',[RolController::class, 'index']);
-
-    Route::get('usuarios/roles/crear',[RolController::class,'create']);
-
-    Route::post('usuarios/roles',[RolController::class, 'store']);
-
-    Route::delete('usuarios/roles/{id}',[RolController::class, 'destroy']);
-
-    Route::get('usuarios/roles/editar/{id}', [RolController::class, 'edit']);
-
-    Route::put('usuarios/roles/{id}', [RolController::class, 'update']);
+    Route::resource('usuarios/roles', RolController::class);
 
     //ruras de eps
-    Route::get('usuarios/eps', [EpsController::class, 'index']);
+    Route::resource('usuarios/eps', EpsController::class);
 
-    Route::get('usuarios/eps/crear', [EpsController::class, 'create']);
-
-    Route::post('usuarios/eps', [EpsController::class, 'store']);
-
-    Route::get('usuarios/eps/editar/{id}', [EpsController::class, 'edit']);
-
-    Route::put('usuarios/eps/{id}', [EpsController::class, 'update']);
-
-    Route::delete('usuarios/eps/{id}', [EpsController::class, 'destroy']);
 
 });
 

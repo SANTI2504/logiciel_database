@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 
-class Patient extends Model
+class Specialist extends Model
 {
     use HasFactory;
-    // ejecucion de trait
     use HasRoles;
 
     protected $fillable = [
@@ -23,7 +22,6 @@ class Patient extends Model
         'type_document_id',
         'roles_id',
         'eps_id',
-        'speciality',
     ];
 
     //eloquent relacion uno a muchos
@@ -68,5 +66,6 @@ class Patient extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 
 }

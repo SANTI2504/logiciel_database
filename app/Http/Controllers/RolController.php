@@ -17,6 +17,17 @@ class RolController extends Controller
     }
 
     public function store(Request $request){
+
+        $campos = [
+            'name' => 'required|string|max:125'
+        ];
+
+        $mensaje = [
+            'name.required'=>'El Nombre es requerido '
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
         $rol = Role::create($request -> all());
         return redirect('usuarios/roles');
     }

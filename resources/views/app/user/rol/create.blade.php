@@ -57,18 +57,31 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <p>Llena todos los datos para guardar.</p>
+
+                                    @if(count($errors)>0)
+                                    <div class="alert bg-light-danger mb-2" role="alert">
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                                    <li>
+                                                        {{$error}}
+                                                    </li>
+                                            @endforeach
+                                        </ul>
+
+                                    </div>
+
+                                    @endif
                                     <form action="{{url('usuarios/roles')}}" method="POST">
                                         @csrf
-
                                         <div class="form-row">
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group mb-2">
                                                     <label for="basic-form-1">Nombre del rol</label>
-                                                    <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Administrador">
+                                                    <input  type="text" id="quanti" name="name" class="form-control" placeholder="Ej: Administrador" required>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Guardar</button>
+                                        <button   type="submit" class="btn bg-light-success mr-1 mb-1 mb-sm-0"><i class="ft-check-square mr-1"></i>Guardar</button>
                                         <a href="{{url('usuarios/roles')}}"type="button" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancelar </a>
                                     </form>
                                 </div>

@@ -77,6 +77,42 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 col-12">
+                    <div class="card card-inverse bg-info text-center" style="">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="row d-flex">
+                                    <div class="col align-self-center mb-2 mb-sm-0">
+                                        <img src="../app-assets/img/user.png" alt="user" width="150" class="float-sm-left mt-sm-1">
+                                    </div>
+                                    <div class="col align-self-center mr-sm-4">
+                                        <h4 class="card-title mb-3">HISTORIAL MEDICO</h4>
+                                        <p class="card-text">Gestiona y administra historias medicas.</p>
+                                        <a href="#" class="btn btn-info btn-darken-3">Ingresar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="card card-inverse bg-info text-center" style="">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="row d-flex">
+                                    <div class="col align-self-center mb-2 mb-sm-0">
+                                        <img src="../app-assets/img/user.png" alt="user" width="150" class="float-sm-left mt-sm-1">
+                                    </div>
+                                    <div class="col align-self-center mr-sm-4">
+                                        <h4 class="card-title mb-3">INVENTARIOS Y PRODUCTOS</h4>
+                                        <p class="card-text">Gestiona y administra el inventario.</p>
+                                        <a href="#" class="btn btn-info btn-darken-3">Ingresar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- end card user-->
 
             </div>

@@ -66,8 +66,7 @@
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group mb-2">
                                                     <label for="basic-form-1">Nombre del rol</label>
-                                                    <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Administrador" value="{{$rol -> name}}">
-                                                </div>
+                                                    <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Administrador" value="{{$rol -> name}}" required>                                                </div>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Guardar</button>

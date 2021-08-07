@@ -64,7 +64,7 @@
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group mb-2">
                                                     <label for="basic-form-1">Nombre del tipo de documento</label>
-                                                    <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Cedula de ciudadania">
+                                                    <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Cedula de ciudadania" required>
                                                 </div>
                                             </div>
                                         </div>

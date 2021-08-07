@@ -71,13 +71,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-1">Nombres</label>
-                                        <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" class="form-control mb-2" placeholder="ej: Camilo Andres">
+                                        <input id="name" type="text" name="name" value="{{ old('name') }}"  autofocus autocomplete="name" class="form-control mb-2" placeholder="ej: Camilo Andres" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Apellidos</label>
-                                        <input id="lastnames" type="text" name="lastnames" value="{{ old('lastnames') }}" required autocomplete="lastnames" class="form-control mb-2" placeholder="ej: Mesa Rincon">
+                                        <input id="lastnames" type="text" name="lastnames" value="{{ old('lastnames') }}"  autocomplete="lastnames" class="form-control mb-2" placeholder="ej: Mesa Rincon" required>
                                     </div>
                                 </div>
                             </div>
@@ -85,13 +85,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-3">E-mail</label>
-                                        <input id="email" type="email" name="email" value="{{ old('email') }}" required class="form-control mb-2" placeholder="ej: camilo@gmail.com">
+                                        <input id="email" type="email" name="email" value="{{ old('email') }}"  class="form-control mb-2" placeholder="ej: camilo@gmail.com" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-4">Numero de contacto</label>
-                                        <input id="number_cell" type="text" name="number_cell" value="{{ old('number_cell') }}" required class="form-control mb-2" placeholder="ej: 3115676507">
+                                        <input id="number_cell" type="text" name="number_cell" value="{{ old('number_cell') }}"  class="form-control mb-2" placeholder="ej: 3115676507" required>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Numero de documento</label>
-                                        <input id="number_document" type="text" name="number_document" value="{{ old('number_document') }}" required class="form-control mb-2" placeholder="ej: 1023659635">
+                                        <input id="number_document" type="text" name="number_document" value="{{ old('number_document') }}"  class="form-control mb-2" placeholder="ej: 1023659635" required>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-5">Fecha de nacimiento</label>
-                                        <input id="date_of_bird" type="date" name="date_of_bird" value="{{ old('date_of_bird') }}" required class="form-control mb-2">
+                                        <input id="date_of_bird" type="date" name="date_of_bird" value="{{ old('date_of_bird') }}" class="form-control mb-2" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -146,13 +146,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-1">Contraseña</label>
-                                        <input id="password" type="password" name="password" required autocomplete="new-password" class="form-control mb-2">
+                                        <input id="password" type="password" name="password" autocomplete="new-password" class="form-control mb-2" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Confirmar contraseña</label>
-                                        <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="form-control mb-2" >
+                                        <input id="password_confirmation" type="password" name="password_confirmation" autocomplete="new-password" class="form-control mb-2"  required>
                                     </div>
                                 </div>
                             </div>

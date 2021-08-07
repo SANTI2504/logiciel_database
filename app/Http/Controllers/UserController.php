@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::orderBy('id', 'desc')->paginate(8);
+        $users = User::orderBy('id', 'desc')->paginate(1);
         return view('app.user.index', compact('users'));
     }
 

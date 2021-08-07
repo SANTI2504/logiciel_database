@@ -29,6 +29,7 @@ mix.styles([
     'resources/css/app/perfect-scrollbar.min.css',
     'resources/css/app/prism.min.css',
     'resources/css/app/switchery.min.css',
+    'resources/css/app/sweetalert2.min.css',
     'resources/css/app/toastr.css',
     'resources/css/app/bootstrap.min.css',
     'resources/css/app/bootstrap-extended.min.css',
@@ -36,6 +37,7 @@ mix.styles([
     'resources/css/app/components.min.css',
     'resources/css/app/layout-dark.min.css',
     'resources/css/app/switchery.min1.css',
+    'resources/css/app/ex-component-sweet-alerts.min.css',
     'resources/css/app/ex-component-toastr.min.css',
     'resources/css/app/style.css',
 ], 'public/css/app/app.css');
@@ -43,6 +45,7 @@ mix.styles([
 mix.scripts([
     'resources/js/app/vendors.min.js',
     'resources/js/app/switchery.min.js',
+    'resources/js/app/sweetalert2.all.min.js',
     'resources/js/app/toastr.min.js',
     'resources/js/app/app-menu.min.js',
     'resources/js/app/app.min.js',
@@ -50,7 +53,9 @@ mix.scripts([
     'resources/js/app/customizer.min.js',
     'resources/js/app/scroll-top.min.js',
     'resources/js/app/ex-component-toastr.min.js',
+    'resources/js/app/ex-component-sweet-alerts.min.js',
     'resources/js/app/scripts.js',
+    'resources/js/app/validate.js',
 
 
 ], 'public/js/app/app.js');

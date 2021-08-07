@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    LDB-Detalles-Paciente
+    LDB-Detalles-Especialista
 @endsection
 
 @section('content')
@@ -36,8 +36,8 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('usuarios/pacientes')}}" itemprop="item">
-                                <span itemprop="name">Pacientes</span>
+                            <a href="{{url('usuarios/especialistas')}}" itemprop="item">
+                                <span itemprop="name">Especialistas</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
@@ -54,7 +54,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Ver detalles del paciente</div>
+                        <div class="content-header">Ver detalles del especialista</div>
 
                     </div>
                 </div>
@@ -65,50 +65,51 @@
                     <div class="col col-9 ">
                         <div class="card border-primary mb-3">
                             <div class="card-header bg-success text-center font-weight-bolder pb-3">
-                                DATOS DEL PACIENTE {{$patient -> id}}
+                                DATOS DEL ESPECIALISTA {{$specialist -> id}}
                             </div>
                             <div class="card-body ">
                                 <table class="table table-striped table-bordered table-hover">
 
                                     <tr>
                                         <th class="col-5">NOMBRES</th>
-                                        <td class="col-7">{{$patient-> name}}</td>
+                                        <td class="col-7">{{$specialist-> name}}</td>
                                     </tr>
                                     <tr>
                                         <th class="col-5">APELLIDOS</th>
-                                        <td class="col-7">{{$patient-> lastnames}}</td>
+                                        <td class="col-7">{{$specialist-> lastnames}}</td>
                                     </tr>
                                     <tr>
                                         <th class="col-5">TIPO DE DOCUMENTO</th>
-                                        <td class="col-7">{{$patient-> type_document -> name }}</td>
+                                        <td class="col-7">{{$specialist-> type_document -> name }}</td>
                                     </tr>
                                     <tr>
                                         <th class="col-5"># DOCUMENTO</th>
-                                        <td class="col-7">{{$patient-> number_document}}</td>
+                                        <td class="col-7">{{$specialist-> number_document}}</td>
                                     </tr>
                                     <tr>
                                         <th class="col-5">TELEFONO DE CONTACTO</th>
-                                        <td class="col-7">{{$patient-> number_cell}}</td>
+                                        <td class="col-7">{{$specialist-> number_cell}}</td>
                                     </tr>
                                     <tr>
                                         <th class="col-5">CORREO ELECTRONICO</th>
-                                        <td class="col-7">{{$patient-> email}}</td>
+                                        <td class="col-7">{{$specialist-> email}}</td>
                                     </tr>
                                     <tr>
                                         <th class="col-5">ROL</th>
-                                        <td class="col-7">{{$patient-> role -> name}}</td>
+                                        <td class="col-7">{{$specialist-> role -> name}}</td>
                                     </tr>
                                     <tr>
                                         <th class="col-5">EPS</th>
-                                        <td class="col-7">{{$patient-> eps -> name}}</td>
+                                        <td class="col-7">{{$specialist-> eps -> name}}</td>
                                     </tr>
                                     <tr>
                                         <th class="col-5">FECHA DE NACIMIENTO</th>
-                                        <td class="col-7">{{$patient-> date_of_bird}}</td>
+                                        <td class="col-7">{{$specialist-> date_of_bird}}</td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- Basic Form ends -->

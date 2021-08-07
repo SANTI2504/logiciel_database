@@ -66,7 +66,7 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mb-2">
                                                 <label for="basic-form-1">Nombre del rol</label>
-                                                <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Administrador" value="{{$eps -> name}}">
+                                                <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Administrador" value="{{$eps -> name}}" required>
                                             </div>
                                         </div>
                                     </div>

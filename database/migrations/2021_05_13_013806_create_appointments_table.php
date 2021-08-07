@@ -17,10 +17,10 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->date('date');
             $table->bigInteger('type_appointments_id')->unsigned();
-            $table->bigInteger('specialties_id')->unsigned();
+            $table->bigInteger('specialists_id')->unsigned();
             $table->bigInteger('patients_id')->unsigned();
             $table->foreign('type_appointments_id')->references('id')->on('type_appointments');
-            $table->foreign('specialties_id')->references('id')->on('specialties');
+            $table->foreign('specialists_id')->references('id')->on('specialists');
             $table->foreign('patients_id')->references('id')->on('patients');
             $table->timestamps();
         });

@@ -7,6 +7,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EpsController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\SpecialistController;
 
 
 /*
@@ -72,6 +73,9 @@ Route::middleware('role:Administrador')->group(function (){
     //rutas patients
     Route::resource('usuarios/pacientes', PatientController::class);
 
+    //ruras Especialista
+    Route::resource('usuarios/especialistas', SpecialistController::class);
+
     //rutas de type_documents
     Route::resource('usuarios/tipo-documento', Type_documentController::class);
 
@@ -81,6 +85,8 @@ Route::middleware('role:Administrador')->group(function (){
 
     //ruras de eps
     Route::resource('usuarios/eps', EpsController::class);
+
+
 
 
 });

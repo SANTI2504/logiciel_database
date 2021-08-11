@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EpsController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialistController;
+use App\Http\Controllers\AuxiliaryController;
 
 
 /*
@@ -73,8 +74,11 @@ Route::middleware('role:Administrador')->group(function (){
     //rutas patients
     Route::resource('usuarios/pacientes', PatientController::class);
 
-    //ruras Especialista
+    //rutas specialists
     Route::resource('usuarios/especialistas', SpecialistController::class);
+
+    //rutas auxiliaries
+    Route::resource('usuarios/auxiliares', AuxiliaryController::class);
 
     //rutas de type_documents
     Route::resource('usuarios/tipo-documento', Type_documentController::class);

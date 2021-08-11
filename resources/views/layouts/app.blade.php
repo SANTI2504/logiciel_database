@@ -90,7 +90,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="drag-target"></div>
 <!-- BEGIN VENDOR JS-->
 <script src="{{url('js/app/app.js')}}" ></script>
+ @yield('js')
 <!-- END: Custom CSS-->
+
 </body>
 <!-- END : Body-->
 </html>

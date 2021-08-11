@@ -22,6 +22,7 @@ class Specialist extends Model
         'type_document_id',
         'roles_id',
         'eps_id',
+        'speciality',
     ];
 
     //eloquent relacion uno a muchos

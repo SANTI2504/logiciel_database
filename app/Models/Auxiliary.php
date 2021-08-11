@@ -4,13 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Traits\HasRoles;
 
-class Patient extends Model
+class Auxiliary extends Model
 {
     use HasFactory;
-    // ejecucion de trait
-    use HasRoles;
 
     protected $fillable = [
         'name',
@@ -67,5 +64,4 @@ class Patient extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
 }

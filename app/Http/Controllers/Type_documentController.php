@@ -25,7 +25,7 @@ class Type_documentController extends Controller
         // consulta para eliminar todos los datos segun el parametro id
         $type_document = Type_document::find($tipo_documento)->delete();
 
-        return redirect('usuarios/tipo-documento');
+        return redirect('usuarios/tipo-documento')->with('eliminar', 'ok');
 
     }
 

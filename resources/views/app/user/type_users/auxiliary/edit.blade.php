@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('title')
-    LDB-Editar-Paciente
+    LDB-Crear-Auxiliar
 @endsection
 
 @section('content')
@@ -36,8 +36,8 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('usuarios/pacientes')}}" itemprop="item">
-                                <span itemprop="name">Pacientes</span>
+                            <a href="{{url('usuarios/auxiliares')}}" itemprop="item">
+                                <span itemprop="name">Auxiliares</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
@@ -54,7 +54,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Editar paciente con id {{$patient -> id}}</div>
+                        <div class="content-header">Editar auxiliar con id {{$auxiliary -> id}}</div>
 
                     </div>
                 </div>
@@ -65,20 +65,20 @@
                     <div class="card-body ">
 
 
-                        <form method="POST" action="{{url('usuarios/pacientes/'. $patient -> id)}}">
+                        <form method="POST" action="{{url('usuarios/auxiliares/'. $auxiliary -> id)}}">
                             @method('PUT')
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-1">Nombres</label>
-                                        <input id="name" type="text" name="name"  required autofocus autocomplete="name" class="form-control mb-2" placeholder="ej: Camilo Andres" value="{{$patient ->name}}" required>
+                                        <input id="name" type="text" name="name"  required autofocus autocomplete="name" class="form-control mb-2" placeholder="ej: Camilo Andres" value="{{$auxiliary ->name}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Apellidos</label>
-                                        <input id="lastnames" type="text" name="lastnames"  required autocomplete="lastnames" class="form-control mb-2" placeholder="ej: Mesa Rincon" value="{{$patient ->lastnames}}" required>
+                                        <input id="lastnames" type="text" name="lastnames"  required autocomplete="lastnames" class="form-control mb-2" placeholder="ej: Mesa Rincon" value="{{$auxiliary ->lastnames}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -86,13 +86,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-3">E-mail</label>
-                                        <input id="email" type="email" name="email" value="{{$patient -> email}}"  class="form-control mb-2" placeholder="ej: camilo@gmail.com" required>
+                                        <input id="email" type="email" name="email" value="{{$auxiliary -> email}}"  class="form-control mb-2" placeholder="ej: camilo@gmail.com" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-4">Numero de contacto</label>
-                                        <input id="number_cell" type="text" name="number_cell" value="{{$patient -> number_cell}}"  class="form-control mb-2" placeholder="ej: 3115676507" required>
+                                        <input id="number_cell" type="text" name="number_cell" value="{{$auxiliary -> number_cell}}"  class="form-control mb-2" placeholder="ej: 3115676507" required>
                                     </div>
                                 </div>
                             </div>
@@ -101,10 +101,10 @@
                                     <div class="form-group mb-2">
                                         <label for="basic-form-6">Tipo de documento</label>
                                         <select class="select2 form-control mb-2" name="type_document_id" id="type_document_id">
-                                            <option value="{{$patient -> type_document ->id}}">{{$patient -> type_document->name}}</option>
+                                            <option value="{{$auxiliary -> type_document ->id}}">{{$auxiliary -> type_document->name}}</option>
                                             <!--usamos los datos de la tabla type_documents-->
                                             @foreach($type_documents as $type_document)
-                                                @if($type_document -> id == $patient -> type_document ->id )
+                                                @if($type_document -> id == $auxiliary -> type_document ->id )
                                                 @else
                                                     <option value="{{$type_document->id}}">{{$type_document->name}}</option>
                                                 @endif
@@ -115,7 +115,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Numero de documento</label>
-                                        <input id="number_document" type="text" name="number_document" value="{{$patient -> number_document}}" required class="form-control mb-2" placeholder="ej: 1023659635" required>
+                                        <input id="number_document" type="text" name="number_document" value="{{$auxiliary -> number_document}}"  class="form-control mb-2" placeholder="ej: 1023659635" required>
                                     </div>
                                 </div>
                             </div>
@@ -124,19 +124,19 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-5">Fecha de nacimiento</label>
-                                        <input id="date_of_bird" type="date" name="date_of_bird" value="{{ $patient -> date_of_bird }}" required class="form-control mb-2" required>
+                                        <input id="date_of_bird" type="date" name="date_of_bird" value="{{ $auxiliary -> date_of_bird }}"  class="form-control mb-2" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-6">EPS</label>
                                         <select class="select2 form-control mb-2" name="eps_id" id="eps_id">
-                                            <option value="{{$patient -> eps -> id}}">{{$patient -> eps -> name}}</option>
+                                            <option value="{{$auxiliary -> eps -> id}}">{{$auxiliary -> eps -> name}}</option>
                                             <!--usamos los datos de la tabla type_documents-->
                                             @foreach($eps_id as $epss_id)
-                                                @if($epss_id -> id == $patient ->eps -> id)
+                                                @if($epss_id -> id == $auxiliary ->eps -> id)
                                                 @else
-                                                <option value="{{$epss_id-> id}}">{{$epss_id->name}}</option>
+                                                    <option value="{{$epss_id-> id}}">{{$epss_id->name}}</option>
                                                 @endif
                                             @endforeach
                                         </select>
@@ -146,7 +146,7 @@
                             <div class="form-group mb-2">
                                 <label for="basic-form-6">Rol</label>
                                 <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
-                                    <option value="2">Paciente</option>
+                                    <option value="4">Auxiliar</option>
 
                                 </select>
                             </div>
@@ -155,19 +155,19 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-1">Contraseña</label>
-                                        <input id="password" type="password" name="password" required autocomplete="new-password" class="form-control mb-2" required>
+                                        <input id="password" type="password" name="password"  autocomplete="new-password" class="form-control mb-2" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Confirmar contraseña</label>
-                                        <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="form-control mb-2"  required>
+                                        <input id="password_confirmation" type="password" name="password_confirmation"  autocomplete="new-password" class="form-control mb-2"  required>
                                     </div>
                                 </div>
                             </div>
 
                             <button type="submit" id="type-success" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Guardar</button>
-                            <a href="{{url('usuarios')}}"type="button" ARIA-SETSIZE="" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancelar </a>
+                            <a href="{{url('usuarios/auxiliares')}}"type="button" ARIA-SETSIZE="" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancelar </a>
 
 
                         </form>

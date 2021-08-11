@@ -76,7 +76,7 @@
                                                             <a href="{{url('usuarios/tipo-documento/'. $type_document-> id. '/edit')}}" class=" btn success p-0">
                                                                 <i class="ft-edit-2 font-medium-3 "></i>
                                                             </a>
-                                                            <button  type="submit"  class="btn danger p-0" >
+                                                            <button  type="submit"  class="btn danger p-0 form-eliminar" >
                                                                 <i class="ft-x font-medium-3"></i>
                                                             </button>
                                                             </form>
@@ -86,6 +86,7 @@
 
                                                     </tbody>
                                                 </table>
+                                                <button type="button" class="btn bg-light-primary mr-1 basic-alert mb-1 mb-sm-0">Basic</button>
                                             </div>
                                             <!-- Datatable ends -->
                                         </div>
@@ -100,4 +101,50 @@
             </div>
         </div>
         <!-- END : End Main Content-->
+@endsection
+
+@section('js')
+
+    @if((session('eliminar') == 'ok'))
+        <script>
+            Swal.fire({
+                type: "success",
+                title: "Eliminado!",
+                text: "Your file has been deleted.",
+                confirmButtonClass: "btn btn-success"
+            })
+        </script>
+    @endauth
+
+    <script>
+        $('.form-eliminar').on('click',function(e){
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#2F8BE6",
+                cancelButtonColor: "#F55252",
+                confirmButtonText: "Your text here!",
+                confirmButtonClass: "btn btn-primary",
+                cancelButtonClass: "btn btn-danger ml-1",
+                buttonsStyling: !1
+            }).then((result) => {
+                if(result.value) {
+                    this.form.submit();
+                }
+
+                /*Swal.fire({
+                    type: "success",
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    confirmButtonClass: "btn btn-success"
+                })
+                */
+            })
+
+        });
+    </script>
 @endsection

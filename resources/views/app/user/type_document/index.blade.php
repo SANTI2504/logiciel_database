@@ -86,7 +86,6 @@
 
                                                     </tbody>
                                                 </table>
-                                                <button type="button" class="btn bg-light-primary mr-1 basic-alert mb-1 mb-sm-0">Basic</button>
                                             </div>
                                             <!-- Datatable ends -->
                                         </div>

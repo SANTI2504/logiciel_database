@@ -88,7 +88,7 @@
                                     <div class="col align-self-center mr-sm-4">
                                         <h4 class="card-title mb-3">HISTORIAL MEDICO</h4>
                                         <p class="card-text">Gestiona y administra historias medicas.</p>
-                                        <a href="#" class="btn btn-info btn-darken-3">Ingresar</a>
+                                        <a href="{{url('menu/historial')}}" class="btn btn-info btn-darken-3">Ingresar</a>
                                     </div>
                                 </div>
                             </div>

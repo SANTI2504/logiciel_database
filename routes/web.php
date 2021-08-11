@@ -91,6 +91,10 @@ Route::middleware('role:Administrador')->group(function (){
     Route::resource('usuarios/eps', EpsController::class);
 
 
+    //Modulo Historla Medico & Examen medico
+    Route::get('menu/historial', function () {
+        return view('app/medical/menu');
+    });
 
 
 });

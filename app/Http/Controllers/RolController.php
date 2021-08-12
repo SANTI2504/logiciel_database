@@ -29,7 +29,7 @@ class RolController extends Controller
         $this->validate($request, $campos, $mensaje);
 
         $rol = Role::create($request -> all());
-        return redirect('usuarios/roles');
+        return redirect('usuarios/roles')->with('crear', 'ok');
     }
 
     public function destroy($role){
@@ -37,7 +37,7 @@ class RolController extends Controller
         // consulta para eliminar todos los datos segun el parametro id
         $rol = Role::find($role)->delete();
 
-        return redirect('usuarios/roles');
+        return redirect('usuarios/roles')->with('eliminar', 'ok');
 
     }
 
@@ -50,7 +50,7 @@ class RolController extends Controller
     public function update(Request $request, $role){
         $rol=Role::find($role)->update($request->all());
 
-        return redirect('usuarios/roles');
+        return redirect('usuarios/roles')->with('actualizar', 'ok');
 
     }
 

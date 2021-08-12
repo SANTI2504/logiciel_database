@@ -38,7 +38,7 @@ class EpsController extends Controller
     public function store(Request $request)
     {
         $eps = Eps::create($request ->all());
-        return redirect('usuarios/eps');
+        return redirect('usuarios/eps')->with('crear', 'ok');
     }
 
     /**
@@ -75,7 +75,7 @@ class EpsController extends Controller
     public function update(Request $request, $ep)
     {
         $eps = Eps::find($ep)->update($request -> all());
-        return redirect('usuarios/eps');
+        return redirect('usuarios/eps')->with('actualizar', 'ok');
     }
 
     /**
@@ -87,6 +87,6 @@ class EpsController extends Controller
     public function destroy($ep)
     {
         $eps = Eps::find($ep)->delete();
-        return redirect('usuarios/eps');
+        return redirect('usuarios/eps')->with('eliminar', 'ok');
     }
 }

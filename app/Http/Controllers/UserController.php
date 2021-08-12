@@ -29,7 +29,7 @@ class UserController extends Controller
 
         $user = User::create($request -> all());
         $user->assignRole($request['roles_id']);
-        return redirect('usuarios');
+        return redirect('usuarios')->with('crear', 'ok');
 
     }
     public function show($usuario){

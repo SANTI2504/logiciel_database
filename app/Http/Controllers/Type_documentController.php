@@ -17,7 +17,7 @@ class Type_documentController extends Controller
 
     public function store(Request $request){
         $type_document = Type_document::create($request -> all());
-        return redirect('usuarios/tipo-documento');
+        return redirect('usuarios/tipo-documento')->with('crear', 'ok');
     }
 
     public function destroy($tipo_documento){
@@ -38,7 +38,7 @@ class Type_documentController extends Controller
     public function update(Request $request, $tipo_documento){
         $type_document=Type_document::find($tipo_documento)->update($request->all());
 
-        return redirect('usuarios/tipo-documento');
+        return redirect('usuarios/tipo-documento')->with('actualizar', 'ok');
 
     }
 }

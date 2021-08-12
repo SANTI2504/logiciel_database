@@ -166,8 +166,8 @@
                                 </div>
                             </div>
 
-                            <button type="submit" id="type-success" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Guardar</button>
-                            <a href="{{url('usuarios')}}"type="button" ARIA-SETSIZE="" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancelar </a>
+                            <button type="submit" class="btn bg-light-primary mr-1 mb-1 mb-sm-0 form-editar"><i class="ft-check-square mr-1"></i>Guardar</button>
+                            <a href="{{url('usuarios')}}"type="button" ARIA-SETSIZE="" class="btn bg-light-secondary mr-1 mb-1 mb-sm-0"><i class="ft-x mr-1"></i>Cancelar </a>
 
 
                         </form>

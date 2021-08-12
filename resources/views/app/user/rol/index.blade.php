@@ -76,7 +76,7 @@
                                                                     <a href="{{url('usuarios/roles/'. $rol-> id . '/edit')}}" class=" btn success p-0">
                                                                         <i class="ft-edit-2 font-medium-3 "></i>
                                                                     </a>
-                                                                    <button  type="submit"  class="btn danger p-0" >
+                                                                    <button  type="submit"  class="btn danger p-0 form-eliminar" >
                                                                         <i class="ft-x font-medium-3"></i>
                                                                     </button>
                                                                 </form>

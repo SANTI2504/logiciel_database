@@ -94,13 +94,13 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('usuarios/auxiliares/'. $auxiliary-> id )}}" class=" btn info p-1">
+                                                                <a href="{{url('usuarios/auxiliares/'. $auxiliary-> id )}}" class=" btn info m-1">
                                                                     <i class="ft-eye font-medium-3 "></i>
                                                                 </a>
                                                                 <a href="{{url('usuarios/auxiliares/'. $auxiliary-> id . '/edit')}}" class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
-                                                                <button  type="submit" id="type-success" class="btn danger p-0" >
+                                                                <button  type="submit" id="type-success" class="btn danger p-0 form-eliminar" >
                                                                     <i class="ft-x font-medium-3"></i>
                                                                 </button>
                                                             </form>

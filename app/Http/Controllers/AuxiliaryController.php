@@ -29,7 +29,7 @@ class AuxiliaryController extends Controller
 
         $auxiliary = Auxiliary::create($request -> all());
 
-        return redirect('usuarios/auxiliares');
+        return redirect('usuarios/auxiliares')->with('crear', 'ok');
     }
     public function edit($auxiliare){
         $auxiliary = Auxiliary::find($auxiliare);
@@ -44,7 +44,7 @@ class AuxiliaryController extends Controller
         $request['password'] = Hash::make($request['password']);
 
         $auxiliary = Auxiliary::find($auxiliare)->update($request->all());
-        return redirect('usuarios/auxiliares');
+        return redirect('usuarios/auxiliares')->with('actualizar', 'ok');
     }
     public function show($auxiliare){
         $auxiliary = Auxiliary::find($auxiliare);
@@ -53,6 +53,6 @@ class AuxiliaryController extends Controller
 
     public function destroy($auxiliare){
         $auxiliary = Auxiliary::find($auxiliare)->delete();
-        return redirect('usuarios/auxiliares ');
+        return redirect('usuarios/auxiliares')->with('eliminar', 'ok');
     }
 }

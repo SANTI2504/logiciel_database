@@ -29,7 +29,7 @@ class PatientController extends Controller
 
         $patient = Patient::create($request -> all());
 
-        return redirect('usuarios/pacientes');
+        return redirect('usuarios/pacientes')->with('crear', 'ok');
     }
     public function edit($paciente){
         $patient = Patient::find($paciente);
@@ -44,7 +44,7 @@ class PatientController extends Controller
         $request['password'] = Hash::make($request['password']);
 
         $patient = Patient::find($paciente)->update($request->all());
-        return redirect('usuarios/pacientes');
+        return redirect('usuarios/pacientes')->with('actualizar', 'ok');
     }
     public function show($paciente){
         $patient = Patient::find($paciente);
@@ -53,7 +53,7 @@ class PatientController extends Controller
 
     public function destroy($paciente){
         $patient = Patient::find($paciente)->delete();
-        return redirect('usuarios/pacientes ');
+        return redirect('usuarios/pacientes')->with('eliminar', 'ok');
     }
 
 }

@@ -29,7 +29,7 @@ class SpecialistController extends Controller
 
         $specialist = Specialist::create($request -> all());
 
-        return redirect('usuarios/especialistas');
+        return redirect('usuarios/especialistas')->with('crear', 'ok');
     }
     public function edit($especialista){
         $specialist = Specialist::find($especialista);
@@ -44,7 +44,7 @@ class SpecialistController extends Controller
         $request['password'] = Hash::make($request['password']);
 
         $specialist = Specialist::find($especialista)->update($request->all());
-        return redirect('usuarios/especialistas');
+        return redirect('usuarios/especialistas')->with('actualizar', 'ok');
     }
     public function show($especialista){
         $specialist = Specialist::find($especialista);
@@ -53,6 +53,6 @@ class SpecialistController extends Controller
 
     public function destroy($especialista){
         $specialist = Specialist::find($especialista)->delete();
-        return redirect('usuarios/especialistas ');
+        return redirect('usuarios/especialistas')->with('eliminar', 'ok');
     }
 }

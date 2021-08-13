@@ -39,6 +39,7 @@ mix.styles([
     'resources/css/app/switchery.min1.css',
     'resources/css/app/ex-component-sweet-alerts.min.css',
     'resources/css/app/ex-component-toastr.min.css',
+    'resources/css/app/form-validation.css',
     'resources/css/app/style.css',
 ], 'public/css/app/app.css');
 
@@ -47,6 +48,7 @@ mix.scripts([
     'resources/js/app/switchery.min.js',
     'resources/js/app/sweetalert2.all.min.js',
     'resources/js/app/toastr.min.js',
+    'resources/js/app/jqBootstrapValidation.js',
     'resources/js/app/app-menu.min.js',
     'resources/js/app/app.min.js',
     'resources/js/app/notification-sidebar.min.js',
@@ -54,6 +56,7 @@ mix.scripts([
     'resources/js/app/scroll-top.min.js',
     'resources/js/app/ex-component-toastr.min.js',
     'resources/js/app/ex-component-sweet-alerts.min.js',
+    'resources/js/app/form-validation.js',
     'resources/js/app/scripts.js',
     'resources/js/app/validate.js',
 

@@ -17,13 +17,13 @@ class RolController extends Controller
     }
 
     public function store(Request $request){
-
+        //validacion
         $campos = [
             'name' => 'required|string|max:125'
         ];
 
         $mensaje = [
-            'name.required'=>'El Nombre es requerido '
+            'name.required'=>'El Nombre es requerido'
         ];
 
         $this->validate($request, $campos, $mensaje);
@@ -48,8 +48,16 @@ class RolController extends Controller
     }
 
     public function update(Request $request, $role){
-        $rol=Role::find($role)->update($request->all());
+        //validacion
+        $campos = [
+            'name' => 'required|string|max:125'
+        ];
+        $mensaje = [
+            'name.required'=>'El Nombre es requerido '
+        ];
+        $this->validate($request, $campos, $mensaje);
 
+        $rol=Role::find($role)->update($request->all());
         return redirect('usuarios/roles')->with('actualizar', 'ok');
 
     }

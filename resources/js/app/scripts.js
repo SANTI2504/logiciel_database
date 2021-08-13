@@ -55,7 +55,7 @@
         })
     });
 
-    //sweet alert: actualizar un elemento
+    //sweet alert: crear un elemento
     $('.form-crear').on('click',function(e){
         e.preventDefault();
 

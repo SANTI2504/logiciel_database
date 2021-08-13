@@ -65,19 +65,20 @@
                     <div class="card-body ">
 
 
-                        <form method="POST" action="{{url('usuarios/pacientes')}}">
+                        <form method="POST" novalidate action="{{url('usuarios/pacientes')}}">
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-1">Nombres</label>
-                                        <input id="name" type="text" name="name" value="{{ old('name') }}"  autofocus autocomplete="name" class="form-control mb-2" placeholder="ej: Camilo Andres" required>
+                                        <input id="name" type="text" name="name" value="{{ old('name') }}"  autofocus autocomplete="name" class="form-control mb-2" placeholder="ej: Camilo Andres" required data-validation-required-message="este dato es requerido">
                                     </div>
                                 </div>
+
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Apellidos</label>
-                                        <input id="lastnames" type="text" name="lastnames" value="{{ old('lastnames') }}"  autocomplete="lastnames" class="form-control mb-2" placeholder="ej: Mesa Rincon" required>
+                                        <input id="lastnames" type="text" name="lastnames" value="{{ old('lastnames') }}"  autocomplete="lastnames" class="form-control mb-2" placeholder="ej: Mesa Rincon" required data-validation-required-message="este dato es requerido">
                                     </div>
                                 </div>
                             </div>
@@ -85,13 +86,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-3">E-mail</label>
-                                        <input id="email" type="email" name="email" value="{{ old('email') }}"  class="form-control mb-2" placeholder="ej: camilo@gmail.com" required>
+                                        <input id="email" type="email" name="email" value="{{ old('email') }}"  class="form-control mb-2" placeholder="ej: camilo@gmail.com" required data-validation-required-message="este dato es requerido">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-4">Numero de contacto</label>
-                                        <input id="number_cell" type="text" name="number_cell" value="{{ old('number_cell') }}"  class="form-control mb-2" placeholder="ej: 3115676507" required>
+                                        <input id="number_cell" type="text" name="number_cell" value="{{ old('number_cell') }}"  class="form-control mb-2" placeholder="ej: 3115676507" required data-validation-required-message="este dato es requerido">
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +111,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Numero de documento</label>
-                                        <input id="number_document" type="text" name="number_document" value="{{ old('number_document') }}"  class="form-control mb-2" placeholder="ej: 1023659635" required>
+                                        <input id="number_document" type="text" name="number_document" value="{{ old('number_document') }}"  class="form-control mb-2" placeholder="ej: 1023659635" required data-validation-required-message="este dato es requerido">
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +120,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-5">Fecha de nacimiento</label>
-                                        <input id="date_of_bird" type="date" name="date_of_bird" value="{{ old('date_of_bird') }}" class="form-control mb-2" required>
+                                        <input id="date_of_bird" type="date" name="date_of_bird" value="{{ old('date_of_bird') }}" class="form-control mb-2" required data-validation-required-message="este dato es requerido">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -146,23 +147,22 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-1">Contraseña</label>
-                                        <input id="password" type="password" name="password" autocomplete="new-password" class="form-control mb-2" required>
+                                        <input id="password" type="password" name="password" autocomplete="new-password" class="form-control mb-2" required data-validation-required-message="este dato es requerido">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-2">
                                         <label for="basic-form-2">Confirmar contraseña</label>
-                                        <input id="password_confirmation" type="password" name="password_confirmation" autocomplete="new-password" class="form-control mb-2"  required>
+                                        <input id="password_confirmation" type="password" name="password_confirmation" autocomplete="new-password" class="form-control mb-2"  required data-validation-required-message="este dato es requerido">
                                     </div>
                                 </div>
                             </div>
-
                             <button type="submit" class="btn bg-light-primary mr-1 mb-1 mb-sm-0 form-crear"><i class="ft-check-square mr-1"></i>Guardar</button>
                             <a href="{{url('usuarios')}}"type="button" class="btn bg-light-secondary mr-1 mb-1 mb-sm-0"><i class="ft-x mr-1"></i>Cancelar </a>
-
-
                         </form>
                     </div>
+
+
 
                 </div>
                 <!-- Basic Form ends -->

@@ -350,6 +350,1220 @@ this},r._applyDataApi=function(){var e={};t("[data-match-height], [data-mh]").ea
     "undefined" != typeof module && module.exports ? module.exports = b(require("jquery")) : window.toastr = b(window.jQuery)
 });
 
+(function ($) {
+
+    var createdElements = [];
+
+    var defaults = {
+        options: {
+            prependExistingHelpBlock: false,
+            sniffHtml: true, // sniff for 'required', 'maxlength', etc
+            preventSubmit: true, // stop the form submit event from firing if validation fails
+            submitError: false, // function called if there is an error when trying to submit
+            submitSuccess: false, // function called just before a successful submit event is sent to the server
+            semanticallyStrict: false, // set to true to tidy up generated HTML output
+            removeSuccess : true,
+            bindEvents: [],
+            autoAdd: {
+                helpBlocks: true
+            },
+            filter: function () {
+                // return $(this).is(":visible"); // only validate elements you can see
+                return true; // validate everything
+            }
+        },
+        methods: {
+            init: function (options) {
+
+                // Get a clean copy of the defaults for extending
+                var settings = $.extend(true, {}, defaults);
+                // Set up the options based on the input
+                settings.options = $.extend(true, settings.options, options);
+
+                var $siblingElements = this;
+
+                var uniqueForms = $.unique(
+                    $siblingElements.map(function () {
+                        return $(this).parents("form")[0];
+                    }).toArray()
+                );
+
+                $(uniqueForms).bind("submit.validationSubmit", function (e) {
+                    var $form = $(this);
+                    var warningsFound = 0;
+                    // Get all inputs
+                    var $allInputs = $form.find("input,textarea,select").not("[type=submit],[type=image]").filter(settings.options.filter);
+                    var $allControlGroups = $form.find(".form-group");
+
+                    // Only trigger validation on the ones that actually _have_ validation
+                    var $inputsWithValidators = $allInputs.filter(function () {
+                        return $(this).triggerHandler("getValidatorCount.validation") > 0;
+                    });
+                    $inputsWithValidators.trigger("submit.validation");
+
+                    // But all of them are out-of-focus now, because we're submitting.
+                    $allInputs.trigger("validationLostFocus.validation");
+
+                    // Okay, now check each controlgroup for errors (or warnings)
+                    $allControlGroups.each(function (i, el) {
+                        var $controlGroup = $(el);
+                        if ($controlGroup.hasClass("issue") || $controlGroup.hasClass("error")) {
+                            $controlGroup.removeClass("issue").addClass("error");
+                            warningsFound++;
+                        }
+                    });
+
+                    if (warningsFound) {
+                        // If we found any warnings, maybe we should prevent the submit
+                        // event, and trigger 'submitError' (if they're set up)
+                        if (settings.options.preventSubmit) {
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+                        }
+                        $form.addClass("error");
+                        if ($.isFunction(settings.options.submitError)) {
+                            settings.options.submitError($form, e, $inputsWithValidators.jqBootstrapValidation("collectErrors", true));
+                        }
+                    } else {
+                        // Woo! No errors! We can pass the submit event to submitSuccess
+                        // (if it has been set up)
+                        $form.removeClass("error");
+                        if ($.isFunction(settings.options.submitSuccess)) {
+                            settings.options.submitSuccess($form, e);
+                        }
+                    }
+                });
+
+                return this.each(function () {
+
+                    // Get references to everything we're interested in
+                    var $this = $(this),
+                        $controlGroup = $this.parents(".form-group").first(),
+                        $helpBlock = $controlGroup.find(".help-block").first(),
+                        $form = $this.parents("form").first(),
+                        validatorNames = [];
+
+                    // create message container if not exists
+                    if (!$helpBlock.length && settings.options.autoAdd && settings.options.autoAdd.helpBlocks) {
+                        $helpBlock = $('<div class="help-block" />');
+                        $controlGroup.find('.controls').append($helpBlock);
+                        createdElements.push($helpBlock[0]);
+                    }
+
+                    // =============================================================
+                    //                                     SNIFF HTML FOR VALIDATORS
+                    // =============================================================
+
+                    // *snort sniff snuffle*
+
+                    if (settings.options.sniffHtml) {
+                        var message;
+                        // ---------------------------------------------------------
+                        //                                                   PATTERN
+                        // ---------------------------------------------------------
+                        if ($this.data("validationPatternPattern")) {
+                            $this.attr("pattern", $this.data("validationPatternPattern"));
+                        }
+                        if ($this.attr("pattern") !== undefined) {
+                            message = "Not in the expected format<!-- data-validation-pattern-message to override -->";
+                            if ($this.data("validationPatternMessage")) {
+                                message = $this.data("validationPatternMessage");
+                            }
+                            $this.data("validationPatternMessage", message);
+                            $this.data("validationPatternRegex", $this.attr("pattern"));
+                        }
+                        // ---------------------------------------------------------
+                        //                                                       MAX
+                        // ---------------------------------------------------------
+                        if ($this.attr("max") !== undefined || $this.attr("aria-valuemax") !== undefined) {
+                            var max = ($this.attr("max") !== undefined ? $this.attr("max") : $this.attr("aria-valuemax"));
+                            message = "Too high: Maximum of '" + max + "'<!-- data-validation-max-message to override -->";
+                            if ($this.data("validationMaxMessage")) {
+                                message = $this.data("validationMaxMessage");
+                            }
+                            $this.data("validationMaxMessage", message);
+                            $this.data("validationMaxMax", max);
+                        }
+                        // ---------------------------------------------------------
+                        //                                                       MIN
+                        // ---------------------------------------------------------
+                        if ($this.attr("min") !== undefined || $this.attr("aria-valuemin") !== undefined) {
+                            var min = ($this.attr("min") !== undefined ? $this.attr("min") : $this.attr("aria-valuemin"));
+                            message = "Too low: Minimum of '" + min + "'<!-- data-validation-min-message to override -->";
+                            if ($this.data("validationMinMessage")) {
+                                message = $this.data("validationMinMessage");
+                            }
+                            $this.data("validationMinMessage", message);
+                            $this.data("validationMinMin", min);
+                        }
+                        // ---------------------------------------------------------
+                        //                                                 MAXLENGTH
+                        // ---------------------------------------------------------
+                        if ($this.attr("maxlength") !== undefined) {
+                            message = "Too long: Maximum of '" + $this.attr("maxlength") + "' characters<!-- data-validation-maxlength-message to override -->";
+                            if ($this.data("validationMaxlengthMessage")) {
+                                message = $this.data("validationMaxlengthMessage");
+                            }
+                            $this.data("validationMaxlengthMessage", message);
+                            $this.data("validationMaxlengthMaxlength", $this.attr("maxlength"));
+                        }
+                        // ---------------------------------------------------------
+                        //                                                 MINLENGTH
+                        // ---------------------------------------------------------
+                        if ($this.attr("minlength") !== undefined) {
+                            message = "Too short: Minimum of '" + $this.attr("minlength") + "' characters<!-- data-validation-minlength-message to override -->";
+                            if ($this.data("validationMinlengthMessage")) {
+                                message = $this.data("validationMinlengthMessage");
+                            }
+                            $this.data("validationMinlengthMessage", message);
+                            $this.data("validationMinlengthMinlength", $this.attr("minlength"));
+                        }
+                        // ---------------------------------------------------------
+                        //                                                  REQUIRED
+                        // ---------------------------------------------------------
+                        if ($this.attr("required") !== undefined || $this.attr("aria-required") !== undefined) {
+                            message = settings.builtInValidators.required.message;
+                            if ($this.data("validationRequiredMessage")) {
+                                message = $this.data("validationRequiredMessage");
+                            }
+                            $this.data("validationRequiredMessage", message);
+                        }
+                        // ---------------------------------------------------------
+                        //                                                    NUMBER
+                        // ---------------------------------------------------------
+                        if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "number") {
+                            message = settings.validatorTypes.number.message; // TODO: fix this
+                            if ($this.data("validationNumberMessage")) {
+                                message = $this.data("validationNumberMessage");
+                            }
+                            $this.data("validationNumberMessage", message);
+
+                            var step = settings.validatorTypes.number.step; // TODO: and this
+                            if ($this.data("validationNumberStep")) {
+                                step = $this.data("validationNumberStep");
+                            }
+                            $this.data("validationNumberStep", step);
+
+                            var decimal = settings.validatorTypes.number.decimal;
+                            if ($this.data("validationNumberDecimal")) {
+                                decimal = $this.data("validationNumberDecimal");
+                            }
+                            $this.data("validationNumberDecimal", decimal);
+                        }
+                        // ---------------------------------------------------------
+                        //                                                     EMAIL
+                        // ---------------------------------------------------------
+                        if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "email") {
+                            message = "Not a valid email address<!-- data-validation-email-message to override -->";
+                            if ($this.data("validationEmailMessage")) {
+                                message = $this.data("validationEmailMessage");
+                            }
+                            $this.data("validationEmailMessage", message);
+                        }
+                        // ---------------------------------------------------------
+                        //                                                MINCHECKED
+                        // ---------------------------------------------------------
+                        if ($this.attr("minchecked") !== undefined) {
+                            message = "Not enough options checked; Minimum of '" + $this.attr("minchecked") + "' required<!-- data-validation-minchecked-message to override -->";
+                            if ($this.data("validationMincheckedMessage")) {
+                                message = $this.data("validationMincheckedMessage");
+                            }
+                            $this.data("validationMincheckedMessage", message);
+                            $this.data("validationMincheckedMinchecked", $this.attr("minchecked"));
+                        }
+                        // ---------------------------------------------------------
+                        //                                                MAXCHECKED
+                        // ---------------------------------------------------------
+                        if ($this.attr("maxchecked") !== undefined) {
+                            message = "Too many options checked; Maximum of '" + $this.attr("maxchecked") + "' required<!-- data-validation-maxchecked-message to override -->";
+                            if ($this.data("validationMaxcheckedMessage")) {
+                                message = $this.data("validationMaxcheckedMessage");
+                            }
+                            $this.data("validationMaxcheckedMessage", message);
+                            $this.data("validationMaxcheckedMaxchecked", $this.attr("maxchecked"));
+                        }
+                    }
+
+                    // =============================================================
+                    //                                       COLLECT VALIDATOR NAMES
+                    // =============================================================
+
+                    // Get named validators
+                    if ($this.data("validation") !== undefined) {
+                        validatorNames = $this.data("validation").split(",");
+                    }
+
+                    // Get extra ones defined on the element's data attributes
+                    $.each($this.data(), function (i, el) {
+                        var parts = i.replace(/([A-Z])/g, ",$1").split(",");
+                        if (parts[0] === "validation" && parts[1]) {
+                            validatorNames.push(parts[1]);
+                        }
+                    });
+
+                    // =============================================================
+                    //                                     NORMALISE VALIDATOR NAMES
+                    // =============================================================
+
+                    var validatorNamesToInspect = validatorNames;
+                    var newValidatorNamesToInspect = [];
+
+                    var uppercaseEachValidatorName = function (i, el) {
+                        validatorNames[i] = formatValidatorName(el);
+                    };
+
+                    var inspectValidators = function (i, el) {
+                        if ($this.data("validation" + el + "Shortcut") !== undefined) {
+                            // Are these custom validators?
+                            // Pull them out!
+                            $.each($this.data("validation" + el + "Shortcut").split(","), function (i2, el2) {
+                                newValidatorNamesToInspect.push(el2);
+                            });
+                        } else if (settings.builtInValidators[el.toLowerCase()]) {
+                            // Is this a recognised built-in?
+                            // Pull it out!
+                            var validator = settings.builtInValidators[el.toLowerCase()];
+                            if (validator.type.toLowerCase() === "shortcut") {
+                                $.each(validator.shortcut.split(","), function (i, el) {
+                                    el = formatValidatorName(el);
+                                    newValidatorNamesToInspect.push(el);
+                                    validatorNames.push(el);
+                                });
+                            }
+                        }
+                    };
+
+                    do // repeatedly expand 'shortcut' validators into their real validators
+                    {
+                        // Uppercase only the first letter of each name
+                        $.each(validatorNames, uppercaseEachValidatorName);
+
+                        // Remove duplicate validator names
+                        validatorNames = $.unique(validatorNames);
+
+                        // Pull out the new validator names from each shortcut
+                        newValidatorNamesToInspect = [];
+                        $.each(validatorNamesToInspect, inspectValidators);
+
+                        validatorNamesToInspect = newValidatorNamesToInspect;
+
+                    } while (validatorNamesToInspect.length > 0);
+
+                    // =============================================================
+                    //                                       SET UP VALIDATOR ARRAYS
+                    // =============================================================
+
+                    /* We're gonna generate something like
+                     *
+                     * {
+                     *   "regex": [
+                     *     { -- a validator object here --},
+                     *     { -- a validator object here --}
+                     *   ],
+                     *   "required": [
+                     *     { -- a validator object here --},
+                     *     { -- a validator object here --}
+                     *   ]
+                     * }
+                     *
+                     * with a few more entries.
+                     *
+                     * Because we only add a few validators to each field, most of the
+                     * keys will be empty arrays with no validator objects in them, and
+                     * thats fine.
+                     */
+
+                    var validators = {};
+
+                    $.each(validatorNames, function (i, el) {
+                        // Set up the 'override' message
+                        var message = $this.data("validation" + el + "Message");
+                        var hasOverrideMessage = !!message;
+                        var foundValidator = false;
+                        if (!message) {
+                            message = "'" + el + "' validation failed <!-- Add attribute 'data-validation-" + el.toLowerCase() + "-message' to input to change this message -->";
+                        }
+
+                        $.each(
+                            settings.validatorTypes,
+                            function (validatorType, validatorTemplate) {
+                                if (validators[validatorType] === undefined) {
+                                    validators[validatorType] = [];
+                                }
+                                if (!foundValidator && $this.data("validation" + el + formatValidatorName(validatorTemplate.name)) !== undefined) {
+                                    var initted = validatorTemplate.init($this, el);
+                                    if (hasOverrideMessage) {
+                                        initted.message = message;
+                                    }
+
+                                    validators[validatorType].push(
+                                        $.extend(
+                                            true,
+                                            {
+                                                name: formatValidatorName(validatorTemplate.name),
+                                                message: message
+                                            },
+                                            initted
+                                        )
+                                    );
+                                    foundValidator = true;
+                                }
+                            }
+                        );
+
+                        if (!foundValidator && settings.builtInValidators[el.toLowerCase()]) {
+
+                            var validator = $.extend(true, {}, settings.builtInValidators[el.toLowerCase()]);
+                            if (hasOverrideMessage) {
+                                validator.message = message;
+                            }
+                            var validatorType = validator.type.toLowerCase();
+
+                            if (validatorType === "shortcut") {
+                                foundValidator = true;
+                            } else {
+                                $.each(
+                                    settings.validatorTypes,
+                                    function (validatorTemplateType, validatorTemplate) {
+                                        if (validators[validatorTemplateType] === undefined) {
+                                            validators[validatorTemplateType] = [];
+                                        }
+                                        if (!foundValidator && validatorType === validatorTemplateType.toLowerCase()) {
+                                            $this.data(
+                                                "validation" + el + formatValidatorName(validatorTemplate.name),
+                                                validator[validatorTemplate.name.toLowerCase()]
+                                            );
+                                            validators[validatorType].push(
+                                                $.extend(
+                                                    validator,
+                                                    validatorTemplate.init($this, el)
+                                                )
+                                            );
+                                            foundValidator = true;
+                                        }
+                                    }
+                                );
+                            }
+                        }
+
+                        if (!foundValidator) {
+                            $.error("Cannot find validation info for '" + el + "'");
+                        }
+                    });
+
+                    // =============================================================
+                    //                                         STORE FALLBACK VALUES
+                    // =============================================================
+
+                    $helpBlock.data(
+                        "original-contents",
+                        (
+                            $helpBlock.data("original-contents") ?
+                                $helpBlock.data("original-contents") :
+                                $helpBlock.html()
+                        )
+                    );
+
+                    $helpBlock.data(
+                        "original-role",
+                        (
+                            $helpBlock.data("original-role") ?
+                                $helpBlock.data("original-role") :
+                                $helpBlock.attr("role")
+                        )
+                    );
+
+                    $controlGroup.data(
+                        "original-classes",
+                        (
+                            $controlGroup.data("original-clases") ?
+                                $controlGroup.data("original-classes") :
+                                $controlGroup.attr("class")
+                        )
+                    );
+
+                    $this.data(
+                        "original-aria-invalid",
+                        (
+                            $this.data("original-aria-invalid") ?
+                                $this.data("original-aria-invalid") :
+                                $this.attr("aria-invalid")
+                        )
+                    );
+
+                    // =============================================================
+                    //                                                    VALIDATION
+                    // =============================================================
+
+                    $this.bind(
+                        "validation.validation",
+                        function (event, params) {
+
+                            var value = getValue($this);
+
+                            // Get a list of the errors to apply
+                            var errorsFound = [];
+
+                            $.each(validators, function (validatorType, validatorTypeArray) {
+                                if (
+                                    value || // has a truthy value
+                                    value.length || // not an empty string
+                                    ( // am including empty values
+                                        (
+                                            params &&
+                                            params.includeEmpty
+                                        ) || !!settings.validatorTypes[validatorType].includeEmpty
+                                    ) ||
+                                    ( // validator is blocking submit
+                                        !!settings.validatorTypes[validatorType].blockSubmit &&
+                                        params && !!params.submitting
+                                    )
+                                ) {
+                                    $.each(
+                                        validatorTypeArray,
+                                        function (i, validator) {
+                                            if (settings.validatorTypes[validatorType].validate($this, value, validator)) {
+                                                errorsFound.push(validator.message);
+                                            }
+                                        }
+                                    );
+                                }
+                            });
+
+                            return errorsFound;
+                        }
+                    );
+
+                    $this.bind(
+                        "getValidators.validation",
+                        function () {
+                            return validators;
+                        }
+                    );
+
+                    var numValidators = 0;
+
+                    $.each(validators, function (i, el) {
+                        numValidators += el.length;
+                    });
+
+                    $this.bind("getValidatorCount.validation", function () {
+                        return numValidators;
+                    });
+
+                    // =============================================================
+                    //                                             WATCH FOR CHANGES
+                    // =============================================================
+                    $this.bind(
+                        "submit.validation",
+                        function () {
+                            return $this.triggerHandler("change.validation", {submitting: true});
+                        }
+                    );
+                    $this.bind(
+                        (
+                            settings.options.bindEvents.length > 0 ?
+                                settings.options.bindEvents :
+                                [
+                                    "keyup",
+                                    "focus",
+                                    "blur",
+                                    "click",
+                                    "keydown",
+                                    "keypress",
+                                    "change"
+                                ]
+                        ).concat(["revalidate"]).join(".validation ") + ".validation",
+                        function (e, params) {
+
+                            var value = getValue($this);
+
+                            var errorsFound = [];
+
+                            if (params && !!params.submitting) {
+                                $controlGroup.data("jqbvIsSubmitting", true);
+                            } else if (e.type !== "revalidate") {
+                                $controlGroup.data("jqbvIsSubmitting", false);
+                            }
+
+                            var formIsSubmitting = !!$controlGroup.data("jqbvIsSubmitting");
+
+                            $controlGroup.find("input,textarea,select").not('[type=submit]').each(function (i, el) {
+                                var oldCount = errorsFound.length;
+                                $.each($(el).triggerHandler("validation.validation", params) || [], function (j, message) {
+                                    errorsFound.push(message);
+                                });
+                                if (errorsFound.length > oldCount) {
+                                    $(el).attr("aria-invalid", "true");
+                                } else {
+                                    var original = $this.data("original-aria-invalid");
+                                    $(el).attr("aria-invalid", (original !== undefined ? original : false));
+                                }
+                            });
+
+                            $form.find("input,select,textarea").not($this).not("[name=\"" + $this.attr("name") + "\"]").trigger("validationLostFocus.validation");
+
+                            errorsFound = $.unique(errorsFound.sort());
+
+                            // Were there any errors?
+                            if (errorsFound.length) {
+                                // Better flag it up as a warning.
+                                $controlGroup.removeClass("validate error issue").addClass(formIsSubmitting ? "error" : "issue");
+
+                                // How many errors did we find?
+                                if (settings.options.semanticallyStrict && errorsFound.length === 1) {
+                                    // Only one? Being strict? Just output it.
+                                    $helpBlock.html(errorsFound[0] +
+                                        ( settings.options.prependExistingHelpBlock ? $helpBlock.data("original-contents") : "" ));
+                                } else {
+                                    // Multiple? Being sloppy? Glue them together into an UL.
+                                    $helpBlock.html("<ul role=\"alert\"><li>" + errorsFound.join("</li><li>") + "</li></ul>" +
+                                        ( settings.options.prependExistingHelpBlock ? $helpBlock.data("original-contents") : "" ));
+                                }
+                            } else {
+                                $controlGroup.removeClass("issue error validate");
+                                if (value.length > 0) {
+                                    $controlGroup.addClass("validate");
+                                }
+                                $helpBlock.html($helpBlock.data("original-contents"));
+                            }
+
+                            if (e.type === "blur") {
+                                if( settings.options.removeSuccess ){
+                                    // $controlGroup.removeClass("validate");
+                                }
+                            }
+                        }
+                    );
+                    $this.bind("validationLostFocus.validation", function () {
+                        if( settings.options.removeSuccess ){
+                            // $controlGroup.removeClass("validate");
+                        }
+                    });
+                });
+            },
+            destroy: function () {
+
+                return this.each(
+                    function () {
+
+                        var
+                            $this = $(this),
+                            $controlGroup = $this.parents(".form-group").first(),
+                            $helpBlock = $controlGroup.find(".help-block").first(),
+                            $form = $this.parents("form").first();
+
+                        // remove our events
+                        $this.unbind('.validation'); // events are namespaced.
+                        $form.unbind(".validationSubmit");
+                        // reset help text
+                        $helpBlock.html($helpBlock.data("original-contents"));
+                        // reset classes
+                        $controlGroup.attr("class", $controlGroup.data("original-classes"));
+                        // reset aria
+                        $this.attr("aria-invalid", $this.data("original-aria-invalid"));
+                        // reset role
+                        $helpBlock.attr("role", $this.data("original-role"));
+                        // remove all elements we created
+                        if ($.inArray($helpBlock[0], createdElements) > -1) {
+                            $helpBlock.remove();
+                        }
+
+                    }
+                );
+
+            },
+            collectErrors: function (includeEmpty) {
+
+                var errorMessages = {};
+                this.each(function (i, el) {
+                    var $el = $(el);
+                    var name = $el.attr("name");
+                    var errors = $el.triggerHandler("validation.validation", {includeEmpty: true});
+                    errorMessages[name] = $.extend(true, errors, errorMessages[name]);
+                });
+
+                $.each(errorMessages, function (i, el) {
+                    if (el.length === 0) {
+                        delete errorMessages[i];
+                    }
+                });
+
+                return errorMessages;
+
+            },
+            hasErrors: function () {
+
+                var errorMessages = [];
+
+                this.find('input,select,textarea').add(this).each(function (i, el) {
+                    errorMessages = errorMessages.concat(
+                        $(el).triggerHandler("getValidators.validation") ? $(el).triggerHandler("validation.validation", {submitting: true}) : []
+                    );
+                });
+
+                return (errorMessages.length > 0);
+            },
+            override: function (newDefaults) {
+                defaults = $.extend(true, defaults, newDefaults);
+            }
+        },
+        validatorTypes: {
+            callback: {
+                name: "callback",
+                init: function ($this, name) {
+                    var result = {
+                        validatorName: name,
+                        callback: $this.data("validation" + name + "Callback"),
+                        lastValue: $this.val(),
+                        lastValid: true,
+                        lastFinished: true
+                    };
+
+                    var message = "Not valid";
+                    if ($this.data("validation" + name + "Message")) {
+                        message = $this.data("validation" + name + "Message");
+                    }
+                    result.message = message;
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    if (validator.lastValue === value && validator.lastFinished) {
+                        return !validator.lastValid;
+                    }
+
+                    if (validator.lastFinished === true) {
+                        validator.lastValue = value;
+                        validator.lastValid = true;
+                        validator.lastFinished = false;
+
+                        var rrjqbvValidator = validator;
+                        var rrjqbvThis = $this;
+                        executeFunctionByName(
+                            validator.callback,
+                            window,
+                            $this,
+                            value,
+                            function (data) {
+                                if (rrjqbvValidator.lastValue === data.value) {
+                                    rrjqbvValidator.lastValid = data.valid;
+                                    if (data.message) {
+                                        rrjqbvValidator.message = data.message;
+                                    }
+                                    rrjqbvValidator.lastFinished = true;
+                                    rrjqbvThis.data(
+                                        "validation" + rrjqbvValidator.validatorName + "Message",
+                                        rrjqbvValidator.message
+                                    );
+
+                                    // Timeout is set to avoid problems with the events being considered 'already fired'
+                                    setTimeout(function () {
+                                        if (!$this.is(":focus") && $this.parents("form").first().data("jqbvIsSubmitting")) {
+                                            rrjqbvThis.trigger("blur.validation");
+                                        } else {
+                                            rrjqbvThis.trigger("revalidate.validation");
+                                        }
+                                    }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+                                }
+                            }
+                        );
+                    }
+
+                    return false;
+
+                }
+            },
+            ajax: {
+                name: "ajax",
+                init: function ($this, name) {
+                    return {
+                        validatorName: name,
+                        url: $this.data("validation" + name + "Ajax"),
+                        lastValue: $this.val(),
+                        lastValid: true,
+                        lastFinished: true
+                    };
+                },
+                validate: function ($this, value, validator) {
+                    if ("" + validator.lastValue === "" + value && validator.lastFinished === true) {
+                        return validator.lastValid === false;
+                    }
+
+                    if (validator.lastFinished === true) {
+                        validator.lastValue = value;
+                        validator.lastValid = true;
+                        validator.lastFinished = false;
+                        $.ajax({
+                            url: validator.url,
+                            data: "value=" + encodeURIComponent(value) + "&field=" + $this.attr("name"),
+                            dataType: "json",
+                            success : function (data) {
+                                if ("" + validator.lastValue === "" + data.value) {
+                                    validator.lastValid = !!(data.valid);
+                                    if (data.message) {
+                                        validator.message = data.message;
+                                    }
+                                    validator.lastFinished = true;
+                                    $this.data("validation" + validator.validatorName + "Message", validator.message);
+                                    // Timeout is set to avoid problems with the events being considered 'already fired'
+                                    setTimeout(function () {
+                                        $this.trigger("revalidate.validation");
+                                    }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+                                }
+                            },
+                            failure: function () {
+                                validator.lastValid = true;
+                                validator.message = "ajax call failed";
+                                validator.lastFinished = true;
+                                $this.data("validation" + validator.validatorName + "Message", validator.message);
+                                // Timeout is set to avoid problems with the events being considered 'already fired'
+                                setTimeout(function () {
+                                    $this.trigger("revalidate.validation");
+                                }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+                            }
+                        });
+                    }
+
+                    return false;
+
+                }
+            },
+            regex: {
+                name: "regex",
+                init: function ($this, name) {
+                    var result = {};
+                    var regexString = $this.data("validation" + name + "Regex");
+                    result.regex = regexFromString(regexString);
+                    if (regexString === undefined) {
+                        $.error("Can't find regex for '" + name + "' validator on '" + $this.attr("name") + "'");
+                    }
+
+                    var message = "Not in the expected format";
+                    if ($this.data("validation" + name + "Message")) {
+                        message = $this.data("validation" + name + "Message");
+                    }
+
+                    result.message = message;
+
+                    result.originalName = name;
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return (!validator.regex.test(value) && !validator.negative) ||
+                        (validator.regex.test(value) && validator.negative);
+                }
+            },
+            email: {
+                name: "email",
+                init: function ($this, name) {
+                    var result = {};
+                    result.regex = regexFromString('[a-zA-Z0-9.!#$%&\u2019*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}');
+
+                    var message = "Not a valid email address";
+                    if ($this.data("validation" + name + "Message")) {
+                        message = $this.data("validation" + name + "Message");
+                    }
+
+                    result.message = message;
+
+                    result.originalName = name;
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return (!validator.regex.test(value) && !validator.negative) ||
+                        (validator.regex.test(value) && validator.negative);
+                }
+            },
+            required: {
+                name: "required",
+                init: function ($this, name) {
+                    var message = "This is required";
+                    if ($this.data("validation" + name + "Message")) {
+                        message = $this.data("validation" + name + "Message");
+                    }
+
+                    return {message: message, includeEmpty: true};
+                },
+                validate: function ($this, value, validator) {
+                    return !!(
+                        (value.length === 0 && !validator.negative) ||
+                        (value.length > 0 && validator.negative)
+                    );
+                },
+                blockSubmit: true
+            },
+            match: {
+                name: "match",
+                init: function ($this, name) {
+                    var elementName = $this.data("validation" + name + "Match");
+                    var $form = $this.parents("form").first();
+                    var $element = $form.find("[name=\"" + elementName + "\"]").first();
+                    $element.bind("validation.validation", function () {
+                        $this.trigger("revalidate.validation", {submitting: true});
+                    });
+                    var result = {};
+                    result.element = $element;
+
+                    if ($element.length === 0) {
+                        $.error("Can't find field '" + elementName + "' to match '" + $this.attr("name") + "' against in '" + name + "' validator");
+                    }
+
+                    var message = "Must match";
+                    var $label = null;
+                    if (($label = $form.find("label[for=\"" + elementName + "\"]")).length) {
+                        message += " '" + $label.text() + "'";
+                    } else if (($label = $element.parents(".form-group").first().find("label")).length) {
+                        message += " '" + $label.first().text() + "'";
+                    }
+
+                    if ($this.data("validation" + name + "Message")) {
+                        message = $this.data("validation" + name + "Message");
+                    }
+
+                    result.message = message;
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return (value !== validator.element.val() && !validator.negative) ||
+                        (value === validator.element.val() && validator.negative);
+                },
+                blockSubmit: true,
+                includeEmpty: true
+            },
+            max: {
+                name: "max",
+                init: function ($this, name) {
+                    var result = {};
+
+                    result.max = $this.data("validation" + name + "Max");
+
+                    result.message = "Too high: Maximum of '" + result.max + "'";
+                    if ($this.data("validation" + name + "Message")) {
+                        result.message = $this.data("validation" + name + "Message");
+                    }
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return (parseFloat(value, 10) > parseFloat(validator.max, 10) && !validator.negative) ||
+                        (parseFloat(value, 10) <= parseFloat(validator.max, 10) && validator.negative);
+                }
+            },
+            min: {
+                name: "min",
+                init: function ($this, name) {
+                    var result = {};
+
+                    result.min = $this.data("validation" + name + "Min");
+
+                    result.message = "Too low: Minimum of '" + result.min + "'";
+                    if ($this.data("validation" + name + "Message")) {
+                        result.message = $this.data("validation" + name + "Message");
+                    }
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return (parseFloat(value) < parseFloat(validator.min) && !validator.negative) ||
+                        (parseFloat(value) >= parseFloat(validator.min) && validator.negative);
+                }
+            },
+            maxlength: {
+                name: "maxlength",
+                init: function ($this, name) {
+                    var result = {};
+
+                    result.maxlength = $this.data("validation" + name + "Maxlength");
+
+                    result.message = "Too long: Maximum of '" + result.maxlength + "' characters";
+                    if ($this.data("validation" + name + "Message")) {
+                        result.message = $this.data("validation" + name + "Message");
+                    }
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return ((value.length > validator.maxlength) && !validator.negative) ||
+                        ((value.length <= validator.maxlength) && validator.negative);
+                }
+            },
+            minlength: {
+                name: "minlength",
+                init: function ($this, name) {
+                    var result = {};
+
+                    result.minlength = $this.data("validation" + name + "Minlength");
+
+                    result.message = "Too short: Minimum of '" + result.minlength + "' characters";
+                    if ($this.data("validation" + name + "Message")) {
+                        result.message = $this.data("validation" + name + "Message");
+                    }
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return ((value.length < validator.minlength) && !validator.negative) ||
+                        ((value.length >= validator.minlength) && validator.negative);
+                }
+            },
+            maxchecked: {
+                name: "maxchecked",
+                init: function ($this, name) {
+                    var result = {};
+
+                    var elements = $this.parents("form").first().find("[name=\"" + $this.attr("name") + "\"]");
+                    elements.bind("change.validation click.validation", function () {
+                        $this.trigger("revalidate.validation", {includeEmpty: true});
+                    });
+
+                    result.elements = elements;
+                    result.maxchecked = $this.data("validation" + name + "Maxchecked");
+
+                    var message = "Too many: Max '" + result.maxchecked + "' checked";
+                    if ($this.data("validation" + name + "Message")) {
+                        message = $this.data("validation" + name + "Message");
+                    }
+                    result.message = message;
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return (validator.elements.filter(":checked").length > validator.maxchecked && !validator.negative) ||
+                        (validator.elements.filter(":checked").length <= validator.maxchecked && validator.negative);
+                },
+                blockSubmit: true
+            },
+            minchecked: {
+                name: "minchecked",
+                init: function ($this, name) {
+                    var result = {};
+
+                    var elements = $this.parents("form").first().find("[name=\"" + $this.attr("name") + "\"]");
+                    elements.bind("change.validation click.validation", function () {
+                        $this.trigger("revalidate.validation", {includeEmpty: true});
+                    });
+
+                    result.elements = elements;
+                    result.minchecked = $this.data("validation" + name + "Minchecked");
+
+                    var message = "Too few: Min '" + result.minchecked + "' checked";
+                    if ($this.data("validation" + name + "Message")) {
+                        message = $this.data("validation" + name + "Message");
+                    }
+                    result.message = message;
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    return (validator.elements.filter(":checked").length < validator.minchecked && !validator.negative) ||
+                        (validator.elements.filter(":checked").length >= validator.minchecked && validator.negative);
+                },
+                blockSubmit: true,
+                includeEmpty: true
+            },
+            number: {
+                name: "number",
+                init: function ($this, name) {
+                    var result = {};
+                    result.step = 1;
+                    if ($this.attr("step")) {
+                        result.step = $this.attr("step");
+                    }
+                    if ($this.data("validation" + name + "Step")) {
+                        result.step = $this.data("validation" + name + "Step");
+                    }
+
+                    result.decimal = ".";
+                    if ($this.data("validation" + name + "Decimal")) {
+                        result.decimal = $this.data("validation" + name + "Decimal");
+                    }
+
+                    result.thousands = "";
+                    if ($this.data("validation" + name + "Thousands")) {
+                        result.thousands = $this.data("validation" + name + "Thousands");
+                    }
+
+                    result.regex = regexFromString("([+-]?\\d+(\\" + result.decimal + "\\d+)?)?");
+
+                    result.message = "Must be a number";
+                    var dataMessage = $this.data("validation" + name + "Message");
+                    if (dataMessage) {
+                        result.message = dataMessage;
+                    }
+
+                    return result;
+                },
+                validate: function ($this, value, validator) {
+                    var globalValue = value.replace(validator.decimal, ".").replace(validator.thousands, "");
+                    var multipliedValue = parseFloat(globalValue);
+                    var multipliedStep = parseFloat(validator.step);
+                    while (multipliedStep % 1 !== 0) {
+                        /* thanks to @jkey #57 */
+                        multipliedStep = parseFloat(multipliedStep.toPrecision(12)) * 10;
+                        multipliedValue = parseFloat(multipliedValue.toPrecision(12)) * 10;
+                    }
+                    var regexResult = validator.regex.test(value);
+                    var stepResult = parseFloat(multipliedValue) % parseFloat(multipliedStep) === 0;
+                    var typeResult = !isNaN(parseFloat(globalValue)) && isFinite(globalValue);
+                    var result = !(regexResult && stepResult && typeResult);
+                    return result;
+                },
+                message: "Must be a number"
+            }
+        },
+        builtInValidators: {
+            email: {
+                name: "Email",
+                type: "email"
+            },
+            passwordagain: {
+                name: "Passwordagain",
+                type: "match",
+                match: "password",
+                message: "Does not match the given password<!-- data-validator-paswordagain-message to override -->"
+            },
+            positive: {
+                name: "Positive",
+                type: "shortcut",
+                shortcut: "number,positivenumber"
+            },
+            negative: {
+                name: "Negative",
+                type: "shortcut",
+                shortcut: "number,negativenumber"
+            },
+            integer: {
+                name: "Integer",
+                type: "regex",
+                regex: "[+-]?\\d+",
+                message: "No decimal places allowed<!-- data-validator-integer-message to override -->"
+            },
+            positivenumber: {
+                name: "Positivenumber",
+                type: "min",
+                min: 0,
+                message: "Must be a positive number<!-- data-validator-positivenumber-message to override -->"
+            },
+            negativenumber: {
+                name: "Negativenumber",
+                type: "max",
+                max: 0,
+                message: "Must be a negative number<!-- data-validator-negativenumber-message to override -->"
+            },
+            required: {
+                name: "Required",
+                type: "required",
+                message: "This is required<!-- data-validator-required-message to override -->"
+            },
+            checkone: {
+                name: "Checkone",
+                type: "minchecked",
+                minchecked: 1,
+                message: "Check at least one option<!-- data-validation-checkone-message to override -->"
+            },
+            number: {
+                name: "Number",
+                type: "number",
+                decimal: ".",
+                step: "1"
+            },
+            pattern: {
+                name: "Pattern",
+                type: "regex",
+                message: "Not in expected format"
+            }
+        }
+    };
+
+    var formatValidatorName = function (name) {
+        return name
+            .toLowerCase()
+            .replace(
+                /(^|\s)([a-z])/g,
+                function (m, p1, p2) {
+                    return p1 + p2.toUpperCase();
+                }
+            )
+            ;
+    };
+
+    var getValue = function ($this) {
+        // Extract the value we're talking about
+        var value = null;
+        var type = $this.attr("type");
+        if (type === "checkbox") {
+            value = ($this.is(":checked") ? value : "");
+            var checkboxParent = $this.parents("form").first() || $this.parents(".form-group").first();
+            if (checkboxParent) {
+                value = checkboxParent.find("input[name='" + $this.attr("name") + "']:checked").map(function (i, el) {
+                    return $(el).val();
+                }).toArray().join(",");
+            }
+        }
+        else if (type === "radio") {
+            value = ($('input[name="' + $this.attr("name") + '"]:checked').length > 0 ? $this.val() : "");
+            var radioParent = $this.parents("form").first() || $this.parents(".form-group").first();
+            if (radioParent) {
+                value = radioParent.find("input[name='" + $this.attr("name") + "']:checked").map(function (i, el) {
+                    return $(el).val();
+                }).toArray().join(",");
+            }
+        } else if (type === "number") {
+            if ($this[0].validity.valid) {
+                value = $this.val();
+            } else {
+                if ($this[0].validity.badInput || $this[0].validity.stepMismatch) {
+                    value = "NaN";
+                } else {
+                    value = "";
+                }
+            }
+        } else {
+            value = $this.val();
+        }
+        return value;
+    };
+
+    function regexFromString(inputstring) {
+        return new RegExp("^" + inputstring + "$");
+    }
+
+    /**
+     * Thanks to Jason Bunting / Alex Nazarov via StackOverflow.com
+     *
+     * http://stackoverflow.com/a/4351575
+     **/
+    function executeFunctionByName(functionName, context /*, args */) {
+        var args = Array.prototype.slice.call(arguments, 2);
+        var namespaces = functionName.split(".");
+        var func = namespaces.pop();
+        for (var i = 0; i < namespaces.length; i++) {
+            context = context[namespaces[i]];
+        }
+        return context[func].apply(context, args);
+    }
+
+    $.fn.jqBootstrapValidation = function (method) {
+
+        if (defaults.methods[method]) {
+            return defaults.methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        } else if (typeof method === 'object' || !method) {
+            return defaults.methods.init.apply(this, arguments);
+        } else {
+            $.error('Method ' + method + ' does not exist on jQuery.jqBootstrapValidation');
+            return null;
+        }
+
+    };
+
+    $.jqBootstrapValidation = function (options) {
+        $(":input").not("[type=image],[type=submit]").jqBootstrapValidation.apply(this, arguments);
+    };
+
+})(jQuery);
+
 !function(o,t,r){"use strict";var e=.01*o.innerHeight;t.documentElement.style.setProperty("--vh",e+"px"),r.app=r.app||{};var l=r("body"),d=r(o),u=r('div[data-menu="menu-wrapper"]').html(),m=r('div[data-menu="menu-wrapper"]').attr("class");r.app.menu={expanded:null,collapsed:null,hidden:null,container:null,horizontalMenu:!1,is_touch_device:function(){var e=" -webkit- -moz- -o- -ms- ".split(" ");if("ontouchstart"in o||o.DocumentTouch&&t instanceof DocumentTouch)return!0;var a,n=["(",e.join("touch-enabled),("),"heartz",")"].join("");return a=n,o.matchMedia(a).matches},manualScroller:{obj:null,init:function(){r(".app-sidebar").hasClass("menu-dark");r.app.menu.is_touch_device()?r(".app-sidebar").addClass("menu-native-scroll"):this.obj=new PerfectScrollbar(".main-menu-content",{suppressScrollX:!0,wheelPropagation:!1})},update:function(){if(this.obj){if(!0===r(".app-sidebar").data("scroll-to-active")){var e,a,n;if(e=t.querySelector(".main-menu-content li.active"),a=t.querySelector(".main-menu-content"),l.hasClass("nav-collapsed")&&r(".main-menu-content li.sidebar-group-active").length&&(e=t.querySelector(".main-menu-content li.sidebar-group-active")),e&&(n=e.getBoundingClientRect().top+a.scrollTop),n>parseInt(2*a.clientHeight/3))var s=n-a.scrollTop-parseInt(a.clientHeight/2);setTimeout(function(){r.app.menu.container.stop().animate({scrollTop:s},300),r(".app-sidebar").data("scroll-to-active","false")},300)}this.obj.update()}},enable:function(){r(".main-menu-content").hasClass("ps")||this.init()},disable:function(){this.obj&&this.obj.destroy()},updateHeight:function(){"vertical-menu"!=l.data("menu")&&"vertical-overlay-menu"!=l.data("menu")||!r(".app-sidebar").hasClass("menu-fixed")||(r(".main-menu-content").css("height",r(o).height()-r(".header-navbar").height()-r(".main-menu-header").outerHeight()-r(".main-menu-footer").outerHeight()),this.update())}},init:function(e){if(0<r(".main-menu-content").length){this.container=r(".main-menu-content");var a="";if(!0===e&&(a="collapsed"),"vertical-menu"==l.data("menu")){this.change(a)}else this.change(a)}},drillDownMenu:function(e){r(".drilldown-menu").length&&("sm"==e||"xs"==e?"true"==r("#navbar-mobile").attr("aria-expanded")&&r(".drilldown-menu").slidingMenu({backLabel:!0}):r(".drilldown-menu").slidingMenu({backLabel:!0}))},change:function(e){var a=Unison.fetch.now();this.reset();var n=l.data("menu");if(a)switch(a.name){case"xl":"vertical-overlay-menu"===n?this.hide():"collapsed"===e?this.collapse(e):this.expand();break;case"lg":"vertical-overlay-menu"===n?this.hide():"collapsed"===e?this.collapse(e):this.hide();break;case"md":case"sm":case"xs":this.hide()}"vertical-menu"===n&&this.toOverlayMenu(a.name,n),l.is(".horizontal-layout")&&!l.hasClass(".horizontal-menu-demo")&&(this.changeMenu(a.name),r(".nav-toggle").removeClass("is-active")),"horizontal-menu"!=n&&this.drillDownMenu(a.name),"xl"==a.name&&(r('body[data-open="hover"] .dropdown').on("mouseenter",function(){r(this).hasClass("show")?r(this).removeClass("show"):r(this).addClass("show")}).on("mouseleave",function(e){r(this).removeClass("show")}),r('body[data-open="hover"] .dropdown a').on("click",function(e){if("horizontal-menu"==n&&r(this).hasClass("dropdown-toggle"))return!1})),r(".header-navbar").hasClass("navbar-brand-center")&&r(".header-navbar").attr("data-nav","brand-center"),"sm"==a.name||"xs"==a.name?r(".header-navbar[data-nav=brand-center]").removeClass("navbar-brand-center"):r(".header-navbar[data-nav=brand-center]").addClass("navbar-brand-center"),"xl"!==a.name&&"horizontal-menu"==n&&r("#navbar-type").toggleClass("d-none d-xl-block"),r("ul.dropdown-menu [data-toggle=dropdown]").on("click",function(e){0<r(this).siblings("ul.dropdown-menu").length&&e.preventDefault(),e.stopPropagation(),r(this).parent().siblings().removeClass("show"),r(this).parent().toggleClass("show")}),"horizontal-menu"==n&&r("li.dropdown-submenu").on("mouseenter",function(){r(this).parent(".dropdown").hasClass("show")||r(this).removeClass("openLeft");var e=r(this).find(".dropdown-menu");if(e){var a=r(o).height(),n=e.offset().top,s=e.offset().left,t=e.width();if(a-n-e.height()-28<1){var i=a-n-25;r(this).find(".dropdown-menu").css({"max-height":i+"px","overflow-y":"auto","overflow-x":"hidden"});new PerfectScrollbar("li.dropdown-submenu.show .dropdown-menu",{wheelPropagation:!1})}0<=s+t-(o.innerWidth-16)&&r(this).addClass("openLeft")}})},transit:function(e,a){var n=this;l.addClass("changing-menu"),e.call(n),l.hasClass("vertical-layout")&&(l.hasClass("menu-open")||l.hasClass("menu-expanded")?(r(".nav-toggle").addClass("is-active"),"vertical-menu"===l.data("menu")&&r(".main-menu-header")&&r(".main-menu-header").show()):(r(".nav-toggle").removeClass("is-active"),"vertical-menu"===l.data("menu")&&r(".main-menu-header")&&r(".main-menu-header").hide())),setTimeout(function(){a.call(n),l.removeClass("changing-menu"),n.update()},500)},open:function(){this.transit(function(){l.removeClass("menu-hide nav-collapsed").addClass("menu-open"),this.hidden=!1,this.expanded=!0,l.hasClass("vertical-overlay-menu")&&(r(".sidenav-overlay").removeClass("d-none").addClass("d-block"),r("body").css("overflow","hidden"))},function(){!r(".app-sidebar").hasClass("menu-native-scroll")&&r(".app-sidebar").hasClass("menu-fixed")&&(this.manualScroller.enable(),r(".main-menu-content").css("height",r(o).height()-r(".header-navbar").height()-r(".main-menu-header").outerHeight()-r(".main-menu-footer").outerHeight())),l.hasClass("vertical-overlay-menu")||(r(".sidenav-overlay").removeClass("d-block d-none"),r("body").css("overflow","auto"))})},hide:function(){this.transit(function(){l.removeClass("menu-open menu-expanded").addClass("menu-hide"),this.hidden=!0,this.expanded=!1,l.hasClass("vertical-overlay-menu")&&(r(".sidenav-overlay").removeClass("d-block").addClass("d-none"),r("body").css("overflow","auto"))},function(){!r(".app-sidebar").hasClass("menu-native-scroll")&&r(".app-sidebar").hasClass("menu-fixed")&&this.manualScroller.enable(),l.hasClass("vertical-overlay-menu")||(r(".sidenav-overlay").removeClass("d-block d-none"),r("body").css("overflow","auto"))})},expand:function(){!1===this.expanded&&("vertical-menu"==l.data("menu")&&r(".nav-toggle").find(".toggle-icon").removeClass("ft-toggle-left").addClass("ft-toggle-right"),this.transit(function(){l.removeClass("nav-collapsed").addClass("menu-expanded"),this.collapsed=!1,this.expanded=!0,r(".sidenav-overlay").removeClass("d-block d-none")},function(){r(".app-sidebar").hasClass("menu-native-scroll")||"horizontal-menu"==l.data("menu")?this.manualScroller.disable():r(".app-sidebar").hasClass("menu-fixed")&&this.manualScroller.enable(),"vertical-menu"==l.data("menu")&&r(".app-sidebar").hasClass("menu-fixed")&&r(".main-menu-content").css("height",r(o).height()-r(".header-navbar").height()-r(".main-menu-header").outerHeight()-r(".main-menu-footer").outerHeight())}))},collapse:function(e){!1===this.collapsed&&("vertical-menu"==l.data("menu")&&r(".nav-toggle").find(".toggle-icon").removeClass("ft-toggle-right").addClass("ft-toggle-left"),this.transit(function(){l.removeClass("menu-expanded").addClass("nav-collapsed"),this.collapsed=!0,this.expanded=!1,r(".content-overlay").removeClass("d-block d-none")},function(){"horizontal-menu"==l.data("menu")&&l.hasClass("vertical-overlay-menu")&&r(".app-sidebar").hasClass("menu-fixed")&&this.manualScroller.enable(),"vertical-menu"==l.data("menu")&&r(".app-sidebar").hasClass("menu-fixed")&&r(".main-menu-content").css("height",r(o).height()-r(".header-navbar").height()),"vertical-menu"==l.data("menu")&&r(".app-sidebar").hasClass("menu-fixed")&&this.manualScroller.enable()}))},toOverlayMenu:function(e,a){var n=l.data("menu");"vertical-menu"==a?"lg"==e||"md"==e||"sm"==e||"xs"==e?l.hasClass(n)&&l.removeClass(n).addClass("vertical-overlay-menu"):l.hasClass("vertical-overlay-menu")&&l.removeClass("vertical-overlay-menu").addClass(n):"sm"==e||"xs"==e?l.hasClass(n)&&l.removeClass(n).addClass("vertical-overlay-menu"):l.hasClass("vertical-overlay-menu")&&l.removeClass("vertical-overlay-menu").addClass(n)},changeMenu:function(e){r('div[data-menu="menu-wrapper"]').html(""),r('div[data-menu="menu-wrapper"]').html(u);var a=r('div[data-menu="menu-wrapper"]'),n=r('div[data-menu="menu-container"]'),s=r('ul[data-menu="menu-navigation"]'),t=r('li[data-menu="dropdown"]'),i=r('li[data-menu="dropdown-submenu"]');"xl"===e?(l.removeClass("vertical-layout vertical-overlay-menu fixed-navbar").addClass(l.data("menu")),r("nav.header-navbar").removeClass("fixed-top"),a.removeClass().addClass(m),r("a.dropdown-item.nav-has-children").on("click",function(){event.preventDefault(),event.stopPropagation()}),r("a.dropdown-item.nav-has-parent").on("click",function(){event.preventDefault(),event.stopPropagation()}),r(".main-menu-content").find("li.active").parents("li").addClass("sidebar-group-active active")):(l.removeClass(l.data("menu")).addClass("vertical-layout vertical-overlay-menu fixed-navbar"),r("nav.header-navbar").addClass("fixed-top"),l.hasClass("layout-dark")?a.removeClass().addClass("main-menu menu-light menu-fixed menu-shadow app-sidebar").attr("data-background-color","black"):l.hasClass("layout-dark")?a.removeClass().addClass("main-menu menu-light menu-fixed menu-shadow app-sidebar").attr("data-background-color","black"):a.removeClass().addClass("main-menu menu-light menu-fixed menu-shadow app-sidebar").attr("data-background-color","man-of-steel"),n.addClass("sidebar-content"),s.removeClass().addClass("navigation navigation-main"),t.removeClass("dropdown").addClass("has-sub"),t.find("a").removeClass("dropdown-toggle nav-link"),t.children("ul").find("a").removeClass("dropdown-item"),t.find("ul").removeClass("dropdown-menu"),i.removeClass().addClass("has-sub"),r.app.nav.init(),r("ul.dropdown-menu [data-toggle=dropdown]").on("click",function(e){e.preventDefault(),e.stopPropagation(),r(this).parent().siblings().removeClass("open"),r(this).parent().toggleClass("open")}),r(".main-menu-content").find("li.active").parents("li").addClass("open"))},toggle:function(){var e=Unison.fetch.now(),a=(this.collapsed,this.expanded),n=this.hidden,s=l.data("menu");switch(e.name){case"xl":!0===a?"vertical-overlay-menu"==s?this.hide():this.collapse():"vertical-overlay-menu"==s?this.open():this.expand();break;case"lg":!0===a?"vertical-overlay-menu"==s||"vertical-menu"==s||"horizontal-menu"==s?this.hide():this.open():"vertical-overlay-menu"==s||"vertical-menu"==s||"horizontal-menu"==s?this.open():this.hide();break;case"md":case"sm":case"xs":!0===n?this.open():this.hide()}},update:function(){this.manualScroller.update()},reset:function(){this.expanded=!1,this.collapsed=!1,this.hidden=!1,l.removeClass("menu-hide menu-open nav-collapsed menu-expanded")}},r.app.nav={container:r(".navigation-main"),initialized:!1,navItem:r(".navigation-main").find("li").not(".navigation-category"),config:{speed:300},init:function(e){this.initialized=!0,r.extend(this.config,e),this.bind_events()},bind_events:function(){var i=this;r(".navigation-main").on("mouseenter.app.menu","li",function(){var e=r(this);if(r(".hover",".navigation-main").removeClass("hover"),l.hasClass("nav-collapsed")&&"vertical-menu"!=l.data("menu")){r(".main-menu-content").children("span.menu-title").remove(),r(".main-menu-content").children("a.menu-title").remove(),r(".main-menu-content").children("ul.menu-content").remove();var a,n,s,t=e.find("span.menu-title").clone();if(e.hasClass("has-sub")||(a=e.find("span.menu-title").text(),n=e.children("a").attr("href"),""!==a&&((t=r("<a>")).attr("href",n),t.attr("title",a),t.text(a),t.addClass("menu-title"))),s=e.css("border-top")?e.position().top+parseInt(e.css("border-top"),10):e.position().top,"vertical-compact-menu"!==l.data("menu")&&t.appendTo(".main-menu-content").css({position:"fixed",top:s}),e.hasClass("has-sub")&&e.hasClass("nav-item")){e.children("ul:first");i.adjustSubmenu(e)}}e.addClass("hover")}).on("mouseleave.app.menu","li",function(){}).on("active.app.menu","li",function(e){e.stopPropagation()}).on("deactive.app.menu","li.active",function(e){r(this).removeClass("active"),e.stopPropagation()}).on("open.app.menu","li",function(e){var a=r(this);if(a.addClass("open"),i.expand(a),r(".app-sidebar").hasClass("menu-collapsible"))return!1;a.siblings(".open").find("li.open").trigger("close.app.menu"),a.siblings(".open").trigger("close.app.menu"),e.stopPropagation()}).on("close.app.menu","li.open",function(e){var a=r(this);a.removeClass("open"),i.collapse(a),e.stopPropagation()}).on("click.app.menu","li",function(e){var a=r(this);a.is(".disabled")?e.preventDefault():l.hasClass("nav-collapsed")&&"vertical-menu"!=l.data("menu")?e.preventDefault():a.has("ul").length?a.is(".open")?a.trigger("close.app.menu"):a.trigger("open.app.menu"):a.is(".active")||(a.siblings(".active").trigger("deactive.app.menu"),a.trigger("active.app.menu")),e.stopPropagation()}),r(".app-sidebar").on("mouseenter",function(){if("vertical-menu"==l.data("menu")&&(r(".app-sidebar, .navbar-header").addClass("expanded"),l.hasClass("nav-collapsed"))){r(".main-menu li.open").length;var e=r(".app-sidebar li.nav-collapsed-open");e.children("ul").hide().slideDown(200,function(){r(this).css("display","")}),e.addClass("open").removeClass("nav-collapsed-open"),r(".main-menu-content").find("li.active").parents("li").addClass("open")}}).on("mouseleave",function(){l.hasClass("nav-collapsed")&&"vertical-menu"==l.data("menu")&&setTimeout(function(){if(0===r(".app-sidebar:hover").length&&0===r(".navbar-header:hover").length&&(r(".app-sidebar, .navbar-header").removeClass("expanded"),l.hasClass("nav-collapsed"))){var e=r(".app-sidebar li.open"),a=e.children("ul");e.addClass("nav-collapsed-open"),a.show().slideUp(200,function(){r(this).css("display","")}),e.removeClass("open")}},1)}),r(".main-menu-content").on("mouseleave",function(){l.hasClass("nav-collapsed")&&(r(".main-menu-content").children("span.menu-title").remove(),r(".main-menu-content").children("a.menu-title").remove(),r(".main-menu-content").children("ul.menu-content").remove()),r(".hover",".navigation-main").removeClass("hover")}),r(".navigation-main li.has-sub > a").on("click",function(e){e.preventDefault()}),r("ul.menu-content").on("click","li",function(e){var a=r(this);if(a.is(".disabled"))e.preventDefault();else if(a.has("ul"))if(a.is(".open"))a.removeClass("open"),i.collapse(a);else{if(a.addClass("open"),i.expand(a),r(".app-sidebar").hasClass("menu-collapsible"))return!1;a.siblings(".open").find("li.open").trigger("close.app.menu"),a.siblings(".open").trigger("close.app.menu"),e.stopPropagation()}else a.is(".active")||(a.siblings(".active").trigger("deactive.app.menu"),a.trigger("active.app.menu"));e.stopPropagation()})},adjustSubmenu:function(e){var a,n,s,t,i,o=e.children("ul:first"),l=o.clone(!0);r(".main-menu-header").height(),a=e.position().top,s=d.height()-r(".header-navbar").height(),i=0,o.height(),0<parseInt(e.css("border-top"),10)&&(i=parseInt(e.css("border-top"),10)),t=s-a-e.height()-30,r(".app-sidebar").hasClass("menu-dark"),n=a+e.height()+i,l.addClass("menu-popout").appendTo(".main-menu-content").css({top:n,position:"fixed","max-height":t})},collapse:function(e,a){var n=e.children("ul");e.addClass("changing"),n.show().slideUp(r.app.nav.config.speed,function(){r(this).css("display",""),r(this).find("> li").removeClass("is-shown"),a&&a(),r.app.nav.container.trigger("collapsed.app.menu"),e.removeClass("changing")})},expand:function(e,a){var n=e.children("ul"),s=n.children("li").addClass("is-hidden");n.hide().slideDown(r.app.nav.config.speed,function(){r(this).css("display",""),a&&a(),r.app.nav.container.trigger("expanded.app.menu")}),setTimeout(function(){s.addClass("is-shown"),s.removeClass("is-hidden")},0)},refresh:function(){r.app.nav.container.find(".open").removeClass("open")}}}(window,document,jQuery),window.addEventListener("resize",function(){var e=.01*window.innerHeight;document.documentElement.style.setProperty("--vh",e+"px")});
 !function(i,r,c){"use strict";var d=c("html"),u=c("body"),p=c(".app-sidebar").data("image"),h=c(".sidebar-background");if(c(i).scroll(function(){!function(){var e=c(i).scrollTop();60<e?c("body").addClass("navbar-scrolled"):c("body").removeClass("navbar-scrolled"),20<e?c("body").addClass("page-scrolled"):c("body").removeClass("page-scrolled")}()}),c(i).on("load",function(){var e=c(".layout-dark.layout-transparent").attr("data-bg-img");c("nav.header-navbar").addClass(e),setTimeout(function(){c(".horizontal-layout div.header-navbar").addClass(e)},10),0<c("body.horizontal-layout.vertical-overlay-menu.layout-dark:not(.layout-transparent)").length&&c(".app-sidebar").data("background-color","black");var a=!1;u.hasClass("nav-collapsed")&&(a=!0),c("html").data("textdirection"),setTimeout(function(){d.removeClass("loading").addClass("loaded")},1200),c.app.menu.init(a);!1===c.app.nav.initialized&&c.app.nav.init({speed:300}),Unison.on("change",function(e){c.app.menu.change()}),0!==h.length&&void 0!==p&&h.css("background-image",'url("'+p+'")'),c('[data-toggle="tooltip"]').tooltip({container:"body"}),0<c(".navbar-hide-on-scroll").length&&(c(".navbar-hide-on-scroll.fixed-top").headroom({offset:205,tolerance:5,classes:{initial:"headroom",pinned:"headroom--pinned-top",unpinned:"headroom--unpinned-top"}}),c(".navbar-hide-on-scroll.fixed-bottom").headroom({offset:205,tolerance:5,classes:{initial:"headroom",pinned:"headroom--pinned-bottom",unpinned:"headroom--unpinned-bottom"}})),c('a[data-action="collapse"]').on("click",function(e){e.preventDefault(),c(this).closest(".card").children(".card-content").collapse("toggle"),c(this).closest(".card").find('[data-action="collapse"] i').toggleClass("icon-plus icon-minus")}),c('a[data-action="expand"]').on("click",function(e){e.preventDefault(),c(this).closest(".card").find('[data-action="expand"] i').toggleClass("icon-maximize icon-minimize"),c(this).closest(".card").toggleClass("card-fullscreen")}),c(".scrollable-container").each(function(){new PerfectScrollbar(c(this)[0],{wheelPropagation:!1})}),c('a[data-action="reload"]').on("click",function(){c(this).closest(".card").block({message:'<div class="feather icon-refresh-cw icon-spin font-medium-2"></div>',timeout:2e3,overlayCSS:{backgroundColor:"#FFF",cursor:"wait"},css:{border:0,padding:0,backgroundColor:"none"}})}),c('a[data-action="close"]').on("click",function(){c(this).closest(".card").removeClass().slideUp("fast")}),setTimeout(function(){c(".row.match-height").each(function(){c(this).find(".card").not(".card .card").matchHeight()})},500),c('.card .heading-elements a[data-action="collapse"]').on("click",function(){var e,a=c(this).closest(".card");0<parseInt(a[0].style.height,10)?(e=a.css("height"),a.css("height","").attr("data-height",e)):a.data("height")&&(e=a.data("height"),a.css("height",e).attr("data-height",""))});var n=u.data("menu");"horizontal-menu"!=n&&!1===a&&(c(".main-menu-content").find("li.active").parents("li").addClass("open"),c(".main-menu-content").find("li.active").parents("li.nav-item").addClass("sidebar-group-active")),"horizontal-menu"==n&&c(".main-menu-content").find("li.active").parents("li:not(.nav-item)").addClass("open"),!0===a&&(c(".main-menu-content").find("li.active").parents("li.nav-item").addClass("sidebar-group-active"),c(".main-menu-content").find("li.active").parents("li").addClass("nav-collapsed-open")),c(".heading-elements-toggle").on("click",function(){c(this).parent().children(".heading-elements").toggleClass("visible")});var t=c(".chartjs"),s=t.children("canvas").attr("height");if(t.css("height",s),u.hasClass("boxed-layout")&&u.hasClass("vertical-overlay-menu")){var i=c(".main-menu").width(),o=c(".app-content").position().left-i;u.hasClass("menu-flipped")?c(".main-menu").css("right",o+"px"):c(".main-menu").css("left",o+"px")}var l=c(".search-input input").data("search");c(".nav-link-search").on("click",function(){c(this);c(this).parent(".nav-search").find(".search-input").addClass("open"),c(".search-input input").focus(),c(".search-input .search-list li").remove(),c(".search-input .search-list").addClass("show")}),c(".search-input-close i").on("click",function(){c(this);var e=c(this).closest(".search-input");e.hasClass("open")&&(e.removeClass("open"),c(".search-input input").val(""),c(".search-input input").blur(),c(".search-input .search-list").removeClass("show"),c(".wrapper").hasClass("show-overlay")&&c(".wrapper").removeClass("show-overlay"))}),c(".main-content").on("click",function(){var e=c(".search-input-close"),a=c(e).parent(".search-input"),n=c(".search-list");a.hasClass("open")&&a.removeClass("open"),n.hasClass("show")&&n.removeClass("show"),c(".wrapper").hasClass("show-overlay")&&c(".wrapper").removeClass("show-overlay")}),c(".search-input .input").on("keyup",function(e){if(38!==e.keyCode&&40!==e.keyCode&&13!==e.keyCode){27==e.keyCode&&(c(".search-input input").val(""),c(".search-input input").blur(),c(".search-input").removeClass("open"),c(".search-list").hasClass("show")&&(c(this).removeClass("show"),c(".search-input").removeClass("show")));var n=c(this).val().toLowerCase();if(c("ul.search-list li").remove(),""!=n){c(".wrapper").addClass("show-overlay");var t="",s="",i="",o=0;c.getJSON("../app-assets/data/"+l+".json",function(e){for(var a=0;a<e.listItems.length;a++)(0==e.listItems[a].name.toLowerCase().indexOf(n)&&o<10||0!=e.listItems[a].name.toLowerCase().indexOf(n)&&-1<e.listItems[a].name.toLowerCase().indexOf(n)&&o<10)&&(t+='<li class="auto-suggestion d-flex align-items-center justify-content-between cursor-pointer '+(0===o?"current_item":"")+'"><a class="d-flex align-items-center justify-content-between w-100" href='+e.listItems[a].url+'><div class="d-flex align-items-center justify-content-start"><span class="mr-2 '+e.listItems[a].icon+'"></span><span>'+e.listItems[a].name+"</span></div>",o++);""==t&&""==s&&(s='<li class="auto-suggestion d-flex align-items-center cursor-pointer"><a class="d-flex align-items-center justify-content-between w-100"><div class="d-flex align-items-center justify-content-start"><span class="mr-2"></span><span>No results found.</span></div></a></li>'),i=t.concat(s),c("ul.search-list").html(i)})}else c(".wrapper").hasClass("show-overlay")&&c(".wrapper").removeClass("show-overlay")}}),c(r).on("mouseenter",".search-list li",function(e){c(this).siblings().removeClass("current_item"),c(this).addClass("current_item")}),c(r).on("click",".search-list li",function(e){e.stopPropagation()})}),c(i).on("keydown",function(e){var a,n,t=c(".search-list li.current_item");if(40===e.keyCode?(a=t.next(),t.removeClass("current_item"),t=a.addClass("current_item")):38===e.keyCode&&(n=t.prev(),t.removeClass("current_item"),t=n.addClass("current_item")),13===e.keyCode&&0<c(".search-list li.current_item").length){var s=c(".search-list li.current_item a");i.location=s.attr("href"),c(s).trigger("click")}}),c(r).on("click",".sidenav-overlay",function(e){return c.app.menu.hide(),!1}),"undefined"!=typeof Hammer){var e;"rtl"==c("html").data("textdirection")&&(e=!0);var a=r.querySelector(".drag-target"),n="panright",t="panleft";if(!0===e&&(n="panleft",t="panright"),0<c(a).length)new Hammer(a).on(n,function(e){if(u.hasClass("vertical-overlay-menu"))return c.app.menu.open(),!1});setTimeout(function(){var e,a=r.querySelector(".app-sidebar");0<c(a).length&&((e=new Hammer(a)).get("pan").set({direction:Hammer.DIRECTION_ALL,threshold:250}),e.on(t,function(e){if(u.hasClass("vertical-overlay-menu"))return c.app.menu.hide(),!1}))},300);var s=r.querySelector(".sidenav-overlay");if(0<c(s).length)new Hammer(s).on(t,function(e){if(u.hasClass("vertical-overlay-menu"))return c.app.menu.hide(),!1})}c(r).on("click",".nav-toggle, .menu-toggle, .nav-close",function(e){e.preventDefault(),c.app.menu.toggle(),setTimeout(function(){c(i).trigger("resize")},200);var a=c(".cz-compact-menu");return 0<a.length&&setTimeout(function(){u.hasClass("menu-expanded")||u.hasClass("menu-open")?a.prop("checked",!1):a.prop("checked",!0)},100),c(".vertical-overlay-menu .navbar-with-menu .navbar-container .navbar-collapse").hasClass("show")&&c(".vertical-overlay-menu .navbar-with-menu .navbar-container .navbar-collapse").removeClass("show"),!1}),c(r).on("click",".main-menu-footer .footer-toggle",function(e){return e.preventDefault(),c(this).find("i").toggleClass("pe-is-i-angle-down pe-is-i-angle-up"),c(".main-menu-footer").toggleClass("footer-close footer-open"),!1}),c(".navigation").find("li").has("ul").addClass("has-sub"),c(".carousel").carousel({interval:2e3}),c(".apptogglefullscreen").on("click",function(e){"undefined"!=typeof screenfull&&screenfull.isEnabled&&screenfull.toggle()}),"undefined"!=typeof screenfull&&screenfull.isEnabled&&c(r).on(screenfull.raw.fullscreenchange,function(){screenfull.isFullscreen?c(".apptogglefullscreen").find("i").toggleClass("ft-minimize ft-maximize"):c(".apptogglefullscreen").find("i").toggleClass("ft-maximize ft-minimize")}),c(r).on("click",".mega-dropdown-menu",function(e){e.stopPropagation()}),c(r).ready(function(){c(".step-icon").each(function(){var e=c(this);0<e.siblings("span.step").length&&(e.siblings("span.step").empty(),c(this).appendTo(c(this).siblings("span.step")))})}),c(i).resize(function(){c.app.menu.manualScroller.updateHeight()}),c(".nav.nav-tabs a.dropdown-item").on("click",function(){var e=c(this),a=e.attr("href"),n=e.closest(".nav");n.find(".nav-link").removeClass("active"),e.closest(".nav-item").find(".nav-link").addClass("active"),e.closest(".dropdown-menu").find(".dropdown-item").removeClass("active"),e.addClass("active"),n.next().find(a).siblings(".tab-pane").removeClass("active in").attr("aria-expanded",!1),c(a).addClass("active in").attr("aria-expanded","true")}),c("#sidebar-page-navigation").on("click","a.nav-link",function(e){e.preventDefault(),e.stopPropagation();var a=c(this),n=a.attr("href"),t=c(n).offset().top-80;c("html, body").animate({scrollTop:t},0),setTimeout(function(){a.parent(".nav-item").siblings(".nav-item").children(".nav-link").removeClass("active"),a.addClass("active")},100)}),i18next.use(i.i18nextXHRBackend).init({debug:!1,fallbackLng:"en",backend:{loadPath:"../app-assets/data/locales/{{lng}}.json"},returnObjects:!0},function(e,a){jqueryI18next.init(i18next,c)}),c(".dropdown-language + .dropdown-menu .dropdown-item").on("click",function(){var e=c(this);e.siblings(".selected").removeClass("selected"),e.addClass("selected");var a=e.text();c("#dropdown-flag .selected-language").text(a);var n=e.data("language"),t=e.find("img").attr("src");c("#dropdown-flag .selected-flag").attr("src",t),i18next.changeLanguage(n,function(e,a){c(".app-sidebar , .horizontal-menu").localize()})});var o=0;if(Array.prototype.forEach){var l=c(".switchery");c.each(l,function(e,a){var n,t,s="",i="";n=c(this).data("size");s=void 0!==c(this).data("size")?"switchery switchery-"+{lg:"large",sm:"small",xs:"xsmall"}[n]:"switchery";i=void 0!==(t=c(this).data("color"))?{primary:"#975AFF",success:"#40C057",danger:"#F55252",warning:"#F77E17",info:"#2F8BE6"}[t]:"#975AFF";new Switchery(c(this)[0],{className:s,color:i})})}else{var m=r.querySelectorAll(".switchery");for(o=0;o<m.length;o++)m[o].data("size"),m[o].data("color"),new Switchery(m[o],{color:"#975AFF"})}c(".navbar-container .scrollable-container .custom-switch span").on("click",function(e){e.stopPropagation()})}(window,document,jQuery);
 $(document).ready(function(){if($(".notification-sidebar-toggle").on("click",function(n){$(".notification-sidebar").toggleClass("open"),$(".main-content").css("cursor","pointer")}),$(".notification-sidebar-close").on("click",function(){$(".notification-sidebar").removeClass("open"),$(".main-content").css("cursor","auto")}),0<$(".notification-sidebar-content").length)new PerfectScrollbar(".notification-tab-content",{wheelPropagation:!1});$(".main-content").on("click",function(){$(".notification-sidebar.open").length&&($(".notification-sidebar").removeClass("open"),$(".main-content").css("cursor","auto"))})});
@@ -722,6 +1936,23 @@ $(document).ready(function () {
         })
     })
 });
+
+/*=========================================================================================
+	File Name: form-validation.js
+	Description: jquery bootsreap validation js
+	----------------------------------------------------------------------------------------
+	Item Name: Apex - Responsive Admin Theme
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+(function (window, document, $) {
+    'use strict';
+
+    // Input, Select, Textarea validations except submit button
+    $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+
+})(window, document, jQuery);
 
 (function(window, undefined) {
   'use strict';

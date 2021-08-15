@@ -5,7 +5,7 @@
     <!-- Sidebar Header starts-->
     <div class="sidebar-header ">
         <div class="logo clearfix"><a class="logo-text float-left" href="index.html">
-                <div class="logo-img"><img src="/app-assets/img/logo.png" alt="Apex Logo"/></div><span class="text">LDB</span></a><a class="nav-toggle d-none d-lg-none d-xl-block" id="sidebarToggle" href="javascript:;"><i class="toggle-icon ft-toggle-right" data-toggle="expanded"></i></a><a class="nav-close d-block d-lg-block d-xl-none" id="sidebarClose" href="javascript:;"><i class="ft-x"></i></a></div>
+                <div class="logo-img"><img src="/app-assets/img/logo.png" alt="LDB LOGO"/></div><span class="text">LDB</span></a><a class="nav-toggle d-none d-lg-none d-xl-block" id="sidebarToggle" href="javascript:;"><i class="toggle-icon ft-toggle-right" data-toggle="expanded"></i></a><a class="nav-close d-block d-lg-block d-xl-none" id="sidebarClose" href="javascript:;"><i class="ft-x"></i></a></div>
     </div>
     <!-- Sidebar Header Ends-->
     <!-- / main menu header-->

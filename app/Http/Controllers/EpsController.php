@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Eps;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class EpsController extends Controller
 {
@@ -37,6 +38,16 @@ class EpsController extends Controller
      */
     public function store(Request $request)
     {
+        //validaciones
+        $campos = [
+            'name' => ['required','string','max:45',Rule::unique('eps')],
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+        //sentencia
         $eps = Eps::create($request ->all());
         return redirect('usuarios/eps')->with('crear', 'ok');
     }
@@ -74,6 +85,16 @@ class EpsController extends Controller
      */
     public function update(Request $request, $ep)
     {
+        //validaciones
+        $campos = [
+            'name' => ['required','string','max:45',Rule::unique('eps')->ignore($ep)],
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+        //sentencia
         $eps = Eps::find($ep)->update($request -> all());
         return redirect('usuarios/eps')->with('actualizar', 'ok');
     }

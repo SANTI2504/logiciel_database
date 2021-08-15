@@ -94,7 +94,7 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('usuarios/auxiliares/'. $auxiliary-> id )}}" class=" btn info m-1">
+                                                                <a href="{{url('usuarios/auxiliares/'. $auxiliary-> id )}}" class=" btn info p-1">
                                                                     <i class="ft-eye font-medium-3 "></i>
                                                                 </a>
                                                                 <a href="{{url('usuarios/auxiliares/'. $auxiliary-> id . '/edit')}}" class=" btn success p-0">

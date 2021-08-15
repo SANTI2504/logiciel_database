@@ -52,12 +52,23 @@
                     <!-- Basic Form starts -->
                     <div class="col col-12">
                         <div class="card">
+                            <span class="badge   bg-light-success p-2">LLENA TODOS LOS DATOS DEL FORMULARIO</span>
                             <div class="card-header">
 
+                                <!-- start validaciones -->
+                                @if(count($errors)>0)
+
+                                    @foreach($errors->all() as $error)
+                                        <span class="badge bg-light-danger p-2 m-1" role="alert">
+                                        <i class="ft-alert-triangle"></i>
+                                            {{$error}}
+                                    </span>
+                                @endforeach
+                            @endif
+                            <!-- end validaciones-->
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-                                    <p>Llena todos los datos para guardar.</p>
                                     <form action="{{url('usuarios/roles', $rol-> id)}}" method="POST">
                                         @method('PUT')
                                         @csrf

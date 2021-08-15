@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Type_document;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class Type_documentController extends Controller
 {
@@ -16,6 +17,16 @@ class Type_documentController extends Controller
     }
 
     public function store(Request $request){
+        //validaciones
+        $campos = [
+            'name' => ['required','string','max:45',Rule::unique('type_documents')],
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+        //sentencia
         $type_document = Type_document::create($request -> all());
         return redirect('usuarios/tipo-documento')->with('crear', 'ok');
     }
@@ -36,8 +47,17 @@ class Type_documentController extends Controller
     }
 
     public function update(Request $request, $tipo_documento){
-        $type_document=Type_document::find($tipo_documento)->update($request->all());
+        //validaciones
+        $campos = [
+            'name' => ['required','string','max:45',Rule::unique('type_document')->ignore($tipo_documento)],
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
 
+        //sentencia
+        $type_document=Type_document::find($tipo_documento)->update($request->all());
         return redirect('usuarios/tipo-documento')->with('actualizar', 'ok');
 
     }

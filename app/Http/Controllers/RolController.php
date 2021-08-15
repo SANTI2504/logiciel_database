@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 
@@ -17,17 +18,16 @@ class RolController extends Controller
     }
 
     public function store(Request $request){
-        //validacion
+        //validaciones
         $campos = [
-            'name' => 'required|string|max:125'
+            'name' => ['required','string','max:45',Rule::unique('roles')],
         ];
-
         $mensaje = [
-            'name.required'=>'El Nombre es requerido'
+        // aca puede generar mensajes unicos
         ];
-
         $this->validate($request, $campos, $mensaje);
 
+        //sentencia
         $rol = Role::create($request -> all());
         return redirect('usuarios/roles')->with('crear', 'ok');
     }
@@ -48,15 +48,16 @@ class RolController extends Controller
     }
 
     public function update(Request $request, $role){
-        //validacion
+        //validaciones
         $campos = [
-            'name' => 'required|string|max:125'
+            'name' => ['required','string','max:45',Rule::unique('roles')->ignore($role)],
         ];
         $mensaje = [
-            'name.required'=>'El Nombre es requerido '
+            // aca puede generar mensajes unicos
         ];
         $this->validate($request, $campos, $mensaje);
 
+        //sentencia
         $rol=Role::find($role)->update($request->all());
         return redirect('usuarios/roles')->with('actualizar', 'ok');
 

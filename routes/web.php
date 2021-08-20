@@ -9,6 +9,7 @@ use App\Http\Controllers\EpsController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\AuxiliaryController;
+use App\Http\Controllers\Medical_historyController;
 
 
 /*
@@ -91,12 +92,13 @@ Route::middleware('role:Administrador')->group(function (){
     Route::resource('usuarios/eps', EpsController::class);
 
 
-    //Modulo Historla Medico & Examen medico
-    Route::get('menu/historial', function () {
+    //Modulo Historial Medico & Examen medico
+    Route::get('menu/clinical', function () {
         return view('app/medical/menu');
     });
 
-
+    //rutas historial medico
+    Route::resource('clinical/historial-medico', Medical_historyController::class );
 });
 
 

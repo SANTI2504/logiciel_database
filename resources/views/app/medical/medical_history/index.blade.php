@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    LDB-lista-Paciente
+    LDB-lista-Historial
 @endsection
 
 @section('content')
@@ -21,72 +21,54 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('menu/usuarios')}}" itemprop="item">
-                                <span itemprop="name">Menu usuarios</span>
+                            <a href="{{url('menu/clinical')}}" itemprop="item">
+                                <span itemprop="name">Menu clinical</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('menu/tipos-de-usuarios')}}" itemprop="item">
-                                <span itemprop="name">Menu tipos de usuarios</span>
-                            </a>
-                            <meta itemprop="position" content="1">
-                        </li>
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
-                            itemtype="http://schema.org/ListItem">
-
-                            <span itemprop="name">Pacientes</span>
-
+                            <span itemprop="name">Historial Medico</span>
                             <meta itemprop="position" content="2">
                         </li>
-
                     </ol>
                 </nav>
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Pacientes</div>
+                        <div class="content-header">Historial Medico</div>
                     </div>
                 </div>
 
                 <!-- Table starts -->
                 <div class="users-list-table">
                     <div class="row justify-content-center">
-                        <div class="col-10 ">
+                        <div class="col-12 ">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
                                         <!-- Datatable starts -->
                                         <div class="table-responsive">
-                                            <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/pacientes/create')}}">Crear nuevo</a>
+                                            <a type="button" class="btn bg-light-info mb-2" href="{{url('clinical/historial-medico/create')}}">Crear nuevo</a>
                                             <table id="users-list-datatable" class="table table-hover " >
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Correo</th>
-                                                    <th>Celular</th>
-                                                    <th>Tipo de documento</th>
-                                                    <th>Numero de documento</th>
-                                                    <th>Rol</th>
+                                                    <th>Nombres Completos</th>
+                                                    <th>No. Documento</th>
+                                                    <th>No. Examenes</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($patients as $patient)
+                                                @foreach($histories as $history)
                                                     <tr>
-                                                        <td>{{$patient-> id}}</td>
-                                                        <td>{{$patient-> name}}</td>
-                                                        <td>{{$patient-> lastnames}}</td>
-                                                        <td>{{$patient-> email}}</td>
-                                                        <td>{{$patient-> number_cell}}</td>
-                                                        <td>{{$patient-> Type_document ->name}}</td>
-                                                        <td>{{$patient-> number_document}}</td>
-                                                        <td>{{$patient-> role -> name}}</td>
+                                                        <td>{{$history-> id}}</td>
+                                                        <td>{{$history-> patient -> name}} {{$history-> patient -> lastnames}}</td>
+                                                        <td>{{$history-> patient -> number_document}}</td>
+                                                        <td>{{$history-> amount_visits}}</td>
                                                         <td class="text-truncate">
-                                                            <form  action="{{url('usuarios/pacientes', $patient -> id)}}" method="post">
+                                                            <form  action="{{url('clinical/historial-medico', $history -> id)}}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <!--
@@ -94,10 +76,10 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('usuarios/pacientes/'. $patient-> id )}}" class=" btn info p-1">
+                                                                <a href="{{url('clinical/historial-medico/'. $history-> id )}}" class=" btn info p-1">
                                                                     <i class="ft-eye font-medium-3 "></i>
                                                                 </a>
-                                                                <a href="{{url('usuarios/pacientes/'. $patient-> id . '/edit')}}" class=" btn success p-0">
+                                                                <a href="{{url('clinical/historial-medico/'. $history-> id . '/edit')}}" class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
                                                                 <button  type="submit" id="type-success" class="btn danger p-0" >

@@ -16,10 +16,8 @@ class CreateMedicalHistoriesTable extends Migration
         Schema::create('medical_histories', function (Blueprint $table) {
             $table->id();
             //pendiente revision
-            $table->bigInteger('amount_visits');
-            $table->string('last_diagnosis', 500);
-            $table->date('last_modified_date');
-            $table->date('date_create');
+            $table->bigInteger('amount_visits')->nullable();
+            $table->string('last_diagnosis', 500)->nullable();
             $table->bigInteger('patients_id')->unsigned();
             $table->foreign('patients_id')->references('id')->on('patients');
             $table->timestamps();

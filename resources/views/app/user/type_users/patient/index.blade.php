@@ -53,7 +53,7 @@
                 <!-- Table starts -->
                 <div class="users-list-table">
                     <div class="row justify-content-center">
-                        <div class="col-10 ">
+                        <div class="col-12 ">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -64,13 +64,9 @@
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Correo</th>
+                                                    <th>Nombres Completos</th>
+                                                    <th>No. Documento</th>
                                                     <th>Celular</th>
-                                                    <th>Tipo de documento</th>
-                                                    <th>Numero de documento</th>
-                                                    <th>Rol</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                                 </thead>
@@ -78,13 +74,9 @@
                                                 @foreach($patients as $patient)
                                                     <tr>
                                                         <td>{{$patient-> id}}</td>
-                                                        <td>{{$patient-> name}}</td>
-                                                        <td>{{$patient-> lastnames}}</td>
-                                                        <td>{{$patient-> email}}</td>
-                                                        <td>{{$patient-> number_cell}}</td>
-                                                        <td>{{$patient-> Type_document ->name}}</td>
+                                                        <td>{{$patient-> name}} {{$patient-> lastnames}}</td>
                                                         <td>{{$patient-> number_document}}</td>
-                                                        <td>{{$patient-> role -> name}}</td>
+                                                        <td>{{$patient-> number_cell}}</td>
                                                         <td class="text-truncate">
                                                             <form  action="{{url('usuarios/pacientes', $patient -> id)}}" method="post">
                                                             @csrf

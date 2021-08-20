@@ -2,83 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medical_history;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class Medical_historyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+    public function index(){
+        $histories= Medical_history::orderBy('id', 'desc')->paginate(8);
+        return view('app.medical.medical_history.index', compact('histories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(){
+        $patients = Patient::all();
+
+        return view('app.medical.medical_history.create', compact('patients'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        //validaciones
+        $campos = [
+
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+        //sentencia
+        $patient = Medical_history::create($request -> all());
+        return redirect('clinical/historial-medico')->with('crear', 'ok');
+    }
+    public function edit($paciente){
+        $patient = Patient::find($paciente);
+        $type_documents = Type_document::all();
+        $roles_id = Role::all();
+        $eps_id = Eps::all();
+        return view('app.user.type_users.patient.edit', compact('patient', 'type_documents', 'roles_id','eps_id'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function update(Request $request, $paciente){
+        //validaciones
+        $campos = [
+            'name' => 'required|string|max:125',
+            'lastnames' => 'required|string|max:45',
+            'number_document' => [ 'required', 'int', Rule::unique('patients')->ignore($paciente)],
+            'email' => ['required','email','max:145',Rule::unique('patients')->ignore($paciente)],
+            'date_of_bird' => 'required|date',
+            'password' =>  $this->passwordRules(),
+            'number_cell' => 'required|int',
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+        //incriptar la contraseña eviada por usuario
+        $request['password'] = Hash::make($request['password']);
+
+        $patient = Patient::find($paciente)->update($request->all());
+        return redirect('usuarios/pacientes')->with('actualizar', 'ok');
+    }
+    public function show($paciente){
+        $patient = Patient::find($paciente);
+        return view('app.user.type_users.patient.show', compact('patient'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy($paciente){
+        $patient = Patient::find($paciente)->delete();
+        return redirect('usuarios/pacientes')->with('eliminar', 'ok');
     }
 }

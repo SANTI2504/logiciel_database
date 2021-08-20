@@ -62,9 +62,9 @@
                                 <p> Gestiona y administra citas medicas. </p>
                             </div>
                             <div class="icon">
-                                <i class="fa  fa-clock-o.e" aria-hidden="true"></i>
+                                <i class="fa  fa-clock-o" aria-hidden="true"></i>
                             </div>
-                            <a href="{{url('menu/citas')}}" class="card-box-footer">Ingresa <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{url('menu/citas')}}" class="card-box-footer">Ingresa <i class="fa fa-arrow-circle-right  "></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
@@ -76,7 +76,7 @@
                             <div class="icon">
                                 <i class="fa fa-book" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="card-box-footer">Ingresa <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{url('menu/clinical')}}" class="card-box-footer">Ingresa <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
@@ -86,7 +86,7 @@
                                 <p> Gestiona y administra el inventario. </p>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-users"></i>
+                                <i class="fa fa-list-alt"></i>
                             </div>
                             <a href="#" class="card-box-footer">Ingresa <i class="fa fa-arrow-circle-right"></i></a>
                         </div>

@@ -53,7 +53,7 @@
                 <!-- Table starts -->
                 <div class="users-list-table">
                     <div class="row justify-content-center">
-                        <div class="col-10 ">
+                        <div class="col-12 ">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -64,13 +64,9 @@
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Correo</th>
+                                                    <th>Nombres Completos</th>
+                                                    <th>No. Documento</th>
                                                     <th>Celular</th>
-                                                    <th>Tipo de documento</th>
-                                                    <th>Numero de documento</th>
-                                                    <th>Rol</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                                 </thead>
@@ -78,13 +74,9 @@
                                                 @foreach($specialists as $specialist)
                                                     <tr>
                                                         <td>{{$specialist-> id}}</td>
-                                                        <td>{{$specialist-> name}}</td>
-                                                        <td>{{$specialist-> lastnames}}</td>
-                                                        <td>{{$specialist-> email}}</td>
-                                                        <td>{{$specialist-> number_cell}}</td>
-                                                        <td>{{$specialist-> Type_document ->name}}</td>
+                                                        <td>{{$specialist-> name}} {{$specialist-> lastnames}}</td>
                                                         <td>{{$specialist-> number_document}}</td>
-                                                        <td>{{$specialist-> role -> name}}</td>
+                                                        <td>{{$specialist-> number_cell}}</td>
                                                         <td class="text-truncate">
                                                             <form  action="{{url('usuarios/especialistas', $specialist -> id)}}" method="post">
                                                             @csrf

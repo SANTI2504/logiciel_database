@@ -53,7 +53,7 @@
                 <!-- Table starts -->
                 <div class="users-list-table">
                     <div class="row justify-content-center">
-                        <div class="col-10 ">
+                        <div class="col-12 ">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -64,13 +64,9 @@
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Correo</th>
+                                                    <th>Nombres Completos</th>
+                                                    <th>No. Documento</th>
                                                     <th>Celular</th>
-                                                    <th>Tipo de documento</th>
-                                                    <th>Numero de documento</th>
-                                                    <th>Rol</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                                 </thead>
@@ -78,13 +74,9 @@
                                                 @foreach($auxiliaries as $auxiliary)
                                                     <tr>
                                                         <td>{{$auxiliary-> id}}</td>
-                                                        <td>{{$auxiliary-> name}}</td>
-                                                        <td>{{$auxiliary-> lastnames}}</td>
-                                                        <td>{{$auxiliary-> email}}</td>
-                                                        <td>{{$auxiliary-> number_cell}}</td>
-                                                        <td>{{$auxiliary-> Type_document ->name}}</td>
+                                                        <td>{{$auxiliary-> name}} {{$auxiliary-> lastnames}}</td>
                                                         <td>{{$auxiliary-> number_document}}</td>
-                                                        <td>{{$auxiliary-> role -> name}}</td>
+                                                        <td>{{$auxiliary-> number_cell}}</td>
                                                         <td class="text-truncate">
                                                             <form  action="{{url('usuarios/auxiliares', $auxiliary -> id)}}" method="post">
                                                             @csrf

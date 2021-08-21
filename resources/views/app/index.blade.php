@@ -30,7 +30,7 @@
             <section id="minimal-statistics">
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Logiciel Data Base</div>
+                        <div class="content-header">Vision Medics</div>
                         <p class="content-sub-header mb-1">Modulos del sistema.</p>
                     </div>
                 </div>

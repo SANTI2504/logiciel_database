@@ -56,7 +56,7 @@
                 <!-- Basic Form starts -->
                 <div class="col col-12">
                     <div class="card">
-                        <span class="badge   bg-light-success p-2">LLENA TODOS LOS DATOS DEL FORMULARIO</span>
+                        <span class="badge bg-light-success p-2">LLENA TODOS LOS DATOS DEL FORMULARIO</span>
                         <div class="card-header">
 
                             <!-- start validaciones -->

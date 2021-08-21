@@ -8,23 +8,27 @@
     <!-- BEGIN : Main Content-->
     <div class="main-content">
         <div class="content-overlay"></div>
-        <div class="content-wrapper"><section class="users-list-wrapper">
+        <div class="content-wrapper">
+            <section class="users-list-wrapper">
                 <!-- start migas de pan-->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
+                            itemtype="http://schema.org/ListItem">
                             <a href="{{url('inicio')}}" itemprop="item">
                                 <span itemprop="name">Inicio</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
+                            itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/usuarios')}}" itemprop="item">
                                 <span itemprop="name">Menu usuarios</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
+                            itemtype="http://schema.org/ListItem">
 
                             <span itemprop="name">EPS</span>
 
@@ -43,20 +47,22 @@
                 <!-- Table starts -->
                 <div class="users-list-table">
                     <div class="row justify-content-center">
-                        <div class="col-12 ">
+                        <div class="col col-md-10">
                             <div class="card">
                                 <div class="card-content">
+
                                     <div class="card-body">
                                         <!-- Datatable starts -->
-                                        <div class="table-responsive">
-                                            <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/eps/create')}}">Crear nuevo</a>
-                                            <table id="users-list-datatable" class="table table-hover " >
-                                                <thead>
+                                        <a type="button" class="btn bg-light-info"
+                                           href="{{url('usuarios/eps/create')}}">Crear nuevo</a>
+                                        <hr>
+                                        <div class="col table-responsive">
+                                            <table id="users-list-datatable" class="table table-hover file-export ">
+                                                <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>EPS</th>
                                                     <th>Acciones</th>
-
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -65,7 +71,8 @@
                                                         <td>{{$epss-> id}}</td>
                                                         <td>{{$epss-> name}}</td>
                                                         <td class="text-truncate">
-                                                            <form  action="{{url('usuarios/eps', $epss -> id)}}" method="post">
+                                                            <form action="{{url('usuarios/eps', $epss -> id)}}"
+                                                                  method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <!--
@@ -73,10 +80,12 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('usuarios/eps/'. $epss-> id . '/edit')}}" class=" btn success p-0">
+                                                                <a href="{{url('usuarios/eps/'. $epss-> id . '/edit')}}"
+                                                                   class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
-                                                                <button  type="submit"  class="btn danger p-0 form-eliminar" >
+                                                                <button type="submit"
+                                                                        class="btn danger p-0 form-eliminar">
                                                                     <i class="ft-x font-medium-3"></i>
                                                                 </button>
                                                             </form>
@@ -87,6 +96,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <hr>
                                         <!-- Datatable ends -->
                                     </div>
                                 </div>

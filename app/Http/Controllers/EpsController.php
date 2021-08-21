@@ -15,7 +15,7 @@ class EpsController extends Controller
      */
     public function index()
     {
-        $eps = Eps::orderBy('id', 'desc')->paginate(8);
+        $eps = Eps::all();
 
         return view('app.user.eps.index', compact('eps'));
     }

@@ -48,10 +48,11 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <!-- Datatable starts -->
-                                        <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/crear')}}">Crear nuevo</a>
+                                        <a type="button" class="btn bg-light-info" href="{{url('usuarios/crear')}}">Crear nuevo</a>
+                                        <hr>
                                         <div class="table-responsive">
-                                            <table id="users-list-datatable" class="table table-hover " >
-                                                <thead>
+                                            <table id="users-list-datatable" class="table table-hover file-export " >
+                                                <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Nombres</th>
@@ -98,9 +99,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    <div class="mt-3">
-                                        {{ $users->links() }}
-                                    </div>
+                                        <hr>
                                         <!-- Datatable ends -->
                                     </div>
                                 </div>

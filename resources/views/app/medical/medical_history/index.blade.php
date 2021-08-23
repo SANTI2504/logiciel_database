@@ -48,10 +48,12 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <!-- Datatable starts -->
+                                        <a type="button" class="btn bg-light-info" href="{{url('clinical/historial-medico/create')}}">Crear nuevo</a>
+                                        <hr>
                                         <div class="table-responsive">
-                                            <a type="button" class="btn bg-light-info mb-2" href="{{url('clinical/historial-medico/create')}}">Crear nuevo</a>
-                                            <table id="users-list-datatable" class="table table-hover " >
-                                                <thead>
+
+                                            <table id="users-list-datatable" class="table table-hover file-export " >
+                                                <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Nombres Completos</th>
@@ -93,6 +95,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <hr>
                                         <!-- Datatable ends -->
                                     </div>
                                 </div>

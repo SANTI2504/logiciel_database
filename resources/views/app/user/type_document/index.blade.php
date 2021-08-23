@@ -43,15 +43,16 @@
                     <!-- Table starts -->
                     <div class="users-list-table">
                         <div class="row justify-content-center">
-                            <div class="col-12 ">
+                            <div class="col-12 file-export">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="card-body">
                                             <!-- Datatable starts -->
+                                            <a type="button" class="btn bg-light-info" href="{{url('usuarios/tipo-documento/create')}}">Crear nuevo</a>
+                                            <hr>
                                             <div class="table-responsive">
-                                                <a type="button" class="btn bg-light-info mb-2" href="{{url('usuarios/tipo-documento/create')}}">Crear nuevo</a>
                                                 <table id="users-list-datatable" class="table table-hover " >
-                                                    <thead>
+                                                    <thead class="thead-dark">
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>Tipo de documento</th>
@@ -87,6 +88,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <hr>
                                             <!-- Datatable ends -->
                                         </div>
                                     </div>

@@ -61,7 +61,7 @@
                                         <a type="button" class="btn bg-light-info " href="{{url('usuarios/auxiliares/create')}}">Crear nuevo</a>
                                         <hr>
                                         <div class="col table-responsive">
-                                            <table id="users-list-datatable" class="table table-hover zero-configuration" >
+                                            <table id="users-list-datatable" class="table table-hover file-export " >
                                                 <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
@@ -104,6 +104,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <hr>
                                         <!-- Datatable ends -->
                                     </div>
                                 </div>

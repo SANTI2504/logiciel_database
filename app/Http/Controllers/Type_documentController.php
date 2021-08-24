@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class Type_documentController extends Controller
 {
     public function index(){
-        $type_documents = type_document::orderBy('id', 'desc')->paginate(8);
+        $type_documents = type_document::all();
         return view('app.user.type_document.index', compact('type_documents'));
     }
     public function create(){

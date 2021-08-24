@@ -68,7 +68,7 @@
                                 DATOS DEL AUXILIAR {{$auxiliary -> id}}
                             </div>
                             <div class="card-body ">
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-striped table-bordered table-hover ">
 
                                     <tr>
                                         <th class="col-5">NOMBRES</th>

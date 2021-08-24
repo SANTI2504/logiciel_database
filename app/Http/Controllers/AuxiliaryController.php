@@ -9,6 +9,7 @@ use App\Models\Type_document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 use Spatie\Permission\Models\Role;
 
 
@@ -17,7 +18,7 @@ class AuxiliaryController extends Controller
     use PasswordValidationRules;
 
     public function index(){
-        $auxiliaries = Auxiliary::orderBy('id', 'desc')->paginate(8);
+        $auxiliaries = Auxiliary::all();
         return view('app.user.type_users.auxiliary.index', compact('auxiliaries'));
     }
 
@@ -36,7 +37,14 @@ class AuxiliaryController extends Controller
             'number_document' => 'required|int|unique:auxiliaries',
             'email' => 'required|email|max:145|unique:auxiliaries',
             'date_of_bird' => 'required|date',
-            'password' =>  $this->passwordRules(),
+            'password' =>  [$this->passwordRules(),
+                Password::min(8)
+                    //->letters()//al menos una letra
+                    //->mixedCase()//al menos 1 minuscula y 1 mayucula
+                    //->numbers()//al menos un numero
+                    //->symbols()//al menos un simbolo
+                    //->uncompromised()//no ha sido comprometida en una fuga de datos
+            ],
             'number_cell' => 'required|int',
         ];
         $mensaje = [

@@ -15,7 +15,7 @@ class SpecialistController extends Controller
 {
     use PasswordValidationRules;
     public function index(){
-        $specialists = Specialist::orderBy('id', 'desc')->paginate(8);
+        $specialists = Specialist::all();
         return view('app.user.type_users.specialist.index', compact('specialists'));
     }
 

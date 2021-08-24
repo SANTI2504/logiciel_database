@@ -10,6 +10,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\AuxiliaryController;
 use App\Http\Controllers\Medical_historyController;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -41,9 +42,8 @@ Route::get('/', function () {
 });
 
 //rutas de inicio de sesion
-Route::get('inicio-sesion', function () {
-    return view('app/login/login');
-});
+Route::get('inicio-sesion', [LoginController::class, 'index']);
+Route::post('inicio-sesion', [LoginController::class, 'login']);
 
 //rutas de registro
 Route::get('registrarse',[SignupController::class, 'create']);

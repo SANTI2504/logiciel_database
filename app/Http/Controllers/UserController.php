@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     use PasswordValidationRules;
     public function index(){
-        $users = User::orderBy('id', 'desc')->paginate(1);
+        $users = User::all();
         return view('app.user.index', compact('users'));
     }
 

@@ -10,7 +10,7 @@ class Medical_historyController extends Controller
 {
 
     public function index(){
-        $histories= Medical_history::orderBy('id', 'desc')->paginate(8);
+        $histories= Medical_history::all();
         return view('app.medical.medical_history.index', compact('histories'));
     }
 

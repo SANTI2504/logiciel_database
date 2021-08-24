@@ -15,7 +15,7 @@ class PatientController extends Controller
 {
     use PasswordValidationRules;
     public function index(){
-        $patients = Patient::orderBy('id', 'desc')->paginate(8);
+        $patients = Patient::all();
         return view('app.user.type_users.patient.index', compact('patients'));
     }
 

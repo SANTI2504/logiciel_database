@@ -16,7 +16,7 @@
     <!-- navegador -->
     <nav>
         <div class="titulo">
-            <a href="#">VISION-MEDICS </a>
+            <a href="LLL">VISION-MEDICS </a>
         </div>
 
         <input type="checkbox" class="checkbox" id="check">
@@ -28,8 +28,8 @@
                 <li><a href="#nosotros"> NOSOTROS</a></li>
                 <li><a href="#contact"> CONTACTENOS</a></li>
             </ul>
-            <div class="ingreso  ">
-                @if (Route::has('login'))
+            <div class="ingreso">
+
                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                         @auth
                             <a href="{{ url('/inicio') }}" class="text-sm text-gray-700 underline">Dashboard</a>
@@ -38,7 +38,7 @@
                             <a href="{{ url('registrarse') }}" class="text-sm text-gray-700 underline">Sign UP</a>
                         @endauth
                     </div>
-                @endif
+
             </div>
 
         </div>

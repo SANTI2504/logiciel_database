@@ -60,8 +60,8 @@
                                         <!-- Datatable starts -->
                                         <a type="button" class="btn bg-light-info" href="{{url('usuarios/pacientes/create')}}">Crear nuevo</a>
                                         <hr>
-                                        <div class="table-responsive">
-                                            <table id="users-list-datatable" class="table table-hover file-export " >
+                                        <div class="">
+                                            <table id="users-list-datatable" class=" table-responsive-md table table-hover file-export " >
                                                 <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>

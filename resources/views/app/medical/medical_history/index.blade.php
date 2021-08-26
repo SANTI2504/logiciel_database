@@ -68,7 +68,7 @@
                                                         <td>{{$history-> id}}</td>
                                                         <td>{{$history-> patient -> name}} {{$history-> patient -> lastnames}}</td>
                                                         <td>{{$history-> patient -> number_document}}</td>
-                                                        <td>{{$history-> amount_visits}}</td>
+                                                        <td><a type="button" class="btn bg-light-info" href="{{url('clinical/historial-medico/create')}}"> {{$history-> amount_visits}} Examenes</a></td>
                                                         <td class="text-truncate">
                                                             <form  action="{{url('clinical/historial-medico', $history -> id)}}" method="post">
                                                             @csrf
@@ -87,6 +87,7 @@
                                                                 <button  type="submit" id="type-success" class="btn danger p-0" >
                                                                     <i class="ft-x font-medium-3"></i>
                                                                 </button>
+
                                                             </form>
                                                         </td>
                                                     </tr>

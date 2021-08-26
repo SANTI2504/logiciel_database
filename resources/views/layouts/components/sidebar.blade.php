@@ -14,19 +14,32 @@
         <div class="nav-container">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-
                 <li class=" nav-item"><a href="{{url('inicio')}}"><i class="ft-grid"></i><span class="menu-title" data-i18n="Chat">Modulos</span></a>
+
                 </li>
 
 
-                <li class=" nav-item"><a href="https://pixinvent.com/apex-angular-4-bootstrap-admin-template/html-documentation" target="_blank"><i class="ft-book"></i><span class="menu-title" data-i18n="Documentation">Documentation</span></a>
+                <li class=" nav-item"><a href="documentacion" target="_blank"><i class="ft-book"></i><span class="menu-title" data-i18n="Documentacion">Documentation</span></a>
                 </li>
 
-                <li class=" nav-item"><a href="https://pixinvent.ticksy.com/" target="_blank"><i class="ft-life-buoy"></i><span class="menu-title" data-i18n="Support">Support</span></a>
+                <li class=" nav-item"><a href="ayuda" target="_blank"><i class="ft-life-buoy"></i><span class="menu-title" data-i18n="Support">Ayuda</span></a>
                 </li>
+                <!--
+                <li class="has-sub nav-item"><a href="{{url('usuarios')}}"><i class="ft-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1">3</span></a>
+                    <ul class="menu-content">
+                        <li><a href="#"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Dashboard 1">Dashboard 1</span></a>
+                        </li>
+                        <li><a href="{{url('usuarios')}}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Dashboard 2">Dashboard 2</span></a>
+                        </li>
+                        <li><a href="{{url('usuarios')}}"><i class="ft-arrow-right submenu-icon"></i><span class="menu-item" data-i18n="Dashboard 2">Dashboard 2</span></a>
+                        </li>
+                    </ul>
+                </li>
+                -->
             </ul>
         </div>
     </div>
+
     <!-- main menu content-->
     <div class="sidebar-background"></div>
     <!-- main menu footer-->

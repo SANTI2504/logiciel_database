@@ -13,6 +13,8 @@ class Medical_exam extends Model
         'name',
         'exam_date',
         'symptom',
-        'diagnosis',        
+        'diagnosis',
+        'appointments_id',
+        'medical_histories_id'
     ];
 }

@@ -1,0 +1,34 @@
+Write sentences in going to future.
+
+he / phone / his girlfriend
+Positive: He is going to phone his girlfriend.
+Negative: He is not going to phone his girlfriend.
+Question: Is he going to phone his girlfriend?
+they / share / a room
+Positive: They are going to share a room.
+Negative: They are not going to share a room.
+Question: Are they going to share a room?
+the boss / sign / the contract
+Positive: The boss is going to sign the contract.
+Negative: The boss is not going to sign the contract.
+Question: Is the boss going to sign the contract?
+we / plant / the tree / in the morning
+Positive: We are going to plant the tree in the morning.
+Negative: We are not going to plant the tree in the morning.
+Question: Are we going to plant the tree in the morning?
+Janet / miss / the bus
+Positive: Janet is going to miss the bus.
+Negative: Janet is not going to miss the bus.
+Question: Is Janet going to miss the bus?
+I / sell / the furniture
+Positive: I am going to sell the furniture.
+Negative: I am not going to sell the furniture.
+Question: Am I going to sell the furniture?
+Katy / spend / a lot of money
+Positive: Katy is going to spend a lot of money.
+Negative: Katy is not going to spend a lot of money.
+Question: Is Katy going to spend a lot of money?
+we / build / a house
+Positive: We are going to build a house.
+Negative: We are not going to build a house.
+Question: Are we going to build a house?

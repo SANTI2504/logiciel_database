@@ -1,0 +1,33 @@
+Test
+they / share / their sweets
+Positive: They will share their sweets.
+Negative: They will not share their sweets.
+Question: Will they share their sweets?
+he / pay / cash
+Positive: He will pay cash.
+Negative: He will not pay cash.
+Question: Will he pay cash?
+I / close / the door
+Positive: I will close the door.
+Negative: I will not close the door.
+Question: Will I close the door?
+Tina / paint / a picture for us
+Positive: Tina will paint a picture for us.
+Negative: Tina will not paint a picture for us.
+Question: Will Tina paint a picture for us?
+John / dial / the number for you
+Positive: John will dial the number for you.
+Negative: John will not dial the number for you.
+Question: Will John dial the number for you?
+Ben / break / the rules
+Positive: Ben will break the rules.
+Negative: Ben will not break the rules.
+Question: Will Ben break the rules?
+they / send / us a postcard
+Positive: They will send us a postcard.
+Negative: They will not send us a postcard.
+Question: Will they send us a postcard?
+she / trust / me
+Positive: She will trust me.
+Negative: She will not trust me.
+Question: Will she trust me?

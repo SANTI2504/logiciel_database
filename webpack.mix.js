@@ -42,6 +42,7 @@ mix.styles([
     'resources/css/app/ex-component-sweet-alerts.min.css',
     'resources/css/app/ex-component-toastr.min.css',
     'resources/css/app/form-validation.css',
+    'resources/css/app/page-invoice.min.css',
     'resources/css/app/style.css',
 ], 'public/css/app/app.css');
 

@@ -10,6 +10,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\AuxiliaryController;
 use App\Http\Controllers\Medical_historyController;
+use App\Http\Controllers\Medical_examController;
 use App\Http\Controllers\LoginController;
 
 
@@ -99,6 +100,9 @@ Route::middleware('role:Administrador')->group(function (){
 
     //rutas historial medico
     Route::resource('clinical/historial-medico', Medical_historyController::class );
+
+    //rutas examenes medicos
+    Route::get('clinical/examen-medico/{id}', [Medical_examController::class, 'index']);
 });
 
 

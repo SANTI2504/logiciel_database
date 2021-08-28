@@ -84,7 +84,7 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-1">Nombres</label>
+                                            <label for="basic-form-1">Nombres *</label>
                                             <input id="name" type="text" name="name" value="{{ old('name') }}" required
                                                    autofocus autocomplete="name" class="form-control mb-2"
                                                    placeholder="ej: Camilo Andres">
@@ -161,7 +161,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-2" hidden>
                                     <label for="basic-form-6">Rol</label>
                                     <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
                                         <option value="3">Especialista</option>

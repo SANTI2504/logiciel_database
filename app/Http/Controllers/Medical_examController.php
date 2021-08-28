@@ -2,83 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medical_exam;
+use App\Models\Medical_history;
 use Illuminate\Http\Request;
 
 class Medical_examController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index($id){
+        $name= Medical_history::find($id);
+        $exams= Medical_exam::all()->where('medical_histories_id', '=', $id);
+        return view('app.medical.medical_exam.index', compact('exams', 'name'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create($id_historial){
+
+        return view('app.medical.medical_exam.create', compact('id_historial'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        //validaciones
+        $campos = [
+
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+        //actualizar el conteo
+        $exams = Medical_exam::where('medical_histories_id', '=', $request['medical_histories_id'])->get();
+        $count_exams =$exams->count();
+        $history_update = Medical_history::find($request['medical_histories_id'])->update([
+            'amount_visits' => $count_exams
+        ]);
+
+
+        //sentencias
+        $history = Medical_history::create($request -> all());
+
+        return redirect('clinical/historial-medico')->with('crear', 'ok');
+    }
+    public function edit($historial_medico){
+        $history = Medical_history::find($historial_medico);
+        return view('app.medical.medical_history.edit', compact('history'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function update(Request $request, $historial_medico){
+        //validaciones
+        $campos = [
+
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+        $history = Medical_history::find($historial_medico)->update($request->all());
+        return redirect('clinical/historial_medico')->with('actualizar', 'ok');
+    }
+    public function show($historial_medico){
+        $exam = Medical_exam::all()->where("medical_histories_id","=",$historial_medico);
+        $history = Medical_history::find($historial_medico);
+        return view('app.medical.medical_history.show', compact('history', 'exam'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy($historial_medico){
+        $history = Medical_history::find($historial_medico)->delete();
+        return redirect('clinical/historial_medico')->with('eliminar', 'ok');
     }
 }

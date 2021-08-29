@@ -9,10 +9,11 @@ class Medical_history extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'amount_visits',
+        'count_exams',
         'last_diagnosis',
-        'last_modified_date',
-        'date_create',
+        'personal_history',
+        'family_history',
+        'surgical_history',
         'patients_id',
 
     ];

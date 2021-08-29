@@ -15,6 +15,8 @@ class CreateMedicalExamsTable extends Migration
     {
         Schema::create('medical_exams', function (Blueprint $table) {
             $table->id();
+            $table->string('symptom', 500);
+            $table->string('diagnosis', 500);
             $table->string('reason_consultation', 45);
             $table->string('pharmacological', 45);
             // examen agudez visual
@@ -57,8 +59,6 @@ class CreateMedicalExamsTable extends Migration
             $table->string('diagnostic_exam_support_rem', 45)->nullable(); //examen diagnostico y/o remisiones
             $table->string('identification_origen_disease_accident', 45)->nullable(); //Idenficacion origen enfermedad accidente
 
-            $table->string('symptom', 500);
-            $table->string('diagnosis', 500);
             $table->bigInteger('appointments_id')->unsigned();
             $table->bigInteger('medical_histories_id')->unsigned();
             $table->foreign('appointments_id')->references('id')->on('appointments');

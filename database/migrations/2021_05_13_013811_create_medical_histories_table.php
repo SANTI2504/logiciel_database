@@ -16,11 +16,11 @@ class     CreateMedicalHistoriesTable extends Migration
         Schema::create('medical_histories', function (Blueprint $table) {
             $table->id();
             //pendiente revision
-            $table->bigInteger('amount_visits')->nullable();
+            $table->bigInteger('count_exams')->nullable();
             $table->string('last_diagnosis', 500)->nullable();
             $table->string('personal_history', 250)->nullable(); //antecedentes personales
             $table->string('family_history', 250)->nullable(); //antecedentes familiares
-            $table->string('surgical history', 5250)->nullable(); //antecedentes quirurgicos
+            $table->string('surgical_history', 5250)->nullable(); //antecedentes quirurgicos
             $table->bigInteger('patients_id')->unsigned();
             $table->foreign('patients_id')->references('id')->on('patients');
             $table->timestamps();

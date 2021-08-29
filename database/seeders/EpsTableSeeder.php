@@ -20,5 +20,11 @@ class EpsTableSeeder extends Seeder
         Eps::create([
             'name' => 'Sisben'
         ]);
+        Eps::create([
+            'name' => 'Nueva EPS'
+        ]);
+        Eps::create([
+            'name' => 'Sanitas'
+        ]);
     }
 }

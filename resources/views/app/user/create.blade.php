@@ -77,17 +77,17 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-1">Nombres</label>
-                                            <input id="name" type="text" name="name" value="{{ old('name') }}" required
-                                                   autofocus autocomplete="name" class="form-control mb-2"
+                                            <label for="basic-form-1">Nombres *</label>
+                                            <input id="name" type="text" name="name" value="{{ old('name') }}" autofocus
+                                                   autocomplete="name" class="form-control mb-2"
                                                    placeholder="ej: Camilo Andres" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-2">Apellidos</label>
+                                            <label for="basic-form-2">Apellidos *</label>
                                             <input id="lastnames" type="text" name="lastnames"
-                                                   value="{{ old('lastnames') }}" required autocomplete="lastnames"
+                                                   value="{{ old('lastnames') }}" autocomplete="lastnames"
                                                    class="form-control mb-2" placeholder="ej: Mesa Rincon" required>
                                         </div>
                                     </div>
@@ -95,17 +95,47 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-3">E-mail</label>
+                                            <label for="basic-form-6">Sexo *</label>
+                                            <select class="select2 form-control mb-2" name="gender_id"
+                                                    id="gender_id">
+                                                <option value="none" selected disabled>Seleccionar</option>
+                                                <!--usamos los datos de la tabla type_documents-->
+                                                @foreach($genders as $gender)
+                                                    <option
+                                                        value="{{$gender->id}}">{{$gender->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-6">Estado civil *</label>
+                                            <select class="select2 form-control mb-2" name="civil_status_id"
+                                                    id="civil_status_id">
+                                                <option value="none" selected disabled>Seleccionar</option>
+                                                <!--usamos los datos de la tabla type_documents-->
+                                                @foreach($civil_statuses as $civil_status)
+                                                    <option
+                                                        value="{{$civil_status->id}}">{{$civil_status->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-3">E-mail *</label>
                                             <input id="email" type="email" name="email" value="{{ old('email') }}"
-                                                   required class="form-control mb-2" placeholder="ej: camilo@gmail.com"
+                                                   class="form-control mb-2" placeholder="ej: camilo@gmail.com"
                                                    required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-4">Numero de contacto</label>
+                                            <label for="basic-form-4">Numero de contacto *</label>
                                             <input id="number_cell" type="text" name="number_cell"
-                                                   value="{{ old('number_cell') }}" required class="form-control mb-2"
+                                                   value="{{ old('number_cell') }}" class="form-control mb-2"
                                                    placeholder="ej: 3115676507" required>
                                         </div>
                                     </div>
@@ -113,9 +143,10 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-6">Tipo de documento</label>
+                                            <label for="basic-form-6">Tipo de documento *</label>
                                             <select class="select2 form-control mb-2" name="type_document_id"
-                                                    id="type_document_id" required>
+                                                    id="type_document_id">
+                                                <option value="none" selected disabled>Seleccionar</option>
                                                 <!--usamos los datos de la tabla type_documents-->
                                                 @foreach($type_documents as $type_document)
                                                     <option
@@ -126,7 +157,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-2">Numero de documento</label>
+                                            <label for="basic-form-2">Numero de documento *</label>
                                             <input id="number_document" type="text" name="number_document"
                                                    value="{{ old('number_document') }}" class="form-control mb-2"
                                                    placeholder="ej: 1023659635" required>
@@ -137,45 +168,80 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-5">Fecha de nacimiento</label>
+                                            <label for="basic-form-5">Fecha de nacimiento *</label>
                                             <input id="date_of_bird" type="date" name="date_of_bird"
                                                    value="{{ old('date_of_bird') }}" class="form-control mb-2" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-6">EPS</label>
-                                            <select class="select2 form-control mb-2" name="eps_id" id="eps_id"
-                                                    required>
+                                            <label for="basic-form-6">EPS *</label>
+                                            <select class="select2 form-control mb-2" name="eps_id" id="eps_id">
+                                                <option value="none" selected disabled>Seleccionar</option>
                                                 <!--usamos los datos de la tabla type_documents-->
-                                                @foreach($eps_id as $epss_id)
-                                                    <option value="{{$epss_id-> id}}">{{$epss_id->name}}</option>
+                                                @foreach($eps as $epss)
+                                                    <option value="{{$epss-> id}}">{{$epss->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group mb-2">
+                                <hr style="border-top: 1px solid grey;">
+                                <div class="form-row">
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-1">Direccion *</label>
+                                            <input id="address" type="text" name="address" value="{{ old('address') }}" autofocus
+                                                   autocomplete="address" class="form-control mb-2"
+                                                   placeholder="ej: CARRERA 59B N47 17 SUR" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-1">Ciudad *</label>
+                                            <input id="city" type="text" name="city" value="{{ old('city') }}" autofocus
+                                                   autocomplete="city" class="form-control mb-2"
+                                                   placeholder="ej: Bogota" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-2">Localidad *</label>
+                                            <input id="location" type="text" name="location"
+                                                   value="{{ old('location') }}" autocomplete="location"
+                                                   class="form-control mb-2" placeholder="ej: Kennedy" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-2">Barrio *</label>
+                                            <input id="neighborhood" type="text" name="neighborhood"
+                                                   value="{{ old('neighborhood') }}" autocomplete="neighborhood"
+                                                   class="form-control mb-2" placeholder="ej: Techo" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr style="border-top: 1px solid grey;">
+                                <div class="form-group mb-2" hidden>
                                     <label for="basic-form-6">Rol</label>
                                     <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
-                                        <!--usamos los datos de la tabla type_documents-->
-                                        @foreach($roles_id as $role_id)
-                                            <option value="{{$role_id-> id}}">{{$role_id->name}}</option>
-                                        @endforeach
+                                        <option value="4">Auxiliar</option>
                                     </select>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-1">Contraseña</label>
+                                            <label for="basic-form-1">Contraseña *</label>
                                             <input id="password" type="password" name="password"
                                                    autocomplete="new-password" class="form-control mb-2" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-2">Confirmar contraseña</label>
+                                            <label for="basic-form-2">Confirmar contraseña *</label>
                                             <input id="password_confirmation" type="password"
                                                    name="password_confirmation" autocomplete="new-password"
                                                    class="form-control mb-2" required>

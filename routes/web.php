@@ -6,6 +6,8 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EpsController;
+use App\Http\Controllers\Civil_statusController;
+use App\Http\Controllers\GenderController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\AuxiliaryController;
@@ -82,9 +84,14 @@ Route::middleware('role:Administrador')->group(function (){
     //rutas auxiliaries
     Route::resource('usuarios/auxiliares', AuxiliaryController::class);
 
+    //rutas de Civil_statuses
+    Route::resource('usuarios/estado-civil', Civil_statusController::class);
+
+    //rutas de genders
+    Route::resource('usuarios/generos', GenderController::class);
+
     //rutas de type_documents
     Route::resource('usuarios/tipo-documento', Type_documentController::class);
-
 
     //rutas de roles
     Route::resource('usuarios/roles', RolController::class);
@@ -99,10 +106,12 @@ Route::middleware('role:Administrador')->group(function (){
     });
 
     //rutas historial medico
-    Route::resource('clinical/historial-medico', Medical_historyController::class );
+    Route::resource('clinical/historial-medico', Medical_historyController::class);
 
     //rutas examenes medicos
     Route::get('clinical/examen-medico/{id}', [Medical_examController::class, 'index']);
+    Route::get('clinical/examen-medico/create/{id_historial}', [Medical_examController::class, 'create']);
+    Route::post('clinical/examen-medico', [Medical_examController::class, 'store']);
 });
 
 

@@ -90,22 +90,22 @@
                                         <div class="col-md-6 col-12 border-right border-left">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <table class="table table-borderless table-hover table-sm">
+                                                    <table class="table  table-hover table-sm table-responsive-sm">
                                                         <tbody>
                                                         <tr>
-                                                            <td>Nombre completo:</td>
+                                                            <th>Nombre completo:</th>
                                                             <td class="text-right">{{$history->patient->name}} {{$history->patient->lastnames}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Tipo de documento:</td>
+                                                            <th>Tipo de documento:</th>
                                                             <td class="text-right">{{$history->patient->type_document->name}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>No. documento:</td>
+                                                            <th>No. documento:</th>
                                                             <td class="text-right">{{$history->patient->number_document}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Fecha de nacimiento:</td>
+                                                            <th>Fecha de nacimiento:</th>
                                                             <td class="text-right">{{$history->patient->date_of_bird}}</td>
                                                         </tr>
 
@@ -114,26 +114,26 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12 border-right border-left ">
+                                        <div class="col-md-6 col-12 border-right border-left">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <table class="table table-borderless table-hover table-sm">
+                                                    <table class="table table-hover table-sm table-responsive-sm">
                                                         <tbody>
 
                                                         <tr>
-                                                            <td>Correo electronico:</td>
+                                                            <th>Correo electronico:</th>
                                                             <td class="text-right">{{$history->patient->email}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>No. contacto:</td>
+                                                            <th>No. contacto:</th>
                                                             <td class="text-right">{{$history->patient->number_cell}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Sexo:</td>
+                                                            <th>Sexo:</th>
                                                             <td class="text-right">Indefinido</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>EPS:</td>
+                                                            <th>EPS:</th>
                                                             <td class="text-right">{{$history->patient->eps->name}}</td>
                                                         </tr>
 

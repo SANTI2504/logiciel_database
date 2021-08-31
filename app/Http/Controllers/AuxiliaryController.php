@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\Civil_status;
 use App\Models\Eps;
 use App\Models\Auxiliary;
+use App\Models\Gender;
 use App\Models\Type_document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,10 +25,12 @@ class AuxiliaryController extends Controller
     }
 
     public function create(){
+        $genders = Gender::all();
+        $civil_statuses = Civil_status::all();
         $type_documents = Type_document::all();
-        $roles_id = Role::all();
-        $eps_id = Eps::all();
-        return view('app.user.type_users.auxiliary.create', compact('type_documents', 'roles_id','eps_id'));
+        $roles = Role::all();
+        $eps = Eps::all();
+        return view('app.user.type_users.auxiliary.create', compact('genders', 'civil_statuses', 'type_documents', 'roles', 'eps'));
     }
 
     public function store(Request $request){
@@ -37,6 +41,12 @@ class AuxiliaryController extends Controller
             'number_document' => 'required|int|unique:auxiliaries',
             'email' => 'required|email|max:145|unique:auxiliaries',
             'date_of_bird' => 'required|date',
+            'number_cell' => 'required|int',
+            'address'=>'required|string|max:150',
+            'city'=>'required|string|max:75',
+            'location'=>'required|string|max:75',
+            'neighborhood'=>'required|string|max:75',
+            'gender-id'=>'required',
             'password' =>  [$this->passwordRules(),
                 Password::min(8)
                     //->letters()//al menos una letra
@@ -45,7 +55,7 @@ class AuxiliaryController extends Controller
                     //->symbols()//al menos un simbolo
                     //->uncompromised()//no ha sido comprometida en una fuga de datos
             ],
-            'number_cell' => 'required|int',
+
         ];
         $mensaje = [
             // aca puede generar mensajes unicos
@@ -61,11 +71,14 @@ class AuxiliaryController extends Controller
         return redirect('usuarios/auxiliares')->with('crear', 'ok');
     }
     public function edit($auxiliare){
-        $auxiliary = Auxiliary::find($auxiliare);
+        $genders = Gender::all();
+        $civil_statuses = Civil_status::all();
         $type_documents = Type_document::all();
-        $roles_id = Role::all();
-        $eps_id = Eps::all();
-        return view('app.user.type_users.auxiliary.edit', compact('auxiliary', 'type_documents', 'roles_id','eps_id'));
+        $roles = Role::all();
+        $eps = Eps::all();
+
+        $auxiliary = Auxiliary::find($auxiliare);
+        return view('app.user.type_users.auxiliary.edit', compact('genders', 'civil_statuses', 'auxiliary', 'type_documents', 'roles','eps'));
     }
 
     public function update(Request $request, $auxiliare){
@@ -78,6 +91,11 @@ class AuxiliaryController extends Controller
             'date_of_bird' => 'required|date',
             'password' =>  $this->passwordRules(),
             'number_cell' => 'required|int',
+            'address'=>'required|string|max:150',
+            'city'=>'required|string|max:75',
+            'location'=>'required|string|max:75',
+            'neighborhood'=>'required|string|max:75',
+            'gender-id'=>'required',
         ];
         $mensaje = [
             // aca puede generar mensajes unicos

@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('title')
-    LDB-lista-Examenes
+    LDB-Generos
 @endsection
 
 @section('content')
     <!-- BEGIN : Main Content-->
     <div class="main-content">
         <div class="content-overlay"></div>
-        <div class="content-wrapper"><section class="users-list-wrapper">
+        <div class="content-wrapper">
+            <section class="users-list-wrapper">
                 <!-- start migas de pan-->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -21,70 +22,57 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('menu/clinical')}}" itemprop="item">
-                                <span itemprop="name">Menu clinical</span>
+                            <a href="{{url('menu/usuarios')}}" itemprop="item">
+                                <span itemprop="name">Menu usuarios</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('clinical/historial-medico')}}" itemprop="item">
-                                <span itemprop="name">Historial medico</span>
-                            </a>
-                            <meta itemprop="position" content="1">
-                        </li>
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
-                            itemtype="http://schema.org/ListItem">
-                            <span itemprop="name">Examenes Medicos</span>
+
+                            <span itemprop="name">Generos</span>
+
                             <meta itemprop="position" content="2">
                         </li>
+
                     </ol>
                 </nav>
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Examenes Medicos de {{$name -> patient -> name}} {{$name -> patient -> lastnames}}</div>
+                        <div class="content-header">Generos</div>
                     </div>
                 </div>
 
                 <!-- Table starts -->
                 <div class="users-list-table">
                     <div class="row justify-content-center">
-                        <div class="col-12 ">
+                        <div class="col col-md-10">
                             <div class="card">
                                 <div class="card-content">
+
                                     <div class="card-body">
                                         <!-- Datatable starts -->
-                                        <a type="button" class="btn bg-light-info" href="{{url('clinical/examen-medico/create', $name-> id)}}">Crear nuevo</a>
+                                        <a type="button" class="btn bg-light-info"
+                                           href="{{url('usuarios/generos/create')}}">Crear nuevo</a>
                                         <hr>
-                                        <div class="table-responsive">
-
-                                            <table id="users-list-datatable" class="table table-hover file-export " >
+                                        <div class="col table-responsive">
+                                            <table id="users-list-datatable" class="table table-hover file-export ">
                                                 <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nombre</th>
-                                                    <th>Sintomas</th>
-                                                    <th>Diagnostico</th>
-                                                    <th>fecha</th>
-                                                    <th>cita</th>
-                                                    <th>historial medico id</th>
-                                                    <th>acciones</th>
+                                                    <th>Generos</th>
+                                                    <th>Acciones</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($exams as $exam)
+                                                @foreach($genders as $gender)
                                                     <tr>
-                                                        <td>{{$exam-> id}}</td>
-                                                        <td>{{$exam-> name}}</td>
-                                                        <td>{{$exam-> symptom}} </td>
-                                                        <td>{{$exam-> diagnosis}} </td>
-                                                        <td>{{$exam-> exam_date}} </td>
-                                                        <td>{{$exam-> appointments_id}} </td>
-                                                        <td>{{$exam-> medical_histories_id}} </td>
-
+                                                        <td>{{$gender-> id}}</td>
+                                                        <td>{{$gender-> name}}</td>
                                                         <td class="text-truncate">
-                                                            <form  action="{{url('clinical/historial-medico', $exam -> id)}}" method="post">
+                                                            <form action="{{url('usuarios/generos', $gender -> id)}}"
+                                                                  method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <!--
@@ -92,16 +80,14 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('clinical/historial-medico/'. $exam-> id )}}" class=" btn info p-1">
-                                                                    <i class="ft-eye font-medium-3 "></i>
-                                                                </a>
-                                                                <a href="{{url('clinical/historial-medico/'. $exam-> id . '/edit')}}" class=" btn success p-0">
+                                                                <a href="{{url('usuarios/generos/'. $gender-> id . '/edit')}}"
+                                                                   class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
-                                                                <button  type="submit" id="type-success" class="btn danger p-0" >
+                                                                <button type="submit"
+                                                                        class="btn danger p-0 form-eliminar">
                                                                     <i class="ft-x font-medium-3"></i>
                                                                 </button>
-
                                                             </form>
                                                         </td>
                                                     </tr>

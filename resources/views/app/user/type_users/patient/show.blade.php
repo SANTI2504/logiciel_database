@@ -62,51 +62,96 @@
                 <!-- Table starts -->
                 <!-- Basic Form starts -->
                 <div class="row justify-content-center">
-                    <div class="col col-9 ">
+                    <div class="col-12 col-md-11 ">
                         <div class="card border-primary mb-3">
                             <div class="card-header bg-success text-center font-weight-bolder pb-3">
                                 DATOS DEL PACIENTE {{$patient -> id}}
                             </div>
                             <div class="card-body ">
-                                <table class="table table-striped table-bordered table-hover">
+                                <div id="invoice-customer-details" class="row m-1">
+                                    <div class="col-md-6 col-12 border-right border-left">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <table class="table  table-hover table-sm ">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th>Nombres:</th>
+                                                        <td class="text-right">{{$patient->name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Apellidos:</th>
+                                                        <td class="text-right">{{$patient->lastnames}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Tipo de documento:</th>
+                                                        <td class="text-right">{{$patient->type_document->name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>No. documento:</th>
+                                                        <td class="text-right">{{$patient->number_document}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Fecha de nacimiento:</th>
+                                                        <td class="text-right">{{$patient->date_of_bird}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Nombre acompañante:</th>
+                                                        <td class="text-right">{{$patient->accompanist_name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Celular acompañante:</th>
+                                                        <td class="text-right">{{$patient->accompanist_cell}}</td>
+                                                    </tr>
 
-                                    <tr>
-                                        <th class="col-5">NOMBRES</th>
-                                        <td class="col-7">{{$patient-> name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="col-5">APELLIDOS</th>
-                                        <td class="col-7">{{$patient-> lastnames}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="col-5">TIPO DE DOCUMENTO</th>
-                                        <td class="col-7">{{$patient-> type_document -> name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="col-5"># DOCUMENTO</th>
-                                        <td class="col-7">{{$patient-> number_document}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="col-5">TELEFONO DE CONTACTO</th>
-                                        <td class="col-7">{{$patient-> number_cell}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="col-5">CORREO ELECTRONICO</th>
-                                        <td class="col-7">{{$patient-> email}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="col-5">ROL</th>
-                                        <td class="col-7">{{$patient-> role -> name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="col-5">EPS</th>
-                                        <td class="col-7">{{$patient-> eps -> name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="col-5">FECHA DE NACIMIENTO</th>
-                                        <td class="col-7">{{$patient-> date_of_bird}}</td>
-                                    </tr>
-                                </table>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12 border-right border-left">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <table class="table table-hover table-sm ">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th>Sexo:</th>
+                                                        <td class="text-right">{{$patient->gender->name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Estado civil:</th>
+                                                        <td class="text-right">{{$patient->civil_status->name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>EPS:</th>
+                                                        <td class="text-right">{{$patient->eps->name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Correo electronico:</th>
+                                                        <td class="text-right">{{$patient->email}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>No. contacto:</th>
+                                                        <td class="text-right">{{$patient->number_cell}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Direccion:</th>
+                                                        <td class="text-right">{{$patient->address}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>C-L-B</th>
+                                                        <td class="text-right">{{$patient->city}}
+                                                            -{{$patient->location}}-{{$patient->neighborhood}}</td>
+                                                    </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

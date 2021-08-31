@@ -116,6 +116,44 @@
                             </div>
                         </a>
                     </div>
+                    <div class="col-xl-4 col-lg-6 col-12">
+                        <a href="{{url('usuarios/estado-civil')}}">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-body text-center dark">
+                                                <h3 class="mb-1 danger">Estado civil </h3>
+                                                <spam>Crear-Editar-Eliminar</spam>
+                                            </div>
+                                            <div class="media-right align-self-center">
+                                                <i class="ft-file-minus danger font-large-2 float-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-12">
+                        <a href="{{url('usuarios/generos')}}">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-body text-center dark">
+                                                <h3 class="mb-1 danger">Generos </h3>
+                                                <spam>Crear-Editar-Eliminar</spam>
+                                            </div>
+                                            <div class="media-right align-self-center">
+                                                <i class="ft-file-minus danger font-large-2 float-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </section>
             <!-- // Minimal statistics section end -->

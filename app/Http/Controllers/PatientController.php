@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\Civil_status;
 use App\Models\Eps;
+use App\Models\Gender;
 use App\Models\Patient;
 use App\Models\Type_document;
 use Illuminate\Http\Request;
@@ -20,10 +22,12 @@ class PatientController extends Controller
     }
 
     public function create(){
+        $genders = Gender::all();
+        $civil_statuses = Civil_status::all();
         $type_documents = Type_document::all();
         $roles_id = Role::all();
-        $eps_id = Eps::all();
-        return view('app.user.type_users.patient.create', compact('type_documents', 'roles_id','eps_id'));
+        $eps = Eps::all();
+        return view('app.user.type_users.patient.create', compact('genders', 'civil_statuses','type_documents', 'roles_id','eps'));
     }
 
     public function store(Request $request){
@@ -36,6 +40,10 @@ class PatientController extends Controller
             'date_of_bird' => 'required|date',
             'password' =>  $this->passwordRules(),
             'number_cell' => 'required|int',
+            'address'=>'required|string|max:150',
+            'city'=>'required|string|max:75',
+            'location'=>'required|string|max:75',
+            'neighborhood'=>'required|string|max:75',
         ];
         $mensaje = [
             // aca puede generar mensajes unicos
@@ -51,10 +59,12 @@ class PatientController extends Controller
     }
     public function edit($paciente){
         $patient = Patient::find($paciente);
+        $genders = Gender::all();
+        $civil_statuses = Civil_status::all();
         $type_documents = Type_document::all();
         $roles_id = Role::all();
-        $eps_id = Eps::all();
-        return view('app.user.type_users.patient.edit', compact('patient', 'type_documents', 'roles_id','eps_id'));
+        $eps = Eps::all();
+        return view('app.user.type_users.patient.edit', compact('genders', 'civil_statuses','patient', 'type_documents', 'roles_id','eps'));
     }
 
     public function update(Request $request, $paciente){
@@ -67,6 +77,10 @@ class PatientController extends Controller
             'date_of_bird' => 'required|date',
             'password' =>  $this->passwordRules(),
             'number_cell' => 'required|int',
+            'address'=>'required|string|max:150',
+            'city'=>'required|string|max:75',
+            'location'=>'required|string|max:75',
+            'neighborhood'=>'required|string|max:75',
         ];
         $mensaje = [
             // aca puede generar mensajes unicos

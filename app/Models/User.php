@@ -35,12 +35,32 @@ class User extends Authenticatable
         'password',
         'date_of_bird',
         'number_cell',
+        'address',
+        'city',
+        'location',
+        'neighborhood',
+        'gender_id',
+        'civil_status_id',
         'type_document_id',
         'roles_id',
         'eps_id',
     ];
 
     //eloquent relacion uno a muchos
+    public function Gender()
+    {
+        //belongsto('ruta del modelo a relacionar')
+        return $this->belongsTo(Gender::class, 'gender_id');
+
+    }
+
+    public function Civil_status()
+    {
+        //belongsto('ruta del modelo a relacionar')
+        return $this->belongsTo(Civil_status::class, 'civil_status_id');
+
+    }
+
     public function Type_document()
     {
         //belongsto('ruta del modelo a relacionar')

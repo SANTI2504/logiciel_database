@@ -85,7 +85,7 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-1">Nombres</label>
+                                            <label for="basic-form-1">Nombres *</label>
                                             <input id="name" type="text" name="name" required autofocus
                                                    autocomplete="name" class="form-control mb-2"
                                                    placeholder="ej: Camilo Andres" value="{{$auxiliary ->name}}"
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-2">Apellidos</label>
+                                            <label for="basic-form-2">Apellidos *</label>
                                             <input id="lastnames" type="text" name="lastnames" required
                                                    autocomplete="lastnames" class="form-control mb-2"
                                                    placeholder="ej: Mesa Rincon" value="{{$auxiliary ->lastnames}}"
@@ -105,7 +105,47 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-3">E-mail</label>
+                                            <label for="basic-form-6">Sexo *</label>
+                                            <select class="select2 form-control mb-2" name="gender_id"
+                                                    id="gender_id">
+
+                                                <option
+                                                    value="{{$auxiliary -> gender ->id}}">{{$auxiliary -> gender->name}}</option>
+                                                <!--usamos los datos de la tabla type_documents-->
+                                                @foreach($genders as $gender)
+                                                    @if($gender -> id == $auxiliary -> gender ->id )
+                                                    @else
+                                                        <option
+                                                            value="{{$gender->id}}">{{$gender->name}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-6">Estado civil *</label>
+                                            <select class="select2 form-control mb-2" name="civil_status_id"
+                                                    id="civil_status_id">
+
+                                                <option
+                                                    value="{{$auxiliary -> civil_status ->id}}">{{$auxiliary -> civil_status->name}}</option>
+                                                <!--usamos los datos de la tabla type_documents-->
+                                                @foreach($civil_statuses as $civil_status)
+                                                    @if($civil_status -> id == $auxiliary -> civil_status ->id )
+                                                    @else
+                                                        <option
+                                                            value="{{$civil_status->id}}">{{$civil_status->name}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-3">E-mail *</label>
                                             <input id="email" type="email" name="email" value="{{$auxiliary -> email}}"
                                                    class="form-control mb-2" placeholder="ej: camilo@gmail.com"
                                                    required>
@@ -113,7 +153,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-4">Numero de contacto</label>
+                                            <label for="basic-form-4">Numero de contacto *</label>
                                             <input id="number_cell" type="text" name="number_cell"
                                                    value="{{$auxiliary -> number_cell}}" class="form-control mb-2"
                                                    placeholder="ej: 3115676507" required>
@@ -123,9 +163,10 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-6">Tipo de documento</label>
+                                            <label for="basic-form-6">Tipo de documento *</label>
                                             <select class="select2 form-control mb-2" name="type_document_id"
                                                     id="type_document_id">
+
                                                 <option
                                                     value="{{$auxiliary -> type_document ->id}}">{{$auxiliary -> type_document->name}}</option>
                                                 <!--usamos los datos de la tabla type_documents-->
@@ -160,40 +201,78 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-6">EPS</label>
+                                            <label for="basic-form-6">EPS *</label>
                                             <select class="select2 form-control mb-2" name="eps_id" id="eps_id">
+
                                                 <option
                                                     value="{{$auxiliary -> eps -> id}}">{{$auxiliary -> eps -> name}}</option>
                                                 <!--usamos los datos de la tabla type_documents-->
-                                                @foreach($eps_id as $epss_id)
-                                                    @if($epss_id -> id == $auxiliary ->eps -> id)
+                                                @foreach($eps as $epss)
+                                                    @if($epss -> id == $auxiliary ->eps -> id)
                                                     @else
-                                                        <option value="{{$epss_id-> id}}">{{$epss_id->name}}</option>
+                                                        <option value="{{$epss-> id}}">{{$epss->name}}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+                                <hr style="border-top: 1px solid grey;">
+                                <div class="form-row">
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-1">Direccion *</label>
+                                            <input id="address" type="text" name="address" value="{{$auxiliary -> address}}" autofocus
+                                                   autocomplete="address" class="form-control mb-2"
+                                                   placeholder="ej: CARRERA 59B N47 17 SUR" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-1">Ciudad *</label>
+                                            <input id="city" type="text" name="city" value="{{$auxiliary -> city}}" autofocus
+                                                   autocomplete="city" class="form-control mb-2"
+                                                   placeholder="ej: Bogota" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-2">Localidad *</label>
+                                            <input id="location" type="text" name="location"
+                                                   value="{{$auxiliary -> location}}" autocomplete="location"
+                                                   class="form-control mb-2" placeholder="ej: Kennedy" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group mb-2">
+                                            <label for="basic-form-2">Barrio *</label>
+                                            <input id="neighborhood" type="text" name="neighborhood"
+                                                   value="{{$auxiliary -> neighborhood}}" autocomplete="neighborhood"
+                                                   class="form-control mb-2" placeholder="ej: Techo" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr style="border-top: 1px solid grey;">
                                 <div class="form-group mb-2" hidden>
-                                    <label for="basic-form-6">Rol</label>
+                                    <label for="basic-form-6">Rol *</label>
                                     <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
                                         <option value="4">Auxiliar</option>
-
                                     </select>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-1">Contraseña</label>
+                                            <label for="basic-form-1">Contraseña *</label>
                                             <input id="password" type="password" name="password"
                                                    autocomplete="new-password" class="form-control mb-2" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-2">Confirmar contraseña</label>
+                                            <label for="basic-form-2">Confirmar contraseña *</label>
                                             <input id="password_confirmation" type="password"
                                                    name="password_confirmation" autocomplete="new-password"
                                                    class="form-control mb-2" required>

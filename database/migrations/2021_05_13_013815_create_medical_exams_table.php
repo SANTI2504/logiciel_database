@@ -18,7 +18,7 @@ class CreateMedicalExamsTable extends Migration
             $table->string('symptom', 500);
             $table->string('diagnosis', 500);
             $table->string('reason_consultation', 45);
-            $table->string('pharmacological', 45);
+            $table->string('pharmacological', 45)->nullable();
             // examen agudez visual
             $table->string('sc_vl_od', 45)->nullable(); //sin correccion vision lejana ojo derecho
             $table->string('sc_vp_od', 45)->nullable(); //sin correcion vision proxima ojo derecho

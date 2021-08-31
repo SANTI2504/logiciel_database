@@ -15,8 +15,8 @@ class Medical_examController extends Controller
     }
 
     public function create($id_historial){
-
-        return view('app.medical.medical_exam.create', compact('id_historial'));
+        $history = Medical_history::find($id_historial);
+        return view('app.medical.medical_exam.create', compact('history'));
     }
 
     public function store(Request $request){
@@ -29,18 +29,19 @@ class Medical_examController extends Controller
         ];
         $this->validate($request, $campos, $mensaje);
 
+        /*
         //actualizar el conteo
         $exams = Medical_exam::where('medical_histories_id', '=', $request['medical_histories_id'])->get();
         $count_exams =$exams->count();
         $history_update = Medical_history::find($request['medical_histories_id'])->update([
             'amount_visits' => $count_exams
         ]);
-
+        */
 
         //sentencias
-        $history = Medical_history::create($request -> all());
+        $exam = Medical_exam::create($request -> all());
 
-        return redirect('clinical/historial-medico')->with('crear', 'ok');
+        return redirect('clinical/examen-medico/'.$request['medical_histories_id'])->with('crear', 'ok');
     }
     public function edit($historial_medico){
         $history = Medical_history::find($historial_medico);

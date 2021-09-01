@@ -76,7 +76,8 @@
                             <hr style="border-top: 1px solid grey;">
                             <div id="invoice-customer-details" class="row m-1">
                                 <div class="col-12 text-center p-1">
-                                    <a href="{{url('usuarios/pacientes',$history->patient->id)}}"><span class="badge bg-light-info m-2 p-2">DATOS DEL PACIENTE</span></a>
+                                    <a href="{{url('usuarios/pacientes',$history->patient->id)}}"><span
+                                            class="badge bg-light-info m-2 p-2">DATOS DEL PACIENTE</span></a>
                                 </div>
                                 <div class="col-md-6 col-12 ">
                                     <div class="row">
@@ -101,12 +102,7 @@
                                         <div class="col-12">
                                             <table class="table table-bordered table-hover table-sm ">
                                                 <tbody>
-                                                <tr>
-                                                    <th>Tipo de documento:</th>
-                                                    <td class="text-right"><input id="" type="text" name="" value="{{$history -> patient -> name}} {{$history -> patient -> lastnames}}" autofocus
-                                                                                  autocomplete="name" class="col-12"
-                                                                                  placeholder="ej: Camilo Andres" required></td>
-                                                </tr>
+
                                                 <tr>
                                                     <th>Tipo de documento:</th>
                                                     <td class="text-right">{{$history->patient->type_document->name}}</td>
@@ -122,15 +118,34 @@
                                 </div>
                             </div>
                             <hr style="border-top: 1px solid grey;">
-                            <div class="col-12 text-center p-1">
-                                <span class="badge bg-light-info m-2 p-2">EXAMEN DE AGUDEZA VISUAL</span>
-                            </div>
+
                             <form method="POST" novalidate action="{{url('clinical/examen-medico')}}">
                                 @csrf
+                                <div class="form-group mb-2">
+                                    <label for="basic-form-6"> ID historial*</label>
+                                    <select class="select2 form-control mb-2" name="medical_histories_id" id="medical_histories_id">
+                                        <option>{{$history -> id}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Rason de la consulta:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="reason_consultation" name="reason_consultation" value="{{old('reason_consultation')}}"
+                                                   placeholder="reason_consultation">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 text-center p-1">
+                                    <span class="badge bg-light-info m-2 p-2">EXAMEN DE AGUDEZA VISUAL</span>
+                                </div>
                                 <table class="table table-bordered table-sm m-0">
 
                                     <tr class="text-center">
-                                        <th rowspan="2"></th>
+                                        <th rowspan="2" class="col-2"></th>
                                         <th colspan="2">Sin correccion</th>
                                         <th colspan="2">Con correccion</th>
                                         <th rowspan="2">PH</th>
@@ -148,44 +163,169 @@
 
                                     <tbody>
                                     <tr>
-                                        <th scope="row">Ojo derecho</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
+                                        <th scope="row">Ojo derecho:</th>
+                                        <td>
+                                            <input id="sc_vl_od" type="text" name="sc_vl_od"
+                                                   value="{{old('sc_vl_od')}}"
+                                                   autofocus
+                                                   autocomplete="sc_vl_od" class="col-12"
+                                                   placeholder="sc_vl_od"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="sc_vp_od" type="text" name="sc_vp_od"
+                                                   value="{{old('sc_vp_od')}}"
+                                                   autofocus
+                                                   autocomplete="sc_vp_od" class="col-12"
+                                                   placeholder="sc_vp_od"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="cc_vl_od" type="text" name="cc_vl_od"
+                                                   value="{{old('cc_vl_od')}}"
+                                                   autofocus
+                                                   autocomplete="cc_vl_od" class="col-12"
+                                                   placeholder="cc_vl_od"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="cc_vp_od" type="text" name="cc_vp_od"
+                                                   value="{{old('cc_vp_od')}}"
+                                                   autofocus
+                                                   autocomplete="cc_vp_od" class="col-12"
+                                                   placeholder="cc_vp_od"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="ph_od" type="text" name="ph_od"
+                                                   value="{{old('ph_od')}}"
+                                                   autofocus
+                                                   autocomplete="ph_od" class="col-12"
+                                                   placeholder="ph_od"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="lensometria_od" type="text" name="lensometria_od"
+                                                   value="{{old('lensometria_od')}}"
+                                                   autofocus
+                                                   autocomplete="lensometria_od" class="col-12"
+                                                   placeholder="lensometria_od"
+                                                   required>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Ojo izquierdo</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
+                                        <th scope="row">Ojo izquierdo:</th>
+                                        <td>
+                                            <input id="sc_vl_oi" type="text" name="sc_vl_oi"
+                                                   value="{{old('sc_vl_oi')}}"
+                                                   autofocus
+                                                   autocomplete="sc_vl_oi" class="col-12"
+                                                   placeholder="sc_vl_oi"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="sc_vp_oi" type="text" name="sc_vp_oi"
+                                                   value="{{old('sc_vp_oi')}}"
+                                                   autofocus
+                                                   autocomplete="sc_vp_oi" class="col-12"
+                                                   placeholder="sc_vp_oi"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="cc_vl_oi" type="text" name="cc_vl_oi"
+                                                   value="{{old('cc_vl_oi')}}"
+                                                   autofocus
+                                                   autocomplete="cc_vl_oi" class="col-12"
+                                                   placeholder="cc_vl_oi"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="cc_vp_oi" type="text" name="cc_vp_oi"
+                                                   value="{{old('cc_vp_oi')}}"
+                                                   autofocus
+                                                   autocomplete="cc_vp_oi" class="col-12"
+                                                   placeholder="cc_vp_oi"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="ph_oi" type="text" name="ph_oi"
+                                                   value="{{old('ph_oi')}}"
+                                                   autofocus
+                                                   autocomplete="ph_oi" class="col-12"
+                                                   placeholder="ph_oi"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="lensometria_oi" type="text" name="lensometria_oi"
+                                                   value="{{old('lensometria_oi')}}"
+                                                   autofocus
+                                                   autocomplete="lensometria_oi" class="col-12"
+                                                   placeholder="lensometria_oi"
+                                                   required>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Ambos ojos</th>
-                                        <td>Larry the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
+                                        <th scope="row">Ambos ojos:</th>
+                                        <td>
+                                            <input id="sc_vl_ao" type="text" name="sc_vl_ao"
+                                                   value="{{old('sc_vl_ao')}}"
+                                                   autofocus
+                                                   autocomplete="sc_vl_ao" class="col-12"
+                                                   placeholder="sc_vl_ao"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="sc_vp_ao" type="text" name="sc_vp_ao"
+                                                   value="{{old('sc_vp_ao')}}"
+                                                   autofocus
+                                                   autocomplete="sc_vp_ao" class="col-12"
+                                                   placeholder="sc_vp_ao"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="cc_vl_ao" type="text" name="cc_vl_ao"
+                                                   value="{{old('cc_vl_ao')}}"
+                                                   autofocus
+                                                   autocomplete="cc_vl_ao" class="col-12"
+                                                   placeholder="cc_vl_ao"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="cc_vp_ao" type="text" name="cc_vp_ao"
+                                                   value="{{old('cc_vp_ao')}}"
+                                                   autofocus
+                                                   autocomplete="cc_vp_ao" class="col-12"
+                                                   placeholder="cc_vp_ao"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="ph_ao" type="text" name="ph_ao"
+                                                   value="{{old('ph_ao')}}"
+                                                   autofocus
+                                                   autocomplete="ph_ao" class="col-12"
+                                                   placeholder="ph_ao"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="lensometria_ao" type="text" name="lensometria_ao"
+                                                   value="{{old('lensometria_ao')}}"
+                                                   autofocus
+                                                   autocomplete="lensometria_ao" class="col-12"
+                                                   placeholder="lensometria_ao"
+                                                   required>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <hr style="border-top: 1px solid grey;">
-
-
                                 <div class="form-row">
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Queratomtria</div>
+                                                <div class="input-group-text">Queratometria:</div>
                                             </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+                                            <input type="text" class="form-control" id="keratometry"
+                                                   name="keratometry" placeholder="keratometry" value="{{old('keratometry')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -193,9 +333,10 @@
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Biomicroscopia</div>
+                                                <div class="input-group-text">Biomicroscopia:</div>
                                             </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+                                            <input type="text" class="form-control" id="biomicroscopy" name="biomicroscopy"
+                                                   placeholder="biomicroscopy" value="{{old('keratometry')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -203,9 +344,10 @@
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Examen motor</div>
+                                                <div class="input-group-text">Examen motor:</div>
                                             </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+                                            <input type="text" class="form-control" id="motor_test" name="motor_test"
+                                                   placeholder="motor_test" value="{{old('keratometry')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -213,244 +355,222 @@
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Examen de fondo de ojo</div>
+                                                <div class="input-group-text">Examen de fondo de ojo:</div>
                                             </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+                                            <input type="text" class="form-control" id="exam_bottom_eye" name="exam_bottom_eye" value="{{old('exam_bottom_eye')}}"
+                                                   placeholder="exam_bottom_eye">
                                         </div>
                                     </div>
                                 </div>
                                 <hr style="border-top: 1px solid grey;">
+                                <div class="col-12 text-center p-1">
+                                    <span class="badge bg-light-info m-2 p-2">EXAMEN DE REFRACCION</span>
+                                </div>
                                 <table class="table table-bordered table-sm m-0">
 
                                     <tr class="text-center">
-                                        <th>Retinoscopia</th>
-                                        <th>Afinación</th>
-                                        <th>Con correccion</th>
-                                        <th>PH</th>
-                                        <th>Lensometria</th>
-                                    </tr>
-
-                                    <tr class="text-center">
-
-                                        <th>Vision lejana</th>
-                                        <th>Vision proxima</th>
-                                        <th>Vision lejana</th>
-                                        <th>Vision proxima</th>
+                                        <th class="col-2"></th>
+                                        <th class="col-4">Retinoscopia</th>
+                                        <th class="col-4">Afinacion</th>
+                                        <th class="col-2">Agudeza visual</th>
 
                                     </tr>
+
 
                                     <tbody>
                                     <tr>
-                                        <th scope="row">Ojo derecho</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
+                                        <th scope="row">Ojo derecho:</th>
+                                        <td>
+                                            <input id="retinoscopia_od" type="text" name="retinoscopia_od"
+                                                   value="{{old('retinoscopia_od')}}"
+                                                   autofocus
+                                                   autocomplete="retinoscopia_od" class="col-12"
+                                                   placeholder="retinoscopia_od"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="afinacion_od" type="text" name="afinacion_od"
+                                                   value="{{old('afinacion_od')}}"
+                                                   autofocus
+                                                   autocomplete="afinacion_od" class="col-12"
+                                                   placeholder="afinacion_od"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="agudeza_vis_od" type="text" name="agudeza_vis_od"
+                                                   value="{{old('agudeza_vis_od')}}"
+                                                   autofocus
+                                                   autocomplete="agudeza_vis_od" class="col-12"
+                                                   placeholder="agudeza_vis_od"
+                                                   required>
+                                        </td>
+
+
                                     </tr>
                                     <tr>
-                                        <th scope="row">Ojo izquierdo</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
+                                        <th scope="row">Ojo izquierdo:</th>
+                                        <td>
+                                            <input id="retinoscopia_oi" type="text" name="retinoscopia_oi"
+                                                   value="{{old('retinoscopia_oi')}}"
+                                                   autofocus
+                                                   autocomplete="retinoscopia_oi" class="col-12"
+                                                   placeholder="retinoscopia_oi"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="afinacion_oi" type="text" name="afinacion_oi"
+                                                   value="{{old('afinacion_oi')}}"
+                                                   autofocus
+                                                   autocomplete="afinacion_oi" class="col-12"
+                                                   placeholder="afinacion_oi"
+                                                   required>
+                                        </td>
+                                        <td>
+                                            <input id="agudeza_vis_oi" type="text" name="agudeza_vis_oi"
+                                                   value="{{old('agudeza_vis_oi')}}"
+                                                   autofocus
+                                                   autocomplete="agudeza_vis_oi" class="col-12"
+                                                   placeholder="agudeza_vis_oi"
+                                                   required>
+
+                                        </td>
+
+
                                     </tr>
-                                    <tr>
-                                        <th scope="row">Ambos ojos</th>
-                                        <td>Larry the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
-
-                                <div class="form-row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-1">Nombres *</label>
-                                            <input id="" type="text" name="" value="{{$history -> patient -> name}} {{$history -> patient -> lastnames}}" autofocus
-                                                   autocomplete="name" class="form-control mb-2"
-                                                   placeholder="ej: Camilo Andres" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-2">Apellidos *</label>
-                                            <input id="lastnames" type="text" name="lastnames"
-                                                   value="{{ old('lastnames') }}" autocomplete="lastnames"
-                                                   class="form-control mb-2" placeholder="ej: Mesa Rincon" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-6">Sexo *</label>
-                                            <select class="select2 form-control mb-2" name="gender_id"
-                                                    id="gender_id">
-                                                <option value="none" selected disabled>Seleccionar</option>
-                                                <!--usamos los datos de la tabla type_documents-->
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-6">Estado civil *</label>
-                                            <select class="select2 form-control mb-2" name="civil_status_id"
-                                                    id="civil_status_id">
-                                                <option value="none" selected disabled>Seleccionar</option>
-                                                <!--usamos los datos de la tabla type_documents-->
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-3">E-mail *</label>
-                                            <input id="email" type="email" name="email" value="{{ old('email') }}"
-                                                   class="form-control mb-2" placeholder="ej: camilo@gmail.com"
-                                                   required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-4">Numero de contacto *</label>
-                                            <input id="number_cell" type="text" name="number_cell"
-                                                   value="{{ old('number_cell') }}" class="form-control mb-2"
-                                                   placeholder="ej: 3115676507" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-6">Tipo de documento *</label>
-                                            <select class="select2 form-control mb-2" name="type_document_id"
-                                                    id="type_document_id">
-                                                <option value="none" selected disabled>Seleccionar</option>
-                                                <!--usamos los datos de la tabla type_documents-->
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-2">Numero de documento *</label>
-                                            <input id="number_document" type="text" name="number_document"
-                                                   value="{{ old('number_document') }}" class="form-control mb-2"
-                                                   placeholder="ej: 1023659635" required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-5">Fecha de nacimiento *</label>
-                                            <input id="date_of_bird" type="date" name="date_of_bird"
-                                                   value="{{ old('date_of_bird') }}" class="form-control mb-2" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-6">EPS *</label>
-                                            <select class="select2 form-control mb-2" name="eps_id" id="eps_id">
-                                                <option value="none" selected disabled>Seleccionar</option>
-                                                <!--usamos los datos de la tabla type_documents-->
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
                                 <hr style="border-top: 1px solid grey;">
+
                                 <div class="form-row">
-                                    <div class="col-md-12 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-1">Direccion *</label>
-                                            <input id="address" type="text" name="address" value="{{ old('address') }}" autofocus
-                                                   autocomplete="address" class="form-control mb-2"
-                                                   placeholder="ej: CARRERA 59B N47 17 SUR" required>
+                                    <div class="col col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Ciclopejia:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="ciclopejia"
+                                                   placeholder="ciclopejia" name="ciclopejia" value="{{old('ciclopejia')}}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-1">Ciudad *</label>
-                                            <input id="city" type="text" name="city" value="{{ old('city') }}" autofocus
-                                                   autocomplete="city" class="form-control mb-2"
-                                                   placeholder="ej: Bogota" required>
+                                    <div class="col col-md-6 col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Adicion:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="addiction"
+                                                   placeholder="addiction" name="addiction" value="{{old('addiction')}}">
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-2">Localidad *</label>
-                                            <input id="location" type="text" name="location"
-                                                   value="{{ old('location') }}" autocomplete="location"
-                                                   class="form-control mb-2" placeholder="ej: Kennedy" required>
+                                    <div class="col col-md-6 col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Distancia pupilar:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="pupillary_distance"
+                                                   placeholder="pupillary_distance" name="pupillary_distance" value="{{old('pupillary_distance')}}">
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-2">Barrio *</label>
-                                            <input id="neighborhood" type="text" name="neighborhood"
-                                                   value="{{ old('neighborhood') }}" autocomplete="neighborhood"
-                                                   class="form-control mb-2" placeholder="ej: Techo" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr style="border-top: 1px solid grey;">
-                                <div class="form-group mb-2" hidden>
-                                    <label for="basic-form-6">Rol</label>
-                                    <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
-                                        <option value="4">Auxiliar</option>
-                                    </select>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-1">Nombres del acompañante </label>
-                                            <input id="accompanist_name" type="text" name="accompanist_name" value="{{ old('accompanist_name') }}" autofocus
-                                                   autocomplete="accompanist_name" class="form-control mb-2"
-                                                   placeholder="ej: Diana Sofia Ortiz Sierra" required>
+                                    <div class="col col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Sintomas:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="symptom"
+                                                   placeholder="symptom" value="{{old('symptom')}}" name="symptom">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-2">Celular del acompañante</label>
-                                            <input id="accompanist_cell" type="text" name="accompanist_cell"
-                                                   value="{{ old('accompanist_cell') }}" autocomplete="accompanist_cell"
-                                                   class="form-control mb-2" placeholder="ej: 3115456787" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Diagnosticos:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="diagnosis"
+                                                   placeholder="diagnosis" value="{{old('diagnosis')}}" name="diagnosis">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-1">Contraseña *</label>
-                                            <input id="password" type="password" name="password"
-                                                   autocomplete="new-password" class="form-control mb-2" required>
+                                    <div class="col col-md-6 col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Conducta:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="conduct"
+                                                   placeholder="conduct" value="{{old('conduct')}}" name="conduct">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mb-2">
-                                            <label for="basic-form-2">Confirmar contraseña *</label>
-                                            <input id="password_confirmation" type="password"
-                                                   name="password_confirmation" autocomplete="new-password"
-                                                   class="form-control mb-2" required>
+                                    <div class="col col-md-6 col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Control:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="control"
+                                                   placeholder="control" value="{{old('control')}}" name="control">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="col col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Medicamento:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="medicine"
+                                                   placeholder="medicine" value="{{old('medicine')}}" name="medicine">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" >Examenes de apoyo diagnostico y/o
+                                                    remisiones:
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control" id="diagnostic_exam_support_rem"
+                                                   placeholder="diagnostic_exam_support_rem" value="{{old('diagnostic_exam_support_rem')}}" name="diagnostic_exam_support_rem">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="select-group-prepend">
+                                                <div class="input-group-text">origen de la enfermedad:</div>
+                                            </div>
+                                            <select class="select2 form-control mb-2" name="identification_origen_disease_accident"
+                                                    id="identification_origen_disease_accident">
+                                                <option value="none" selected disabled>Seleccionar</option>
+                                                <option>Paciente sano</option>
+                                                <option>general o común</option>
+                                                <option>profesional u ocupacional</option>
+                                                <option>Accidente de trabajo</option>
+                                                <option>Accidente fuera del trabajo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col col-12">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Farmacologicos:</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="pharmacological"
+                                                   placeholder="pharmacological" value="{{old('pharmacological')}}" name="pharmacological">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr style="border-top: 1px solid grey;">
                                 <button type="submit" class="btn bg-light-primary mr-1 mb-1 mb-sm-0 form-crear"><i
                                         class="ft-check-square mr-1"></i>Guardar
                                 </button>

@@ -17,7 +17,7 @@ class CreateMedicalExamsTable extends Migration
             $table->id();
             $table->string('symptom', 500);
             $table->string('diagnosis', 500);
-            $table->string('reason_consultation', 45);
+            $table->string('reason_consultation', 45)->nullable();
             $table->string('pharmacological', 45)->nullable();
             // examen agudez visual
             $table->string('sc_vl_od', 45)->nullable(); //sin correccion vision lejana ojo derecho
@@ -42,6 +42,7 @@ class CreateMedicalExamsTable extends Migration
             $table->string('keratometry', 45)->nullable(); //queratometria
             $table->string('biomicroscopy', 45)->nullable(); //biomicroscopia
             $table->string('motor_test', 45)->nullable(); //examen_motor
+            $table->string('exam_bottom_eye', 45)->nullable(); //examen fondo de ojos
             //Examen de refraccion
             $table->string('retinoscopia_od', 45)->nullable(); //ojo derecho
             $table->string('afinacion_od', 45)->nullable(); //ojo derecho
@@ -59,7 +60,7 @@ class CreateMedicalExamsTable extends Migration
             $table->string('diagnostic_exam_support_rem', 45)->nullable(); //examen diagnostico y/o remisiones
             $table->string('identification_origen_disease_accident', 45)->nullable(); //Idenficacion origen enfermedad accidente
 
-            $table->bigInteger('appointments_id')->unsigned();
+            $table->bigInteger('appointments_id')->unsigned()->nullable();
             $table->bigInteger('medical_histories_id')->unsigned();
             $table->foreign('appointments_id')->references('id')->on('appointments');
             $table->foreign('medical_histories_id')->references('id')->on('medical_histories');

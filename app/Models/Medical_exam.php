@@ -35,6 +35,7 @@ class Medical_exam extends Model
         'keratometry',
         'biomicroscopy',
         'motor_test',
+        'exam_bottom_eye',
         'retinoscopia_od',
         'afinacion_od',
         'agudeza_vis_od',

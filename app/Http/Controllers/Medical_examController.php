@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Medical_exam;
 use App\Models\Medical_history;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class Medical_examController extends Controller
 
     public function create($id_historial){
         $history = Medical_history::find($id_historial);
-        return view('app.medical.medical_exam.create', compact('history'));
+        $appointments = Appointment::orderby('id','desc')->paginate('')->where('patients_id', '=', $history->patient->id);
+
+        return view('app.medical.medical_exam.create', compact('history', 'appointments'));
     }
 
     public function store(Request $request){

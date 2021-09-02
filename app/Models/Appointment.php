@@ -16,4 +16,11 @@ class Appointment extends Model
         'specialists_id',
         'patients_id',
     ];
+
+    public function Specialist()
+    {
+        //belongsto('ruta del modelo a relacionar')
+        return $this->belongsTo(Specialist::class, 'specialists_id');
+
+    }
 }

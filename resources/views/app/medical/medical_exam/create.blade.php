@@ -121,11 +121,28 @@
 
                             <form method="POST" novalidate action="{{url('clinical/examen-medico')}}">
                                 @csrf
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-2" hidden>
                                     <label for="basic-form-6"> ID historial*</label>
                                     <select class="select2 form-control mb-2" name="medical_histories_id" id="medical_histories_id">
                                         <option>{{$history -> id}}</option>
                                     </select>
+                                </div>
+
+                                <div class="form-row">
+                                <div class="col col-12">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="select-group-prepend">
+                                            <div class="input-group-text">Cita:</div>
+                                        </div>
+                                        <select class="select2 form-control mb-2" name="appointments_id"
+                                                id="appointments_id">
+                                            <option value="none" selected disabled>Seleccionar</option>
+                                            @foreach($appointments as $appointment )
+                                                <option value="{{$appointment -> id}}">Especialista: {{$appointment -> specialist -> name}} {{$appointment -> specialist -> lastnames}} | {{$appointment -> date}} | {{$appointment -> time}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col col-12">
@@ -167,7 +184,7 @@
                                         <td>
                                             <input id="sc_vl_od" type="text" name="sc_vl_od"
                                                    value="{{old('sc_vl_od')}}"
-                                                   autofocus
+
                                                    autocomplete="sc_vl_od" class="col-12"
                                                    placeholder="sc_vl_od"
                                                    required>
@@ -175,7 +192,7 @@
                                         <td>
                                             <input id="sc_vp_od" type="text" name="sc_vp_od"
                                                    value="{{old('sc_vp_od')}}"
-                                                   autofocus
+
                                                    autocomplete="sc_vp_od" class="col-12"
                                                    placeholder="sc_vp_od"
                                                    required>
@@ -183,7 +200,7 @@
                                         <td>
                                             <input id="cc_vl_od" type="text" name="cc_vl_od"
                                                    value="{{old('cc_vl_od')}}"
-                                                   autofocus
+
                                                    autocomplete="cc_vl_od" class="col-12"
                                                    placeholder="cc_vl_od"
                                                    required>
@@ -191,7 +208,7 @@
                                         <td>
                                             <input id="cc_vp_od" type="text" name="cc_vp_od"
                                                    value="{{old('cc_vp_od')}}"
-                                                   autofocus
+
                                                    autocomplete="cc_vp_od" class="col-12"
                                                    placeholder="cc_vp_od"
                                                    required>
@@ -199,7 +216,7 @@
                                         <td>
                                             <input id="ph_od" type="text" name="ph_od"
                                                    value="{{old('ph_od')}}"
-                                                   autofocus
+
                                                    autocomplete="ph_od" class="col-12"
                                                    placeholder="ph_od"
                                                    required>
@@ -207,7 +224,7 @@
                                         <td>
                                             <input id="lensometria_od" type="text" name="lensometria_od"
                                                    value="{{old('lensometria_od')}}"
-                                                   autofocus
+
                                                    autocomplete="lensometria_od" class="col-12"
                                                    placeholder="lensometria_od"
                                                    required>
@@ -218,7 +235,7 @@
                                         <td>
                                             <input id="sc_vl_oi" type="text" name="sc_vl_oi"
                                                    value="{{old('sc_vl_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="sc_vl_oi" class="col-12"
                                                    placeholder="sc_vl_oi"
                                                    required>
@@ -226,7 +243,7 @@
                                         <td>
                                             <input id="sc_vp_oi" type="text" name="sc_vp_oi"
                                                    value="{{old('sc_vp_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="sc_vp_oi" class="col-12"
                                                    placeholder="sc_vp_oi"
                                                    required>
@@ -234,7 +251,7 @@
                                         <td>
                                             <input id="cc_vl_oi" type="text" name="cc_vl_oi"
                                                    value="{{old('cc_vl_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="cc_vl_oi" class="col-12"
                                                    placeholder="cc_vl_oi"
                                                    required>
@@ -242,7 +259,7 @@
                                         <td>
                                             <input id="cc_vp_oi" type="text" name="cc_vp_oi"
                                                    value="{{old('cc_vp_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="cc_vp_oi" class="col-12"
                                                    placeholder="cc_vp_oi"
                                                    required>
@@ -250,7 +267,7 @@
                                         <td>
                                             <input id="ph_oi" type="text" name="ph_oi"
                                                    value="{{old('ph_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="ph_oi" class="col-12"
                                                    placeholder="ph_oi"
                                                    required>
@@ -258,7 +275,7 @@
                                         <td>
                                             <input id="lensometria_oi" type="text" name="lensometria_oi"
                                                    value="{{old('lensometria_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="lensometria_oi" class="col-12"
                                                    placeholder="lensometria_oi"
                                                    required>
@@ -269,7 +286,7 @@
                                         <td>
                                             <input id="sc_vl_ao" type="text" name="sc_vl_ao"
                                                    value="{{old('sc_vl_ao')}}"
-                                                   autofocus
+
                                                    autocomplete="sc_vl_ao" class="col-12"
                                                    placeholder="sc_vl_ao"
                                                    required>
@@ -277,7 +294,7 @@
                                         <td>
                                             <input id="sc_vp_ao" type="text" name="sc_vp_ao"
                                                    value="{{old('sc_vp_ao')}}"
-                                                   autofocus
+
                                                    autocomplete="sc_vp_ao" class="col-12"
                                                    placeholder="sc_vp_ao"
                                                    required>
@@ -285,7 +302,7 @@
                                         <td>
                                             <input id="cc_vl_ao" type="text" name="cc_vl_ao"
                                                    value="{{old('cc_vl_ao')}}"
-                                                   autofocus
+
                                                    autocomplete="cc_vl_ao" class="col-12"
                                                    placeholder="cc_vl_ao"
                                                    required>
@@ -293,7 +310,7 @@
                                         <td>
                                             <input id="cc_vp_ao" type="text" name="cc_vp_ao"
                                                    value="{{old('cc_vp_ao')}}"
-                                                   autofocus
+
                                                    autocomplete="cc_vp_ao" class="col-12"
                                                    placeholder="cc_vp_ao"
                                                    required>
@@ -301,7 +318,7 @@
                                         <td>
                                             <input id="ph_ao" type="text" name="ph_ao"
                                                    value="{{old('ph_ao')}}"
-                                                   autofocus
+
                                                    autocomplete="ph_ao" class="col-12"
                                                    placeholder="ph_ao"
                                                    required>
@@ -309,7 +326,7 @@
                                         <td>
                                             <input id="lensometria_ao" type="text" name="lensometria_ao"
                                                    value="{{old('lensometria_ao')}}"
-                                                   autofocus
+
                                                    autocomplete="lensometria_ao" class="col-12"
                                                    placeholder="lensometria_ao"
                                                    required>
@@ -383,7 +400,7 @@
                                         <td>
                                             <input id="retinoscopia_od" type="text" name="retinoscopia_od"
                                                    value="{{old('retinoscopia_od')}}"
-                                                   autofocus
+
                                                    autocomplete="retinoscopia_od" class="col-12"
                                                    placeholder="retinoscopia_od"
                                                    required>
@@ -391,7 +408,7 @@
                                         <td>
                                             <input id="afinacion_od" type="text" name="afinacion_od"
                                                    value="{{old('afinacion_od')}}"
-                                                   autofocus
+
                                                    autocomplete="afinacion_od" class="col-12"
                                                    placeholder="afinacion_od"
                                                    required>
@@ -399,7 +416,7 @@
                                         <td>
                                             <input id="agudeza_vis_od" type="text" name="agudeza_vis_od"
                                                    value="{{old('agudeza_vis_od')}}"
-                                                   autofocus
+
                                                    autocomplete="agudeza_vis_od" class="col-12"
                                                    placeholder="agudeza_vis_od"
                                                    required>
@@ -412,7 +429,7 @@
                                         <td>
                                             <input id="retinoscopia_oi" type="text" name="retinoscopia_oi"
                                                    value="{{old('retinoscopia_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="retinoscopia_oi" class="col-12"
                                                    placeholder="retinoscopia_oi"
                                                    required>
@@ -420,7 +437,7 @@
                                         <td>
                                             <input id="afinacion_oi" type="text" name="afinacion_oi"
                                                    value="{{old('afinacion_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="afinacion_oi" class="col-12"
                                                    placeholder="afinacion_oi"
                                                    required>
@@ -428,7 +445,7 @@
                                         <td>
                                             <input id="agudeza_vis_oi" type="text" name="agudeza_vis_oi"
                                                    value="{{old('agudeza_vis_oi')}}"
-                                                   autofocus
+
                                                    autocomplete="agudeza_vis_oi" class="col-12"
                                                    placeholder="agudeza_vis_oi"
                                                    required>

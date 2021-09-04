@@ -147,13 +147,17 @@ return [
     */
 
     'attributes' => [
-        'name' => 'NOMBRES',
-        'lastnames' => 'APELLIDOS',
-        'number_document' => 'NUMERO DE DOCUMENTO',
+        'name' => 'Nombres',
+        'lastnames' => 'Apellidos',
+        'number_document' => 'Numero de documento',
         'email' => 'E-MAIL',
-        'password' => 'CONTRASEÑA',
-        'number_cell' => 'NUMERO DE CONTACTO',
-        'dae_of_bird' => 'FECHA DE NACIMIENTO',
+        'password' => 'Contraseña',
+        'number_cell' => 'Numero de contacto',
+        'dae_of_bird' => 'Fecha de nacimiento',
+        'symptom'=>'Sintomas',
+        'diagnosis'=>'Diagnostico',
+        'reason_consultation'=>'Razón de la consulta',
+        'appointments_id'=>'Cita',
     ],
 
 ];

@@ -52,7 +52,7 @@
                                         <hr>
                                         <div class="table-responsive">
 
-                                            <table id="users-list-datatable" class="table table-hover file-export " >
+                                            <table id="users-list-datatable" class="table table-sm table-hover file-export " >
                                                 <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
@@ -68,7 +68,7 @@
                                                         <td>{{$history-> id}}</td>
                                                         <td>{{$history-> patient -> name}} {{$history-> patient -> lastnames}}</td>
                                                         <td>{{$history-> patient -> number_document}}</td>
-                                                        <td><a type="button" class="btn bg-light-info" href="{{url('clinical/examen-medico/'. $history-> id)}}"> {{$history-> amount_visits}} Examenes</a></td>
+                                                        <td><a type="button" class="btn btn-sm bg-light-info" href="{{url('clinical/examen-medico/'. $history-> id)}}"> {{$history-> amount_visits}} Examenes</a></td>
                                                         <td class="text-truncate">
                                                             <form  action="{{url('clinical/historial-medico', $history -> id)}}" method="post">
                                                             @csrf

@@ -53,4 +53,19 @@ class Medical_exam extends Model
         'appointments_id',
         'medical_histories_id',
     ];
+
+    //eloquent relacion uno a muchos
+    public function Appointment()
+    {
+        //belongsto('ruta del modelo a relacionar')
+        return $this->belongsTo(Appointment::class, 'appointments_id');
+
+    }
+    public function History()
+    {
+        //belongsto('ruta del modelo a relacionar')
+        return $this->belongsTo(Medical_history::class, 'medical_histories_id');
+
+    }
+
 }

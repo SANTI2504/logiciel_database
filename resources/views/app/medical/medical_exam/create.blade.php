@@ -61,17 +61,6 @@
                 <div class="col col-12">
                     <div class="card">
 
-                        <!-- start validaciones -->
-                        @if(count($errors)>0)
-
-                            @foreach($errors->all() as $error)
-                                <span class="badge bg-light-danger p-2 m-1" role="alert">
-                                        <i class="ft-alert-triangle"></i>
-                                            {{$error}}
-                                    </span>
-                        @endforeach
-                    @endif
-                    <!-- end validaciones-->
                         <div class="card-body ">
                             <hr style="border-top: 1px solid grey;">
                             <div id="invoice-customer-details" class="row m-1">
@@ -118,6 +107,22 @@
                                 </div>
                             </div>
                             <hr style="border-top: 1px solid grey;">
+                            <div>
+
+                                <!-- start validaciones -->
+                                @if(count($errors)>0)
+
+                                    @foreach($errors->all() as $error)
+                                        <span class="badge bg-light-danger p-2 m-1" role="alert">
+                                        <i class="ft-alert-triangle"></i>
+                                            {{$error}}
+                                    </span>
+                                @endforeach
+                                        <hr style="border-top: 1px solid grey;">
+                            @endif
+                            <!-- end validaciones-->
+
+                            </div>
 
                             <form method="POST" novalidate action="{{url('clinical/examen-medico')}}">
                                 @csrf
@@ -137,6 +142,7 @@
                                         <select class="select2 form-control mb-2" name="appointments_id"
                                                 id="appointments_id">
                                             <option value="none" selected disabled>Seleccionar</option>
+
                                             @foreach($appointments as $appointment )
                                                 <option value="{{$appointment -> id}}">Especialista: {{$appointment -> specialist -> name}} {{$appointment -> specialist -> lastnames}} | {{$appointment -> date}} | {{$appointment -> time}}</option>
                                             @endforeach
@@ -148,7 +154,7 @@
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Rason de la consulta:</div>
+                                                <div class="input-group-text">Razón de la consulta:</div>
                                             </div>
                                             <input type="text" class="form-control" id="reason_consultation" name="reason_consultation" value="{{old('reason_consultation')}}"
                                                    placeholder="reason_consultation">

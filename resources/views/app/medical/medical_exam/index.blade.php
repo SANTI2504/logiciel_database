@@ -59,16 +59,16 @@
                                         <hr>
                                         <div class="table-responsive">
 
-                                            <table id="users-list-datatable" class="table table-hover file-export " >
+                                            <table id="users-list-datatable" class="table  table-hover file-export " >
                                                 <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nombre</th>
+                                                    <th>Especialista</th>
+                                                    <th>Razon de consulta</th>
                                                     <th>Sintomas</th>
                                                     <th>Diagnostico</th>
-                                                    <th>fecha</th>
-                                                    <th>cita</th>
-                                                    <th>historial medico id</th>
+
+                                                    <th>Fecha</th>
                                                     <th>acciones</th>
                                                 </tr>
                                                 </thead>
@@ -76,15 +76,14 @@
                                                 @foreach($exams as $exam)
                                                     <tr>
                                                         <td>{{$exam-> id}}</td>
-                                                        <td>{{$exam-> name}}</td>
+                                                        <td>{{$exam-> appointment -> specialist -> name}} {{$exam-> appointment -> specialist -> lastnames}}</td>
+                                                        <td>{{$exam-> reason_consultation}} </td>
                                                         <td>{{$exam-> symptom}} </td>
                                                         <td>{{$exam-> diagnosis}} </td>
-                                                        <td>{{$exam-> exam_date}} </td>
-                                                        <td>{{$exam-> appointments_id}} </td>
-                                                        <td>{{$exam-> medical_histories_id}} </td>
+                                                        <td>{{$exam-> created_at}} </td>
 
                                                         <td class="text-truncate">
-                                                            <form  action="{{url('clinical/historial-medico', $exam -> id)}}" method="post">
+                                                            <form  action="{{url('clinical/examen-medico', $exam -> id)}}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <!--
@@ -92,10 +91,10 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('clinical/historial-medico/'. $exam-> id )}}" class=" btn info p-1">
+                                                                <a href="{{url('clinical/examen-medico/'. $exam-> id.'/show' )}}" class=" btn info p-1">
                                                                     <i class="ft-eye font-medium-3 "></i>
                                                                 </a>
-                                                                <a href="{{url('clinical/historial-medico/'. $exam-> id . '/edit')}}" class=" btn success p-0">
+                                                                <a href="{{url('clinical/examen-medico/'. $exam-> id . '/edit')}}" class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
                                                                 <button  type="submit" id="type-success" class="btn danger p-0" >

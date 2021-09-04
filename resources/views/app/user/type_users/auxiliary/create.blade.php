@@ -104,7 +104,6 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
                                             <label for="basic-form-6">Sexo *</label>
-
                                             <select class="select2 form-control mb-2" name="gender_id"
                                                     id="gender_id">
                                                 <option value="none" selected disabled>Seleccionar</option>

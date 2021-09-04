@@ -15,10 +15,10 @@ class CreateMedicalExamsTable extends Migration
     {
         Schema::create('medical_exams', function (Blueprint $table) {
             $table->id();
-            $table->string('symptom', 500);
-            $table->string('diagnosis', 500);
-            $table->string('reason_consultation', 45)->nullable();
-            $table->string('pharmacological', 45)->nullable();
+            $table->string('symptom', 250);
+            $table->string('diagnosis', 250);
+            $table->string('reason_consultation', 250);
+            $table->string('pharmacological', 250)->nullable();
             // examen agudez visual
             $table->string('sc_vl_od', 45)->nullable(); //sin correccion vision lejana ojo derecho
             $table->string('sc_vp_od', 45)->nullable(); //sin correcion vision proxima ojo derecho
@@ -56,11 +56,11 @@ class CreateMedicalExamsTable extends Migration
             $table->string('pupillary_distance', 45)->nullable(); //distancia_pupilar
             $table->string('conduct', 45)->nullable(); //conducta
             $table->string('control', 45)->nullable(); //control
-            $table->string('medicine', 45)->nullable(); //medicamento
+            $table->string('medicine', 150)->nullable(); //medicamento
             $table->string('diagnostic_exam_support_rem', 45)->nullable(); //examen diagnostico y/o remisiones
             $table->string('identification_origen_disease_accident', 45)->nullable(); //Idenficacion origen enfermedad accidente
 
-            $table->bigInteger('appointments_id')->unsigned()->nullable();
+            $table->bigInteger('appointments_id')->unsigned();
             $table->bigInteger('medical_histories_id')->unsigned();
             $table->foreign('appointments_id')->references('id')->on('appointments');
             $table->foreign('medical_histories_id')->references('id')->on('medical_histories');

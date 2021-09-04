@@ -695,7 +695,7 @@ html body.layout-dark.layout-transparent .header-navbar,html body.layout-dark.la
     }
 
     .table-responsive {
-        -ms-overflow-style: none
+        -ms-overflow-style: yes
     }
 
     .terms-conditions {

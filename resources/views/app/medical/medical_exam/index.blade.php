@@ -59,7 +59,7 @@
                                         <hr>
                                         <div class="table-responsive">
 
-                                            <table id="users-list-datatable" class="table  table-hover file-export " >
+                                            <table id="users-list-datatable" class="table table-sm table-hover file-export " >
                                                 <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
@@ -83,7 +83,7 @@
                                                         <td>{{$exam-> created_at}} </td>
 
                                                         <td class="text-truncate">
-                                                            <form  action="{{url('clinical/examen-medico', $exam -> id)}}" method="post">
+                                                            <form  action="{{url('clinical/examen-medico/'. $exam -> id .'/'. $exam -> medical_histories_id)}}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <!--
@@ -97,7 +97,7 @@
                                                                 <a href="{{url('clinical/examen-medico/'. $exam-> id . '/edit')}}" class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
-                                                                <button  type="submit" id="type-success" class="btn danger p-0" >
+                                                                <button  type="submit" id="" class="btn danger p-0 form-eliminar" >
                                                                     <i class="ft-x font-medium-3"></i>
                                                                 </button>
 

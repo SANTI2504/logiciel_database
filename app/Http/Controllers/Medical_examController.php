@@ -53,30 +53,35 @@ class Medical_examController extends Controller
         return redirect('clinical/examen-medico/'.$request['medical_histories_id'])->with('crear', 'ok');
     }
     public function edit($id){
-        $history = Medical_history::find($id);
-        return view('app.medical.medical_history.edit', compact('history'));
+        $exam = Medical_exam::find($id);
+        return view('app.medical.medical-exam.edit', compact('exam'));
     }
 
     public function update(Request $request, $id){
         //validaciones
         $campos = [
-
+            'reason_consultation'=>'required|string|max:250',
+            'appointments_id'=>[ 'required', Rule::unique('medical_exams')->ignore($id)],
+            'symptom'=>'required|string|max:250',
+            'diagnosis'=>'required|string|max:250',
         ];
         $mensaje = [
             // aca puede generar mensajes unicos
         ];
         $this->validate($request, $campos, $mensaje);
 
-        $history = Medical_history::find($id)->update($request->all());
-        return redirect('clinical/historial_medico')->with('actualizar', 'ok');
+        $exam = Medical_exam::find($id)->update($request->all());
+        return redirect('clinical/examen-medico/'.$request['medical_histories_id'])->with('actualizar', 'ok');
     }
     public function show($id){
         $exam = Medical_exam::find($id);
         return view('app.medical.medical_exam.show', compact('exam'));
     }
 
-    public function destroy($id){
-        $history = Medical_history::find($id)->delete();
-        return redirect('clinical/historial_medico')->with('eliminar', 'ok');
+    public function destroy($id,$id_history){
+        $exam = Medical_exam::find($id)->delete();
+
+
+        return redirect('clinical/examen-medico/'. $id_history)->with('eliminar', 'ok');
     }
 }

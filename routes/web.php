@@ -113,6 +113,7 @@ Route::middleware('role:Administrador')->group(function (){
     Route::get('clinical/examen-medico/create/{id_historial}', [Medical_examController::class, 'create']);
     Route::post('clinical/examen-medico', [Medical_examController::class, 'store']);
     Route::get('clinical/examen-medico/{id}/show', [Medical_examController::class, 'show']);
+    Route::delete('clinical/examen-medico/{id}/{id_history}',[Medical_examController::class,'destroy']);
 });
 
 

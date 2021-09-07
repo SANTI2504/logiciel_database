@@ -290,7 +290,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <hr style="border-top: 1px solid grey;">
                                     <div id="invoice-customer-details" class="row">
                                         <div class="col-12 text-center p-1">
                                             <span class="badge bg-light-info m-2 p-2">EXAMEN DE REFRACCION</span>
@@ -341,15 +341,15 @@
                                     </div>
                                     <hr style="border-top: 1px solid grey;">
                                     <div id="invoice-customer-details" class="row">
+                                        <div class="col-12 text-center p-1">
+                                            <span class="badge bg-light-info m-2 p-2">OTROS EXAMENES</span>
+                                        </div>
                                         <div class="col-12 ">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <table class="table table-bordered table-striped  table-hover table-sm ">
+                                            <div class="row justify-content-center">
+                                                <div class="col-12 col-md-6">
+                                                    <table class="table table-sm table-hover  table-responsive-sm ">
                                                         <tbody class="table-striped ">
-                                                        <tr>
-                                                            <th>Razon de la consulta:</th>
-                                                            <td class="text-right">{{$exam -> reason_consultation}}</td>
-                                                        </tr>
+
                                                         <tr>
                                                             <th>Queratometria:</th>
                                                             <td class="text-right">{{$exam -> keratometry}}</td>
@@ -366,18 +366,13 @@
                                                             <th>Distancia pupilar:</th>
                                                             <td class="text-right">{{$exam -> pupillary_distance}}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <th>Diagnosticos:</th>
-                                                            <td class="text-right">{{$exam -> diagnosis}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Control:</th>
-                                                            <td class="text-right">{{$exam -> control}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Examenes de apoyo diagnostico y/o remisiones:</th>
-                                                            <td class="text-right">{{$exam -> diagnostic_exam_support_rem}}</td>
-                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <table class="table table-sm table-hover  table-responsive-sm ">
+                                                        <tbody class="table-striped ">
                                                         <tr>
                                                             <th>Biomicroscopia:</th>
                                                             <td class="text-right">{{$exam -> biomicroscopy}}</td>
@@ -391,20 +386,59 @@
                                                             <td class="text-right">{{$exam -> addiction}}</td>
                                                         </tr>
                                                         <tr>
+                                                            <th>Examenes de apoyo diagnostico y/o remisiones:</th>
+                                                            <td class="text-right">{{$exam -> diagnostic_exam_support_rem}}</td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr style="border-top: 1px solid grey;">
+                                    <div id="invoice-customer-details" class="row">
+                                        <div class="col-12 text-center p-1">
+                                            <span class="badge bg-light-info m-2 p-2">RESULTADOS DE LA CONSULTA</span>
+                                        </div>
+                                        <div class="col-12 ">
+                                            <div class="row justify-content-center">
+                                                <div class="col-12 col-md-6">
+                                                    <table class="table table-sm table-hover  table-responsive-sm ">
+                                                        <tbody class="table-striped ">
+                                                        <tr>
+                                                            <th>Razon de la consulta:</th>
+                                                            <td class="text-right">{{$exam -> reason_consultation}}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <th>Sintomas:</th>
                                                             <td class="text-right">{{$exam -> symptom}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Control:</th>
+                                                            <td class="text-right">{{$exam -> control}}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>Conducta:</th>
                                                             <td class="text-right">{{$exam -> conduct}}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <th>Medicamento:</th>
-                                                            <td class="text-right">{{$exam -> medicine}}</td>
-                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <table class="table table-sm table-hover  table-responsive-sm ">
+                                                        <tbody class="table-striped ">
                                                         <tr>
                                                             <th>origen de la enfermedad::</th>
                                                             <td class="text-right">{{$exam -> identification_origen_disease_accident}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Diagnosticos:</th>
+                                                            <td class="text-right">{{$exam -> diagnosis}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Medicamento:</th>
+                                                            <td class="text-right">{{$exam -> medicine}}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>Farmacologicos:</th>
@@ -416,8 +450,8 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
+                                    <hr style="border-top: 1px solid grey;">
 
 
                                     <!-- Invoice Customer Details ends -->
@@ -439,9 +473,9 @@
                                             </div>
                                             <div class="terms-conditions mb-2">
                                                 <h6>Terminos &amp; Condiciones</h6>
-                                                <p> El historial medico Es un documento privado, obligatorio y sometido
+                                                <p> El examen medico Es un documento privado, obligatorio y sometido
                                                     a reserva, en el
-                                                    cual se registran cronológicamente las condiciones de salud del
+                                                    cual se registran las condiciones de salud del
                                                     paciente, los actos médicos y los demás procedimientos
                                                     ejecutados por el equipo de salud que interviene en su atención.
                                                     Dicho documento únicamente puede ser conocido por terceros

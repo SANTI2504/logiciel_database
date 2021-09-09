@@ -64,8 +64,8 @@ class Specialist extends Model
     {
         //belongsto('ruta del modelo a relacionar')
         return $this->belongsTo(Eps::class, 'eps_id');
-
     }
+
 
     /**
      * The attributes that should be hidden for arrays.

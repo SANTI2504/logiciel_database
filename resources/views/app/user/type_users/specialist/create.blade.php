@@ -234,7 +234,7 @@
                                 <div class="form-group mb-2" hidden>
                                     <label for="basic-form-6">Rol</label>
                                     <select class="select2 form-control mb-2" name="roles_id" id="roles_id">
-                                        <option value="4">Auxiliar</option>
+                                        <option value="3">Especialista</option>
                                     </select>
                                 </div>
 

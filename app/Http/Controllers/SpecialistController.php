@@ -35,8 +35,8 @@ class SpecialistController extends Controller
         $campos = [
             'name' => 'required|string|max:125',
             'lastnames' => 'required|string|max:45',
-            'number_document' => 'required|int|unique:auxiliaries',
-            'email' => 'required|email|max:145|unique:auxiliaries',
+            'number_document' => 'required|int|unique:specialists',
+            'email' => 'required|email|max:145|unique:specialists',
             'date_of_bird' => 'required|date',
             'password' =>  $this->passwordRules(),
             'number_cell' => 'required|int',

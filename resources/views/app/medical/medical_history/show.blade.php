@@ -84,10 +84,10 @@
 
                                     <div id="invoice-customer-details" class="row">
                                         <div class="col-12 text-center p-1">
-                                            <p class="text-bold-700 mb-1 ml-1">DATOS DEL PACIENTE</p>
+                                            <span class="badge bg-light-info m-2 p-2">DATOS DEL PACIENTE</span>
                                         </div>
 
-                                        <div class="col-md-6 col-12 border-right border-left">
+                                        <div class="col-md-6 col-12">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <table class="table  table-hover table-sm table-responsive-sm">
@@ -114,7 +114,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12 border-right border-left">
+
+                                        <div class="col-md-6 col-12">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <table class="table table-hover table-sm table-responsive-sm">
@@ -130,7 +131,7 @@
                                                         </tr>
                                                         <tr>
                                                             <th>Sexo:</th>
-                                                            <td class="text-right">Indefinido</td>
+                                                            <td class="text-right">{{$history->patient->gender->name}}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>EPS:</th>
@@ -143,161 +144,134 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr style="border-top: 1px solid grey;">
                                     <!-- Invoice Customer Details ends -->
                                     <!-- Invoice Items Details starts -->
                                     <div id="invoice-items-details">
+                                        <div class="col-12 text-center p-1">
+                                            <span class="badge bg-light-info m-2 p-2">Examenes realizados</span>
+                                        </div>
+
                                         <div class="row">
                                             <div class="table-responsive col-12">
-                                                <table class="table mt-3">
+                                                <table class="table mt-3 table-sm">
                                                     <thead>
                                                     <tr>
                                                         <th>ID</th>
-                                                        <th>Item &amp; Description</th>
-                                                        <th class="text-right">Rate</th>
-                                                        <th class="text-right">Hours</th>
-                                                        <th class="text-right">Amount</th>
+                                                        <th>Especialista</th>
+                                                        <th>Razon de consulta</th>
+                                                        <th>Sintomas</th>
+                                                        <th>Diagnostico</th>
+                                                        <th>Fecha</th>
+                                                        <th>acciones</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     @foreach($exam as $exams)
                                                         <tr>
                                                             <td>{{$exams-> id}}</td>
-                                                            <td>{{$exams-> medical_histories_id}} </td>
+                                                            <td>{{$exams-> appointment -> specialist -> name}} {{$exams-> appointment -> specialist -> lastnames}}</td>
+                                                            <td>{{$exams-> reason_consultation}} </td>
                                                             <td>{{$exams-> symptom}} </td>
-                                                            <td></td>
-                                                            <td><a type="button" class="btn bg-light-info" href="{{url('clinical/historial-medico/create')}}"> {{$history-> amount_visits}} Examenes</a></td>
-
+                                                            <td>{{$exams-> diagnosis}} </td>
+                                                            <td>{{$exams-> created_at}} </td>
+                                                            <td><a type="button" class="btn-sm bg-light-primary" href="{{url('clinical/examen-medico/'.$exams->id.'/show')}}">+ Detalles</a></td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
                                                 </table>
+                                                <hr style="border-top: 1px solid grey;">
                                             </div>
                                         </div>
-                                        <div class="row mt-3 mt-md-0">
-                                            <div class="col-md-6 col-12 text-left">
-                                                <p class="text-bold-700 mb-1 ml-1">Payment Methods:</p>
+                                    <!-- Invoice Items Details ends -->
+
+                                        <div id="invoice-customer-details" class="row">
+                                            <div class="col-12 text-center p-1">
+                                                <span class="badge bg-light-info m-2 p-2">ANTECEDENTES</span>
+                                            </div>
+
+                                            <div class="col-12">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <table class="table table-borderless table-sm">
+                                                        <table class="table  table-hover table-sm table-responsive-sm">
                                                             <tbody>
                                                             <tr>
-                                                                <td>Bank name:</td>
-                                                                <td class="text-right">ABC Bank, USA</td>
+                                                                <th>Antecedentes Personales:</th>
+                                                                <td class="text-right">{{$history->personal_history}}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Acc name:</td>
-                                                                <td class="text-right">Amanda Orton</td>
+                                                                <th>Antecedentes Familiares:</th>
+                                                                <td class="text-right">{{$history->family_history}}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>IBAN:</td>
-                                                                <td class="text-right">FGS165461646546AA</td>
+                                                                <th>Antecedentes Quirurgicos:</th>
+                                                                <td class="text-right">{{$history->surgical_history}}</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>SWIFT code:</td>
-                                                                <td class="text-right">BTNPP34</td>
-                                                            </tr>
+
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-12">
-                                                <p class="text-bold-700 mb-2 ml-4">Total due</p>
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>Sub Total</td>
-                                                            <td class="text-right">$14,900.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>TAX (12%)</td>
-                                                            <td class="text-right">$1,788.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-bold-800">Total</td>
-                                                            <td class="text-bold-800 text-right"> $16,688.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Payment Made</td>
-                                                            <td class="danger text-right">(-) $4,688.00</td>
-                                                        </tr>
-                                                        <tr class="text-bold-500">
-                                                            <td>Balance Due</td>
-                                                            <td class="text-right">$12,000.00</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- Invoice Items Details ends -->
+                                        <hr style="border-top: 1px solid grey;">
+
                                     <!-- Invoice Footer starts -->
-                                    <div id="invoice-footer">
-                                        <div class="row mt-2 mt-sm-0">
+                                        <div id="invoice-footer">
+                                            <div class="row mt-2 mt-sm-0">
 
-                                            <div class=" col-12">
-                                                <div class="signature text-center">
-                                                    <p>Authorized person</p>
-                                                    <img src="../app-assets/img/pages/signature-scan.png"
-                                                         alt="firma" width="250">
-                                                    <h6 class="mt-4">Dra. Diana V. Rey </h6>
-                                                    <p class="text-muted">Optometra U. de la Salle</p>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="signature text-center">
+                                                        <p>Autorizado por</p>
+                                                        <img src="/img/firmas/firma-ejemplo.png"
+                                                             alt="firma" width="200">
+                                                        <h6 class="mt-4">
+                                                            Dr(a). Diana V. Rey </h6>
+                                                        <p class="text-muted">Optometra U. de la Salle</p>
 
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="signature text-center">
+                                                        <p>Paciente</p>
+                                                        <img src="/img/firmas/firma-ejemplo.png"
+                                                             alt="firma" width="200">
+                                                        <h6 class="mt-4">
+                                                            Sr(a). {{$history->patient->name}} {{$history->patient->lastnames}}</h6>
+                                                        <h6> {{$history->patient->number_document}} </h6>
+                                                        <p class="text-muted"></p>
+
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="terms-conditions mb-2">
-                                                <h6>Terminos &amp; Condiciones</h6>
-                                                <p> El historial medico Es un documento privado, obligatorio y sometido
-                                                    a reserva, en el
-                                                    cual se registran cronológicamente las condiciones de salud del
-                                                    paciente, los actos médicos y los demás procedimientos
-                                                    ejecutados por el equipo de salud que interviene en su atención.
-                                                    Dicho documento únicamente puede ser conocido por terceros
-                                                    previa autorización del paciente o en los casos previstos por la
-                                                    ley.</p>
+                                            <hr style="border-top: 1px solid grey;">
+                                            <div class="col-12">
+                                                <div class="terms-conditions mb-2">
+                                                    <h6>Terminos &amp; Condiciones</h6>
+                                                    <p> El examen medico Es un documento privado, obligatorio y sometido
+                                                        a reserva, en el
+                                                        cual se registran las condiciones de salud del
+                                                        paciente, los actos médicos y los demás procedimientos
+                                                        ejecutados por el equipo de salud que interviene en su atención.
+                                                        Dicho documento únicamente puede ser conocido por terceros
+                                                        previa autorización del paciente o en los casos previstos por la
+                                                        ley.</p>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-12 text-center text-sm-right">
-                                                <button type="button" class="btn btn-primary btn-print mt-2 mt-md-1"><i
-                                                        class="ft-printer mr-1"></i>Print Invoice
-                                                </button>
+                                            <div class="row">
+                                                <div class="col-12 text-center text-sm-right">
+                                                    <button type="button" class="btn btn-primary btn-print mt-2 mt-md-1"><i
+                                                            class="ft-printer mr-1"></i>Imprimir
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <!-- Invoice Footer ends -->
                                 </div>
                             </div>
                         </div>
                         <!-- end card-->
-                        <table id="users-list-datatable" class="table table-hover file-export " >
-                            <thead class="thead-dark">
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombres Completos</th>
-                                <th>No. Documento</th>
-                                <th>No. Examenes</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($exam as $exams)
-                                <tr>
-                                    <td>{{$exams-> id}}</td>
-                                    <td>{{$exams-> medical_histories_id}} </td>
-                                    <td>{{$exams-> symptom}} </td>
-                                    <td></td>
-                                    <td><a type="button" class="btn bg-light-info" href="{{url('clinical/historial-medico/create')}}"> {{$history-> amount_visits}} Examenes</a></td>
-
-                                </tr>
-                            @endforeach
-
-                            </tbody>
-                        </table>
-                        <!--end prueba -->
                     </div>
                 </div>
                 <!-- Basic Form ends -->

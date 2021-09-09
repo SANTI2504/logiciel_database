@@ -93,11 +93,10 @@
                                         <div class="col-12 text-center p-1">
                                             <span class="badge bg-light-info m-2 p-2">DATOS DEL PACIENTE</span>
                                         </div>
-
-                                        <div class="col-md-6 col-12  ">
+                                        <div class="col-md-6 col-12 table-responsive">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <table class="table  table-hover table-sm table-responsive-sm">
+                                                    <table class="table  table-hover table-sm">
                                                         <tbody>
                                                         <tr>
                                                             <th>Nombre completo:</th>
@@ -121,10 +120,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12  ">
+                                        <div class="col-md-6 col-12 table-responsive">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <table class="table table-hover table-sm table-responsive-sm">
+                                                    <table class="table table-hover table-sm">
                                                         <tbody>
 
                                                         <tr>
@@ -151,15 +150,14 @@
                                         </div>
                                     </div>
                                     <hr style="border-top: 1px solid grey;">
-                                    <div id="invoice-customer-details" class="row">
+                                    <div id="invoice-customer-details" class="row ">
                                         <div class="col-12 text-center p-1">
                                             <span class="badge bg-light-info m-2 p-2">DATOS DE LA CITA</span>
                                         </div>
-
-                                        <div class="col-md-6 col-12  ">
+                                        <div class="col-md-6 col-12 table-responsive ">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <table class="table  table-hover table-sm table-responsive-sm">
+                                                    <table class="table  table-hover table-sm ">
                                                         <tbody>
                                                         <tr>
                                                             <th>ID:</th>
@@ -175,10 +173,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12  ">
+                                        <div class="col-md-6 col-12 table-responsive">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <table class="table table-hover table-sm table-responsive-sm">
+                                                    <table class="table table-hover table-sm">
                                                         <tbody>
                                                         <tr>
                                                             <th>Especialista:</th>
@@ -202,7 +200,7 @@
                                             <span class="badge bg-light-info m-2 p-2">EXAMEN DE AGUDEZA VISUAL</span>
                                         </div>
 
-                                        <div class="col-12  ">
+                                        <div class="col-12 table-responsive ">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <table class="table table-bordered table-sm m-0">
@@ -296,7 +294,7 @@
                                             <span class="badge bg-light-info m-2 p-2">EXAMEN DE REFRACCION</span>
                                         </div>
 
-                                        <div class="col-12  ">
+                                        <div class="col-12 table-responsive ">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <table class="table table-bordered table-sm m-0">
@@ -340,14 +338,15 @@
                                         </div>
                                     </div>
                                     <hr style="border-top: 1px solid grey;">
+
                                     <div id="invoice-customer-details" class="row">
                                         <div class="col-12 text-center p-1">
                                             <span class="badge bg-light-info m-2 p-2">OTROS EXAMENES</span>
                                         </div>
-                                        <div class="col-12 ">
-                                            <div class="row justify-content-center">
-                                                <div class="col-12 col-md-6">
-                                                    <table class="table table-sm table-hover  table-responsive-sm ">
+                                        <div class="col-md-6 col-12 table-responsive">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <table class="table table-sm table-hover  ">
                                                         <tbody class="table-striped ">
 
                                                         <tr>
@@ -370,8 +369,12 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="col-12 col-md-6">
-                                                    <table class="table table-sm table-hover  table-responsive-sm ">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12 table-responsive">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <table class="table table-sm table-hover  ">
                                                         <tbody class="table-striped ">
                                                         <tr>
                                                             <th>Biomicroscopia:</th>
@@ -397,14 +400,15 @@
                                         </div>
                                     </div>
                                     <hr style="border-top: 1px solid grey;">
+
                                     <div id="invoice-customer-details" class="row">
                                         <div class="col-12 text-center p-1">
                                             <span class="badge bg-light-info m-2 p-2">RESULTADOS DE LA CONSULTA</span>
                                         </div>
-                                        <div class="col-12 ">
-                                            <div class="row justify-content-center">
-                                                <div class="col-12 col-md-6">
-                                                    <table class="table table-sm table-hover  table-responsive-sm ">
+                                        <div class="col-md-6 col-12 table-responsive">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <table class="table table-sm table-hover  ">
                                                         <tbody class="table-striped ">
                                                         <tr>
                                                             <th>Razon de la consulta:</th>
@@ -425,8 +429,12 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="col-12 col-md-6">
-                                                    <table class="table table-sm table-hover  table-responsive-sm ">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12 table-responsive">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <table class="table table-sm table-hover  ">
                                                         <tbody class="table-striped ">
                                                         <tr>
                                                             <th>origen de la enfermedad::</th>
@@ -461,16 +469,33 @@
                                     <div id="invoice-footer">
                                         <div class="row mt-2 mt-sm-0">
 
-                                            <div class=" col-12">
+                                            <div class="col-12 col-md-6">
                                                 <div class="signature text-center">
-                                                    <p>Authorized person</p>
-                                                    <img src="../app-assets/img/pages/signature-scan.png"
-                                                         alt="firma" width="250">
-                                                    <h6 class="mt-4">Dra. Diana V. Rey </h6>
+                                                    <p>Especialista</p>
+                                                    <img src="/img/firmas/firma-ejemplo.png"
+                                                         alt="firma" width="200">
+                                                    <h6 class="mt-4">
+                                                        Dr(a). {{$exam->appointment->specialist->name}} {{$exam->appointment->specialist->lastnames}} </h6>
+                                                    <h6>{{$exam->appointment->specialist->type_document->name}} {{$exam->appointment->specialist->number_document}} </h6>
                                                     <p class="text-muted">Optometra U. de la Salle</p>
 
                                                 </div>
                                             </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="signature text-center">
+                                                    <p>Paciente</p>
+                                                    <img src="/img/firmas/firma-ejemplo.png"
+                                                         alt="firma" width="200">
+                                                    <h6 class="mt-4">
+                                                        Sr(a). {{$exam->appointment->patient->name}} {{$exam->appointment->patient->lastnames}}</h6>
+                                                    <h6>{{$exam->appointment->patient->type_document->name}} {{$exam->appointment->patient->number_document}} </h6>
+                                                    <p class="text-muted"></p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="border-top: 1px solid grey;">
+                                        <div class="col-12">
                                             <div class="terms-conditions mb-2">
                                                 <h6>Terminos &amp; Condiciones</h6>
                                                 <p> El examen medico Es un documento privado, obligatorio y sometido

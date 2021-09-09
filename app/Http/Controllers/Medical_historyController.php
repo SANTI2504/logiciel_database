@@ -6,6 +6,7 @@ use App\Models\Medical_exam;
 use App\Models\Medical_history;
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class Medical_historyController extends Controller
 {
@@ -24,6 +25,7 @@ class Medical_historyController extends Controller
     public function store(Request $request){
         //validaciones
         $campos = [
+            'patients_id'=>[ 'required', Rule::unique('medical_histories')],
 
         ];
         $mensaje = [
@@ -52,7 +54,7 @@ class Medical_historyController extends Controller
         $this->validate($request, $campos, $mensaje);
 
         $history = Medical_history::find($historial_medico)->update($request->all());
-        return redirect('clinical/historial_medico')->with('actualizar', 'ok');
+        return redirect('clinical/historial-medico')->with('actualizar', 'ok');
     }
     public function show($historial_medico){
         $exam = Medical_exam::all()->where("medical_histories_id","=",$historial_medico);

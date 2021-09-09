@@ -72,19 +72,38 @@
                             <form method="POST" novalidate action="{{url('clinical/historial-medico')}}">
                                 @csrf
                                 <div class="form-row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-12">
                                         <div class="form-group mb-2">
-                                            <label for="basic-form-6">Nombres del paciente</label>
+                                            <label for="basic-form-6">Paciente *</label>
                                             <select class="select2 form-control select2-hidden-accessible mb-2" name="patients_id"
                                                     id="">
+                                                <option value="none" selected disabled>Seleccionar</option>
                                                 <!--usamos los datos de la tabla type_documents-->
                                                 @foreach($patients as $patient)
                                                     <option
-                                                        value="{{$patient->id}}">{{$patient->name}} {{$patient->lastnames}}</option>
+                                                        value="{{$patient->id}}">Nombre: {{$patient->name}} {{$patient->lastnames}} | {{$patient->number_document}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group mb-2">
+                                                <label for="basic-form-1">Antecedentes personales</label>
+                                                <input type="text" id="personal_history" name="personal_history" class="form-control" placeholder="Ej: Rinitis alergica" value="{{old('personal_history')}}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group mb-2">
+                                                <label for="basic-form-1">Antecedentes familiares</label>
+                                                <input type="text" id="family_history" name="family_history" class="form-control" placeholder="Ej: Cataratas" required value="{{old('family_history')}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group mb-2">
+                                                <label for="basic-form-1">Antecedentes quirurgicos</label>
+                                                <input type="text" id="surgical_history" name="surgical_history" class="form-control" placeholder="Ej: Cirujia vascular" required value="{{old('surgical_history')}}">
+                                            </div>
+                                        </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mb-2">
 

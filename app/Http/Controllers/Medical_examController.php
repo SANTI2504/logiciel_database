@@ -54,7 +54,9 @@ class Medical_examController extends Controller
     }
     public function edit($id){
         $exam = Medical_exam::find($id);
-        return view('app.medical.medical-exam.edit', compact('exam'));
+        $appointments = Appointment::orderby('id','desc')->paginate('')
+            ->where('patients_id', '=', $exam->history->patient->id);
+        return view('app.medical.medical_exam.edit', compact('exam', 'appointments'));
     }
 
     public function update(Request $request, $id){

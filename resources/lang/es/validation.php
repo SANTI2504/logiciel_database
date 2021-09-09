@@ -158,6 +158,7 @@ return [
         'diagnosis'=>'Diagnostico',
         'reason_consultation'=>'Razón de la consulta',
         'appointments_id'=>'Cita',
+        'patients_id'=>'Paciente',
     ],
 
 ];

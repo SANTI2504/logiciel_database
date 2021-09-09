@@ -67,7 +67,6 @@
                                                     <th>Razon de consulta</th>
                                                     <th>Sintomas</th>
                                                     <th>Diagnostico</th>
-
                                                     <th>Fecha</th>
                                                     <th>acciones</th>
                                                 </tr>

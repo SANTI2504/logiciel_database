@@ -158,6 +158,1452 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
 
 
 .switchery{background-color:#fff;border:1px solid #dfdfdf;border-radius:20px;cursor:pointer;display:inline-block;height:30px;position:relative;vertical-align:middle;width:50px;-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;box-sizing:content-box;background-clip:content-box}.switchery>small{background:#fff;border-radius:100%;box-shadow:0 1px 3px rgba(0,0,0,0.4);height:30px;position:absolute;top:0;width:30px}.switchery-small{border-radius:20px;height:20px;width:33px}.switchery-small>small{height:20px;width:20px}.switchery-large{border-radius:40px;height:40px;width:66px}.switchery-large>small{height:40px;width:40px}
+
+/* classes attached to <body> */
+
+.fc-not-allowed,
+.fc-not-allowed .fc-event { /* override events' custom cursors */
+  cursor: not-allowed;
+}
+
+.fc-unselectable {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.fc {
+  /* layout of immediate children */
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1em
+}
+.fc,
+  .fc *,
+  .fc *:before,
+  .fc *:after {
+    box-sizing: border-box;
+  }
+.fc table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em; /* normalize cross-browser */
+  }
+.fc th {
+    text-align: center;
+  }
+.fc th,
+  .fc td {
+    vertical-align: top;
+    padding: 0;
+  }
+.fc a[data-navlink] {
+    cursor: pointer;
+  }
+.fc a[data-navlink]:hover {
+    text-decoration: underline;
+  }
+.fc-direction-ltr {
+  direction: ltr;
+  text-align: left;
+}
+.fc-direction-rtl {
+  direction: rtl;
+  text-align: right;
+}
+.fc-theme-standard td,
+  .fc-theme-standard th {
+    border: 1px solid #ddd;
+    border: 1px solid var(--fc-border-color, #ddd);
+  }
+/* for FF, which doesn't expand a 100% div within a table cell. use absolute positioning */
+/* inner-wrappers are responsible for being absolute */
+/* TODO: best place for this? */
+.fc-liquid-hack td,
+  .fc-liquid-hack th {
+    position: relative;
+  }
+
+@font-face {
+  font-family: 'fcicons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,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") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fc-icon {
+  /* added for fc */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'fcicons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fc-icon-chevron-left:before {
+  content: "\e900";
+}
+
+.fc-icon-chevron-right:before {
+  content: "\e901";
+}
+
+.fc-icon-chevrons-left:before {
+  content: "\e902";
+}
+
+.fc-icon-chevrons-right:before {
+  content: "\e903";
+}
+
+.fc-icon-minus-square:before {
+  content: "\e904";
+}
+
+.fc-icon-plus-square:before {
+  content: "\e905";
+}
+
+.fc-icon-x:before {
+  content: "\e906";
+}
+/*
+Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
+
+These styles only apply when the standard-theme is activated.
+When it's NOT activated, the fc-button classes won't even be in the DOM.
+*/
+.fc {
+
+  /* reset */
+
+}
+.fc .fc-button {
+    border-radius: 0;
+    overflow: visible;
+    text-transform: none;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+.fc .fc-button:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+.fc .fc-button {
+    -webkit-appearance: button;
+  }
+.fc .fc-button:not(:disabled) {
+    cursor: pointer;
+  }
+.fc .fc-button::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+  }
+.fc {
+
+  /* theme */
+
+}
+.fc .fc-button {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.4em 0.65em;
+    font-size: 1em;
+    line-height: 1.5;
+    border-radius: 0.25em;
+  }
+.fc .fc-button:hover {
+    text-decoration: none;
+  }
+.fc .fc-button:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
+  }
+.fc .fc-button:disabled {
+    opacity: 0.65;
+  }
+.fc {
+
+  /* "primary" coloring */
+
+}
+.fc .fc-button-primary {
+    color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #2C3E50;
+    background-color: var(--fc-button-bg-color, #2C3E50);
+    border-color: #2C3E50;
+    border-color: var(--fc-button-border-color, #2C3E50);
+  }
+.fc .fc-button-primary:hover {
+    color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #1e2b37;
+    background-color: var(--fc-button-hover-bg-color, #1e2b37);
+    border-color: #1a252f;
+    border-color: var(--fc-button-hover-border-color, #1a252f);
+  }
+.fc .fc-button-primary:disabled { /* not DRY */
+    color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #2C3E50;
+    background-color: var(--fc-button-bg-color, #2C3E50);
+    border-color: #2C3E50;
+    border-color: var(--fc-button-border-color, #2C3E50); /* overrides :hover */
+  }
+.fc .fc-button-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+  }
+.fc .fc-button-primary:not(:disabled):active,
+  .fc .fc-button-primary:not(:disabled).fc-button-active {
+    color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #1a252f;
+    background-color: var(--fc-button-active-bg-color, #1a252f);
+    border-color: #151e27;
+    border-color: var(--fc-button-active-border-color, #151e27);
+  }
+.fc .fc-button-primary:not(:disabled):active:focus,
+  .fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+  }
+.fc {
+
+  /* icons within buttons */
+
+}
+.fc .fc-button .fc-icon {
+    vertical-align: middle;
+    font-size: 1.5em; /* bump up the size (but don't make it bigger than line-height of button, which is 1.5em also) */
+  }
+.fc .fc-button-group {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+  }
+.fc .fc-button-group > .fc-button {
+    position: relative;
+    flex: 1 1 auto;
+  }
+.fc .fc-button-group > .fc-button:hover {
+    z-index: 1;
+  }
+.fc .fc-button-group > .fc-button:focus,
+  .fc .fc-button-group > .fc-button:active,
+  .fc .fc-button-group > .fc-button.fc-button-active {
+    z-index: 1;
+  }
+.fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+.fc-direction-rtl .fc-button-group > .fc-button:not(:first-child) {
+    margin-right: -1px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+.fc-direction-rtl .fc-button-group > .fc-button:not(:last-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+.fc .fc-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 1.5em;
+  }
+.fc .fc-toolbar.fc-footer-toolbar {
+    margin-top: 1.5em;
+  }
+.fc .fc-toolbar-title {
+    font-size: 1.75em;
+    margin: 0;
+  }
+.fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+    margin-left: .75em; /* space between */
+  }
+.fc-direction-rtl .fc-toolbar > * > :not(:first-child) {
+    margin-right: .75em; /* space between */
+  }
+.fc-direction-rtl .fc-toolbar-ltr { /* when the toolbar-chunk positioning system is explicitly left-to-right */
+    flex-direction: row-reverse;
+  }
+.fc .fc-scroller {
+    -webkit-overflow-scrolling: touch;
+    position: relative; /* for abs-positioned elements within */
+  }
+.fc .fc-scroller-liquid {
+    height: 100%;
+  }
+.fc .fc-scroller-liquid-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+.fc .fc-scroller-harness {
+    position: relative;
+    overflow: hidden;
+    direction: ltr;
+      /* hack for chrome computing the scroller's right/left wrong for rtl. undone below... */
+      /* TODO: demonstrate in codepen */
+  }
+.fc .fc-scroller-harness-liquid {
+    height: 100%;
+  }
+.fc-direction-rtl .fc-scroller-harness > .fc-scroller { /* undo above hack */
+    direction: rtl;
+  }
+.fc-theme-standard .fc-scrollgrid {
+    border: 1px solid #ddd;
+    border: 1px solid var(--fc-border-color, #ddd); /* bootstrap does this. match */
+  }
+.fc .fc-scrollgrid,
+    .fc .fc-scrollgrid table { /* all tables (self included) */
+      width: 100%; /* because tables don't normally do this */
+      table-layout: fixed;
+    }
+.fc .fc-scrollgrid table { /* inner tables */
+      border-top-style: hidden;
+      border-left-style: hidden;
+      border-right-style: hidden;
+    }
+.fc .fc-scrollgrid {
+
+    border-collapse: separate;
+    border-right-width: 0;
+    border-bottom-width: 0;
+
+  }
+.fc .fc-scrollgrid-liquid {
+    height: 100%;
+  }
+.fc .fc-scrollgrid-section { /* a <tr> */
+    height: 1px /* better than 0, for firefox */
+
+  }
+.fc .fc-scrollgrid-section > td {
+      height: 1px; /* needs a height so inner div within grow. better than 0, for firefox */
+    }
+.fc .fc-scrollgrid-section table {
+      height: 1px;
+        /* for most browsers, if a height isn't set on the table, can't do liquid-height within cells */
+        /* serves as a min-height. harmless */
+    }
+.fc .fc-scrollgrid-section-liquid > td {
+      height: 100%; /* better than `auto`, for firefox */
+    }
+.fc .fc-scrollgrid-section > * {
+    border-top-width: 0;
+    border-left-width: 0;
+  }
+.fc .fc-scrollgrid-section-header > *,
+  .fc .fc-scrollgrid-section-footer > * {
+    border-bottom-width: 0;
+  }
+.fc .fc-scrollgrid-section-body table,
+  .fc .fc-scrollgrid-section-footer table {
+    border-bottom-style: hidden; /* head keeps its bottom border tho */
+  }
+.fc {
+
+  /* stickiness */
+
+}
+.fc .fc-scrollgrid-section-sticky > * {
+    background: #fff;
+    background: var(--fc-page-bg-color, #fff);
+    position: sticky;
+    z-index: 3; /* TODO: var */
+    /* TODO: box-shadow when sticking */
+  }
+.fc .fc-scrollgrid-section-header.fc-scrollgrid-section-sticky > * {
+    top: 0; /* because border-sharing causes a gap at the top */
+      /* TODO: give safari -1. has bug */
+  }
+.fc .fc-scrollgrid-section-footer.fc-scrollgrid-section-sticky > * {
+    bottom: 0; /* known bug: bottom-stickiness doesn't work in safari */
+  }
+.fc .fc-scrollgrid-sticky-shim { /* for horizontal scrollbar */
+    height: 1px; /* needs height to create scrollbars */
+    margin-bottom: -1px;
+  }
+.fc-sticky { /* no .fc wrap because used as child of body */
+  position: sticky;
+}
+.fc .fc-view-harness {
+    flex-grow: 1; /* because this harness is WITHIN the .fc's flexbox */
+    position: relative;
+  }
+.fc {
+
+  /* when the harness controls the height, make the view liquid */
+
+}
+.fc .fc-view-harness-active > .fc-view {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+.fc .fc-col-header-cell-cushion {
+    display: inline-block; /* x-browser for when sticky (when multi-tier header) */
+    padding: 2px 4px;
+  }
+.fc .fc-bg-event,
+  .fc .fc-non-business,
+  .fc .fc-highlight {
+    /* will always have a harness with position:relative/absolute, so absolutely expand */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+.fc .fc-non-business {
+    background: rgba(215, 215, 215, 0.3);
+    background: var(--fc-non-business-color, rgba(215, 215, 215, 0.3));
+  }
+.fc .fc-bg-event {
+    background: rgb(143, 223, 130);
+    background: var(--fc-bg-event-color, rgb(143, 223, 130));
+    opacity: 0.3;
+    opacity: var(--fc-bg-event-opacity, 0.3)
+  }
+.fc .fc-bg-event .fc-event-title {
+      margin: .5em;
+      font-size: .85em;
+      font-size: var(--fc-small-font-size, .85em);
+      font-style: italic;
+    }
+.fc .fc-highlight {
+    background: rgba(188, 232, 241, 0.3);
+    background: var(--fc-highlight-color, rgba(188, 232, 241, 0.3));
+  }
+.fc .fc-cell-shaded,
+  .fc .fc-day-disabled {
+    background: rgba(208, 208, 208, 0.3);
+    background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  }
+/* link resets */
+/* ---------------------------------------------------------------------------------------------------- */
+a.fc-event,
+a.fc-event:hover {
+  text-decoration: none;
+}
+/* cursor */
+.fc-event[href],
+.fc-event.fc-event-draggable {
+  cursor: pointer;
+}
+/* event text content */
+/* ---------------------------------------------------------------------------------------------------- */
+.fc-event .fc-event-main {
+    position: relative;
+    z-index: 2;
+  }
+/* dragging */
+/* ---------------------------------------------------------------------------------------------------- */
+.fc-event-dragging:not(.fc-event-selected) { /* MOUSE */
+    opacity: 0.75;
+  }
+.fc-event-dragging.fc-event-selected { /* TOUCH */
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+  }
+/* resizing */
+/* ---------------------------------------------------------------------------------------------------- */
+/* (subclasses should hone positioning for touch and non-touch) */
+.fc-event .fc-event-resizer {
+    display: none;
+    position: absolute;
+    z-index: 4;
+  }
+.fc-event:hover, /* MOUSE */
+.fc-event-selected { /* TOUCH */
+
+}
+.fc-event:hover .fc-event-resizer, .fc-event-selected .fc-event-resizer {
+    display: block;
+  }
+.fc-event-selected .fc-event-resizer {
+    border-radius: 4px;
+    border-radius: calc(var(--fc-event-resizer-dot-total-width, 8px) / 2);
+    border-width: 1px;
+    border-width: var(--fc-event-resizer-dot-border-width, 1px);
+    width: 8px;
+    width: var(--fc-event-resizer-dot-total-width, 8px);
+    height: 8px;
+    height: var(--fc-event-resizer-dot-total-width, 8px);
+    border-style: solid;
+    border-color: inherit;
+    background: #fff;
+    background: var(--fc-page-bg-color, #fff)
+
+    /* expand hit area */
+
+  }
+.fc-event-selected .fc-event-resizer:before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+    }
+/* selecting (always TOUCH) */
+/* ---------------------------------------------------------------------------------------------------- */
+.fc-event-selected {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2)
+
+  /* expand hit area (subclasses should expand) */
+
+}
+.fc-event-selected:before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+.fc-event-selected {
+
+  /* dimmer effect */
+
+}
+.fc-event-selected:after {
+    content: "";
+    background: rgba(0, 0, 0, 0.25);
+    background: var(--fc-event-selected-overlay-color, rgba(0, 0, 0, 0.25));
+    position: absolute;
+    z-index: 1;
+
+    /* assume there's a border on all sides. overcome it. */
+    /* sometimes there's NOT a border, in which case the dimmer will go over */
+    /* an adjacent border, which looks fine. */
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+  }
+/*
+A HORIZONTAL event
+*/
+.fc-h-event { /* allowed to be top-level */
+  display: block;
+  border: 1px solid #3788d8;
+  border: 1px solid var(--fc-event-border-color, #3788d8);
+  background-color: #3788d8;
+  background-color: var(--fc-event-bg-color, #3788d8)
+
+}
+.fc-h-event .fc-event-main {
+    color: #fff;
+    color: var(--fc-event-text-color, #fff);
+  }
+.fc-h-event .fc-event-main-frame {
+    display: flex; /* for make fc-event-title-container expand */
+  }
+.fc-h-event .fc-event-time {
+    max-width: 100%; /* clip overflow on this element */
+    overflow: hidden;
+  }
+.fc-h-event .fc-event-title-container { /* serves as a container for the sticky cushion */
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0; /* important for allowing to shrink all the way */
+  }
+.fc-h-event .fc-event-title {
+    display: inline-block; /* need this to be sticky cross-browser */
+    vertical-align: top; /* for not messing up line-height */
+    left: 0;  /* for sticky */
+    right: 0; /* for sticky */
+    max-width: 100%; /* clip overflow on this element */
+    overflow: hidden;
+  }
+.fc-h-event.fc-event-selected:before {
+    /* expand hit area */
+    top: -10px;
+    bottom: -10px;
+  }
+/* adjust border and border-radius (if there is any) for non-start/end */
+.fc-direction-ltr .fc-daygrid-block-event:not(.fc-event-start),
+.fc-direction-rtl .fc-daygrid-block-event:not(.fc-event-end) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-width: 0;
+}
+.fc-direction-ltr .fc-daygrid-block-event:not(.fc-event-end),
+.fc-direction-rtl .fc-daygrid-block-event:not(.fc-event-start) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-width: 0;
+}
+/* resizers */
+.fc-h-event:not(.fc-event-selected) .fc-event-resizer {
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  width: var(--fc-event-resizer-thickness, 8px);
+}
+.fc-direction-ltr .fc-h-event:not(.fc-event-selected) .fc-event-resizer-start,
+.fc-direction-rtl .fc-h-event:not(.fc-event-selected) .fc-event-resizer-end {
+  cursor: w-resize;
+  left: -4px;
+  left: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+}
+.fc-direction-ltr .fc-h-event:not(.fc-event-selected) .fc-event-resizer-end,
+.fc-direction-rtl .fc-h-event:not(.fc-event-selected) .fc-event-resizer-start {
+  cursor: e-resize;
+  right: -4px;
+  right: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+}
+/* resizers for TOUCH */
+.fc-h-event.fc-event-selected .fc-event-resizer {
+  top: 50%;
+  margin-top: -4px;
+  margin-top: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+}
+.fc-direction-ltr .fc-h-event.fc-event-selected .fc-event-resizer-start,
+.fc-direction-rtl .fc-h-event.fc-event-selected .fc-event-resizer-end {
+  left: -4px;
+  left: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+}
+.fc-direction-ltr .fc-h-event.fc-event-selected .fc-event-resizer-end,
+.fc-direction-rtl .fc-h-event.fc-event-selected .fc-event-resizer-start {
+  right: -4px;
+  right: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+}
+.fc .fc-popover {
+    position: absolute;
+    z-index: 9999;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  }
+.fc .fc-popover-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 4px;
+  }
+.fc .fc-popover-title {
+    margin: 0 2px;
+  }
+.fc .fc-popover-close {
+    cursor: pointer;
+    opacity: 0.65;
+    font-size: 1.1em;
+  }
+.fc-theme-standard .fc-popover {
+    border: 1px solid #ddd;
+    border: 1px solid var(--fc-border-color, #ddd);
+    background: #fff;
+    background: var(--fc-page-bg-color, #fff);
+  }
+.fc-theme-standard .fc-popover-header {
+    background: rgba(208, 208, 208, 0.3);
+    background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  }
+
+
+:root {
+  --fc-daygrid-event-dot-width: 8px;
+}
+/* help things clear margins of inner content */
+.fc-daygrid-day-frame,
+.fc-daygrid-day-events,
+.fc-daygrid-event-harness { /* for event top/bottom margins */
+}
+.fc-daygrid-day-frame:before, .fc-daygrid-day-events:before, .fc-daygrid-event-harness:before {
+  content: "";
+  clear: both;
+  display: table; }
+.fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {
+  content: "";
+  clear: both;
+  display: table; }
+.fc .fc-daygrid-body { /* a <div> that wraps the table */
+    position: relative;
+    z-index: 1; /* container inner z-index's because <tr>s can't do it */
+  }
+.fc .fc-daygrid-day.fc-day-today {
+      background-color: rgba(255, 220, 40, 0.15);
+      background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
+    }
+.fc .fc-daygrid-day-frame {
+    position: relative;
+    min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */
+  }
+.fc {
+
+  /* cell top */
+
+}
+.fc .fc-daygrid-day-top {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+.fc .fc-day-other .fc-daygrid-day-top {
+    opacity: 0.3;
+  }
+.fc {
+
+  /* day number (within cell top) */
+
+}
+.fc .fc-daygrid-day-number {
+    position: relative;
+    z-index: 4;
+    padding: 4px;
+  }
+.fc {
+
+  /* event container */
+
+}
+.fc .fc-daygrid-day-events {
+    margin-top: 1px; /* needs to be margin, not padding, so that available cell height can be computed */
+  }
+.fc {
+
+  /* positioning for balanced vs natural */
+
+}
+.fc .fc-daygrid-body-balanced .fc-daygrid-day-events {
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+      position: relative; /* for containing abs positioned event harnesses */
+      min-height: 2em; /* in addition to being a min-height during natural height, equalizes the heights a little bit */
+    }
+.fc .fc-daygrid-body-natural { /* can coexist with -unbalanced */
+  }
+.fc .fc-daygrid-body-natural .fc-daygrid-day-events {
+      margin-bottom: 1em;
+    }
+.fc {
+
+  /* event harness */
+
+}
+.fc .fc-daygrid-event-harness {
+    position: relative;
+  }
+.fc .fc-daygrid-event-harness-abs {
+    position: absolute;
+    top: 0; /* fallback coords for when cannot yet be computed */
+    left: 0; /* */
+    right: 0; /* */
+  }
+.fc .fc-daygrid-bg-harness {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+.fc {
+
+  /* bg content */
+
+}
+.fc .fc-daygrid-day-bg .fc-non-business { z-index: 1 }
+.fc .fc-daygrid-day-bg .fc-bg-event { z-index: 2 }
+.fc .fc-daygrid-day-bg .fc-highlight { z-index: 3 }
+.fc {
+
+  /* events */
+
+}
+.fc .fc-daygrid-event {
+    z-index: 6;
+    margin-top: 1px;
+  }
+.fc .fc-daygrid-event.fc-event-mirror {
+    z-index: 7;
+  }
+.fc {
+
+  /* cell bottom (within day-events) */
+
+}
+.fc .fc-daygrid-day-bottom {
+    font-size: .85em;
+    padding: 2px 3px 0
+  }
+.fc .fc-daygrid-day-bottom:before {
+  content: "";
+  clear: both;
+  display: table; }
+.fc .fc-daygrid-more-link {
+    position: relative;
+    z-index: 4;
+    cursor: pointer;
+  }
+.fc {
+
+  /* week number (within frame) */
+
+}
+.fc .fc-daygrid-week-number {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    padding: 2px;
+    min-width: 1.5em;
+    text-align: center;
+    background-color: rgba(208, 208, 208, 0.3);
+    background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+    color: #808080;
+    color: var(--fc-neutral-text-color, #808080);
+  }
+.fc {
+
+  /* popover */
+
+}
+.fc .fc-more-popover .fc-popover-body {
+    min-width: 220px;
+    padding: 10px;
+  }
+.fc-direction-ltr .fc-daygrid-event.fc-event-start,
+.fc-direction-rtl .fc-daygrid-event.fc-event-end {
+  margin-left: 2px;
+}
+.fc-direction-ltr .fc-daygrid-event.fc-event-end,
+.fc-direction-rtl .fc-daygrid-event.fc-event-start {
+  margin-right: 2px;
+}
+.fc-direction-ltr .fc-daygrid-week-number {
+    left: 0;
+    border-radius: 0 0 3px 0;
+  }
+.fc-direction-rtl .fc-daygrid-week-number {
+    right: 0;
+    border-radius: 0 0 0 3px;
+  }
+.fc-liquid-hack .fc-daygrid-day-frame {
+    position: static; /* will cause inner absolute stuff to expand to <td> */
+  }
+.fc-daygrid-event { /* make root-level, because will be dragged-and-dropped outside of a component root */
+  position: relative; /* for z-indexes assigned later */
+  white-space: nowrap;
+  border-radius: 3px; /* dot event needs this to when selected */
+  font-size: .85em;
+  font-size: var(--fc-small-font-size, .85em);
+}
+/* --- the rectangle ("block") style of event --- */
+.fc-daygrid-block-event .fc-event-time {
+    font-weight: bold;
+  }
+.fc-daygrid-block-event .fc-event-time,
+  .fc-daygrid-block-event .fc-event-title {
+    padding: 1px;
+  }
+/* --- the dot style of event --- */
+.fc-daygrid-dot-event {
+  display: flex;
+  align-items: center;
+  padding: 2px 0
+
+}
+.fc-daygrid-dot-event .fc-event-title {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0; /* important for allowing to shrink all the way */
+    overflow: hidden;
+    font-weight: bold;
+  }
+.fc-daygrid-dot-event:hover,
+  .fc-daygrid-dot-event.fc-event-mirror {
+    background: rgba(0, 0, 0, 0.1);
+  }
+.fc-daygrid-dot-event.fc-event-selected:before {
+    /* expand hit area */
+    top: -10px;
+    bottom: -10px;
+  }
+.fc-daygrid-event-dot { /* the actual dot */
+  margin: 0 4px;
+  box-sizing: content-box;
+  width: 0;
+  height: 0;
+  border: 4px solid #3788d8;
+  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #3788d8);
+  border-radius: 4px;
+  border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);
+}
+/* --- spacing between time and title --- */
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+    margin-right: 3px;
+  }
+.fc-direction-rtl .fc-daygrid-event .fc-event-time {
+    margin-left: 3px;
+  }
+
+
+/*
+A VERTICAL event
+*/
+
+.fc-v-event { /* allowed to be top-level */
+  display: block;
+  border: 1px solid #3788d8;
+  border: 1px solid var(--fc-event-border-color, #3788d8);
+  background-color: #3788d8;
+  background-color: var(--fc-event-bg-color, #3788d8)
+
+}
+
+.fc-v-event .fc-event-main {
+    color: #fff;
+    color: var(--fc-event-text-color, #fff);
+    height: 100%;
+  }
+
+.fc-v-event .fc-event-main-frame {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+.fc-v-event .fc-event-time {
+    flex-grow: 0;
+    flex-shrink: 0;
+    max-height: 100%;
+    overflow: hidden;
+  }
+
+.fc-v-event .fc-event-title-container { /* a container for the sticky cushion */
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 0; /* important for allowing to shrink all the way */
+  }
+
+.fc-v-event .fc-event-title { /* will have fc-sticky on it */
+    top: 0;
+    bottom: 0;
+    max-height: 100%; /* clip overflow */
+    overflow: hidden;
+  }
+
+.fc-v-event:not(.fc-event-start) {
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+.fc-v-event:not(.fc-event-end) {
+    border-bottom-width: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+.fc-v-event.fc-event-selected:before {
+    /* expand hit area */
+    left: -10px;
+    right: -10px;
+  }
+
+.fc-v-event {
+
+  /* resizer (mouse AND touch) */
+
+}
+
+.fc-v-event .fc-event-resizer-start {
+    cursor: n-resize;
+  }
+
+.fc-v-event .fc-event-resizer-end {
+    cursor: s-resize;
+  }
+
+.fc-v-event {
+
+  /* resizer for MOUSE */
+
+}
+
+.fc-v-event:not(.fc-event-selected) .fc-event-resizer {
+      height: 8px;
+      height: var(--fc-event-resizer-thickness, 8px);
+      left: 0;
+      right: 0;
+    }
+
+.fc-v-event:not(.fc-event-selected) .fc-event-resizer-start {
+      top: -4px;
+      top: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+    }
+
+.fc-v-event:not(.fc-event-selected) .fc-event-resizer-end {
+      bottom: -4px;
+      bottom: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+    }
+
+.fc-v-event {
+
+  /* resizer for TOUCH (when event is "selected") */
+
+}
+
+.fc-v-event.fc-event-selected .fc-event-resizer {
+      left: 50%;
+      margin-left: -4px;
+      margin-left: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+    }
+
+.fc-v-event.fc-event-selected .fc-event-resizer-start {
+      top: -4px;
+      top: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+    }
+
+.fc-v-event.fc-event-selected .fc-event-resizer-end {
+      bottom: -4px;
+      bottom: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+    }
+.fc .fc-timegrid .fc-daygrid-body { /* the all-day daygrid within the timegrid view */
+    z-index: 2; /* put above the timegrid-body so that more-popover is above everything. TODO: better solution */
+  }
+.fc .fc-timegrid-divider {
+    padding: 0 0 2px; /* browsers get confused when you set height. use padding instead */
+  }
+.fc .fc-timegrid-body {
+    position: relative;
+    z-index: 1; /* scope the z-indexes of slots and cols */
+    min-height: 100%; /* fill height always, even when slat table doesn't grow */
+  }
+.fc .fc-timegrid-axis-chunk { /* for advanced ScrollGrid */
+    position: relative /* offset parent for now-indicator-container */
+
+  }
+.fc .fc-timegrid-axis-chunk > table {
+      position: relative;
+      z-index: 1; /* above the now-indicator-container */
+    }
+.fc .fc-timegrid-slots {
+    position: relative;
+    z-index: 1;
+  }
+.fc .fc-timegrid-slot { /* a <td> */
+    height: 1.5em;
+    border-bottom: 0 /* each cell owns its top border */
+  }
+.fc .fc-timegrid-slot:empty:before {
+      content: '\00a0'; /* make sure there's at least an empty space to create height for height syncing */
+    }
+.fc .fc-timegrid-slot-minor {
+    border-top-style: dotted;
+  }
+.fc .fc-timegrid-slot-label-cushion {
+    display: inline-block;
+    white-space: nowrap;
+  }
+.fc .fc-timegrid-slot-label {
+    vertical-align: middle; /* vertical align the slots */
+  }
+.fc {
+
+
+  /* slots AND axis cells (top-left corner of view including the "all-day" text) */
+
+}
+.fc .fc-timegrid-axis-cushion,
+  .fc .fc-timegrid-slot-label-cushion {
+    padding: 0 4px;
+  }
+.fc {
+
+
+  /* axis cells (top-left corner of view including the "all-day" text) */
+  /* vertical align is more complicated, uses flexbox */
+
+}
+.fc .fc-timegrid-axis-frame-liquid {
+    height: 100%; /* will need liquid-hack in FF */
+  }
+.fc .fc-timegrid-axis-frame {
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* vertical align */
+    justify-content: flex-end; /* horizontal align. matches text-align below */
+  }
+.fc .fc-timegrid-axis-cushion {
+    max-width: 60px; /* limits the width of the "all-day" text */
+    flex-shrink: 0; /* allows text to expand how it normally would, regardless of constrained width */
+  }
+.fc-direction-ltr .fc-timegrid-slot-label-frame {
+    text-align: right;
+  }
+.fc-direction-rtl .fc-timegrid-slot-label-frame {
+    text-align: left;
+  }
+.fc-liquid-hack .fc-timegrid-axis-frame-liquid {
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  }
+.fc .fc-timegrid-col.fc-day-today {
+      background-color: rgba(255, 220, 40, 0.15);
+      background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
+    }
+.fc .fc-timegrid-col-frame {
+    min-height: 100%; /* liquid-hack is below */
+    position: relative;
+  }
+.fc-liquid-hack .fc-timegrid-col-frame {
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  }
+.fc-media-screen .fc-timegrid-cols {
+    position: absolute; /* no z-index. children will decide and go above slots */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+  }
+.fc-media-screen .fc-timegrid-cols > table {
+      height: 100%;
+    }
+.fc-media-screen .fc-timegrid-col-bg,
+  .fc-media-screen .fc-timegrid-col-events,
+  .fc-media-screen .fc-timegrid-now-indicator-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+.fc {
+
+  /* bg */
+
+}
+.fc .fc-timegrid-col-bg {
+    z-index: 2; /* TODO: kill */
+  }
+.fc .fc-timegrid-col-bg .fc-non-business { z-index: 1 }
+.fc .fc-timegrid-col-bg .fc-bg-event { z-index: 2 }
+.fc .fc-timegrid-col-bg .fc-highlight { z-index: 3 }
+.fc .fc-timegrid-bg-harness {
+    position: absolute; /* top/bottom will be set by JS */
+    left: 0;
+    right: 0;
+  }
+.fc {
+
+  /* fg events */
+  /* (the mirror segs are put into a separate container with same classname, */
+  /* and they must be after the normal seg container to appear at a higher z-index) */
+
+}
+.fc .fc-timegrid-col-events {
+    z-index: 3;
+    /* child event segs have z-indexes that are scoped within this div */
+  }
+.fc {
+
+  /* now indicator */
+
+}
+.fc .fc-timegrid-now-indicator-container {
+    bottom: 0;
+    overflow: hidden; /* don't let overflow of lines/arrows cause unnecessary scrolling */
+    /* z-index is set on the individual elements */
+  }
+.fc-direction-ltr .fc-timegrid-col-events {
+    margin: 0 2.5% 0 2px;
+  }
+.fc-direction-rtl .fc-timegrid-col-events {
+    margin: 0 2px 0 2.5%;
+  }
+.fc-timegrid-event-harness {
+  position: absolute /* top/left/right/bottom will all be set by JS */
+}
+.fc-timegrid-event-harness > .fc-timegrid-event {
+    position: absolute; /* absolute WITHIN the harness */
+    top: 0; /* for when not yet positioned */
+    bottom: 0; /* " */
+    left: 0;
+    right: 0;
+  }
+.fc-timegrid-event-harness-inset .fc-timegrid-event,
+.fc-timegrid-event.fc-event-mirror,
+.fc-timegrid-more-link {
+  box-shadow: 0px 0px 0px 1px #fff;
+  box-shadow: 0px 0px 0px 1px var(--fc-page-bg-color, #fff);
+}
+.fc-timegrid-event,
+.fc-timegrid-more-link { /* events need to be root */
+  font-size: .85em;
+  font-size: var(--fc-small-font-size, .85em);
+  border-radius: 3px;
+}
+.fc-timegrid-event { /* events need to be root */
+  margin-bottom: 1px /* give some space from bottom */
+}
+.fc-timegrid-event .fc-event-main {
+    padding: 1px 1px 0;
+  }
+.fc-timegrid-event .fc-event-time {
+    white-space: nowrap;
+    font-size: .85em;
+    font-size: var(--fc-small-font-size, .85em);
+    margin-bottom: 1px;
+  }
+.fc-timegrid-event-short .fc-event-main-frame {
+    flex-direction: row;
+    overflow: hidden;
+  }
+.fc-timegrid-event-short .fc-event-time:after {
+    content: '\00a0-\00a0'; /* dash surrounded by non-breaking spaces */
+  }
+.fc-timegrid-event-short .fc-event-title {
+    font-size: .85em;
+    font-size: var(--fc-small-font-size, .85em)
+  }
+.fc-timegrid-more-link { /* does NOT inherit from fc-timegrid-event */
+  position: absolute;
+  z-index: 9999; /* hack */
+  color: inherit;
+  color: var(--fc-more-link-text-color, inherit);
+  background: #d0d0d0;
+  background: var(--fc-more-link-bg-color, #d0d0d0);
+  cursor: pointer;
+  margin-bottom: 1px; /* match space below fc-timegrid-event */
+}
+.fc-timegrid-more-link-inner { /* has fc-sticky */
+  padding: 3px 2px;
+  top: 0;
+}
+.fc-direction-ltr .fc-timegrid-more-link {
+    right: 0;
+  }
+.fc-direction-rtl .fc-timegrid-more-link {
+    left: 0;
+  }
+.fc {
+
+  /* line */
+
+}
+.fc .fc-timegrid-now-indicator-line {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    right: 0;
+    border-style: solid;
+    border-color: red;
+    border-color: var(--fc-now-indicator-color, red);
+    border-width: 1px 0 0;
+  }
+.fc {
+
+  /* arrow */
+
+}
+.fc .fc-timegrid-now-indicator-arrow {
+    position: absolute;
+    z-index: 4;
+    margin-top: -5px; /* vertically center on top coordinate */
+    border-style: solid;
+    border-color: red;
+    border-color: var(--fc-now-indicator-color, red);
+  }
+.fc-direction-ltr .fc-timegrid-now-indicator-arrow {
+    left: 0;
+
+    /* triangle pointing right. TODO: mixin */
+    border-width: 5px 0 5px 6px;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+.fc-direction-rtl .fc-timegrid-now-indicator-arrow {
+    right: 0;
+
+    /* triangle pointing left. TODO: mixin */
+    border-width: 5px 6px 5px 0;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+
+:root {
+  --fc-list-event-dot-width: 10px;
+  --fc-list-event-hover-bg-color: #f5f5f5;
+}
+.fc-theme-standard .fc-list {
+    border: 1px solid #ddd;
+    border: 1px solid var(--fc-border-color, #ddd);
+  }
+.fc {
+
+  /* message when no events */
+
+}
+.fc .fc-list-empty {
+    background-color: rgba(208, 208, 208, 0.3);
+    background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* vertically aligns fc-list-empty-inner */
+  }
+.fc .fc-list-empty-cushion {
+    margin: 5em 0;
+  }
+.fc {
+
+  /* table within the scroller */
+  /* ---------------------------------------------------------------------------------------------------- */
+
+}
+.fc .fc-list-table {
+    width: 100%;
+    border-style: hidden; /* kill outer border on theme */
+  }
+.fc .fc-list-table tr > * {
+    border-left: 0;
+    border-right: 0;
+  }
+.fc .fc-list-sticky .fc-list-day > * { /* the cells */
+      position: sticky;
+      top: 0;
+      background: #fff;
+      background: var(--fc-page-bg-color, #fff); /* for when headers are styled to be transparent and sticky */
+    }
+.fc .fc-list-table th {
+    padding: 0; /* uses an inner-wrapper instead... */
+  }
+.fc .fc-list-table td,
+  .fc .fc-list-day-cushion {
+    padding: 8px 14px;
+  }
+.fc {
+
+
+  /* date heading rows */
+  /* ---------------------------------------------------------------------------------------------------- */
+
+}
+.fc .fc-list-day-cushion:after {
+  content: "";
+  clear: both;
+  display: table; /* clear floating */
+    }
+.fc-theme-standard .fc-list-day-cushion {
+    background-color: rgba(208, 208, 208, 0.3);
+    background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  }
+.fc-direction-ltr .fc-list-day-text,
+.fc-direction-rtl .fc-list-day-side-text {
+  float: left;
+}
+.fc-direction-ltr .fc-list-day-side-text,
+.fc-direction-rtl .fc-list-day-text {
+  float: right;
+}
+/* make the dot closer to the event title */
+.fc-direction-ltr .fc-list-table .fc-list-event-graphic { padding-right: 0 }
+.fc-direction-rtl .fc-list-table .fc-list-event-graphic { padding-left: 0 }
+.fc .fc-list-event.fc-event-forced-url {
+    cursor: pointer; /* whole row will seem clickable */
+  }
+.fc .fc-list-event:hover td {
+    background-color: #f5f5f5;
+    background-color: var(--fc-list-event-hover-bg-color, #f5f5f5);
+  }
+.fc {
+
+  /* shrink certain cols */
+
+}
+.fc .fc-list-event-graphic,
+  .fc .fc-list-event-time {
+    white-space: nowrap;
+    width: 1px;
+  }
+.fc .fc-list-event-dot {
+    display: inline-block;
+    box-sizing: content-box;
+    width: 0;
+    height: 0;
+    border: 5px solid #3788d8;
+    border: calc(var(--fc-list-event-dot-width, 10px) / 2) solid var(--fc-event-border-color, #3788d8);
+    border-radius: 5px;
+    border-radius: calc(var(--fc-list-event-dot-width, 10px) / 2);
+  }
+.fc {
+
+  /* reset <a> styling */
+
+}
+.fc .fc-list-event-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+.fc {
+
+  /* underline link when hovering over any part of row */
+
+}
+.fc .fc-list-event.fc-event-forced-url:hover a {
+    text-decoration: underline;
+  }
+
+
+
+  .fc-theme-bootstrap a:not([href]) {
+    color: inherit; /* natural color for navlinks */
+  }
+
+
 @charset "UTF-8";@-webkit-keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-shown{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;overflow-y:hidden;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{flex-direction:row}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:static;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon::before{display:flex;align-items:center;font-size:2em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon::before{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{flex-basis:auto!important;height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 .0625em #fff,0 0 0 .125em rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:2em 2em;transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;-webkit-transform-origin:0 1.5em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}@-webkit-keyframes swal2-toast-show{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg)}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg)}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg)}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg)}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg)}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg)}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-shown{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent}body.swal2-no-backdrop .swal2-shown>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-shown.swal2-top{top:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-top-left,body.swal2-no-backdrop .swal2-shown.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-top-end,body.swal2-no-backdrop .swal2-shown.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-shown.swal2-center{top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-left,body.swal2-no-backdrop .swal2-shown.swal2-center-start{top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-end,body.swal2-no-backdrop .swal2-shown.swal2-center-right{top:50%;right:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom{bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom-left,body.swal2-no-backdrop .swal2-shown.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swal2-shown.swal2-bottom-right{right:0;bottom:0}.swal2-container{display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:.625em;overflow-x:hidden;background-color:transparent;-webkit-overflow-scrolling:touch}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-container.swal2-fade{transition:background-color .1s}.swal2-container.swal2-shown{background-color:rgba(0,0,0,.4)}.swal2-popup{display:none;position:relative;box-sizing:border-box;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:flex;flex-direction:column;align-items:center}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{z-index:1;flex-wrap:wrap;align-items:center;justify-content:center;width:100%;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:"";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;top:0;right:0;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;transition:color .1s ease-out;border:none;border-radius:0;outline:initial;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{-webkit-transform:none;transform:none;background:0 0;color:#f27474}.swal2-content{z-index:1;justify-content:center;margin:0;padding:0;color:#545454;font-size:1.125em;font-weight:300;line-height:normal;word-wrap:break-word}#swal2-content{text-align:center}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-webkit-input-placeholder,.swal2-input::-webkit-input-placeholder,.swal2-textarea::-webkit-input-placeholder{color:#ccc}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder,.swal2-input::-ms-input-placeholder,.swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:inherit}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:inherit;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;zoom:normal;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;zoom:normal;border:.25em solid transparent;border-radius:50%;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon::before{display:flex;align-items:center;height:92%;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning::before{content:"!"}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info::before{content:"i"}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question::before{content:"?"}.swal2-icon.swal2-question.swal2-arabic-question-mark::before{content:"؟"}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:3.75em 3.75em;transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 3.75em;transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.875em;width:1.5625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-animate-success-icon .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-animate-error-icon{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-animate-error-icon .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}@-webkit-keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}
 
 /* Version 2.1.4 */
@@ -695,7 +2141,7 @@ html body.layout-dark.layout-transparent .header-navbar,html body.layout-dark.la
     }
 
     .table-responsive {
-        -ms-overflow-style: yes
+        -ms-overflow-style: none
     }
 
     .terms-conditions {
@@ -704,6 +2150,9 @@ html body.layout-dark.layout-transparent .header-navbar,html body.layout-dark.la
 
     .signature {
         margin-top: 7rem
+    }
+    .table{
+
     }
 }
 

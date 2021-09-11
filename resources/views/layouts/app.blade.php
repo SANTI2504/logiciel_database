@@ -92,6 +92,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="{{url('js/app/app.js')}}" ></script>
 <!-- start alerts-->
 @include('layouts.components.alerts')
+@yield('modales')
 <!-- end alerts-->
 
 @yield('js')

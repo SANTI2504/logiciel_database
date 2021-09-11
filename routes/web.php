@@ -14,6 +14,9 @@ use App\Http\Controllers\AuxiliaryController;
 use App\Http\Controllers\Medical_historyController;
 use App\Http\Controllers\Medical_examController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AppointmentController;
+
+
 
 
 /*
@@ -116,6 +119,8 @@ Route::middleware('role:Administrador')->group(function (){
     Route::delete('clinical/examen-medico/{id}/{id_history}',[Medical_examController::class,'destroy']);
     Route::get('clinical/examen-medico/{id}/edit', [Medical_examController::class, 'edit']);
     Route::put('clinical/examen-medico/{id}', [Medical_examController::class, 'update']);
+    //rutas citas
+    Route::resource('citas', AppointmentController::class);
 });
 
 

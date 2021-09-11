@@ -29,6 +29,7 @@ mix.styles([
     'resources/css/app/perfect-scrollbar.min.css',
     'resources/css/app/prism.min.css',
     'resources/css/app/switchery.min.css',
+    'resources/css/app/fullcalendar/main.css',
     'resources/css/app/sweetalert2.min.css',
     'resources/css/app/toastr.css',
     'resources/css/app/select2.min.css',
@@ -50,6 +51,8 @@ mix.scripts([
     'resources/js/app/vendors.min.js',
     'resources/js/app/switchery.min.js',
     'resources/js/app/sweetalert2.all.min.js',
+    'resources/js/app/fullcalendar/main.min.js',
+    'resources/js/app/fullcalendar/locales-all.min.js',
     'resources/js/app/toastr.min.js',
     'resources/js/app/datatable/jquery.datatables.min.js',
     'resources/js/app/datatable/datatables.bootstrap4.min.js',
@@ -72,10 +75,9 @@ mix.scripts([
     'resources/js/app/datatable/dt-advanced-initialization.js',
     'resources/js/app/select2.min.js',
     'resources/js/app/form-validation.js',
+    'resources/js/app/fullcalendar/agenda.js',
     'resources/js/app/scripts.js',
     'resources/js/app/validate.js',
-
-
 ], 'public/js/app/app.js');
 
 //creacion para la landing page

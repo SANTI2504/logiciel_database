@@ -7623,6 +7623,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.form.submit();
             }
         })
+
     });
 
     //boton imprmir

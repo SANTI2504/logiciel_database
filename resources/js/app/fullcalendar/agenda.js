@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+
+
+/*document.addEventListener('DOMContentLoaded', function() {
     let formulario = document.querySelector('form');
 
     var calendarEl = document.getElementById('agenda');
@@ -26,3 +28,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+*/

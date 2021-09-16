@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AppointmentController extends Controller
 {
     public function index(){
-        $appointments= Appointment::all();
-        return view('app.appointment.index', compact('appointments'));
+        //el envio de informacion lo hace a traves de javascript
+        return view('app.appointment.index');
     }
 }

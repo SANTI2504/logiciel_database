@@ -15,10 +15,12 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            //datos requeridos por fullcalendar
+            $table->datetime('start');
+            $table->datetime('end');
+            //
             $table->date('date');
             $table->time('time');
-            //$table->dateTime('start');
-            //$table->dateTime('end');
             $table->bigInteger('type_appointments_id')->unsigned();
             $table->bigInteger('specialists_id')->unsigned();
             $table->bigInteger('patients_id')->unsigned()->nullable();

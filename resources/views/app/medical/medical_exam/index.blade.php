@@ -22,20 +22,20 @@
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/clinical')}}" itemprop="item">
-                                <span itemprop="name">Menu clinical</span>
+                                <span itemprop="name">Menú clinical</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('clinical/historial-medico')}}" itemprop="item">
-                                <span itemprop="name">Historial medico</span>
+                                <span itemprop="name">Historial médico</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <span itemprop="name">Examenes Medicos</span>
+                            <span itemprop="name">Exámenes médicos</span>
                             <meta itemprop="position" content="2">
                         </li>
                     </ol>
@@ -43,7 +43,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Examenes Medicos de {{$name -> patient -> name}} {{$name -> patient -> lastnames}}</div>
+                        <div class="content-header">Exámenes Médicos de {{$name -> patient -> name}} {{$name -> patient -> lastnames}}</div>
                     </div>
                 </div>
 

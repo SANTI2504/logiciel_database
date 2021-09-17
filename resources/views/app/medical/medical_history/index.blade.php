@@ -22,13 +22,13 @@
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/clinical')}}" itemprop="item">
-                                <span itemprop="name">Menu clinical</span>
+                                <span itemprop="name">Menú clinical</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <span itemprop="name">Historial Medico</span>
+                            <span itemprop="name">Historial Médico</span>
                             <meta itemprop="position" content="2">
                         </li>
                     </ol>
@@ -36,7 +36,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Historial Medico</div>
+                        <div class="content-header">Historial Médico</div>
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@
                                                         <td>{{$history-> id}}</td>
                                                         <td>{{$history-> patient -> name}} {{$history-> patient -> lastnames}}</td>
                                                         <td>{{$history-> patient -> number_document}}</td>
-                                                        <td><a type="button" class="btn btn-sm bg-light-info" href="{{url('clinical/examen-medico/'. $history-> id)}}"> {{$history-> amount_visits}} Examenes</a></td>
+                                                        <td><a type="button" class="btn btn-sm bg-light-info" href="{{url('clinical/examen-medico/'. $history-> id)}}"> {{$history-> amount_visits}} Exámenes</a></td>
                                                         <td class="text-truncate">
                                                             <form  action="{{url('clinical/historial-medico', $history -> id)}}" method="post">
                                                             @csrf

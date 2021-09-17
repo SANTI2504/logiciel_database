@@ -23,14 +23,14 @@
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/usuarios')}}" itemprop="item">
-                                <span itemprop="name">Menu usuarios</span>
+                                <span itemprop="name">Menú usuarios</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/tipos-de-usuarios')}}" itemprop="item">
-                                <span itemprop="name">Menu tipos de usuarios</span>
+                                <span itemprop="name">Menú tipos de usuarios</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
@@ -119,7 +119,7 @@
                                                         <td class="text-right">{{$specialist->eps->name}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Correo electronico:</th>
+                                                        <th>Correo electrónico:</th>
                                                         <td class="text-right">{{$specialist->email}}</td>
                                                     </tr>
                                                     <tr>
@@ -127,7 +127,7 @@
                                                         <td class="text-right">{{$specialist->number_cell}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Direccion:</th>
+                                                        <th>Dirección:</th>
                                                         <td class="text-right">{{$specialist->address}}</td>
                                                     </tr>
                                                     <tr>

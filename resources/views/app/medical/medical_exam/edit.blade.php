@@ -23,21 +23,21 @@
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/clinical')}}" itemprop="item">
-                                <span itemprop="name">Menu clinical</span>
+                                <span itemprop="name">Menú clinical</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('clinical/historial-medico')}}" itemprop="item">
-                                <span itemprop="name">Historial medico</span>
+                                <span itemprop="name">Historial médico</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('clinical/examen-medico', $exam->history -> id)}}" itemprop="item">
-                                <span itemprop="name">Examenes medicos</span>
+                                <span itemprop="name">Exámenes médicos</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
@@ -172,18 +172,18 @@
 
                                     <tr class="text-center">
                                         <th rowspan="2" class="col-2"></th>
-                                        <th colspan="2">Sin correccion</th>
-                                        <th colspan="2">Con correccion</th>
+                                        <th colspan="2">Sin corrección</th>
+                                        <th colspan="2">Con corrección</th>
                                         <th rowspan="2">PH</th>
-                                        <th rowspan="2">Lensometria</th>
+                                        <th rowspan="2">Lensometría</th>
                                     </tr>
 
                                     <tr class="text-center">
 
-                                        <th>Vision lejana</th>
-                                        <th>Vision proxima</th>
-                                        <th>Vision lejana</th>
-                                        <th>Vision proxima</th>
+                                        <th>Visión lejana</th>
+                                        <th>Visión próxima</th>
+                                        <th>Visión lejana</th>
+                                        <th>Visión próxima</th>
 
                                     </tr>
 
@@ -348,7 +348,7 @@
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Queratometria:</div>
+                                                <div class="input-group-text">Queratometría:</div>
                                             </div>
                                             <input type="text" class="form-control" id="keratometry"
                                                    name="keratometry" placeholder="keratometry" value="{{$exam->keratometry}}">
@@ -397,7 +397,7 @@
                                     <tr class="text-center">
                                         <th class="col-2"></th>
                                         <th class="col-4">Retinoscopia</th>
-                                        <th class="col-4">Afinacion</th>
+                                        <th class="col-4">Afinación</th>
                                         <th class="col-2">Agudeza visual</th>
 
                                     </tr>
@@ -483,7 +483,7 @@
                                     <div class="col col-md-6 col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Adicion:</div>
+                                                <div class="input-group-text">Adición:</div>
                                             </div>
                                             <input type="text" class="form-control" id="addiction"
                                                    placeholder="addiction" name="addiction" value="{{$exam->addiction}}">
@@ -503,7 +503,7 @@
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Sintomas:</div>
+                                                <div class="input-group-text">Síntomas:</div>
                                             </div>
                                             <input type="text" class="form-control" id="symptom"
                                                    placeholder="symptom" value="{{$exam->symptom}}" name="symptom">
@@ -557,7 +557,7 @@
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text" >Examenes de apoyo diagnostico y/o
+                                                <div class="input-group-text" >Exámenes de apoyo diagnóstico y/o
                                                     remisiones:
                                                 </div>
                                             </div>
@@ -588,7 +588,7 @@
                                     <div class="col col-12">
                                         <div class="input-group mb-2 mr-sm-2">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text">Farmacologicos:</div>
+                                                <div class="input-group-text">Farmacológicos:</div>
                                             </div>
                                             <input type="text" class="form-control" id="pharmacological"
                                                    placeholder="pharmacological" value="{{$exam->pharmacological}}" name="pharmacological">

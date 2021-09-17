@@ -14,12 +14,12 @@
         <div class="nav-container">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-                <li class=" nav-item"><a href="{{url('inicio')}}"><i class="ft-grid"></i><span class="menu-title" data-i18n="Chat">Modulos</span></a>
+                <li class=" nav-item"><a href="{{url('inicio')}}"><i class="ft-grid"></i><span class="menu-title" data-i18n="Chat">Módulos</span></a>
 
                 </li>
 
 
-                <li class=" nav-item"><a href="documentacion" target="_blank"><i class="ft-book"></i><span class="menu-title" data-i18n="Documentacion">Documentation</span></a>
+                <li class=" nav-item"><a href="documentacion" target="_blank"><i class="ft-book"></i><span class="menu-title" data-i18n="Documentacion">Documentación</span></a>
                 </li>
 
                 <li class=" nav-item"><a href="ayuda" target="_blank"><i class="ft-life-buoy"></i><span class="menu-title" data-i18n="Support">Ayuda</span></a>

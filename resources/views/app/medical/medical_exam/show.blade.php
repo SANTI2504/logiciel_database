@@ -23,21 +23,21 @@
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/clinical')}}" itemprop="item">
-                                <span itemprop="name">Menu clinical</span>
+                                <span itemprop="name">Menú clinical</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('clinical/historial-medico')}}" itemprop="item">
-                                <span itemprop="name">Historial medico</span>
+                                <span itemprop="name">Historial médico</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('clinical/examen-medico', $exam -> history -> id)}}" itemprop="item">
-                                <span itemprop="name">Examenes medicos</span>
+                                <span itemprop="name">Exámenes médicos</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
@@ -51,7 +51,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header"> Examen Medico
+                        <div class="content-header"> Examen Médico
                             De {{$exam -> history -> patient -> name}} {{$exam -> history -> patient -> lastnames}}</div>
 
                     </div>
@@ -81,7 +81,7 @@
 
                                         </div>
                                         <div class="col-md-6 col-12 text-right">
-                                            <h3 class="info text-uppercase">Examen Medico</h3>
+                                            <h3 class="info text-uppercase">Examen Médico</h3>
                                             <p>ID: {{$exam -> id}}</p>
                                             <p>{{$exam -> created_at}}</p>
                                         </div>
@@ -127,7 +127,7 @@
                                                         <tbody>
 
                                                         <tr>
-                                                            <th>Correo electronico:</th>
+                                                            <th>Correo electrónico:</th>
                                                             <td class="text-right">{{$exam -> history->patient->email}}</td>
                                                         </tr>
                                                         <tr>
@@ -206,16 +206,16 @@
                                                     <table class="table table-bordered table-sm m-0">
                                                         <tr class="text-center">
                                                             <th rowspan="2"></th>
-                                                            <th colspan="2">Sin correccion</th>
-                                                            <th colspan="2">Con correccion</th>
+                                                            <th colspan="2">Sin corrección</th>
+                                                            <th colspan="2">Con corrección</th>
                                                             <th rowspan="2">PH</th>
-                                                            <th rowspan="2">Lensometria</th>
+                                                            <th rowspan="2">Lensometría</th>
                                                         </tr>
                                                         <tr class="text-center">
-                                                            <th>Vision lejana</th>
-                                                            <th>Vision proxima</th>
-                                                            <th>Vision lejana</th>
-                                                            <th>Vision proxima</th>
+                                                            <th>Visión lejana</th>
+                                                            <th>Visión próxima</th>
+                                                            <th>Visión lejana</th>
+                                                            <th>Visión próxima</th>
                                                         </tr>
                                                         <tbody>
                                                         <tr>
@@ -301,7 +301,7 @@
                                                         <tr class="text-center">
                                                             <th></th>
                                                             <th>Retinoscopia</th>
-                                                            <th>Afinacion</th>
+                                                            <th>Afinación</th>
                                                             <th>Agudeza visual</th>
                                                         </tr>
                                                         <tbody>
@@ -350,7 +350,7 @@
                                                         <tbody class="table-striped ">
 
                                                         <tr>
-                                                            <th>Queratometria:</th>
+                                                            <th>Queratometría:</th>
                                                             <td class="text-right">{{$exam -> keratometry}}</td>
                                                         </tr>
                                                         <tr>
@@ -385,11 +385,11 @@
                                                             <td class="text-right">{{$exam -> exam_bottom_eye}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Adicion:</th>
+                                                            <th>Adición:</th>
                                                             <td class="text-right">{{$exam -> addiction}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Examenes de apoyo diagnostico y/o remisiones:</th>
+                                                            <th>Exámenes de apoyo diagnóstico y/o remisiones:</th>
                                                             <td class="text-right">{{$exam -> diagnostic_exam_support_rem}}</td>
                                                         </tr>
 
@@ -411,11 +411,11 @@
                                                     <table class="table table-sm table-hover  ">
                                                         <tbody class="table-striped ">
                                                         <tr>
-                                                            <th>Razon de la consulta:</th>
+                                                            <th>Razón de la consulta:</th>
                                                             <td class="text-right">{{$exam -> reason_consultation}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Sintomas:</th>
+                                                            <th>Síntomas:</th>
                                                             <td class="text-right">{{$exam -> symptom}}</td>
                                                         </tr>
                                                         <tr>
@@ -441,7 +441,7 @@
                                                             <td class="text-right">{{$exam -> identification_origen_disease_accident}}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Diagnosticos:</th>
+                                                            <th>Diagnósticos:</th>
                                                             <td class="text-right">{{$exam -> diagnosis}}</td>
                                                         </tr>
                                                         <tr>
@@ -498,21 +498,23 @@
                                         <div class="col-12">
                                             <div class="terms-conditions mb-2">
                                                 <h6>Terminos &amp; Condiciones</h6>
-                                                <p> El examen medico Es un documento privado, obligatorio y sometido
+                                                <p>
+                                                    El examen médico es un documento privado, obligatorio y sometido
                                                     a reserva, en el
                                                     cual se registran las condiciones de salud del
                                                     paciente, los actos médicos y los demás procedimientos
                                                     ejecutados por el equipo de salud que interviene en su atención.
                                                     Dicho documento únicamente puede ser conocido por terceros
                                                     previa autorización del paciente o en los casos previstos por la
-                                                    ley.</p>
+                                                    ley.
+                                                </p>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-12 text-center text-sm-right">
                                                 <button type="button" class="btn btn-primary btn-print mt-2 mt-md-1"><i
-                                                        class="ft-printer mr-1"></i>Print Invoice
+                                                        class="ft-printer mr-1"></i>Imprimir
                                                 </button>
                                             </div>
                                         </div>

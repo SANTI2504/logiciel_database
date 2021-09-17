@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="content-header">Vision Medics</div>
-                        <p class="content-sub-header mb-1">Modulos del sistema.</p>
+                        <p class="content-sub-header mb-1">Módulos del sistema.</p>
                     </div>
                 </div>
             </section>
@@ -59,7 +59,7 @@
                         <div class="card-box bg-green">
                             <div class="inner">
                                 <h5 class="font-weight-bold"> CITAS </h5>
-                                <p> Gestiona y administra citas medicas. </p>
+                                <p> Gestiona y administra citas médicas. </p>
                             </div>
                             <div class="icon">
                                 <i class="fa  fa-clock-o" aria-hidden="true"></i>
@@ -71,7 +71,7 @@
                         <div class="card-box bg-orange">
                             <div class="inner">
                                 <h5 class="font-weight-bold"> HISTORIAL MEDICO </h5>
-                                <p> Gestiona y administra historias medicas. </p>
+                                <p> Gestiona y administra historias médicas. </p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-book" aria-hidden="true"></i>

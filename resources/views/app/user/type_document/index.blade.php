@@ -5,101 +5,110 @@
 @endsection
 
 @section('content')
-        <!-- BEGIN : Main Content-->
-        <div class="main-content">
-            <div class="content-overlay"></div>
-            <div class="content-wrapper"><section class="users-list-wrapper">
-                    <!-- start migas de pan-->
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                            <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-                                <a href="{{url('inicio')}}" itemprop="item">
-                                    <span itemprop="name">Inicio</span>
-                                </a>
-                                <meta itemprop="position" content="1">
-                            </li>
-                            <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-                                <a href="{{url('menu/usuarios')}}" itemprop="item">
-                                    <span itemprop="name">Menu usuarios</span>
-                                </a>
-                                <meta itemprop="position" content="1">
-                            </li>
-                            <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    <!-- BEGIN : Main Content-->
+    <div class="main-content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <section class="users-list-wrapper">
+                <!-- start migas de pan-->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
+                            itemtype="http://schema.org/ListItem">
+                            <a href="{{url('inicio')}}" itemprop="item">
+                                <span itemprop="name">Inicio</span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
+                            itemtype="http://schema.org/ListItem">
+                            <a href="{{url('menu/usuarios')}}" itemprop="item">
+                                <span itemprop="name">Menú usuarios</span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
+                            itemtype="http://schema.org/ListItem">
 
-                                <span itemprop="name">Tipo documento</span>
+                            <span itemprop="name">Tipo documento</span>
 
-                                <meta itemprop="position" content="2">
-                            </li>
+                            <meta itemprop="position" content="2">
+                        </li>
 
-                        </ol>
-                    </nav>
-                    <!-- end migas de pan-->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="content-header">Tipos de documento</div>
-                        </div>
+                    </ol>
+                </nav>
+                <!-- end migas de pan-->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="content-header">Tipos de documento</div>
                     </div>
+                </div>
 
-                    <!-- Table starts -->
-                    <div class="users-list-table">
-                        <div class="row justify-content-center">
-                            <div class="col-12 file-export">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <!-- Datatable starts -->
-                                            <a type="button" class="btn bg-light-info" href="{{url('usuarios/tipo-documento/create')}}">Crear nuevo</a>
-                                            <hr>
-                                            <div class="table-responsive">
-                                                <table id="users-list-datatable" class="table table-hover " >
-                                                    <thead class="thead-dark">
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Tipo de documento</th>
-                                                        <th>Acciones</th>
+                <!-- Table starts -->
+                <div class="users-list-table">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <!-- Datatable starts -->
+                                        <a type="button" class="btn bg-light-info"
+                                           href="{{url('usuarios/tipo-documento/create')}}">Crear nuevo</a>
+                                        <hr>
+                                        <div class="table-responsive">
+                                            <table id="users-list-datatable" class="table table-hover file-export">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Tipo de documento</th>
+                                                    <th>Acciones</th>
 
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    @foreach($type_documents as $type_document)
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($type_documents as $type_document)
                                                     <tr>
                                                         <td>{{$type_document-> id}}</td>
                                                         <td>{{$type_document-> name}}</td>
                                                         <td class="text-truncate">
-                                                            <form  action="{{url('usuarios/tipo-documento', $type_document -> id)}}" method="post">
-                                                                @csrf
-                                                                @method('delete')
+                                                            <form
+                                                                action="{{url('usuarios/tipo-documento', $type_document -> id)}}"
+                                                                method="post">
+                                                            @csrf
+                                                            @method('delete')
                                                             <!--
                                                             <a href="javascript:;" class="btn info p-0">
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                            <a href="{{url('usuarios/tipo-documento/'. $type_document-> id. '/edit')}}" class=" btn success p-0">
-                                                                <i class="ft-edit-2 font-medium-3 "></i>
-                                                            </a>
-                                                            <button  type="submit"  class="btn danger p-0 form-eliminar" >
-                                                                <i class="ft-x font-medium-3"></i>
-                                                            </button>
+                                                                <a href="{{url('usuarios/tipo-documento/'. $type_document-> id. '/edit')}}"
+                                                                   class=" btn success p-0">
+                                                                    <i class="ft-edit-2 font-medium-3 "></i>
+                                                                </a>
+                                                                <button type="submit"
+                                                                        class="btn danger p-0 form-eliminar">
+                                                                    <i class="ft-x font-medium-3"></i>
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>
-                                                    @endforeach
+                                                @endforeach
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <hr>
-                                            <!-- Datatable ends -->
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        <hr>
+                                        <!-- Datatable ends -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Table ends -->
-                </section>
+                </div>
+                <!-- Table ends -->
+            </section>
 
-            </div>
         </div>
-        <!-- END : End Main Content-->
+    </div>
+    <!-- END : End Main Content-->
 @endsection

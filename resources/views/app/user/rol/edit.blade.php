@@ -21,7 +21,7 @@
                             </li>
                             <li class="breadcrumb-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
                                 <a href="{{url('menu/usuarios')}}" itemprop="item">
-                                    <span itemprop="name">Menu usuarios</span>
+                                    <span itemprop="name">Menú usuarios</span>
                                 </a>
                                 <meta itemprop="position" content="1">
                             </li>

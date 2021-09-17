@@ -23,14 +23,14 @@
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/clinical')}}" itemprop="item">
-                                <span itemprop="name">Menu clinical</span>
+                                <span itemprop="name">Menú clinical</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('clinical/historial-medico')}}" itemprop="item">
-                                <span itemprop="name">Historial Medico</span>
+                                <span itemprop="name">Historial Médico</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
@@ -44,7 +44,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header"> Historial Medico
+                        <div class="content-header"> Historial Médico
                             De {{$history -> patient -> name}} {{$history -> patient -> lastnames}}</div>
 
                     </div>
@@ -122,7 +122,7 @@
                                                         <tbody>
 
                                                         <tr>
-                                                            <th>Correo electronico:</th>
+                                                            <th>Correo electrónico:</th>
                                                             <td class="text-right">{{$history->patient->email}}</td>
                                                         </tr>
                                                         <tr>
@@ -149,7 +149,7 @@
                                     <!-- Invoice Items Details starts -->
                                     <div id="invoice-items-details">
                                         <div class="col-12 text-center p-1">
-                                            <span class="badge bg-light-info m-2 p-2">Examenes realizados</span>
+                                            <span class="badge bg-light-info m-2 p-2">Exámenes realizados</span>
                                         </div>
 
                                         <div class="row">
@@ -159,11 +159,11 @@
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>Especialista</th>
-                                                        <th>Razon de consulta</th>
-                                                        <th>Sintomas</th>
-                                                        <th>Diagnostico</th>
+                                                        <th>Razón de consulta</th>
+                                                        <th>Síntomas</th>
+                                                        <th>Diagnóstico</th>
                                                         <th>Fecha</th>
-                                                        <th>acciones</th>
+                                                        <th>Acciones</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -175,7 +175,9 @@
                                                             <td>{{$exams-> symptom}} </td>
                                                             <td>{{$exams-> diagnosis}} </td>
                                                             <td>{{$exams-> created_at}} </td>
-                                                            <td><a type="button" class="btn-sm bg-light-primary" href="{{url('clinical/examen-medico/'.$exams->id.'/show')}}">+ Detalles</a></td>
+                                                            <td><a type="button" class="btn-sm bg-light-primary"
+                                                                   href="{{url('clinical/examen-medico/'.$exams->id.'/show')}}">+
+                                                                    Detalles</a></td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
@@ -183,11 +185,11 @@
                                                 <hr style="border-top: 1px solid grey;">
                                             </div>
                                         </div>
-                                    <!-- Invoice Items Details ends -->
+                                        <!-- Invoice Items Details ends -->
 
                                         <div id="invoice-customer-details" class="row">
                                             <div class="col-12 text-center p-1">
-                                                <span class="badge bg-light-info m-2 p-2">ANTECEDENTES</span>
+                                                <span class="badge bg-light-info m-2 p-2">Antecedentes</span>
                                             </div>
 
                                             <div class="col-12">
@@ -216,7 +218,7 @@
                                         </div>
                                         <hr style="border-top: 1px solid grey;">
 
-                                    <!-- Invoice Footer starts -->
+                                        <!-- Invoice Footer starts -->
                                         <div id="invoice-footer">
                                             <div class="row mt-2 mt-sm-0">
 
@@ -248,34 +250,36 @@
                                             <div class="col-12">
                                                 <div class="terms-conditions mb-2">
                                                     <h6>Terminos &amp; Condiciones</h6>
-                                                    <p> El examen medico Es un documento privado, obligatorio y sometido
-                                                        a reserva, en el
-                                                        cual se registran las condiciones de salud del
+                                                    <p>
+                                                        El examen médico es un documento privado, obligatorio y sometido
+                                                        a reserva, en el cual se registran las condiciones de salud del
                                                         paciente, los actos médicos y los demás procedimientos
                                                         ejecutados por el equipo de salud que interviene en su atención.
                                                         Dicho documento únicamente puede ser conocido por terceros
                                                         previa autorización del paciente o en los casos previstos por la
-                                                        ley.</p>
+                                                        ley.
+                                                    </p>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-12 text-center text-sm-right">
-                                                    <button type="button" class="btn btn-primary btn-print mt-2 mt-md-1"><i
+                                                    <button type="button"
+                                                            class="btn btn-primary btn-print mt-2 mt-md-1"><i
                                                             class="ft-printer mr-1"></i>Imprimir
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
-                                    <!-- Invoice Footer ends -->
+                                        <!-- Invoice Footer ends -->
+                                    </div>
                                 </div>
                             </div>
+                            <!-- end card-->
                         </div>
-                        <!-- end card-->
                     </div>
-                </div>
-                <!-- Basic Form ends -->
-                <!-- Table ends -->
+                    <!-- Basic Form ends -->
+                    <!-- Table ends -->
             </section>
 
         </div>

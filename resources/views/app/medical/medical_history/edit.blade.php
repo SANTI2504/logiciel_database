@@ -23,14 +23,14 @@
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('menu/clinical')}}" itemprop="item">
-                                <span itemprop="name">Menu clinical</span>
+                                <span itemprop="name">Menú clinical</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
                             <a href="{{url('clinical/historial-medico')}}" itemprop="item">
-                                <span itemprop="name">Historial Medico</span>
+                                <span itemprop="name">Historial Médico</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>

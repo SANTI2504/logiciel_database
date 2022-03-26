@@ -119,8 +119,15 @@ Route::middleware('role:Administrador')->group(function (){
     Route::delete('clinical/examen-medico/{id}/{id_history}',[Medical_examController::class,'destroy']);
     Route::get('clinical/examen-medico/{id}/edit', [Medical_examController::class, 'edit']);
     Route::put('clinical/examen-medico/{id}', [Medical_examController::class, 'update']);
+
+
     //rutas citas
-    Route::resource('citas', AppointmentController::class);
+    Route::get('citas', [AppointmentController::class, 'index']);
+    Route::post('citas/mostrar', [AppointmentController::class, 'show']);
+    Route::post('citas/editar/{id}', [AppointmentController::class, 'edit']);
+    Route::post('citas/actualizar/{id}', [AppointmentController::class, 'update']);
+    Route::post('citas/agregar', [AppointmentController::class, 'store']);
+    Route::post('citas/borrar/{id}',[AppointmentController::class, 'destroy']);
 });
 
 

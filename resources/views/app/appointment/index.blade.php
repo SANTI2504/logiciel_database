@@ -4,13 +4,6 @@
 @endsection
 
 @section('content')
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evento">
-        Launch demo modal
-    </button>
-
-
-
     <div class="main-content">
         <div class="content-overlay"></div>
         <div class="content-wrapper">
@@ -27,29 +20,8 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('menu/usuarios')}}" itemprop="item">
-                                <span itemprop="name">Menu usuarios</span>
-                            </a>
-                            <meta itemprop="position" content="1">
-                        </li>
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
-                            itemtype="http://schema.org/ListItem">
-                            <a href="{{url('menu/tipos-de-usuarios')}}" itemprop="item">
-                                <span itemprop="name">Menu tipos de usuarios</span>
-                            </a>
-                            <meta itemprop="position" content="1">
-                        </li>
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
-                            itemtype="http://schema.org/ListItem">
-                            <a href="{{url('usuarios/auxiliares')}}" itemprop="item">
-                                <span itemprop="name">Auxiliares</span>
-                            </a>
-                            <meta itemprop="position" content="1">
-                        </li>
-                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
-                            itemtype="http://schema.org/ListItem">
 
-                            <span itemprop="name">Crear</span>
+                            <span itemprop="name">Agendamiento citas</span>
 
                             <meta itemprop="position" content="2">
                         </li>
@@ -59,7 +31,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Crear nuevo auxiliar</div>
+                        <div class="content-header">Agendamiento de citas</div>
 
                     </div>
                 </div>
@@ -68,7 +40,7 @@
                 <!-- Basic Form starts -->
                 <div class="col col-12">
                     <div class="card">
-                        <span class="badge   bg-light-success p-2">LLENA TODOS LOS DATOS DEL FORMULARIO</span>
+                        <span class="badge   bg-light-success p-2">CALENDARIO DE CITAS</span>
                         <div class="card-header">
 
                             <!-- start validaciones -->
@@ -85,7 +57,9 @@
                         </div>
                         <div class="card-body ">
                             <div class="container">
-                                <div id="agenda"></div>
+                                <div id="calendar">
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -101,64 +75,128 @@
 
 @section('modales')
     <!-- Modal -->
-    <div class="modal fade" id="evento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="evento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Agenda tu cita</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
-                    <form action="">
-
-                        <div class="form-group">
-                            <label for="id">ID</label>
-                            <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
+                    <form action="" id="formularioEventos">
+                    @csrf
+                    <!-- start validaciones -->
+                        <!-- end validaciones-->
+                        <div class="form-row" >
+                            <div class="col-md-12 col-12">
+                                <div class="form-group mb-2">
+                                    <label for="id">ID</label>
+                                    <input type="text" class="form-control" name="id" id="id" aria-describedby="" readonly>
+                                    <small id="HelpId" class="form-text text-muted">El id es un dato automatico y no se puede modificar</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" hidden>
+                            <div class="col-md-12 col-12">
+                                <div class="form-group mb-2">
+                                    <label for="title">Titulo</label>
+                                    <input type="text" class="form-control" name="title" id="title" value="Agendamiento" aria-describedby="">
+                                    <small id="HelpId" class="form-text text-muted">Help text</small>
+                                </div>
+                            </div>
                         </div>
 
-
-                        <div class="form-group">
-                            <label for="title">Titulo</label>
-                            <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Escribe el titulo del evento">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcion">Descripcion</label>
-                            <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="start">start</label>
-                            <input type="time" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="time">end</label>
-                            <input type="time" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
+                        <div class="form-row">
+                            <div class="col-md-12 col-12">
+                                <div class="form-group mb-2">
+                                    <label for="basic-form-6">Tipo de cita *</label>
+                                    <select class="select2 form-control mb-2" name="type_appointments_id"
+                                            id="type_appointments_id">
+                                        <option value="none" selected disabled>Seleccionar</option>
+                                        <!--usamos los datos de la tabla type_documents-->
+                                        @foreach($type_appointments as $type_appointment)
+                                            <option
+                                                value="{{$type_appointment->id}}">{{$type_appointment->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
+                        <div class="form-row">
+                            <div class="col-md-6 col-12">
+                                <div class="form-group mb-2">
+                                    <label for="date">Fecha</label>
+                                    <input type="date" class="form-control" name="date" id="date" aria-describedby="" readonly>
+                                    <small id="HelpId" class="form-text text-muted">fecha de la cita</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group mb-2">
+                                    <label for="time">Hora</label>
+                                    <input type="time" class="form-control" name="time" id="time" aria-describedby="">
+                                    <small id="HelpId" class="form-text text-muted">Hora de la cita</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-12 col-12">
+                                <div class="form-group mb-2">
+                                    <label for="basic-form-6">Paciente *</label>
+                                    <select class="select2 form-control mb-2" name="patients_id"
+                                            id="patients_id">
+                                        <option value="none" selected disabled>Seleccionar</option>
+                                        <option value="">Sin asignar</option>
+                                        <!--usamos los datos de la tabla type_documents-->
+                                        @foreach($patients as $patient)
+                                            <option
+                                                value="{{$patient->id}}">{{$patient->name}} {{$patient->lastnames}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 col-12">
+                                <div class="form-group mb-2">
+                                    <label for="basic-form-6">Especialista *</label>
+                                    <select class="select2 form-control mb-2" name="specialists_id"
+                                            id="specialists_id" data-live-search="true">
+                                        <option value="none" selected disabled>Seleccionar</option>
+                                        <!--usamos los datos de la tabla type_documents-->
+                                        @foreach($specialists as $specialist)
+                                            <option
+                                                value="{{$specialist->id}}">{{$specialist->name}} {{$specialist->lastnames}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </form>
 
                 </div>
                 <div class="modal-footer">
-
-                    <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
-                    <button type="button" class="btn btn-warning" id="bntModificar">Modificar</button>
-                    <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
+                    <button type="button" class="btn btn-success" id="btnGuardar" >Guardar</button>
+                    <button type="button" class="btn btn-warning" id="btnModificar" >Modificar</button>
+                    <button type="button" class="btn btn-danger" id="btnEliminar" >Eliminar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
                 </div>
             </div>
         </div>
     </div>
+@endsection
 
+@section('js')
+    <script src="/js/app/schedule.js"></script>
 
-    </div>
+    <script type="text/javascript">
+        //recibe la url de acceso al de public
+        var baseURL = {!! json_encode(url('/')) !!};
+    </script>
 @endsection
 
 

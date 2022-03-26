@@ -90,12 +90,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="drag-target"></div>
 <!-- BEGIN VENDOR JS-->
 <script src="{{url('js/app/app.js')}}" ></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+@yield('js')
 <!-- start alerts-->
 @include('layouts.components.alerts')
 @yield('modales')
 <!-- end alerts-->
-
-@yield('js')
 <!-- END: Custom CSS-->
 
 </body>

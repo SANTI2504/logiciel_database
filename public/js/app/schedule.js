@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then((result) => {
             if (result.value) {
                 enviarDatos("/citas/borrar/"+formulario.id.value);
+
             }
         })
 
@@ -190,7 +191,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     title: "Hecho!",
                     text: "La accion se realizo exitosamente.",
                     confirmButtonClass: "btn btn-success",
-                    timer: 2000
+                    timer: 3000
+                }).then(() => {
+                    //recarga pagina para evitar errores en la vista
+                    window.location.reload();
                 });
             }
         ).
@@ -202,7 +206,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         type: 'error',
                         title: 'Oops...',
                         text: 'La accion no se pudo realizar!',
-                        footer: 'Intente nuevamente, si el problema persiste contacte al administrador'
+                        footer: 'Intente nuevamente, si el problema persiste contacte al administrador',
+                    }).then(() => {
+                        //recarga pagina para evitar errores en la vista
+                        window.location.reload();
                     });
                 }
             }

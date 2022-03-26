@@ -112,7 +112,7 @@
                             <div class="col-md-12 col-12">
                                 <div class="form-group mb-2">
                                     <label for="basic-form-6">Tipo de cita *</label>
-                                    <select class="select2 form-control mb-2" name="type_appointments_id"
+                                    <select class="form-control mb-2" name="type_appointments_id"
                                             id="type_appointments_id">
                                         <option value="none" selected disabled>Seleccionar</option>
                                         <!--usamos los datos de la tabla type_documents-->
@@ -129,7 +129,7 @@
                             <div class="col-md-6 col-12">
                                 <div class="form-group mb-2">
                                     <label for="date">Fecha</label>
-                                    <input type="date" class="form-control" name="date" id="date" aria-describedby="" readonly>
+                                    <input type="date" class="form-control" name="date" id="date" aria-describedby="" >
                                     <small id="HelpId" class="form-text text-muted">fecha de la cita</small>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                             <div class="col-md-12 col-12">
                                 <div class="form-group mb-2">
                                     <label for="basic-form-6">Paciente *</label>
-                                    <select class="select2 form-control mb-2" name="patients_id"
+                                    <select class=" form-control mb-2" name="patients_id"
                                             id="patients_id">
                                         <option value="none" selected disabled>Seleccionar</option>
                                         <option value="">Sin asignar</option>
@@ -163,7 +163,7 @@
                             <div class="col-md-12 col-12">
                                 <div class="form-group mb-2">
                                     <label for="basic-form-6">Especialista *</label>
-                                    <select class="select2 form-control mb-2" name="specialists_id"
+                                    <select class=" form-control mb-2" name="specialists_id"
                                             id="specialists_id" data-live-search="true">
                                         <option value="none" selected disabled>Seleccionar</option>
                                         <!--usamos los datos de la tabla type_documents-->

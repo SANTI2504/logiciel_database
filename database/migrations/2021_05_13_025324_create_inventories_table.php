@@ -16,9 +16,8 @@ class CreateInventoriesTable extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('amount');
-            $table->date('last_modified_date');
-            $table->bigInteger('products_id')->unsigned();
-            $table->foreign('products_id')->references('id')->on('products');
+            $table->bigInteger('products_manufacturers_id')->unsigned();
+            $table->foreign('products_manufacturers_id')->references('id')->on('products_manufacturers');
             $table->timestamps();
         });
     }

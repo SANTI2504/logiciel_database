@@ -88,7 +88,7 @@
                             <div class="icon">
                                 <i class="fa fa-list-alt"></i>
                             </div>
-                            <a href="#" class="card-box-footer">Ingresa <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{url('menu/inventario')}}" class="card-box-footer">Ingresa <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>

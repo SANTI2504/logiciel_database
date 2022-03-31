@@ -22,6 +22,18 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         //validar informacion
+        //validaciones
+        $campos = [
+            'start' => 'required|unique:appointments',
+            'end' => 'required|unique:appointments',
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+
+
 
         //sentencia
         $evento=Appointment::create($request->all());

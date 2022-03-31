@@ -15,6 +15,7 @@ use App\Http\Controllers\Medical_historyController;
 use App\Http\Controllers\Medical_examController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ProductController;
 
 
 
@@ -121,6 +122,11 @@ Route::middleware('role:Administrador')->group(function (){
     Route::put('clinical/examen-medico/{id}', [Medical_examController::class, 'update']);
 
 
+    //modulo citas
+    Route::get('menu/citas', function () {
+        return view('app/appointment/menu');
+    });
+
     //rutas citas
     Route::get('citas', [AppointmentController::class, 'index']);
     Route::post('citas/mostrar', [AppointmentController::class, 'show']);
@@ -128,6 +134,14 @@ Route::middleware('role:Administrador')->group(function (){
     Route::post('citas/actualizar/{id}', [AppointmentController::class, 'update']);
     Route::post('citas/agregar', [AppointmentController::class, 'store']);
     Route::post('citas/borrar/{id}',[AppointmentController::class, 'destroy']);
+
+    //modulo Inventario
+    Route::get('menu/inventario', function () {
+        return view('app/inventory/menu');
+    });
+
+    //ruras de inventario
+    Route::resource('inventario/productos', ProductController::class);
 });
 
 

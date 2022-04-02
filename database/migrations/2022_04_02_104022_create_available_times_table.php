@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAvailableTimeTable extends Migration
+class CreateAvailableTimesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateAvailableTimeTable extends Migration
      */
     public function up()
     {
-        Schema::create('available_time', function (Blueprint $table) {
+        Schema::create('available_times', function (Blueprint $table) {
             $table->id();
+            $table->time('time');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateAvailableTimeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('available_time');
+        Schema::dropIfExists('available_times');
     }
 }

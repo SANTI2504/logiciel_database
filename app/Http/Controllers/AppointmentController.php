@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Appointment;
+use App\Models\Available_time;
 use App\Models\Patient;
 use App\Models\Specialist;
 use App\Models\Type_appointment;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AppointmentController extends Controller
 {
@@ -15,8 +17,9 @@ class AppointmentController extends Controller
         $patients=Patient::all();
         $specialists=Specialist::all();
         $type_appointments=Type_appointment::all();
+        $available_times=Available_time::all();
         //el envio de informacion lo hace a traves de javascript
-        return view('app.appointment.index', compact('patients', 'specialists', 'type_appointments'));
+        return view('app.appointment.shedule.index', compact('patients', 'specialists', 'type_appointments', 'available_times'));
     }
 
     public function store(Request $request)
@@ -26,14 +29,12 @@ class AppointmentController extends Controller
         $campos = [
             'start' => 'required|unique:appointments',
             'end' => 'required|unique:appointments',
+
         ];
         $mensaje = [
             // aca puede generar mensajes unicos
         ];
         $this->validate($request, $campos, $mensaje);
-
-
-
 
         //sentencia
         $evento=Appointment::create($request->all());
@@ -62,6 +63,15 @@ class AppointmentController extends Controller
     public function update(Request $request, $id )
     {
         //validar informacion
+        //validaciones
+        $campos = [
+            'start' => ['required', Rule::unique('appointments')->ignore($id)],
+            'end' => ['required', Rule::unique('appointments')->ignore($id)],
+        ];
+        $mensaje = [
+            // aca puede generar mensajes unicos
+        ];
+        $this->validate($request, $campos, $mensaje);
 
         $appointment=Appointment::find($id)->update($request->all());
         return response()->json($appointment);

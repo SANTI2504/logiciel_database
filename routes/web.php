@@ -16,6 +16,8 @@ use App\Http\Controllers\Medical_examController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Type_appointmentController;
+use App\Http\Controllers\Available_timeController;
 
 
 
@@ -100,7 +102,7 @@ Route::middleware('role:Administrador')->group(function (){
     //rutas de roles
     Route::resource('usuarios/roles', RolController::class);
 
-    //ruras de eps
+    //rutas de eps
     Route::resource('usuarios/eps', EpsController::class);
 
 
@@ -135,6 +137,12 @@ Route::middleware('role:Administrador')->group(function (){
     Route::post('citas/agregar', [AppointmentController::class, 'store']);
     Route::post('citas/borrar/{id}',[AppointmentController::class, 'destroy']);
 
+    //rutas de type_appoinment
+    Route::resource('citas/tipo-cita',Type_appointmentController ::class);
+
+    //rutas de available time
+    Route::resource('citas/tiempo',Available_timeController ::class);
+
     //modulo Inventario
     Route::get('menu/inventario', function () {
         return view('app/inventory/menu');
@@ -142,10 +150,8 @@ Route::middleware('role:Administrador')->group(function (){
 
     //ruras de inventario
     Route::resource('inventario/productos', ProductController::class);
+
 });
-
-
-
 
 // rutas de prueba
 Route::get('prueba', function () {

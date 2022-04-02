@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Available_time extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'time',
+    ];
+
 }

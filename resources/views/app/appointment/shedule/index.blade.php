@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    LDB-lista-Historial
+    LDB-Calendario-Agendamiento
 @endsection
 
 @section('content')
@@ -20,8 +20,15 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
+                            <a href="{{url('menu/citas')}}" itemprop="item">
+                                <span itemprop="name">Menu citas</span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                        <li class="breadcrumb-item" itemscope itemprop="itemListElement"
+                            itemtype="http://schema.org/ListItem">
 
-                            <span itemprop="name">Agendamiento citas</span>
+                            <span itemprop="name">Calendario citas</span>
 
                             <meta itemprop="position" content="2">
                         </li>
@@ -31,7 +38,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Agendamiento de citas</div>
+                        <div class="content-header">Calendario: Agendamiento de citas</div>
 
                     </div>
                 </div>
@@ -130,15 +137,19 @@
                                 <div class="form-group mb-2">
                                     <label for="date">Fecha</label>
                                     <input type="date" class="form-control" name="date" id="date" aria-describedby="" >
-                                    <small id="HelpId" class="form-text text-muted">fecha de la cita</small>
+                                    <small id="HelpId" class="form-text text-muted">ejemplo hora</small>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-                                <div class="form-group mb-2">
-                                    <label for="time">Hora</label>
-                                    <input type="time" class="form-control" name="time" id="time" aria-describedby="">
-                                    <small id="HelpId" class="form-text text-muted">Hora de la cita</small>
-                                </div>
+                                <label for="basic-form-6">Hora</label>
+                                <select class=" form-control mb-2" name="time" id="time">
+                                    <option value="none" selected disabled>Seleccionar</option>
+                                    <!--usamos los datos de la tabla type_documents-->
+                                    @foreach($available_times as $available_time)
+                                        <option
+                                            value="{{$available_time->id}}">{{$available_time->time}} </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 
+use App\Models\Available_time;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AppointmentsTableSeeder::class);
         $this->call(Medical_historiesTableSeeder::class);
         $this->call(Medical_examsTableSeeder::class);
+        $this->call(Available_timeTableSeeder::class);
     }
 }

@@ -15,6 +15,7 @@ use App\Http\Controllers\Medical_historyController;
 use App\Http\Controllers\Medical_examController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\Schedule_apointmentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Type_appointmentController;
 use App\Http\Controllers\Available_timeController;
@@ -130,12 +131,15 @@ Route::middleware('role:Administrador')->group(function (){
     });
 
     //rutas citas
-    Route::get('citas', [AppointmentController::class, 'index']);
-    Route::post('citas/mostrar', [AppointmentController::class, 'show']);
-    Route::post('citas/editar/{id}', [AppointmentController::class, 'edit']);
-    Route::post('citas/actualizar/{id}', [AppointmentController::class, 'update']);
-    Route::post('citas/agregar', [AppointmentController::class, 'store']);
-    Route::post('citas/borrar/{id}',[AppointmentController::class, 'destroy']);
+    Route::resource('agendar-citas',AppointmentController ::class);
+
+    //rutas citas por calendario
+    Route::get('calendario/citas', [Schedule_apointmentController::class, 'index']);
+    Route::post('calendario/citas/mostrar', [Schedule_apointmentController::class, 'show']);
+    Route::post('calendario/citas/editar/{id}', [Schedule_apointmentController::class, 'edit']);
+    Route::post('calendario/citas/actualizar/{id}', [Schedule_apointmentController::class, 'update']);
+    Route::post('calendario/citas/agregar', [Schedule_apointmentController::class, 'store']);
+    Route::post('calendario/citas/borrar/{id}',[Schedule_apointmentController::class, 'destroy']);
 
     //rutas de type_appoinment
     Route::resource('citas/tipo-cita',Type_appointmentController ::class);

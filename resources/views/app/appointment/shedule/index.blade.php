@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    LDB-Calendario-Agendamiento
+    LDB-Calendario-Agendamiento citas
 @endsection
 
 @section('content')
@@ -147,7 +147,7 @@
                                     <!--usamos los datos de la tabla type_documents-->
                                     @foreach($available_times as $available_time)
                                         <option
-                                            value="{{$available_time->id}}">{{$available_time->time}} </option>
+                                            value="{{$available_time->time}}">{{$available_time->time}} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -160,7 +160,6 @@
                                     <select class=" form-control mb-2" name="patients_id"
                                             id="patients_id">
                                         <option value="none" selected disabled>Seleccionar</option>
-                                        <option value="">Sin asignar</option>
                                         <!--usamos los datos de la tabla type_documents-->
                                         @foreach($patients as $patient)
                                             <option

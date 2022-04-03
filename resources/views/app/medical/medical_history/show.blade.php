@@ -278,6 +278,7 @@
                             <!-- end card-->
                         </div>
                     </div>
+                    </div>
                     <!-- Basic Form ends -->
                     <!-- Table ends -->
             </section>

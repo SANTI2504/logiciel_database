@@ -12,7 +12,7 @@ class InventoryController extends Controller
 {
     public function index(){
         $inventories = Inventory::all();
-        return view('app.inventory.index', compact('inventories'));
+        return view('app.inventory.product.index', compact('inventories'));
     }
 
     public function create(){

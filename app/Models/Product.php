@@ -11,7 +11,14 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'description',
     ];
+
+    //eloquent relacion uno a muchos
+    public function Inventory()
+    {
+        //belongsto('ruta del modelo a relacionar')
+        return $this->belongsTo(Inventory::class, 'inventories_id');
+
+    }
 
 }

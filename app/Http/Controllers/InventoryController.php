@@ -10,7 +10,6 @@ use Illuminate\Validation\Rule;
 
 class InventoryController extends Controller
 {
-
     public function index(){
         $inventories = Inventory::all();
         return view('app.inventory.index', compact('inventories'));
@@ -105,5 +104,4 @@ class InventoryController extends Controller
 
         return redirect('inventario')->with('actualizar', 'ok');
     }
-
 }

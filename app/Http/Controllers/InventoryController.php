@@ -12,7 +12,8 @@ class InventoryController extends Controller
 {
     public function index(){
         $inventories = Inventory::all();
-        return view('app.inventory.product.index', compact('inventories'));
+        //return view('app.inventory.index', compact('inventories'));
+        return response()->json(['productos' => $inventories]);
     }
 
     public function create(){

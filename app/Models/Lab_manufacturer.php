@@ -12,4 +12,5 @@ class Lab_manufacturer extends Model
     protected $fillable = [
         'name',
     ];
+
 }

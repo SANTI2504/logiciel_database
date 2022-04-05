@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\lab_manufacturer;
+use App\Models\Lab_manufacturer;
 use Illuminate\Http\Request;
 
-class lab_manufacturerController extends Controller
+class Lab_manufacturerController extends Controller
 {
     public function index(){
         $lab_manufacturers= lab_manufacturer::all();

@@ -30,7 +30,7 @@ class ProductController extends Controller
 
         //sentencia
         $product = Product::create($request -> all());
-        return redirect('inventario/productos')->with('crear', 'ok');
+        return redirect('productos')->with('crear', 'ok');
     }
 
     public function edit($product){
@@ -52,11 +52,11 @@ class ProductController extends Controller
 
         //sentencia
         $product = Product::find($product)->update($request->all());
-        return redirect('inventario/productos')->with('actualizar', 'ok');
+        return redirect('productos')->with('actualizar', 'ok');
     }
 
     public function destroy($product){
         $product = Product::find($product)->delete();
-        return redirect('inventario/productos')->with('eliminar', 'ok');
+        return redirect('productos')->with('eliminar', 'ok');
     }
 }

@@ -28,7 +28,7 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('inventario/fabricantes')}}" itemprop="item">
+                            <a href="{{url('fabricantes')}}" itemprop="item">
                                 <span itemprop="name">Laboratorios / fabricantes</span>
                             </a>
                             <meta itemprop="position" content="1">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{url('inventario/fabricantes', $lab_manufacturer-> id)}}" method="POST">
+                                <form action="{{url('fabricantes', $lab_manufacturer-> id)}}" method="POST">
                                     @method('PUT')
                                     @csrf
                                     <div class="form-row">
@@ -89,7 +89,7 @@
                                     <button type="submit" class="btn bg-light-primary mr-1 mb-1 mb-sm-0 form-editar"><i
                                             class="ft-check-square mr-1"></i>Guardar
                                     </button>
-                                    <a href="{{url('inventario/fabricantes')}}" type="button"
+                                    <a href="{{url('fabricantes')}}" type="button"
                                        class="btn bg-light-secondary mr-1 mb-1 mb-sm-0"><i class="ft-x mr-1"></i>Cancelar
                                     </a>
                                 </form>

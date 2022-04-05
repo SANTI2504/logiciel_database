@@ -61,7 +61,7 @@
                         </a>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-12">
-                        <a href="{{url('inventario/productos')}}">
+                        <a href="{{url('productos')}}">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -80,7 +80,7 @@
                         </a>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-12">
-                        <a href="{{url('inventario/fabricantes')}}">
+                        <a href="{{url('fabricantes')}}">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">

@@ -51,7 +51,7 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <!-- Datatable starts -->
-                                        <a type="button" class="btn bg-light-info " href="{{url('inventario/fabricantes/create')}}">Crear nuevo</a>
+                                        <a type="button" class="btn bg-light-info " href="{{url('fabricantes/create')}}">Crear nuevo</a>
                                         <hr>
                                         <div class="col table-responsive">
                                             <table id="users-list-datatable"  class="table  table-hover file-export ">
@@ -69,7 +69,7 @@
                                                         <td>{{$lab_manufacturer-> name}}</td>
 
                                                         <td class="text-truncate">
-                                                            <form  action="{{url('inventario/fabricantes', $lab_manufacturer -> id)}}" method="post">
+                                                            <form  action="{{url('fabricantes', $lab_manufacturer -> id)}}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <!--
@@ -77,7 +77,7 @@
                                                                 <i class="ft-user font-medium-3"></i>
                                                             </a>
                                                             -->
-                                                                <a href="{{url('inventario/fabricantes/'. $lab_manufacturer-> id . '/edit')}}" class=" btn success p-0">
+                                                                <a href="{{url('fabricantes/'. $lab_manufacturer-> id . '/edit')}}" class=" btn success p-0">
                                                                     <i class="ft-edit-2 font-medium-3 "></i>
                                                                 </a>
                                                                 <button  type="submit" id="type-success" class="btn danger p-0 form-eliminar" >

@@ -155,10 +155,10 @@ Route::middleware('role:Administrador')->group(function (){
     });
 
     //rutas de productos
-    Route::resource('inventario/productos', ProductController::class);
+    Route::resource('productos', ProductController::class);
 
     //rutas de laboratorio/fabricante
-    Route::resource('inventario/fabricantes', Lab_manufacturerController::class);
+    Route::resource('fabricantes', Lab_manufacturerController::class);
 
     //rutas de Inventario
     Route::resource('inventario', InventoryController::class);

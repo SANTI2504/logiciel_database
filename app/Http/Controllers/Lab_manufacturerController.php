@@ -29,7 +29,7 @@ class Lab_manufacturerController extends Controller
 
         //sentencia
         $lab_manufacturer = lab_manufacturer::create($request -> all());
-        return redirect('inventario/fabricantes')->with('crear', 'ok');
+        return redirect('fabricantes')->with('crear', 'ok');
     }
 
     public function edit($lab_manufacturer){
@@ -51,11 +51,11 @@ class Lab_manufacturerController extends Controller
 
         //sentencia
         $lab_manufacturer = lab_manufacturer::find($lab_manufacturer)->update($request->all());
-        return redirect('inventario/fabricantes')->with('actualizar', 'ok');
+        return redirect('fabricantes')->with('actualizar', 'ok');
     }
 
     public function destroy($lab_manufacturer){
         $lab_manufacturer = lab_manufacturer::find($lab_manufacturer)->delete();
-        return redirect('inventario/fabricantes')->with('eliminar', 'ok');
+        return redirect('fabricantes')->with('eliminar', 'ok');
     }
 }

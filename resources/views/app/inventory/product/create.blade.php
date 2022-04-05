@@ -27,7 +27,7 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('inventario/productos')}}" itemprop="item">
+                            <a href="{{url('productos')}}" itemprop="item">
                                 <span itemprop="name">Productos</span>
                             </a>
                             <meta itemprop="position" content="1">
@@ -71,7 +71,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{url('inventario/productos')}}" method="POST">
+                                <form action="{{url('productos')}}" method="POST">
                                     @csrf
 
                                     <div class="form-row">
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn bg-light-primary mr-1 mb-1 mb-sm-0 form-crear"><i class="ft-check-square mr-1"></i>Guardar</button>
-                                    <a href="{{url('inventario/productos')}}"type="button" class="btn bg-light-secondary mr-1 mb-1 mb-sm-0"><i class="ft-x mr-1"></i>Cancelar </a>
+                                    <a href="{{url('productos')}}"type="button" class="btn bg-light-secondary mr-1 mb-1 mb-sm-0"><i class="ft-x mr-1"></i>Cancelar </a>
                                 </form>
                             </div>
                         </div>

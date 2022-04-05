@@ -15,7 +15,7 @@ class Inventory extends Model
         'amount',
         'lab_manufacturers_id',
         'products_id',
-        ];
+    ];
 
     //eloquent relacion uno a muchos
     public function Lab_manufacturer()
@@ -32,8 +32,6 @@ class Inventory extends Model
         return $this->belongsTo(product::class, 'products_id');
 
     }
-
-
 
 
 }

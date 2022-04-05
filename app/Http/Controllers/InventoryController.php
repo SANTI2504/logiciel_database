@@ -11,9 +11,9 @@ use Illuminate\Validation\Rule;
 class InventoryController extends Controller
 {
     public function index(){
-        $inventories = Inventory::all();
-        //return view('app.inventory.index', compact('inventories'));
-        return response()->json(['productos' => $inventories]);
+        $articulos = Inventory::all();
+        return view('app.inventory.index', compact('articulos'));
+        //return response()->json(['productos' => $inventories]);
     }
 
     public function create(){

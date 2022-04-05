@@ -66,7 +66,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($inventories as $inventory)
+                                                @foreach($articulos as $inventory)
                                                     <tr>
                                                         <td>{{$inventory-> id}}</td>
                                                         <td>{{$inventory-> product -> name}}</td>

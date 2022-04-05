@@ -19,6 +19,8 @@ use App\Http\Controllers\Schedule_apointmentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Type_appointmentController;
 use App\Http\Controllers\Available_timeController;
+use App\Http\Controllers\Lab_manufacturerController;
+use App\Http\Controllers\InventoryController;
 
 
 
@@ -152,9 +154,16 @@ Route::middleware('role:Administrador')->group(function (){
         return view('app/inventory/menu');
     });
 
-    //ruras de inventario
+    //rutas de productos
     Route::resource('inventario/productos', ProductController::class);
 
+    //rutas de laboratorio/fabricante
+    Route::resource('inventario/fabricantes', Lab_manufacturerController::class);
+
+    //rutas de Inventario
+    Route::resource('inventario', InventoryController::class);
+    Route::get('cantidad/{id}', [InventoryController::class, 'amount']);
+    Route::put('cantidad/{id}', [InventoryController::class, 'amountSave']);
 });
 
 // rutas de prueba

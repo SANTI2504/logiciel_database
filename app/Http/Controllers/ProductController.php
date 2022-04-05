@@ -22,7 +22,6 @@ class ProductController extends Controller
         //validaciones
         $campos = [
             'name' => 'required|string|max:45',
-            'description' => 'required|string|max:200',
         ];
         $mensaje = [
             // aca puede generar mensajes unicos
@@ -44,7 +43,6 @@ class ProductController extends Controller
         //validaciones
         $campos = [
             'name' => 'required|string|max:45',
-            'description' => 'required|string|max:200',
         ];
         $mensaje = [
             // aca puede generar mensajes unicos

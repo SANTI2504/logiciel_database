@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('title')
-    LDB-Editar-Producto
+    LDB-Crear-Fabricante
 @endsection
 
 @section('content')
     <!-- BEGIN : Main Content-->
     <div class="main-content">
         <div class="content-overlay"></div>
-        <div class="content-wrapper">
-            <section class="users-list-wrapper">
+        <div class="content-wrapper"><section class="users-list-wrapper">
                 <!-- start migas de pan-->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -28,15 +27,15 @@
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
-                            <a href="{{url('inventario/productos')}}" itemprop="item">
-                                <span itemprop="name">Productos</span>
+                            <a href="{{url('inventario/fabricantes')}}" itemprop="item">
+                                <span itemprop="name">Laboratorios / fabricantes</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="breadcrumb-item" itemscope itemprop="itemListElement"
                             itemtype="http://schema.org/ListItem">
 
-                            <span itemprop="name">Editar</span>
+                            <span itemprop="name">Crear Nuevo</span>
 
                             <meta itemprop="position" content="2">
                         </li>
@@ -46,7 +45,7 @@
                 <!-- end migas de pan-->
                 <div class="row">
                     <div class="col-12">
-                        <div class="content-header">Editar Producto para el id {{$product-> id}}</div>
+                        <div class="content-header">Crear nuevo fabricante</div>
 
                     </div>
                 </div>
@@ -55,7 +54,7 @@
                 <!-- Basic Form starts -->
                 <div class="col col-12">
                     <div class="card">
-                        <span class="badge bg-light-success p-2">LLENA TODOS LOS DATOS DEL FORMULARIO</span>
+                        <span class="badge   bg-light-success p-2">LLENA TODOS LOS DATOS DEL FORMULARIO</span>
                         <div class="card-header">
 
                             <!-- start validaciones -->
@@ -72,26 +71,20 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{url('inventario/productos', $product-> id)}}" method="POST">
-                                    @method('PUT')
+                                <form action="{{url('inventario/fabricantes')}}" method="POST">
                                     @csrf
+
                                     <div class="form-row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mb-2">
-                                                <label for="basic-form-1">Nombre del producto</label>
-                                                <input type="text" id="name" name="name" class="form-control"
-                                                       placeholder="Ej: Lentes de contacto" value="{{$product -> name}}"
-                                                       required>
+                                                <label for="basic-form-1">Nombre del fabricante</label>
+                                                <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Totto" required>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn bg-light-primary mr-1 mb-1 mb-sm-0 form-editar"><i
-                                            class="ft-check-square mr-1"></i>Guardar
-                                    </button>
-                                    <a href="{{url('inventario/productos')}}" type="button"
-                                       class="btn bg-light-secondary mr-1 mb-1 mb-sm-0"><i class="ft-x mr-1"></i>Cancelar
-                                    </a>
+                                    <button type="submit" class="btn bg-light-primary mr-1 mb-1 mb-sm-0 form-crear"><i class="ft-check-square mr-1"></i>Guardar</button>
+                                    <a href="{{url('inventario/fabricantes')}}"type="button" class="btn bg-light-secondary mr-1 mb-1 mb-sm-0"><i class="ft-x mr-1"></i>Cancelar </a>
                                 </form>
                             </div>
                         </div>

@@ -78,15 +78,7 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mb-2">
                                                 <label for="basic-form-1">Nombre del producto</label>
-                                                <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Gafas" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group mb-2">
-                                                <label for="basic-form-1">Descripcion del producto</label>
-                                                <input type="text" id="description" name="description" class="form-control" placeholder="Ej: Reforzadas con plastico de la mejor calidad" required>
+                                                <input type="text" id="name" name="name" class="form-control" placeholder="Ej: Marco de gafas" required>
                                             </div>
                                         </div>
                                     </div>

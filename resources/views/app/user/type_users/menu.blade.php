@@ -105,7 +105,7 @@
                             </div>
                         </a>
                     </div>
-
+                    <!--
                     <div class="col-xl-4 col-lg-6 col-12">
                         <a href="{{url('usuarios')}}">
                             <div class="card">
@@ -125,7 +125,7 @@
                             </div>
                         </a>
                     </div>
-
+                    -->
                 </div>
             </section>
             <!-- // Minimal statistics section end -->
